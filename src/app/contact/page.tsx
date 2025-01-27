@@ -15,7 +15,7 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    const formData = new FormData(event.currentTarget);
+    // const formData = new FormData(event.currentTarget);
 
     try {
       // Simulate form submission

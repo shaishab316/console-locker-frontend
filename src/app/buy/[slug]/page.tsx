@@ -131,8 +131,6 @@ const ProductDetailsPage: React.FC = () => {
     },
   ];
 
-  console.log(openModal);
-
   return (
     <div className="py-16">
       <Container>

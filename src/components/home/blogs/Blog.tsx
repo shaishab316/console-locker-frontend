@@ -1,8 +1,6 @@
 "use client";
 
-import { Card, Typography, Avatar } from "antd";
-import { UserOutlined, CalendarOutlined } from "@ant-design/icons";
-import { User } from "lucide-react";
+import { Card, Typography } from "antd";
 import Image from "next/image";
 
 const { Text, Title } = Typography;
@@ -24,7 +22,7 @@ export function BlogCard({
 }: BlogCardProps) {
   return (
     <Card
-    // hoverable
+      // hoverable
       cover={
         <img
           alt={title}

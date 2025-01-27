@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
-import { Select, Space } from "antd";
-import { Check, Group, Info, MoveLeft } from "lucide-react";
+// import { Select, Space } from "antd";
+// import { Check, Group, Info, MoveLeft } from "lucide-react";
 import Image from "next/image";
 
 interface Product {
@@ -24,105 +24,105 @@ interface RelatedProduct {
   brand: string;
 }
 
-const product: Product = {
-  title: "Xbox One",
-  price: "$1191",
-  image: "/productss/a1.png",
-  description:
-    "The phone will have heavy signs of wear, such as deeper scratches, dents, and other marks. The phone is unlocked, fully tested, and works like new.",
-  models: ["Fat", "Slim", "Pro"],
-  controllers: [0, 1, 2],
-  memories: ["500 Gb", "1 Tb"],
-  conditions: ["Fair", "Good", "Excellent"],
-};
+// const product: Product = {
+//   title: "Xbox One",
+//   price: "$1191",
+//   image: "/productss/a1.png",
+//   description:
+//     "The phone will have heavy signs of wear, such as deeper scratches, dents, and other marks. The phone is unlocked, fully tested, and works like new.",
+//   models: ["Fat", "Slim", "Pro"],
+//   controllers: [0, 1, 2],
+//   memories: ["500 Gb", "1 Tb"],
+//   conditions: ["Fair", "Good", "Excellent"],
+// };
 
-const products: RelatedProduct[] = [
-  {
-    title: "PlayStation 5",
-    condition: "Good",
-    price: "$299",
-    image: "/dynamic/p1.png",
-    brand: "PlayStation",
-    id: 1,
-  },
-  {
-    title: "Zeust Xbox One S",
-    condition: "Good",
-    price: "$299",
-    image: "/dynamic/p2.png",
-    brand: "Xbox",
-    id: 2,
-  },
-  {
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/dynamic/p3.png",
-    brand: "Xbox",
-    id: 3,
-  },
-  {
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/dynamic/p4.png",
-    brand: "Xbox",
-    id: 4,
-  },
-  {
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/dynamic/a5.png",
-    brand: "Xbox",
-    id: 5,
-  },
-  {
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/products/a6.png",
-    brand: "Xbox",
-    id: 6,
-  },
-  {
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/products/a7.png",
-    brand: "Xbox",
-    id: 7,
-  },
-  {
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/products/a8.png",
-    brand: "Xbox",
-    id: 8,
-  },
-  {
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/products/a9.png",
-    brand: "Xbox",
-    id: 9,
-  },
-  {
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/products/a10.png",
-    brand: "Xbox",
-    id: 10,
-  },
-];
+// const products: RelatedProduct[] = [
+//   {
+//     title: "PlayStation 5",
+//     condition: "Good",
+//     price: "$299",
+//     image: "/dynamic/p1.png",
+//     brand: "PlayStation",
+//     id: 1,
+//   },
+//   {
+//     title: "Zeust Xbox One S",
+//     condition: "Good",
+//     price: "$299",
+//     image: "/dynamic/p2.png",
+//     brand: "Xbox",
+//     id: 2,
+//   },
+//   {
+//     title: "Xbox",
+//     condition: "Good",
+//     price: "$299",
+//     image: "/dynamic/p3.png",
+//     brand: "Xbox",
+//     id: 3,
+//   },
+//   {
+//     title: "Xbox",
+//     condition: "Good",
+//     price: "$299",
+//     image: "/dynamic/p4.png",
+//     brand: "Xbox",
+//     id: 4,
+//   },
+//   {
+//     title: "Xbox",
+//     condition: "Good",
+//     price: "$299",
+//     image: "/dynamic/a5.png",
+//     brand: "Xbox",
+//     id: 5,
+//   },
+//   {
+//     title: "Xbox",
+//     condition: "Good",
+//     price: "$299",
+//     image: "/products/a6.png",
+//     brand: "Xbox",
+//     id: 6,
+//   },
+//   {
+//     title: "Xbox",
+//     condition: "Good",
+//     price: "$299",
+//     image: "/products/a7.png",
+//     brand: "Xbox",
+//     id: 7,
+//   },
+//   {
+//     title: "Xbox",
+//     condition: "Good",
+//     price: "$299",
+//     image: "/products/a8.png",
+//     brand: "Xbox",
+//     id: 8,
+//   },
+//   {
+//     title: "Xbox",
+//     condition: "Good",
+//     price: "$299",
+//     image: "/products/a9.png",
+//     brand: "Xbox",
+//     id: 9,
+//   },
+//   {
+//     title: "Xbox",
+//     condition: "Good",
+//     price: "$299",
+//     image: "/products/a10.png",
+//     brand: "Xbox",
+//     id: 10,
+//   },
+// ];
 
 const ConsoleModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
-  const [selectedModel, setSelectedModel] = useState<string>("Fat");
-  const [selectedMemory, setSelectedMemory] = useState<string>("500 Gb");
+  // const [selectedModel, setSelectedModel] = useState<string>("Fat");
+  // const [selectedMemory, setSelectedMemory] = useState<string>("500 Gb");
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -137,7 +137,7 @@ const ConsoleModal: React.FC = () => {
   };
 
   const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
+    // console.log(`selected ${value}`);
   };
 
   return (

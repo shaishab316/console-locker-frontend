@@ -1,14 +1,14 @@
 "use client";
 
-import { Layout, Row, Col, Input, Button, Form, Typography, Space } from "antd";
+import { Layout } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  LinkedinOutlined,
-  FacebookOutlined,
-  InstagramOutlined,
-  TwitterOutlined,
-} from "@ant-design/icons";
+// import {
+//   LinkedinOutlined,
+//   FacebookOutlined,
+//   InstagramOutlined,
+//   TwitterOutlined,
+// } from "@ant-design/icons";
 import Container from "../common/Container";
 
 const { Footer } = Layout;

@@ -1,13 +1,22 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ChevronDown } from "lucide-react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import Link from "next/link";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface MobileMenuProps {
-  isOpen: boolean
-  onOpenChange: (open: boolean) => void
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
 export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
@@ -18,45 +27,82 @@ export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
           <SheetTitle className="text-left">Menu</SheetTitle>
         </SheetHeader>
         <div className="mt-8 flex flex-col space-y-4">
-          <Link href="/" className="text-lg font-medium" onClick={() => onOpenChange(false)}>
+          <Link
+            href="/"
+            className="text-lg font-medium"
+            onClick={() => onOpenChange(false)}
+          >
             Home
           </Link>
           <Accordion type="single" collapsible>
             <AccordionItem value="buy">
-              <AccordionTrigger className="text-lg font-medium">Buy</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-medium">
+                Buy
+              </AccordionTrigger>
               <AccordionContent>
                 <div className="flex flex-col space-y-2 pl-4">
-                  <Link href="/buy/playstation" className="text-sm" onClick={() => onOpenChange(false)}>
+                  <Link
+                    href="/buy/playstation"
+                    className="text-sm"
+                    onClick={() => onOpenChange(false)}
+                  >
                     PlayStation
                   </Link>
-                  <Link href="/buy/xbox" className="text-sm" onClick={() => onOpenChange(false)}>
+                  <Link
+                    href="/buy/xbox"
+                    className="text-sm"
+                    onClick={() => onOpenChange(false)}
+                  >
                     Xbox
                   </Link>
-                  <Link href="/buy/nintendo" className="text-sm" onClick={() => onOpenChange(false)}>
+                  <Link
+                    href="/buy/nintendo"
+                    className="text-sm"
+                    onClick={() => onOpenChange(false)}
+                  >
                     Nintendo
                   </Link>
                 </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
-          <Link href="/sell" className="text-lg font-medium" onClick={() => onOpenChange(false)}>
+          <Link
+            href="/sell"
+            className="text-lg font-medium"
+            onClick={() => onOpenChange(false)}
+          >
             Sell
           </Link>
-          <Link href="/repair" className="text-lg font-medium" onClick={() => onOpenChange(false)}>
+          <Link
+            href="/repair"
+            className="text-lg font-medium"
+            onClick={() => onOpenChange(false)}
+          >
             Repair
           </Link>
-          <Link href="/about" className="text-lg font-medium" onClick={() => onOpenChange(false)}>
+          <Link
+            href="/about"
+            className="text-lg font-medium"
+            onClick={() => onOpenChange(false)}
+          >
             About
           </Link>
-          <Link href="/reviews" className="text-lg font-medium" onClick={() => onOpenChange(false)}>
+          <Link
+            href="/reviews"
+            className="text-lg font-medium"
+            onClick={() => onOpenChange(false)}
+          >
             Reviews
           </Link>
-          <Link href="/contact" className="text-lg font-medium" onClick={() => onOpenChange(false)}>
+          <Link
+            href="/contact"
+            className="text-lg font-medium"
+            onClick={() => onOpenChange(false)}
+          >
             Contact
           </Link>
         </div>
       </SheetContent>
     </Sheet>
-  )
+  );
 }
-

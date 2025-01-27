@@ -17,9 +17,9 @@ interface Review {
   createdAt: string;
 }
 
-interface ReviewCardProps {
-  review: Review;
-}
+// interface ReviewCardProps {
+//   review: Review;
+// }
 
 export default function ReviewsSection() {
   const [reviews, setReviews] = useState<Review[]>([]);
@@ -40,7 +40,7 @@ export default function ReviewsSection() {
       setReviews(data.reviews);
       setTotalPages(data.totalPages);
     } catch (err) {
-      setError("Failed to load reviews. Please try again later.");
+      setError(`Failed to load reviews. Please try again later. ${err}`);
     } finally {
       setIsLoading(false);
     }

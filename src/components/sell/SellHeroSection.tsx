@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Select, Button, Spin } from "antd";
-import { GiftOutlined, ReloadOutlined, CarOutlined } from "@ant-design/icons";
+import { Select } from "antd";
+// import { Select, Button, Spin } from "antd";
+// import { GiftOutlined, ReloadOutlined, CarOutlined } from "@ant-design/icons";
 import Container from "../common/Container";
 
 const consoles = [

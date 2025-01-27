@@ -40,25 +40,40 @@ export default function CheckoutPage() {
     quantity: 1,
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+
+    // Narrow the type for `checked`
+    const checked =
+      type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
+
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
   };
 
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value, type, checked } = e.target;
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [name]: type === "checkbox" ? checked : value,
+  //   }));
+  // };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
   };
 
-  const updateQuantity = (increment: boolean) => {
-    const newQuantity = increment
-      ? orderItem.quantity + 1
-      : Math.max(1, orderItem.quantity - 1);
-    // Update quantity logic here
-  };
+  // const updateQuantity = (increment: boolean) => {
+  //   // const newQuantity = increment
+  //   //   ? orderItem.quantity + 1
+  //   //   : Math.max(1, orderItem.quantity - 1);
+  //   // Update quantity logic here
+  // };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -81,7 +96,9 @@ export default function CheckoutPage() {
                   </button>
                   <button className="flex-1 bg-black text-white py-2 px-4 rounded font-medium hover:bg-gray-800 transition-colors">
                     Page.com{" "}
-                    <span className="bg-[#F4B6C7] text-[#17120F] px-2">Klarna</span>
+                    <span className="bg-[#F4B6C7] text-[#17120F] px-2">
+                      Klarna
+                    </span>
                   </button>
                 </div>
                 <p className="text-sm text-gray-600">
@@ -367,14 +384,14 @@ export default function CheckoutPage() {
                     <p className="font-medium">${orderItem.price}</p>
                     <div className="flex items-center gap-2 mt-2">
                       <button
-                        onClick={() => updateQuantity(false)}
+                        // onClick={() => updateQuantity(false)}
                         className="w-6 h-6 flex items-center justify-center border rounded"
                       >
                         -
                       </button>
                       <span>{orderItem.quantity}</span>
                       <button
-                        onClick={() => updateQuantity(true)}
+                        // onClick={() => updateQuantity(true)}
                         className="w-6 h-6 flex items-center justify-center border rounded"
                       >
                         +

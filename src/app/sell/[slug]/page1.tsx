@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "@/components/common/Container";
+// import Container from "@/components/common/Container";
 import HowDelivery from "@/components/sell/HowDelivery";
 import { useState } from "react";
 
@@ -17,7 +17,7 @@ export default function StorageSelector() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (selectedStorage) {
-      console.log("Selected storage:", selectedStorage);
+      // console.log("Selected storage:", selectedStorage);
       // Handle form submission
     }
   };

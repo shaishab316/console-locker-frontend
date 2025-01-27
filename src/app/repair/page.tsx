@@ -100,7 +100,7 @@ export default function RepairPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    console.log({ selectedDevice, selectedIssue, formData });
+    // console.log({ selectedDevice, selectedIssue, formData });
   };
 
   return (
