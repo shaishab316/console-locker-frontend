@@ -365,7 +365,7 @@ export default function ConsoleSelector() {
                               alt={`${console.name} ${console.model}`}
                               width={355}
                               height={500}
-                              className="object-contain p-4"
+                              className="object-cover w-full h-full p-5"
                             />
                           </div>
                           <div className="p-4">
@@ -430,13 +430,13 @@ export default function ConsoleSelector() {
                           key={console.id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative h-48">
+                          <div className="relative">
                             <Image
                               src={console.image || ""}
                               alt={`${console.name} ${console.model}`}
                               width={355}
                               height={500}
-                              className="object-cover p-4"
+                              className="object-contain p-4"
                             />
                           </div>
                           <div className="p-4">
@@ -445,13 +445,15 @@ export default function ConsoleSelector() {
                                 <h3 className="font-semibold text-[#101010] text-2xl">
                                   {console.name}
                                 </h3>
-                                <p className="text-sm text-gray-600">
+                                <p className="text-base text-[#2B2B2B]">
                                   {console.model}
                                 </p>
                               </div>
-                              <p className="font-bold">${console.price}</p>
+                              <p className="font-semibold text-3xl text-[#101010] ">
+                                ${console.price}
+                              </p>
                             </div>
-                            <p className="text-sm text-gray-500">
+                            <p className="border-t-2 border-[#B5B5B5] text-center text-base font-medium text-[#101010]">
                               {console.condition}
                             </p>
                           </div>
@@ -497,13 +499,13 @@ export default function ConsoleSelector() {
                           key={console.id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative h-48">
+                          <div className="relative">
                             <Image
                               src={console.image || ""}
                               alt={`${console.name} ${console.model}`}
                               width={355}
                               height={500}
-                              className="object-cover p-4"
+                              className="object-contain p-4"
                             />
                           </div>
                           <div className="p-4">
@@ -512,13 +514,15 @@ export default function ConsoleSelector() {
                                 <h3 className="font-semibold text-[#101010] text-2xl">
                                   {console.name}
                                 </h3>
-                                <p className="text-sm text-gray-600">
+                                <p className="text-base text-[#2B2B2B]">
                                   {console.model}
                                 </p>
                               </div>
-                              <p className="font-bold">${console.price}</p>
+                              <p className="font-semibold text-3xl text-[#101010] ">
+                                ${console.price}
+                              </p>
                             </div>
-                            <p className="text-sm text-gray-500">
+                            <p className="border-t-2 border-[#B5B5B5] text-center text-base font-medium text-[#101010]">
                               {console.condition}
                             </p>
                           </div>

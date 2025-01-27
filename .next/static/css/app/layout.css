@@ -835,6 +835,9 @@ video {
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
+.m-5 {
+  margin: 1.25rem;
+}
 .-mx-1 {
   margin-left: -0.25rem;
   margin-right: -0.25rem;
@@ -1669,6 +1672,9 @@ video {
 }
 .object-cover {
   object-fit: cover;
+}
+.object-fill {
+  object-fit: fill;
 }
 .object-center {
   object-position: center;
