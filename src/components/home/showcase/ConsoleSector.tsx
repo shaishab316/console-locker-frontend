@@ -331,7 +331,7 @@ export default function ConsoleSelector() {
                     }`}
                   >
                     <Image
-                      src="/tab-icons/xbox.svg"
+                      src="/tab/xbox.svg"
                       alt="Xbox"
                       width={60}
                       height={60}
@@ -405,7 +405,7 @@ export default function ConsoleSelector() {
                     }`}
                   >
                     <Image
-                      src="/tab-icons/playstation.svg"
+                      src="/tab/playstation.svg"
                       alt="PlayStation"
                       width={60}
                       height={60}
@@ -472,7 +472,7 @@ export default function ConsoleSelector() {
                     }`}
                   >
                     <Image
-                      src="/tab-icons/nintendo.svg"
+                      src="/tab/nintendo.svg"
                       alt="Nintendo"
                       width={60}
                       height={60}
