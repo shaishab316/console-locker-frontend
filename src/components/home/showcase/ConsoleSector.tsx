@@ -342,7 +342,7 @@ export default function ConsoleSelector() {
               ),
               children: (
                 <div
-                  className={`p-8 rounded-lg ${
+                  className={`p-8 ${
                     activeTab === "xbox" ? "bg-[#1B9E31]" : ""
                   }`}
                 >
@@ -415,7 +415,7 @@ export default function ConsoleSelector() {
                 </div>
               ),
               children: (
-                <div className="p-8 rounded-lg bg-[#023993]">
+                <div className="p-8 bg-[#023993]">
                   <Container>
                     <div className="flex items-center py-3 space-x-4">
                       <h2 className="text-5xl font-bold text-[#FDFDFD] mb-8">
@@ -482,7 +482,7 @@ export default function ConsoleSelector() {
                 </div>
               ),
               children: (
-                <div className="p-8 rounded-lg bg-[#EB3333]">
+                <div className="p-8 bg-[#EB3333]">
                   <Container>
                     <div className="flex items-center py-3 space-x-4">
                       <h2 className="text-5xl font-bold text-[#FDFDFD] mb-8">
