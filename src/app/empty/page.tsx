@@ -28,7 +28,7 @@ export default function EmptyCart() {
 
       {/* Continue Shopping Button */}
       <Link
-        href="/shop"
+        href="/buy/playstation"
         className="w-full max-w-md bg-black text-white py-3 px-4 rounded text-center 
                    hover:bg-gray-800 transition-colors duration-200 mb-12"
       >
