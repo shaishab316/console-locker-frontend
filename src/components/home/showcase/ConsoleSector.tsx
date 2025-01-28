@@ -365,7 +365,7 @@ export default function ConsoleSelector() {
                               alt={`${console.name} ${console.model}`}
                               width={355}
                               height={500}
-                              className="object-cover w-full h-full p-5"
+                              className="object-cover w-full h-full p-3"
                             />
                           </div>
                           <div className="p-4">
@@ -436,7 +436,7 @@ export default function ConsoleSelector() {
                               alt={`${console.name} ${console.model}`}
                               width={355}
                               height={500}
-                              className="object-contain p-4"
+                              className="object-cover w-full h-full p-3"
                             />
                           </div>
                           <div className="p-4">
@@ -505,7 +505,7 @@ export default function ConsoleSelector() {
                               alt={`${console.name} ${console.model}`}
                               width={355}
                               height={500}
-                              className="object-contain p-4"
+                              className="object-cover w-full h-full p-3"
                             />
                           </div>
                           <div className="p-4">

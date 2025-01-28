@@ -1,7 +1,5 @@
 {
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/buy/[slug]/page": "app/buy/[slug]/page.js",
-  "/sell/page": "app/sell/page.js",
-  "/buy/playstation/page": "app/buy/playstation/page.js",
-  "/contact/page": "app/contact/page.js",
   "/page": "app/page.js"
 }

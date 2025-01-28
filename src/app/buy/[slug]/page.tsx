@@ -33,7 +33,7 @@ const ProductDetailsPage: React.FC = () => {
   const [selectedController, setSelectedController] = useState<number>(0);
   const [selectedMemory, setSelectedMemory] = useState<string>("500 Gb");
   const [selectedCondition, setSelectedCondition] = useState<string>("Fair");
-  const [tradeIn, setTradeIn] = useState<boolean>(false);
+  const [tradeIn, setTradeIn] = useState<boolean>(true);
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const product: Product = {
