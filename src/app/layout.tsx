@@ -4,6 +4,7 @@ import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConsoleFooter } from "@/components/footer/Footer";
 import { Header } from "@/components/home/header/Header";
+import StoreProvider from "./StoreProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -24,11 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
-        <AntdRegistry>
-          <Header />
-          {children}
-          <ConsoleFooter />
-        </AntdRegistry>
+        <StoreProvider>
+          <AntdRegistry>
+            <Header />
+            {children}
+            <ConsoleFooter />
+          </AntdRegistry>
+        </StoreProvider>
       </body>
     </html>
   );

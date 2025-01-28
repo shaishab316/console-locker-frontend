@@ -6,6 +6,9 @@ import ReviewCarousel from "@/components/share/review-carousel/ReviewCarousel";
 import Container from "@/components/common/Container";
 import { BlogCarousel } from "@/components/home/blogs/BlogCarousel";
 import ConsoleModal from "@/components/modal/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleModal } from "@/lib/features/modal/modalSlice";
+import { RootState } from "@/lib/store";
 // import ProductDescription from "@/pages/ProductDescription";
 
 interface Product {
@@ -33,8 +36,10 @@ const ProductDetailsPage: React.FC = () => {
   const [selectedController, setSelectedController] = useState<number>(0);
   const [selectedMemory, setSelectedMemory] = useState<string>("500 Gb");
   const [selectedCondition, setSelectedCondition] = useState<string>("Fair");
-  const [tradeIn, setTradeIn] = useState<boolean>(true);
+  const [tradeIn, setTradeIn] = useState<boolean | null>(null);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const modalState = useSelector((state: RootState) => state.modal.modal);
 
   const product: Product = {
     title: "Xbox One",
@@ -130,6 +135,12 @@ const ProductDetailsPage: React.FC = () => {
       id: 10,
     },
   ];
+
+  const handleTrade = () => {
+    dispatch(toggleModal());
+  };
+
+  console.log( {modalState});
 
   return (
     <div className="py-16">
@@ -250,14 +261,15 @@ const ProductDetailsPage: React.FC = () => {
               <h4 className="font-semibold mb-2">Trade-in:</h4>
               <button
                 className={`px-20 py-8 border rounded-md ${
-                  tradeIn ? "border-black bg-[#E7E7E7]" : "border-gray-300"
+                  modalState ? "border-black bg-[#E7E7E7]" : "border-gray-300"
                 }`}
                 onClick={() => {
-                  setTradeIn(!tradeIn);
-                  setOpenModal(!openModal);
+                  handleTrade();
+                  // setTradeIn(!tradeIn);
+                  // setOpenModal(!openModal);
                 }}
               >
-                {tradeIn ? "Yes" : "No"}
+                {modalState ? "Yes" : "No"}
               </button>
             </div>
 
@@ -336,7 +348,8 @@ const ProductDetailsPage: React.FC = () => {
           </div>
         </div>
 
-        {openModal && <ConsoleModal />}
+        {/* {tradeIn && <ConsoleModal  />} */}
+        {modalState && <ConsoleModal />}
 
         {/* <ProductDescription /> */}
         {/* <Blogs /> */}
