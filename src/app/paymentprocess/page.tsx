@@ -197,9 +197,11 @@ export default function Checkout() {
               </div>
 
               {/* Proceed Button */}
-              <button className="w-full bg-black text-white py-3 rounded mt-6 hover:bg-gray-800 transition-colors">
-                Proceed to Purchase
-              </button>
+              <Link href={"/empty"}>
+                <button className="w-full bg-black text-white py-3 rounded mt-6 hover:bg-gray-800 transition-colors">
+                  Proceed to Purchase
+                </button>
+              </Link>
 
               {/* Terms and Privacy */}
               <p className="mt-4 text-sm text-gray-600">

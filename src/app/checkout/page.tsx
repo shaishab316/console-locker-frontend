@@ -337,7 +337,7 @@ export default function CheckoutPage() {
                     <p className="text-sm text-gray-600 mb-4">
                       * Fields marked with an asterisk are mandatory
                     </p>
-                    <Link href={"/empty"}>
+                    <Link href={"/paymentprocess"}>
                       <button
                         type="submit"
                         className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition-colors"
