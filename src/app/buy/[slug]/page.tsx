@@ -9,6 +9,8 @@ import ConsoleModal from "@/components/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "@/lib/features/modal/modalSlice";
 import { RootState } from "@/lib/store";
+import ProductSpecification from "@/components/product/ProductSpecification";
+import ProductDescription from "@/components/product/ProductDescription";
 // import ProductDescription from "@/pages/ProductDescription";
 
 interface Product {
@@ -143,7 +145,7 @@ const ProductDetailsPage: React.FC = () => {
   console.log( {modalState});
 
   return (
-    <div className="py-16">
+    <div className="py-16 bg-[#F2F5F7]">
       <Container>
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="lg:w-1/2">
@@ -347,6 +349,9 @@ const ProductDetailsPage: React.FC = () => {
             ))}
           </div>
         </div>
+
+        <ProductSpecification />
+        <ProductDescription />
 
         {/* {tradeIn && <ConsoleModal  />} */}
         {modalState && <ConsoleModal />}

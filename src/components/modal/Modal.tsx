@@ -124,9 +124,9 @@ const products: RelatedProduct[] = [
 
 const ConsoleModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
-  const [selectedMemory, setSelectedMemory] = useState<string>("");
+  const [selectedMemory, setSelectedMemory] = useState<string>("Fair");
   const [currentStep, setCurrentStep] = useState<number>(0);
-  const [selectedModel, setSelectedModel] = useState<string>("");
+  const [selectedModel, setSelectedModel] = useState<string>("Fat");
   const [selectedConsole, setSelectedConsole] = useState("");
   const modalState = useSelector((state: RootState) => state.modal.modal);
   const dispatch = useDispatch();
@@ -134,8 +134,6 @@ const ConsoleModal: React.FC = () => {
   React.useEffect(() => {
     setIsModalOpen(modalState);
   }, [modalState]);
-
-  console.log("modsal", modalState);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -215,7 +213,7 @@ const ConsoleModal: React.FC = () => {
             </p>
 
             <select
-              className="w-full px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="min-w-full px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
               // className="w-full px-20 py-2.5 rounded-3xl border border-[#6B6B6B]"
               name="Choose your console"
               id=""
@@ -223,6 +221,7 @@ const ConsoleModal: React.FC = () => {
               <option
                 value="Choose your console"
                 defaultValue={"Choose your console"}
+                className="max-w-full"
               >
                 Choose your console
               </option>
@@ -235,18 +234,6 @@ const ConsoleModal: React.FC = () => {
               <h4 className="font-semibold text-[24px] mb-2">Model:</h4>
               <div className="flex gap-4">
                 {product.models.map((model) => (
-                  // <button
-                  //   key={model}
-                  //   className={`lg:px-14 px-10 py-5 border rounded-md ${
-                  //     selectedModel === model
-                  //       ? "border-black bg-[#E7E7E7]"
-                  //       : "border-gray-300"
-                  //   }`}
-                  //   onClick={() => setSelectedModel(model)}
-                  // >
-                  //   {model}
-                  //   <Check />
-                  // </button>
                   <button
                     key={model}
                     className={`lg:px-14 px-10 py-5 border rounded-md ${
@@ -281,7 +268,7 @@ const ConsoleModal: React.FC = () => {
             </p>
 
             <select
-              className="w-full px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="min-w-full px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
               // className="w-full px-20 py-2.5 rounded-3xl border border-[#6B6B6B]"
               name="Choose your console"
               id=""

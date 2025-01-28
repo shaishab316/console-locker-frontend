@@ -1,387 +1,99 @@
 "use client";
 
+// import Container from "@/components/common/Container";
+import HowDelivery from "@/components/sell/HowDelivery";
+import { useRouter } from "next/navigation";
+
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  postcode: string;
-  town: string;
-  streetName: string;
-  apartment: string;
-  country: string;
-  paymentMethod: "bank" | "paypal";
-  iban: string;
-  acceptTerms: boolean;
-}
+const STORAGE_OPTIONS = [
+  { value: "128", label: "128GB" },
+  { value: "256", label: "256GB" },
+  { value: "512", label: "512GB" },
+  { value: "1024", label: "1024GB" },
+];
 
-export default function CheckoutForm() {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    postcode: "",
-    town: "",
-    streetName: "",
-    apartment: "",
-    country: "",
-    paymentMethod: "bank",
-    iban: "",
-    acceptTerms: false,
-  });
+export default function StorageSelector() {
+  const [selectedStorage, setSelectedStorage] = useState<string>("");
+  const router = useRouter();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+  const handleRouter = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (selectedStorage) {
+      router.push("/sell/next1");
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // console.log("Form submitted:", formData);
+    if (selectedStorage) {
+      // console.log("Selected storage:", selectedStorage);
+      // Handle form submission
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Form */}
-          <form onSubmit={handleSubmit} className="lg:col-span-2 space-y-8">
-            {/* Personal Information */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-[32px] font-semibold text-[#101010] mb-6">
-                Personal information
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label
-                    htmlFor="firstName"
-                    className="block text-lg font-medium text-[#101010] mb-1"
-                  >
-                    First Name*
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lastName"
-                    className="block text-lg font-medium text-[#101010] mb-1"
-                  >
-                    Last Name*
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center mb-24">
+      <div className="w-full max-w-3xl mx-auto my-20">
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="mb-6">
+            <h1 className="text-xl font-semibold text-gray-900 mb-2">
+              Playstation 4
+            </h1>
+            <h2 className="text-lg font-medium text-gray-900 mb-2">
+              What is the storage of your items?
+            </h2>
+            <p className="text-sm text-blue-600 bg-blue-50 p-3 rounded-md">
+              You can check the storage by going to &quot;Settings&quot; &gt;
+              &quot;General&quot; &gt; &quot;About&quot;
+            </p>
+          </div>
 
-              <div className="mb-4">
+          <form onSubmit={handleSubmit}>
+            <div className="space-y-3 mb-6">
+              {STORAGE_OPTIONS.map((option) => (
                 <label
-                  htmlFor="email"
-                  className="block text-lg font-medium text-[#101010] mb-1"
+                  key={option.value}
+                  className={`block w-full border rounded-md p-3 cursor-pointer transition-colors
+                    ${
+                      selectedStorage === option.value
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-200 hover:border-blue-200"
+                    }`}
                 >
-                  Email*
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="phone"
-                  className="block text-lg font-medium text-[#101010] mb-1"
-                >
-                  Phone
-                </label>
-                <div className="flex">
-                  <div className="w-20 mr-2">
-                    <button
-                      type="button"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md flex items-center justify-between"
-                    >
-                      <Image
-                        src="/germany.png"
-                        alt="German flag"
-                        width={20}
-                        height={15}
-                        className="mr-1"
-                      />
-                      +42
-                    </button>
-                  </div>
                   <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.phone}
-                    onChange={handleInputChange}
+                    type="radio"
+                    name="storage"
+                    value={option.value}
+                    checked={selectedStorage === option.value}
+                    onChange={(e) => setSelectedStorage(e.target.value)}
+                    className="sr-only"
                   />
-                </div>
-                <p className="text-sm text-[#6B6B6B] mt-1">
-                  Please provide a mobile phone number in case we need to
-                  contact you about your order.
-                </p>
-              </div>
+                  <span className="text-gray-900">{option.label}</span>
+                </label>
+              ))}
             </div>
 
-            {/* Address */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-6">Address</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label
-                    htmlFor="postcode"
-                    className="block text-lg font-medium text-[#101010] mb-1"
-                  >
-                    Postcode*
-                  </label>
-                  <input
-                    type="text"
-                    id="postcode"
-                    name="postcode"
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.postcode}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="town"
-                    className="block text-lg font-medium text-[#101010] mb-1"
-                  >
-                    Town / City*
-                  </label>
-                  <input
-                    type="text"
-                    id="town"
-                    name="town"
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.town}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="streetName"
-                  className="block text-lg font-medium text-[#101010] mb-1"
-                >
-                  Street Name*
-                </label>
-                <input
-                  type="text"
-                  id="streetName"
-                  name="streetName"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  value={formData.streetName}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="apartment"
-                  className="block text-lg font-medium text-[#101010] mb-1"
-                >
-                  Apartment, suite, unit, etc. (Optional)
-                </label>
-                <input
-                  type="text"
-                  id="apartment"
-                  name="apartment"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  value={formData.apartment}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="country"
-                  className="block text-lg font-medium text-[#101010] mb-1"
-                >
-                  Country*
-                </label>
-                <select
-                  id="country"
-                  name="country"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  value={formData.country}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      country: e.target.value,
-                    }))
-                  }
-                >
-                  <option value="">Select a country</option>
-                  <option value="DE">Germany</option>
-                  <option value="FR">France</option>
-                  <option value="GB">United Kingdom</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Payment */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-6">Payment</h2>
-              <div className="space-y-4">
-                <label className="flex items-center justify-between p-4 border rounded-md">
-                  <div className="flex items-center">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="bank"
-                      checked={formData.paymentMethod === "bank"}
-                      onChange={handleInputChange}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="ml-2 text-[#101010] text-xl font-semibold">
-                      Bank transfer (IBAN)
-                    </span>
-                  </div>
-                  <span className="font-medium">$5.00</span>
-                </label>
-
-                {formData.paymentMethod === "bank" && (
-                  <div className="pl-6">
-                    <label
-                      htmlFor="iban"
-                      className="block text-lg font-medium text-[#101010] mb-1"
-                    >
-                      Bank details, IBAN*
-                    </label>
-                    <input
-                      type="text"
-                      id="iban"
-                      name="iban"
-                      required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      placeholder="Example: FI14 1009 3000 1234 58"
-                      value={formData.iban}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                )}
-
-                <label className="flex items-center justify-between p-4 border rounded-md">
-                  <div className="flex items-center">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="paypal"
-                      checked={formData.paymentMethod === "paypal"}
-                      onChange={handleInputChange}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="ml-2 text-[#101010] text-xl font-semibold">
-                      PayPal: $5.00 minus $0.10 fees
-                    </span>
-                  </div>
-                  <span className="font-medium">$5.00</span>
-                </label>
-              </div>
-            </div>
-
-            {/* Terms and Submit */}
-            <div className="space-y-4">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="acceptTerms"
-                  required
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                  checked={formData.acceptTerms}
-                  onChange={handleInputChange}
-                />
-                <span className="ml-2 text-sm text-[#2B2B2B]">
-                  By clicking send you accept our{" "}
-                  <Link
-                    href="#"
-                    className="text-[#222C9B] font-medium hover:underline"
-                  >
-                    terms of sale
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                    href="#"
-                    className="text-[#222C9B] font-medium hover:underline"
-                  >
-                    privacy policy
-                  </Link>
-                </span>
-              </label>
-
+            <div className="flex justify-end">
               <button
                 type="submit"
-                className="w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition-colors"
+                disabled={!selectedStorage}
+                onClick={handleRouter}
+                className={`px-6 py-2 rounded-md text-sm font-medium transition-colors
+                  ${
+                    selectedStorage
+                      ? "bg-blue-600 text-white hover:bg-blue-700"
+                      : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  }`}
               >
-                SEND
+                CONTINUE
               </button>
             </div>
           </form>
-
-          {/* Summary */}
-          <div className="lg:col-span-1">
-            <div className="bg-white p-6 rounded-lg shadow-sm sticky top-4">
-              <h2 className="text-2xl text-[#101010] font-semibold mb-6">
-                Summary
-              </h2>
-              <div className="flex items-start space-x-4">
-                <div className="w-20 h-20 relative flex-shrink-0">
-                  <Image
-                    src="/sell/sell-checkout-product.png"
-                    alt="Playstation 4"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl text-[#101010] font-medium">
-                    Playstation 4
-                  </h3>
-                  <p className="text-lg text-[#2B2B2B]">Your price estimate:</p>
-                  <p className="text-2xl text-[#101010] font-semibold">$5.00</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+
+      <HowDelivery />
     </div>
   );
 }
