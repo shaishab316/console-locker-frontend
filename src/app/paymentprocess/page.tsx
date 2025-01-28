@@ -31,7 +31,7 @@ export default function Checkout() {
     name: "Xbox One",
     price: 119,
     quantity: quantity,
-    image: "/placeholder.svg",
+    image: "/products/sorif.png",
   };
 
   const handleQuantityChange = (action: "increase" | "decrease") => {
@@ -223,13 +223,13 @@ export default function Checkout() {
 
             {/* Product Details */}
             <div className="flex items-start space-x-4 mb-6">
-              {/* <Image
+              <Image
                 src={orderItem.image || "/placeholder.svg"}
                 alt={orderItem.name}
                 width={80}
                 height={80}
                 className="rounded-lg"
-              /> */}
+              />
               <div className="flex-1">
                 <h3 className="font-medium">{orderItem.name}</h3>
                 <p className="text-sm text-gray-500">
