@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Container from "@/components/common/Container";
 import Link from "next/link";
+import PaymentHeader from "@/components/payment/PaymentHeader";
 
 interface OrderItem {
   id: string;
@@ -79,6 +80,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-[#F2F5F7] py-20">
+      <PaymentHeader />
       <Container>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Column - Form */}

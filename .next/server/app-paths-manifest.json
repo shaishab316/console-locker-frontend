@@ -1,7 +1,9 @@
 {
-  "/buy/playstation/page": "app/buy/playstation/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/buy/[slug]/page": "app/buy/[slug]/page.js",
   "/payment/page": "app/payment/page.js",
   "/checkout/page": "app/checkout/page.js",
-  "/empty/page": "app/empty/page.js"
+  "/empty/page": "app/empty/page.js",
+  "/paymentprocess/page": "app/paymentprocess/page.js"
 }

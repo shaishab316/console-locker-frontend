@@ -409,7 +409,7 @@ const ProductDetailsPage: React.FC = () => {
                 <Group />
                 <h1>Ready to be shipped.</h1>
               </div>
-              <Link href={"/payment"} className="bg-black text-white px-6 py-3 rounded-md">
+              <Link href={"/payment"} className="bg-black text-white text-center px-6 py-3 rounded-md">
                 Add to Cart
               </Link>
             </div>
