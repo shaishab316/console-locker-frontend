@@ -132,8 +132,6 @@ const ConsoleModal: React.FC = () => {
   const modalState = useSelector((state: RootState) => state.modal.modal);
   const dispatch = useDispatch();
 
-   
-
   React.useEffect(() => {
     setIsModalOpen(modalState);
   }, [modalState]);
@@ -159,12 +157,16 @@ const ConsoleModal: React.FC = () => {
   const handleModel = (memory: string) => {
     setSelectedMemory(memory);
     setCurrentStep(2);
-    setSelectedModel(memory); 
+    setSelectedModel(memory);
   };
 
   const handleMemory = (memory: string) => {
     setSelectedMemory(memory);
     setCurrentStep(3);
+  };
+
+  const addTradeIn = () => {
+    dispatch(toggleModal());
   };
 
   const renderContent = () => {
@@ -479,7 +481,10 @@ const ConsoleModal: React.FC = () => {
               >
                 SKIP TRADE-IN
               </button>
-              <button className="py-3 px-[30px] rounded-3xl text-base font-medium text-[#FDFDFD] bg-[#222C9B]">
+              <button
+                onClick={addTradeIn}
+                className="py-3 px-[30px] rounded-3xl text-base font-medium text-[#FDFDFD] bg-[#222C9B]"
+              >
                 ADD TRADE-IN
               </button>
             </div>

@@ -3,6 +3,7 @@
 import Container from "@/components/common/Container";
 import PaymentHeader from "@/components/payment/PaymentHeader";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 interface CartItem {
@@ -279,9 +280,11 @@ export default function CartPage() {
                   </p>
                 </div>
 
-                <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 mt-6">
-                  Go ahead
-                </button>
+                <Link href={"/checkout"}>
+                  <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 mt-6">
+                    Go ahead
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import Container from "../common/Container";
+
 export default function ProductDescription() {
   const features = [
     "Comes with a sleek and elegant design that blends with alluring matte finish",
@@ -12,43 +15,20 @@ export default function ProductDescription() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto p-4 bg-white">
+    <div>
+      {/* <Container> */}
       <h2 className="text-lg font-medium text-gray-900 mb-4">Description</h2>
 
-      {/* Hero Banner Section */}
-      <div className="relative mb-8">
-        <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
-          <div className="absolute inset-0 grid grid-cols-3">
-            {/* Game Characters Background */}
-            <div className="bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/x999999999999999-cLYr2Q5e6aJ9PhTZe8XAuWuTkPlKZ1.png')] bg-cover bg-center"></div>
-            <div className="relative flex items-center justify-center bg-gradient-to-r from-black/50 to-black/20">
-              {/* 4K HDR Badge */}
-              <div className="absolute top-4 right-4">
-                <div className="bg-yellow-400 text-black text-xs font-bold px-2 py-1">
-                  4K
-                </div>
-                <div className="bg-yellow-400 text-black text-xs font-bold px-2 py-1 mt-1">
-                  HDR
-                </div>
-              </div>
-
-              {/* PS4 Pro Logo */}
-              <div className="text-white text-center">
-                <h1 className="text-3xl md:text-4xl font-bold mb-2">PS4</h1>
-                <span className="text-xl md:text-2xl font-semibold">Pro</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Systems & Benefits Button */}
-        <button className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-red-600 text-white px-4 py-2 rounded-full text-sm hover:bg-red-700 transition-colors">
-          Systems & benefits
-        </button>
-      </div>
+      <Image
+        src={"/products/product-description.png"}
+        className="w-full"
+        width={900}
+        height={900}
+        alt="pdesc"
+      />
 
       {/* Product Title */}
-      <h1 className="text-2xl font-bold text-gray-900 mb-4">
+      <h1 className="text-2xl font-bold text-gray-900 my-10">
         Play Station 4 Pro - PS4 Pro
       </h1>
 
@@ -80,6 +60,7 @@ export default function ProductDescription() {
           </li>
         ))}
       </ul>
+      {/* </Container> */}
     </div>
   );
 }

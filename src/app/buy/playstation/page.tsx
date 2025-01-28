@@ -229,7 +229,6 @@ const ProductPage: React.FC = () => {
               className="hover:bg-gray-200 p-3 rounded-lg"
             >
               <LayoutGrid />
-              gr
             </div>
             <div
               onClick={() => setView("list")}

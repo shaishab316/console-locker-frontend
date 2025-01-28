@@ -793,9 +793,6 @@ video {
 .bottom-20 {
   bottom: 5rem;
 }
-.bottom-4 {
-  bottom: 1rem;
-}
 .left-0 {
   left: 0px;
 }
@@ -849,6 +846,10 @@ video {
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+}
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 .my-2 {
   margin-top: 0.5rem;
@@ -997,9 +998,6 @@ video {
 .hidden {
   display: none;
 }
-.aspect-\[16\/9\] {
-  aspect-ratio: 16/9;
-}
 .aspect-square {
   aspect-ratio: 1 / 1;
 }
@@ -1077,6 +1075,12 @@ video {
 }
 .min-h-screen {
   min-height: 100vh;
+}
+.min-h-\[\] {
+  min-height: ;
+}
+.min-h-\[700px\] {
+  min-height: 700px;
 }
 .w-1\/2 {
   width: 50%;
@@ -1156,9 +1160,6 @@ video {
 .max-w-4xl {
   max-width: 56rem;
 }
-.max-w-6xl {
-  max-width: 72rem;
-}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -1176,6 +1177,9 @@ video {
 }
 .max-w-xl {
   max-width: 36rem;
+}
+.max-w-md {
+  max-width: 28rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1243,9 +1247,6 @@ video {
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .flex-col {
   flex-direction: column;
@@ -1554,6 +1555,14 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(218 237 242 / var(--tw-bg-opacity, 1));
 }
+.bg-\[\#e8f7f1\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(232 247 241 / var(--tw-bg-opacity, 1));
+}
+.bg-\[\#f0f7ff\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 247 255 / var(--tw-bg-opacity, 1));
+}
 .bg-\[\#ffc439\] {
   --tw-bg-opacity: 1;
   background-color: rgb(255 196 57 / var(--tw-bg-opacity, 1));
@@ -1631,10 +1640,6 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity, 1));
 }
-.bg-red-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
-}
 .bg-secondary {
   background-color: hsl(var(--secondary));
 }
@@ -1645,12 +1650,8 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
-.bg-yellow-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 204 21 / var(--tw-bg-opacity, 1));
-}
-.bg-\[url\(\'https\:\/\/hebbkx1anhila5yf\.public\.blob\.vercel-storage\.com\/x999999999999999-cLYr2Q5e6aJ9PhTZe8XAuWuTkPlKZ1\.png\'\)\] {
-  background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/x999999999999999-cLYr2Q5e6aJ9PhTZe8XAuWuTkPlKZ1.png');
+.bg-\[\] {
+  background-color: ;
 }
 .bg-\[url\(\/hero-banner\.png\)\] {
   background-image: url(/hero-banner.png);
@@ -1666,22 +1667,11 @@ video {
   --tw-gradient-to: rgb(0 98 65 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-.from-black\/50 {
-  --tw-gradient-from: rgb(0 0 0 / 0.5) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
 .to-\[\#00A67E\] {
   --tw-gradient-to: #00A67E var(--tw-gradient-to-position);
 }
-.to-black\/20 {
-  --tw-gradient-to: rgb(0 0 0 / 0.2) var(--tw-gradient-to-position);
-}
 .bg-cover {
   background-size: cover;
-}
-.bg-center {
-  background-position: center;
 }
 .bg-no-repeat {
   background-repeat: no-repeat;
@@ -1813,6 +1803,14 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+.py-14 {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 .pb-2 {
   padding-bottom: 0.5rem;
@@ -2316,11 +2314,6 @@ body {
   background-color: hsl(var(--primary) / 0.9);
 }
 
-.hover\:bg-red-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity, 1));
-}
-
 .hover\:bg-secondary\/80:hover {
   background-color: hsl(var(--secondary) / 0.8);
 }
@@ -2347,6 +2340,11 @@ body {
 .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-gray-900:hover {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
 
 .hover\:text-white:hover {
@@ -2810,11 +2808,6 @@ body {
 
   .md\:text-left {
     text-align: left;
-  }
-
-  .md\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 
   .md\:text-3xl {

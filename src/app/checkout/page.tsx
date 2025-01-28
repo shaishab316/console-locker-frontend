@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Container from "@/components/common/Container";
+import Link from "next/link";
 
 interface OrderItem {
   id: string;
@@ -77,7 +78,7 @@ export default function CheckoutPage() {
   // };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-[#F2F5F7] py-20">
       <Container>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Column - Form */}
@@ -334,13 +335,14 @@ export default function CheckoutPage() {
                     <p className="text-sm text-gray-600 mb-4">
                       * Fields marked with an asterisk are mandatory
                     </p>
-
-                    <button
-                      type="submit"
-                      className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition-colors"
-                    >
-                      Continue
-                    </button>
+                    <Link href={"/empty"}>
+                      <button
+                        type="submit"
+                        className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition-colors"
+                      >
+                        Continue
+                      </button>
+                    </Link>
                   </div>
 
                   <div className="border p-5 rounded">

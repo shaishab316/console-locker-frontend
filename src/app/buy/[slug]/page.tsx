@@ -11,6 +11,7 @@ import { toggleModal } from "@/lib/features/modal/modalSlice";
 import { RootState } from "@/lib/store";
 import ProductSpecification from "@/components/product/ProductSpecification";
 import ProductDescription from "@/components/product/ProductDescription";
+import Link from "next/link";
 // import ProductDescription from "@/pages/ProductDescription";
 
 interface Product {
@@ -40,6 +41,9 @@ const ProductDetailsPage: React.FC = () => {
   const [selectedCondition, setSelectedCondition] = useState<string>("Fair");
   const [tradeIn, setTradeIn] = useState<boolean | null>(null);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [deviceValue, setDeviceValue] = useState(5.0);
+  const [deviceModel, setDeviceModel] = useState("IpHOME 8 PLUS, 500gb");
+  const [addTradeIn, setAddTradeIn] = useState(true);
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal.modal);
 
@@ -140,14 +144,14 @@ const ProductDetailsPage: React.FC = () => {
 
   const handleTrade = () => {
     dispatch(toggleModal());
+    setAddTradeIn((prev) => !prev);
   };
 
-  console.log({
-    selectedModel,
-    selectedMemory,
-    selectedController,
-    selectedCondition,
-  });
+  const startOver = () => {
+    setAddTradeIn(true);
+  };
+
+  console.log(addTradeIn);
 
   return (
     <div className="py-16 bg-[#F2F5F7]">
@@ -273,21 +277,106 @@ const ProductDetailsPage: React.FC = () => {
 
             {/* Trade-in */}
             <div className="mb-6">
-              <h4 className="text-2xl font-semibold text-[#101010] mb-2">
-                Trade-in:
-              </h4>
-              <button
-                className={`px-20 py-8 border rounded-md ${
-                  modalState ? "border-black bg-[#E7E7E7]" : "border-gray-300"
-                }`}
-                onClick={() => {
-                  handleTrade();
-                  // setTradeIn(!tradeIn);
-                  // setOpenModal(!openModal);
-                }}
-              >
-                {modalState ? "No" : "Yes"}
-              </button>
+              {addTradeIn ? (
+                <>
+                  <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                    Trade-in:
+                  </h4>
+                  <button
+                    className={`px-20 py-8 border rounded-md ${
+                      modalState
+                        ? "border-black bg-[#E7E7E7]"
+                        : "border-gray-300"
+                    }`}
+                    onClick={() => {
+                      handleTrade();
+                      // setTradeIn(!tradeIn);
+                      // setOpenModal(!openModal);
+                    }}
+                  >
+                    {modalState ? "No" : "Yes"}
+                  </button>
+                </>
+              ) : (
+                <div>
+                  {/* Conditions Box */}
+                  <div className="bg-[#f0f7ff] p-4 rounded-lg mb-6">
+                    <p className="text-gray-600 mb-2">
+                      <span className="font-medium text-gray-900">
+                        Conditions:
+                      </span>{" "}
+                      The phone will have heavy signs of wear, such as deeper
+                      scratches, dents and other marks. The phone is unlocked,
+                      fully tested and works like new.
+                    </p>
+                    <button className="text-blue-600 hover:underline text-sm">
+                      Learn More
+                    </button>
+                  </div>
+
+                  {/* Trade-in Header */}
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-xl font-semibold text-gray-900">
+                      Trade-in
+                    </h2>
+                    <button
+                      onClick={() => startOver()}
+                      className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-5 h-5 mr-2"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                        />
+                      </svg>
+                      Start over
+                    </button>
+                  </div>
+
+                  {/* Value Display */}
+                  <div className="bg-[#e8f7f1] p-4 rounded-lg mb-6">
+                    <div className="flex items-center justify-between">
+                      <button className="text-gray-600 hover:text-gray-900 transition-colors">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-5 h-5"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                          />
+                        </svg>
+                      </button>
+                      <p className="text-center flex-1 text-gray-600">
+                        yOUR {deviceModel} IS VALUED AT $
+                        {deviceValue.toFixed(2)}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Additional Information */}
+                  <div className="text-gray-600">
+                    <p>
+                      After trade-in price estimate. We will ship the free
+                      trade-in kit to your home address and refund the trade-in
+                      value within 2-3 business days from receiving the phone.
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="flex justify-between items-center">
@@ -320,9 +409,9 @@ const ProductDetailsPage: React.FC = () => {
                 <Group />
                 <h1>Ready to be shipped.</h1>
               </div>
-              <button className="bg-black text-white px-6 py-3 rounded-md">
+              <Link href={"/payment"} className="bg-black text-white px-6 py-3 rounded-md">
                 Add to Cart
-              </button>
+              </Link>
             </div>
           </div>
         </div>

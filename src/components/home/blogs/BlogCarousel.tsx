@@ -48,7 +48,7 @@ export function BlogCarousel() {
   const previous = () => carouselRef.current?.prev();
 
   return (
-    <section className="py-12 mb-12 px-4 md:px-6">
+    <section className="py-12 mb-12">
       <Container>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
