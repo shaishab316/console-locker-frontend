@@ -13,7 +13,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p1.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -21,7 +21,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p2.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -29,7 +29,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p3.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -37,7 +37,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p4.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -45,7 +45,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p5.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -53,7 +53,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p6.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -61,7 +61,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p7.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -69,7 +69,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p8.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -77,7 +77,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p9.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -85,7 +85,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p10.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -93,7 +93,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p11.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -101,7 +101,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p12.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
   ],
@@ -111,7 +111,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p1.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -119,7 +119,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p2.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -127,7 +127,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p3.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -135,7 +135,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p4.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -143,7 +143,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p5.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -151,7 +151,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p6.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -159,7 +159,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p7.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -167,7 +167,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p8.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -175,7 +175,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p8.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -183,7 +183,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p9.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -191,7 +191,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p10.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -199,7 +199,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p11.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
   ],
@@ -209,7 +209,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p1.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -217,7 +217,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p2.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -225,7 +225,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p3.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -233,7 +233,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p4.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -241,7 +241,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p5.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -249,7 +249,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p6.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -257,7 +257,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p7.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -265,7 +265,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p8.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -273,7 +273,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p9.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -281,7 +281,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p10.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -289,7 +289,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p11.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -297,7 +297,7 @@ const consoles = {
       name: "Xbox",
       model: "Series X",
       price: 399,
-      image: "/products/p12.jfif",
+      image: "/products/sorif.png",
       condition: "The device is in excellent condition",
     },
   ],
