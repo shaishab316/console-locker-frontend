@@ -110,10 +110,10 @@ export default function SellHeroSection() {
                       : "bg-gray-700 hover:bg-gray-800"
                   }`}
                 >
-                  {isLoading ? "LOADING..." : "GET A PRICE ESTIMATE"}
+                  GET A PRICE ESTIMATE
                 </button>
 
-                {estimatedPrice !== null && (
+                {/* {estimatedPrice !== null && (
                   <div className="mt-4 p-4 bg-white rounded-lg shadow-sm">
                     <p className="text-lg font-semibold">
                       Estimated Price: ${estimatedPrice}
@@ -122,7 +122,7 @@ export default function SellHeroSection() {
                       *Final price may vary based on condition
                     </p>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </div>
@@ -131,59 +131,3 @@ export default function SellHeroSection() {
     </main>
   );
 }
-
-// <div className="flex flex-col items-center justify-between h-full py-12">
-//   <div className="w-1/2 contents"></div>
-
-//   {/* Content Section */}
-//   <div className="">
-//     <h1 className="text-4xl font-bold text-gray-900">Sell Your Console</h1>
-
-//     <div className="space-y-4">
-//       <div className="flex items-center gap-3 text-gray-700">
-//         <GiftOutlined className="text-xl" />
-//         <span>Free Shipping</span>
-//       </div>
-//       <div className="flex items-center gap-3 text-gray-700">
-//         <ReloadOutlined className="text-xl" />
-//         <span>Free Return</span>
-//       </div>
-//       <div className="flex items-center gap-3 text-gray-700">
-//         <CarOutlined className="text-xl" />
-//         <span>Fast Delivery within 48 hours</span>
-//       </div>
-//     </div>
-
-//     <div className="space-y-4">
-//       <Select
-//         placeholder="CHOOSE YOUR CONSOLE"
-//         style={{ width: "100%" }}
-//         onChange={(value) => setSelectedConsole(value)}
-//         options={consoles.map((console) => ({
-//           value: console.id,
-//           label: console.name,
-//         }))}
-//         size="large"
-//       />
-
-//       <button
-//         onClick={getEstimate}
-//         disabled={!selectedConsole || isLoading}
-//         className="w-full h-12 text-white bg-[#101010] hover:bg-gray-800 cursor-pointer rounded-lg"
-//       >
-//         GET A PRICE ESTIMATE
-//       </button>
-
-//       {estimatedPrice !== null && (
-//         <div className="mt-4 p-4 bg-white rounded-lg shadow-sm">
-//           <p className="text-lg font-semibold">
-//             Estimated Price: ${estimatedPrice}
-//           </p>
-//           <p className="text-sm text-gray-500 mt-2">
-//             *Final price may vary based on condition
-//           </p>
-//         </div>
-//       )}
-//     </div>
-//   </div>
-// </div>;

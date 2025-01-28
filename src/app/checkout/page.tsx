@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Container from "@/components/common/Container";
 
 interface OrderItem {
   id: string;
@@ -77,7 +78,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Container>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Column - Form */}
           <div className="flex-grow">
@@ -342,7 +343,7 @@ export default function CheckoutPage() {
                     </button>
                   </div>
 
-                  <div>
+                  <div className="border p-5 rounded">
                     <h2 className="text-xl font-semibold">2. Pay</h2>
                   </div>
                 </div>
@@ -489,7 +490,7 @@ export default function CheckoutPage() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

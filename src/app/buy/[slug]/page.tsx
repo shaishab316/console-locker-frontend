@@ -142,7 +142,12 @@ const ProductDetailsPage: React.FC = () => {
     dispatch(toggleModal());
   };
 
-  console.log( {modalState});
+  console.log({
+    selectedModel,
+    selectedMemory,
+    selectedController,
+    selectedCondition,
+  });
 
   return (
     <div className="py-16 bg-[#F2F5F7]">
@@ -165,14 +170,16 @@ const ProductDetailsPage: React.FC = () => {
                 {product.price}
               </h2>
             </div>
-            <p className="text-gray-600 mb-2 flex items-center justify-between">
+            <p className="text-[#2B2B2B] text-lg mb-2 flex items-center justify-between">
               {selectedModel} | {selectedMemory} | Black{" "}
               <span className="text-sm text-gray-500">incl. tax</span>
             </p>
 
             {/* Model */}
             <div className="mb-6">
-              <h4 className="font-semibold text-[24px] mb-2">Model:</h4>
+              <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                Model:
+              </h4>
               <div className="flex gap-4">
                 {product.models.map((model) => (
                   <button
@@ -197,7 +204,9 @@ const ProductDetailsPage: React.FC = () => {
 
             {/* Controller */}
             <div className="mb-6 mt-3">
-              <h4 className="font-semibold mb-2">Controller:</h4>
+              <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                Controller:
+              </h4>
               <div className="flex gap-4">
                 {product.controllers.map((controller) => (
                   <button
@@ -218,7 +227,9 @@ const ProductDetailsPage: React.FC = () => {
 
             {/* Memory */}
             <div className="mb-6">
-              <h4 className="font-semibold mb-2">Memory:</h4>
+              <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                Memory:
+              </h4>
               <div className="flex gap-4">
                 {product.memories.map((memory) => (
                   <button
@@ -239,7 +250,9 @@ const ProductDetailsPage: React.FC = () => {
 
             {/* Conditions */}
             <div className="mb-6">
-              <h4 className="font-semibold mb-2">Conditions:</h4>
+              <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                Conditions:
+              </h4>
               <div className="flex gap-4">
                 {product.conditions.map((condition) => (
                   <button
@@ -260,7 +273,9 @@ const ProductDetailsPage: React.FC = () => {
 
             {/* Trade-in */}
             <div className="mb-6">
-              <h4 className="font-semibold mb-2">Trade-in:</h4>
+              <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                Trade-in:
+              </h4>
               <button
                 className={`px-20 py-8 border rounded-md ${
                   modalState ? "border-black bg-[#E7E7E7]" : "border-gray-300"
@@ -271,7 +286,7 @@ const ProductDetailsPage: React.FC = () => {
                   // setOpenModal(!openModal);
                 }}
               >
-                {modalState ? "Yes" : "No"}
+                {modalState ? "No" : "Yes"}
               </button>
             </div>
 

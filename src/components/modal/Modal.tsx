@@ -127,9 +127,12 @@ const ConsoleModal: React.FC = () => {
   const [selectedMemory, setSelectedMemory] = useState<string>("Fair");
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [selectedModel, setSelectedModel] = useState<string>("Fat");
+  const [selectedTest, setSelectedTest] = useState<string>("Fat");
   const [selectedConsole, setSelectedConsole] = useState("");
   const modalState = useSelector((state: RootState) => state.modal.modal);
   const dispatch = useDispatch();
+
+   
 
   React.useEffect(() => {
     setIsModalOpen(modalState);
@@ -156,6 +159,7 @@ const ConsoleModal: React.FC = () => {
   const handleModel = (memory: string) => {
     setSelectedMemory(memory);
     setCurrentStep(2);
+    setSelectedModel(memory); 
   };
 
   const handleMemory = (memory: string) => {
@@ -199,35 +203,83 @@ const ConsoleModal: React.FC = () => {
 
       case 1:
         return (
+          // <div className="w-full h-[500px]">
+          //   <h2 className="text-[40px] font-semibold text-[#101010] mt-8">
+          //     Great! Let’s started.
+          //   </h2>
+          //   <p className="text-[#6B6B6B] text-base leading-6 mt-4">
+          //     The phone will have heavy signs of wear, such as deeper scratches,
+          //     dents and other marks. The phone is unlocked, fully tested and
+          //     works like new.
+          //   </p>
+          //   <p className="text-[#101010] text-base leading-6 mt-4">
+          //     Please select your location to add product to cart
+          //   </p>
+
+          //   <select
+          //     className="min-w-full px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          //     // className="w-full px-20 py-2.5 rounded-3xl border border-[#6B6B6B]"
+          //     name="Choose your console"
+          //     id=""
+          //   >
+          //     <option
+          //       value="Choose your console"
+          //       defaultValue={"Choose your console"}
+          //       className="max-w-full"
+          //     >
+          //       Choose your console
+          //     </option>
+          //     <option value="lucy">Lucy</option>
+          //     <option value="Yiminghe">Yiminghe</option>
+          //     <option value="disabled">Disabled</option>
+          //   </select>
+
+          //   <div className="my-6">
+          //     <h4 className="font-semibold text-[24px] mb-2">Model:</h4>
+          //     <div className="flex gap-4">
+          //       {product.models.map((model) => (
+          //         <button
+          //           key={model}
+          //           className={`lg:px-14 px-10 py-5 border rounded-md ${
+          //             selectedModel === model
+          //               ? "border-black bg-[#E7E7E7]"
+          //               : "border-gray-300"
+          //           }`}
+          //           onClick={() => handleModel(model)}
+          //         >
+          //           {model}
+          //           <Check />
+          //         </button>
+          //       ))}
+          //     </div>
+          //   </div>
+          // </div>
           <div className="w-full h-[500px]">
             <h2 className="text-[40px] font-semibold text-[#101010] mt-8">
-              Great! Let’s started.
+              Great! Let’s get started.
             </h2>
             <p className="text-[#6B6B6B] text-base leading-6 mt-4">
               The phone will have heavy signs of wear, such as deeper scratches,
-              dents and other marks. The phone is unlocked, fully tested and
+              dents, and other marks. The phone is unlocked, fully tested, and
               works like new.
             </p>
             <p className="text-[#101010] text-base leading-6 mt-4">
-              Please select your location to add product to cart
+              Please select your location to add product to cart.
             </p>
 
             <select
               className="min-w-full px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              // className="w-full px-20 py-2.5 rounded-3xl border border-[#6B6B6B]"
               name="Choose your console"
-              id=""
             >
               <option
                 value="Choose your console"
                 defaultValue={"Choose your console"}
-                className="max-w-full"
               >
                 Choose your console
               </option>
-              <option value="lucy">Lucy</option>
+              <option value="Lucy">Lucy</option>
               <option value="Yiminghe">Yiminghe</option>
-              <option value="disabled">Disabled</option>
+              <option value="Disabled">Disabled</option>
             </select>
 
             <div className="my-6">
@@ -244,7 +296,7 @@ const ConsoleModal: React.FC = () => {
                     onClick={() => handleModel(model)}
                   >
                     {model}
-                    <Check />
+                    {selectedModel === model && <Check />}
                   </button>
                 ))}
               </div>
@@ -296,7 +348,7 @@ const ConsoleModal: React.FC = () => {
                         : "border-gray-300"
                     }`}
                     onClick={() => {
-                      setSelectedModel(model);
+                      setSelectedModel(model); // Update the selected model
                     }}
                   >
                     {model}
@@ -421,7 +473,10 @@ const ConsoleModal: React.FC = () => {
             </div>
 
             <div className="flex gap-4 justify-end my-3">
-              <button className="text-base font-medium text-[#222C9B]">
+              <button
+                onClick={() => dispatch(toggleModal())}
+                className="text-base font-medium text-[#222C9B]"
+              >
                 SKIP TRADE-IN
               </button>
               <button className="py-3 px-[30px] rounded-3xl text-base font-medium text-[#FDFDFD] bg-[#222C9B]">

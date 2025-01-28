@@ -27,14 +27,13 @@ export default function StorageSelector() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (selectedStorage) {
-      // console.log("Selected storage:", selectedStorage);
-      // Handle form submission
+      router.push("/sell/next1");
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center mb-24">
-      <div className="w-full max-w-3xl mx-auto my-20">
+      <div className="w-full max-w-[798px] mx-auto my-20">
         <div className="bg-white rounded-lg shadow-lg p-6">
           <div className="mb-6">
             <h1 className="text-xl font-semibold text-gray-900 mb-2">
