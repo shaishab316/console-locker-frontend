@@ -3,6 +3,7 @@
 import Container from "@/components/common/Container";
 import { Tabs } from "antd";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const consoles = {
@@ -355,7 +356,8 @@ export default function ConsoleSelector() {
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                       {consoles.xbox.map((console) => (
-                        <div
+                        <Link
+                          href={`/buy/${console?.id}`}
                           key={console.id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
@@ -386,7 +388,7 @@ export default function ConsoleSelector() {
                               {console.condition}
                             </p>
                           </div>
-                        </div>
+                        </Link>
                       ))}
                     </div>
                   </Container>
@@ -426,7 +428,8 @@ export default function ConsoleSelector() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                       {/* PlayStation content */}
                       {consoles.playstation.map((console) => (
-                        <div
+                        <Link
+                          href={`/buy/${console?.id}`}
                           key={console.id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
@@ -457,7 +460,7 @@ export default function ConsoleSelector() {
                               {console.condition}
                             </p>
                           </div>
-                        </div>
+                        </Link>
                       ))}
                     </div>
                   </Container>
@@ -495,7 +498,8 @@ export default function ConsoleSelector() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                       {/* Nintendo content */}
                       {consoles.nintendo.map((console) => (
-                        <div
+                        <Link
+                          href={`/buy/${console?.id}`}
                           key={console.id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
@@ -526,7 +530,7 @@ export default function ConsoleSelector() {
                               {console.condition}
                             </p>
                           </div>
-                        </div>
+                        </Link>
                       ))}
                     </div>
                   </Container>

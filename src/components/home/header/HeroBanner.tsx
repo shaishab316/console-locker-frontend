@@ -1,8 +1,9 @@
 import Container from "@/components/common/Container";
+import Link from "next/link";
 
 const HeroBanner = () => {
   return (
-     <div className="bg-[url(/hero-banner.png)] bg-cover bg-no-repeat min-h-[calc(100vh-80px)]">
+    <div className="bg-[url(/hero-banner.png)] bg-cover bg-no-repeat min-h-[calc(100vh-80px)]">
       <Container>
         <div className="flex flex-col md:flex-row min-h-[calc(100vh-80px)] items-center justify-center">
           {/* Hidden on small screens */}
@@ -21,12 +22,18 @@ const HeroBanner = () => {
             </p>
 
             <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
-              <button className="bg-[#FDFDFD] text-[#E95F00] font-medium px-8 py-3 md:px-10 md:py-4 border rounded-md w-full md:w-auto">
+              <Link
+                href={"buy/playstation"}
+                className="bg-[#FDFDFD] text-[#E95F00] font-medium px-8 py-3 md:px-10 md:py-4 border rounded-md w-full md:w-auto"
+              >
                 Buy Now
-              </button>
-              <button className="bg-transparent text-[#FDFDFD] font-medium px-8 py-3 md:px-10 md:py-4 border rounded-md w-full md:w-auto">
+              </Link>
+              <Link
+                href={"/sell"}
+                className="bg-transparent text-[#FDFDFD] font-medium px-8 py-3 md:px-10 md:py-4 border rounded-md w-full md:w-auto"
+              >
                 Sell Now
-              </button>
+              </Link>
             </div>
           </div>
         </div>

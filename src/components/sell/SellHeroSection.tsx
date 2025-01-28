@@ -6,6 +6,7 @@ import { Select } from "antd";
 // import { Select, Button, Spin } from "antd";
 // import { GiftOutlined, ReloadOutlined, CarOutlined } from "@ant-design/icons";
 import Container from "../common/Container";
+import { useRouter } from "next/navigation";
 
 const consoles = [
   { id: "ps5", name: "PlayStation 5", basePrice: 400 },
@@ -20,20 +21,11 @@ export default function SellHeroSection() {
   const [selectedConsole, setSelectedConsole] = useState<string>("");
   const [estimatedPrice, setEstimatedPrice] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
-  async function getEstimate() {
-    if (!selectedConsole) return;
-
-    setIsLoading(true);
-    try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      const console = consoles.find((c) => c.id === selectedConsole);
-      setEstimatedPrice(console?.basePrice || 0);
-    } finally {
-      setIsLoading(false);
-    }
-  }
+  const getEstimate = () => {
+    router.push("/sell/432");
+  };
 
   return (
     <main className="bg-[url(/sell/sell-hero.png)] bg-cover bg-no-repeat min-h-scree min-h-[calc(100vh-80px)]">
