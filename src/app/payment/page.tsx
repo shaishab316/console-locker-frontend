@@ -193,42 +193,54 @@ export default function CartPage() {
               <h2 className="text-2xl font-semibold text-[#101010] mb-4">
                 Summary
               </h2>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-[#101010]">{items.length} Article</span>
-                  <span className="text-[#101010]">${subtotal.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-[#101010] font-medium">Shipping</span>
-                  <span className="text[#101010] font-medium">Included</span>
-                </div>
-                <div className="border-t p-4 bg-[#DAEDF2] rounded-md">
-                  <div className="flex justify-between">
-                    <span className="font-semibold text-xl text-[#101010]">
-                      Grand Total
-                    </span>
-                    <span className="font-semibold text-xl text-[#101010]">
-                      ${total.toFixed(2)}
-                    </span>
+              <div>
+                <div className="rounded-md bg-[#DAEDF2]">
+                  <div className="p-4">
+                    <div className="flex justify-between">
+                      <span className="text-[#101010]">
+                        {items.length} Article
+                      </span>
+                      <span className="text-[#101010]">
+                        ${subtotal.toFixed(2)}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-[#101010] font-medium">
+                        Shipping
+                      </span>
+                      <span className="text[#101010] font-medium">
+                        Included
+                      </span>
+                    </div>
                   </div>
-                  <p className="text-base text-[#101010] mt-1">
-                    The price includes VAT
-                  </p>
+                  <div className="border-t border-[#cccbcb] p-4">
+                    <div className="flex justify-between">
+                      <span className="font-semibold text-xl text-[#101010]">
+                        Grand Total
+                      </span>
+                      <span className="font-semibold text-xl text-[#101010]">
+                        ${total.toFixed(2)}
+                      </span>
+                    </div>
+                    <p className="text-base text-[#101010] mt-1">
+                      The price includes VAT
+                    </p>
+                  </div>
                 </div>
 
                 <div className="flex items-center gap-5 py-3">
                   <input
                     type="text"
                     placeholder="Enter your code"
-                    className="w-full px-4 py-2 border rounded-lg"
+                    className="w-full px-4 py-2.5 border rounded-lg"
                   />
-                  <button className=" bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700">
+                  <button className=" bg-gray-800 text-white px-4 py-2.5 rounded-lg hover:bg-gray-700">
                     APPLY
                   </button>
                 </div>
 
-                <div className="space-y-3 mt-6 pb-2.5">
-                  <div className="flex items-center space-x-2">
+                <div className="space-y-4 mt-6 pb-2.5">
+                  <div className="flex items-center space-x-3">
                     <div className="w-6 h-6">
                       <Image
                         src={"/payments/warrent-protection.png"}
@@ -239,7 +251,7 @@ export default function CartPage() {
                     </div>
                     <span className="text-gray-700">12 Months Warranty</span>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-3">
                     <div className="w-6 h-6">
                       <Image
                         src={"/payments/free-return.png"}
@@ -250,7 +262,7 @@ export default function CartPage() {
                     </div>
                     <span className="text-gray-700">Free Return</span>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-3">
                     <div className="w-6 h-6">
                       <Image
                         src={"/payments/like-new.png"}
@@ -264,11 +276,17 @@ export default function CartPage() {
                 </div>
 
                 <div className="flex justify-center space-x-4 mt-4">
-                  <div className="w-16 h-8 bg-pink-100 rounded flex items-center justify-center">
-                    <span className="text-pink-600 font-medium">Klarna</span>
+                  <div className="w-[70px] h-12 bg-[#F4B6C7] rounded flex items-center justify-center">
+                    <span className="text-[#17120F] font-medium">Klarna</span>
                   </div>
-                  <div className="w-16 h-8 bg-blue-100 rounded flex items-center justify-center">
-                    <span className="text-blue-600 font-medium">PayPal</span>
+                  <div className="w-[70px] h-12 bg-blue-100 rounded flex items-center justify-center">
+                    <Image
+                      src={"/payments/paypal.png"}
+                      className="w-[74px] h-[48px] object-contain"
+                      width={60}
+                      height={30}
+                      alt="paypal"
+                    />
                   </div>
                 </div>
 

@@ -6,15 +6,20 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/buy/[slug]/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/buy/[slug]/page.js"
+      "static/chunks/app/page.js"
     ],
     "/buy/playstation/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/buy/playstation/page.js"
+    ],
+    "/buy/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/buy/[slug]/page.js"
     ],
     "/payment/page": [
       "static/chunks/webpack.js",
@@ -26,20 +31,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/checkout/page.js"
     ],
-    "/empty/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/empty/page.js"
-    ],
     "/paymentprocess/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/paymentprocess/page.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

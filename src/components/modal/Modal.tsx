@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
 import { toggleModal } from "@/lib/features/modal/modalSlice";
+import { showTradeInDescription } from "@/lib/features/tradeIn/showTradeInSlice";
 
 interface Product {
   title: string;
@@ -167,6 +168,7 @@ const ConsoleModal: React.FC = () => {
 
   const addTradeIn = () => {
     dispatch(toggleModal());
+    dispatch(showTradeInDescription());
   };
 
   const renderContent = () => {
@@ -482,7 +484,7 @@ const ConsoleModal: React.FC = () => {
                 SKIP TRADE-IN
               </button>
               <button
-                onClick={addTradeIn}
+                onClick={() => addTradeIn()}
                 className="py-3 px-[30px] rounded-3xl text-base font-medium text-[#FDFDFD] bg-[#222C9B]"
               >
                 ADD TRADE-IN

@@ -12,6 +12,7 @@ import { RootState } from "@/lib/store";
 import ProductSpecification from "@/components/product/ProductSpecification";
 import ProductDescription from "@/components/product/ProductDescription";
 import Link from "next/link";
+import { showTradeInDescription } from "@/lib/features/tradeIn/showTradeInSlice";
 // import ProductDescription from "@/pages/ProductDescription";
 
 interface Product {
@@ -46,6 +47,9 @@ const ProductDetailsPage: React.FC = () => {
   const [addTradeIn, setAddTradeIn] = useState(true);
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state.modal.modal);
+  const isOpenTradeIn = useSelector(
+    (state: RootState) => state.showTradeInData.isOpenTradeIn
+  );
 
   const product: Product = {
     title: "Xbox One",
@@ -148,7 +152,9 @@ const ProductDetailsPage: React.FC = () => {
   };
 
   const startOver = () => {
-    setAddTradeIn(true);
+    dispatch(toggleModal());
+    dispatch(showTradeInDescription());
+    // setAddTradeIn(true);
   };
 
   console.log(addTradeIn);
@@ -277,7 +283,7 @@ const ProductDetailsPage: React.FC = () => {
 
             {/* Trade-in */}
             <div className="mb-6">
-              {addTradeIn ? (
+              {!isOpenTradeIn ? (
                 <>
                   <h4 className="text-2xl font-semibold text-[#101010] mb-2">
                     Trade-in:
@@ -409,7 +415,10 @@ const ProductDetailsPage: React.FC = () => {
                 <Group />
                 <h1>Ready to be shipped.</h1>
               </div>
-              <Link href={"/payment"} className="bg-black text-white text-center px-6 py-3 rounded-md">
+              <Link
+                href={"/payment"}
+                className="bg-black text-white text-center px-6 py-3 rounded-md"
+              >
                 Add to Cart
               </Link>
             </div>
@@ -420,36 +429,40 @@ const ProductDetailsPage: React.FC = () => {
           <h3 className="text-[32px] font-semibold mb-4">You may also like</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.slice(0, 4).map((product) => (
-              <div className="shadow-xl rounded-lg" key={product.id}>
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  width={300}
-                  height={200}
-                  className="object-center object-cover w-full"
-                />
+              <Link href={`/buy/${product.id}`}>
+                <div className="shadow-xl rounded-lg" key={product.id}>
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    width={300}
+                    height={200}
+                    className="object-center object-cover w-full"
+                  />
 
-                <div className="px-3">
-                  <h3 className="text-lg font-semibold mb-2 mt-5">
-                    {product.title}
-                  </h3>
-                  <div className="text-gray-600 mb-2 flex items-center justify-between">
-                    <div>
-                      Condition:
-                      <span className="font-semibold">{product.condition}</span>
+                  <div className="px-3">
+                    <h3 className="text-lg font-semibold mb-2 mt-5">
+                      {product.title}
+                    </h3>
+                    <div className="text-gray-600 mb-2 flex items-center justify-between">
+                      <div>
+                        Condition:
+                        <span className="font-semibold">
+                          {product.condition}
+                        </span>
+                      </div>
+                      <Info />
                     </div>
-                    <Info />
-                  </div>
-                  <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
-                    <div className="flex items-center gap-2">
-                      <p> Price:</p>
-                      <span className="text-green-500 font-semibold">
-                        {product.price}
-                      </span>
+                    <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
+                      <div className="flex items-center gap-2">
+                        <p> Price:</p>
+                        <span className="text-green-500 font-semibold">
+                          {product.price}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

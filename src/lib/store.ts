@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import modalReducer from "@/lib/features/modal/modalSlice"
+import  showTradeInReducer from './features/tradeIn/showTradeInSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      modal: modalReducer
+      modal: modalReducer,
+      showTradeInData: showTradeInReducer 
     }
-  })
+  }) 
 }
 
 // Infer the type of makeStore

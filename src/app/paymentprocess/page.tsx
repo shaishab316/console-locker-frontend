@@ -43,10 +43,25 @@ export default function Checkout() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-[#F2F5F7] py-8">
       {/* Progress Steps */}
       <Container>
-        <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-2xl font-bold text-center mb-8">Cart</h1>
+          <div className="w-full flex justify-between gap-5 mb-8">
+            <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+              Accessories
+            </h3>
+            <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+              Cart
+            </h3>
+            <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+              Checkout
+            </h3>
+          </div>
+        </div>
+
+        {/* <div className="flex items-center justify-between mb-8">
           {steps.map((step, index) => (
             <div key={step.id} className="flex items-center">
               <div
@@ -61,208 +76,275 @@ export default function Checkout() {
               )}
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-[#F2F5F7]">
           {/* Left Column - Payment Form */}
-          <div className="space-y-6">
+          <div className="lg:col-span-2 space-y-6 bg-[#FDFDFD] p-6">
             {/* Delivery Details */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-lg font-medium mb-4">1. Delivery Details</h2>
+            <div className="bg-[#FBFBFB] border p-5 rounded-lg shadow-sm">
+              <h2 className="text-2xl font-semibold text-[#101010]">
+                1. Delivery Details
+              </h2>
               {/* Add delivery form fields here */}
             </div>
 
             {/* Payment Section */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-lg font-medium mb-4">2. Pay</h2>
+            <div className="bg-transparent rounded-lg shadow-sm">
+              <div className="border p-5 rounded-lg shadow-sm">
+                <h2 className="text-2xl font-semibold text-[#101010]">
+                  2. Pay
+                </h2>
+              </div>
 
-              <div className="space-y-6">
-                <h3 className="font-medium">Pay Now:</h3>
-                {/* Credit Card Option */}
-                <div className="flex items-center space-x-4">
-                  <input
-                    type="radio"
-                    id="credit"
-                    name="payment"
-                    checked={selectedPayment === "credit"}
-                    onChange={() => setSelectedPayment("credit")}
-                    className="h-4 w-4 text-blue-600"
-                  />
-                  <label
-                    htmlFor="credit"
-                    className="flex items-center space-x-2"
-                  >
-                    <span>Credit / Debit Card</span>
-                    <div className="flex space-x-2">
-                      {/* <Image
-                        src="/placeholder.svg"
-                        alt="Visa"
-                        width={32}
-                        height={20}
-                        className="h-5 w-auto"
-                      /> */}
-                      {/* <Image
-                        src="/placeholder.svg"
-                        alt="Mastercard"
-                        width={32}
-                        height={20}
-                        className="h-5 w-auto"
-                      /> */}
+              <div className="p-7">
+                <div className="space-y-6">
+                  <h3 className="font-semibold text-2xl text-[#404040]">
+                    Pay Now:
+                  </h3>
+
+                  {/* Pay Now */}
+                  <div className="flex items-center justify-between gap-6">
+                    {/* Credit Card Option */}
+                    <div className="flex items-center space-x-4 p-5 border rounded-md">
+                      <input
+                        type="radio"
+                        id="credit"
+                        name="payment"
+                        checked={selectedPayment === "credit"}
+                        onChange={() => setSelectedPayment("credit")}
+                        // className="h-4 w-4 text-blue-600"
+                        className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
+                      />
+                      <label
+                        htmlFor="credit"
+                        className="flex items-center space-x-2"
+                      >
+                        <p className="flex flex-col">
+                          <span className="text-lg font-medium text-[#101010]">
+                            Credit / Debit Card
+                          </span>
+                          <span className="text-[#5F5F5F]">
+                            Instant payment by credit card
+                          </span>
+                        </p>
+                        <div className="flex space-x-2">
+                          <Image
+                            src="/payments/visa-mastercard.svg"
+                            alt="Visa"
+                            width={32}
+                            height={20}
+                            className="h-5 w-auto"
+                          />
+                        </div>
+                      </label>
                     </div>
-                  </label>
+
+                    {/* PayPal Option */}
+                    <div className="flex items-center space-x-4 p-5">
+                      <input
+                        type="radio"
+                        id="paypal"
+                        name="payment"
+                        checked={selectedPayment === "credit"}
+                        onChange={() => setSelectedPayment("credit")}
+                        // className="h-4 w-4 text-blue-600"
+                        className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
+                      />
+                      <label
+                        htmlFor="paypal"
+                        className="flex items-center space-x-2"
+                      >
+                        <p className="flex flex-col">
+                          <span className="text-lg font-medium text-[#101010]">
+                            Pay Now
+                          </span>
+                          <span className="text-[#5F5F5F]">
+                            Pay now with you PayPal account
+                          </span>
+                        </p>
+                        <div className="flex space-x-2">
+                          <Image
+                            src="/payments/paypal2.svg"
+                            alt="Visa"
+                            width={32}
+                            height={20}
+                            className="h-5 w-auto"
+                          />
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <h3 className="text-2xl font-semibold text-[#404040] pt-4">
+                    Pay in installments:
+                  </h3>
+                  {/* PayPal Installments */}
+                  <div className="flex items-center justify-between gap-6">
+                    {/* Credit Card Option */}
+                    <div className="flex items-center space-x-4 p-5">
+                      <input
+                        type="radio"
+                        id="paypal2"
+                        name="payment"
+                        checked={selectedPayment === "credit"}
+                        onChange={() => setSelectedPayment("credit")}
+                        // className="h-4 w-4 text-blue-600"
+                        className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
+                      />
+                      <label
+                        htmlFor="paypal2"
+                        className="flex items-center space-x-2"
+                      >
+                        <p className="flex flex-col">
+                          <span className="text-lg font-medium text-[#101010]">
+                            Pay in installments
+                          </span>
+                          <span className="text-[#5F5F5F]">
+                            Pay in 3 interest-free installments
+                          </span>
+                        </p>
+                        <div className="flex space-x-2">
+                          <Image
+                            src="/payments/visa-mastercard.svg"
+                            alt="Visa"
+                            width={32}
+                            height={20}
+                            className="h-5 w-auto"
+                          />
+                        </div>
+                      </label>
+                    </div>
+
+                    {/* PayPal Option */}
+                    <div className="flex items-center space-x-4 p-5">
+                      <input
+                        type="radio"
+                        id="klarna"
+                        name="payment"
+                        checked={selectedPayment === "credit"}
+                        onChange={() => setSelectedPayment("credit")}
+                        // className="h-4 w-4 text-blue-600"
+                        className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
+                      />
+                      <label
+                        htmlFor="klarna"
+                        className="flex items-center space-x-2"
+                      >
+                        <p className="flex flex-col">
+                          <span className="text-lg font-medium text-[#101010]">
+                            Pay in Installments
+                          </span>
+                          <span className="text-[#5F5F5F]">
+                            Pay in 3 interest-free installments
+                          </span>
+                        </p>
+                        <div className="flex space-x-2">
+                          <Image
+                            src="/payments/paypal2.svg"
+                            alt="Visa"
+                            width={32}
+                            height={20}
+                            className="h-5 w-auto"
+                          />
+                        </div>
+                      </label>
+                    </div>
+                  </div>
                 </div>
 
-                {/* PayPal Option */}
-                <div className="flex items-center space-x-4">
-                  <input
-                    type="radio"
-                    id="paypal"
-                    name="payment"
-                    checked={selectedPayment === "paypal"}
-                    onChange={() => setSelectedPayment("paypal")}
-                    className="h-4 w-4 text-blue-600"
-                  />
-                  <label
-                    htmlFor="paypal"
-                    className="flex items-center space-x-2"
-                  >
-                    <span>Pay Now</span>
-                    {/* <Image
-                      src="/placeholder.svg"
-                      alt="PayPal"
-                      width={80}
-                      height={20}
-                      className="h-5 w-auto"
-                    /> */}
-                  </label>
+                {/* Error Message */}
+                <div className="mt-6">
+                  <p className="text-xl font-semibold text-[#F04848]">
+                    Did you miss a field or make a typo?
+                  </p>
+                  <p className="text-base text-[#F04848]">
+                    Please re-enter your details below.
+                  </p>
                 </div>
 
-                <h3 className="font-medium pt-4">Pay in installments:</h3>
-                {/* PayPal Installments */}
-                <div className="flex items-center space-x-4">
-                  <input
-                    type="radio"
-                    id="paypal-installment"
-                    name="payment"
-                    checked={selectedPayment === "paypal-installment"}
-                    onChange={() => setSelectedPayment("paypal-installment")}
-                    className="h-4 w-4 text-blue-600"
-                  />
-                  <label
-                    htmlFor="paypal-installment"
-                    className="flex items-center space-x-2"
-                  >
-                    <span>Pay in 3 interest-free installments</span>
-                    {/* <Image
-                      src="/products/p1.png"
-                      alt="PayPal"
-                      width={80}
-                      height={20}
-                      className="h-5 w-auto"
-                    /> */}
-                  </label>
-                </div>
-
-                {/* Klarna Installments */}
-                <div className="flex items-center space-x-4">
-                  <input
-                    type="radio"
-                    id="klarna-installment"
-                    name="payment"
-                    checked={selectedPayment === "klarna-installment"}
-                    onChange={() => setSelectedPayment("klarna-installment")}
-                    className="h-4 w-4 text-blue-600"
-                  />
-                  <label
-                    htmlFor="klarna-installment"
-                    className="flex items-center space-x-2"
-                  >
-                    <span>Pay in 3 interest-free installments</span>
-                    {/* <Image
-                      src="/placeholder.svg"
-                      alt="Klarna"
-                      width={80}
-                      height={20}
-                      className="h-5 w-auto"
-                    /> */}
-                  </label>
-                </div>
-              </div>
-
-              {/* Error Message */}
-              <div className="mt-6 text-red-500 text-sm">
-                <p>Did you miss a field or make a typo?</p>
-                <p className="text-xs">Please re-enter your details below.</p>
-              </div>
-
-              {/* Proceed Button */}
-              <Link href={"/empty"}>
-                <button className="w-full bg-black text-white py-3 rounded mt-6 hover:bg-gray-800 transition-colors">
-                  Proceed to Purchase
-                </button>
-              </Link>
-
-              {/* Terms and Privacy */}
-              <p className="mt-4 text-sm text-gray-600">
-                By placing an order, you agree to the{" "}
-                <Link href="#" className="text-blue-600 hover:underline">
-                  Terms and Conditions
-                </Link>{" "}
-                and understand that we process your personal information in
-                accordance with our{" "}
-                <Link href="#" className="text-blue-600 hover:underline">
-                  Privacy Policy
+                {/* Proceed Button */}
+                <Link href={"/empty"}>
+                  <button className="w-full bg-black text-white py-3 rounded mt-6 hover:bg-gray-800 transition-colors">
+                    Proceed to Purchase
+                  </button>
                 </Link>
-                .
-              </p>
+
+                {/* Terms and Privacy */}
+                <p className="mt-4 text-lg text-[#2B2B2B]">
+                  By placing an order, you agree to the{" "}
+                  <Link href="#" className="text-blue-600 hover:underline">
+                    Terms and Conditions
+                  </Link>{" "}
+                  and understand that we process your personal information in
+                  accordance with our{" "}
+                  <Link href="#" className="text-blue-600 hover:underline">
+                    Privacy Policy
+                  </Link>
+                  .
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Right Column - Order Summary */}
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <h2 className="text-lg font-medium mb-6">Your Order</h2>
+          <div className="bg-[#FDFDFD] p-6 rounded-lg shadow-sm">
+            <h2 className="text-2xl font-semibold text-[#101010] mb-6">
+              Your Order
+            </h2>
 
             {/* Product Details */}
             <div className="flex items-start space-x-4 mb-6">
               <Image
                 src={orderItem.image || "/placeholder.svg"}
                 alt={orderItem.name}
-                width={80}
-                height={80}
+                width={120}
+                height={120}
                 className="rounded-lg"
               />
-              <div className="flex-1">
-                <h3 className="font-medium">{orderItem.name}</h3>
-                <p className="text-sm text-gray-500">
-                  Currently in stock | Sales
+              <div className="flex-1 space-y-1.5">
+                <h3 className="font-semibold text-xl text-[#101010]">
+                  {orderItem.name}
+                </h3>
+                <p className="text-xs text-[#2B2B2B]">
+                  Warranty: 12 months | 128Gb
+                </p>
+                <p className="text-xs text-[#2B2B2B]">Condition: Good</p>
+                <p className="text-xs text-[#00B67A]">
+                  Delivery: Jan 20 - Jan 22
+                </p>
+                <p className="text-xs text-[#2B2B2B]">
+                  Sales & Shipping: Console & you
+                </p>
+              </div>
+              <div className="text-right space-y-4">
+                <p className="font-semibold text-2xl text-[#404040]">
+                  ${orderItem.price}
                 </p>
                 <div className="flex items-center space-x-4 mt-2">
                   <button
                     onClick={() => handleQuantityChange("decrease")}
-                    className="text-gray-500 hover:text-gray-700"
+                    className="w-6 h-6 flex items-center justify-center border rounded"
                   >
                     -
                   </button>
                   <span>{quantity}</span>
                   <button
                     onClick={() => handleQuantityChange("increase")}
-                    className="text-gray-500 hover:text-gray-700"
+                    className="w-6 h-6 flex items-center justify-center border rounded"
                   >
                     +
                   </button>
                 </div>
-              </div>
-              <div className="text-right">
-                <p className="font-medium">${orderItem.price}</p>
-                <button className="text-red-500 text-sm hover:underline">
+                <button className="text-[#F04848] text-sm font-medium hover:underline">
                   Remove
                 </button>
               </div>
             </div>
 
             {/* Price Summary */}
-            <div className="bg-blue-50 p-4 rounded-lg space-y-2">
+            <div className="bg-[#DAEDF2] p-4 rounded-lg space-y-2">
               <div className="flex justify-between">
                 <span>1 Article</span>
                 <span>${orderItem.price * quantity}</span>

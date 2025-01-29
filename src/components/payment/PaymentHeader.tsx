@@ -56,7 +56,7 @@ export default function PaymentHeader() {
 
           <div className="grid lg:grid-cols-3 gap-8 mb-14">
             <div className="lg:col-span-2">
-              <div className="col-span-2 flex flex-col lg:flex-row gap-8">
+              <div className="flex flex-col lg:flex-row gap-8">
                 {items.map((item) => (
                   <CartItem
                     key={item.id}
@@ -67,7 +67,7 @@ export default function PaymentHeader() {
               </div>
             </div>
 
-            <div className="lg:col-span-1 flex items-center justify-center">
+            <div className="hidden lg:col-span-1 lf:flex items-center justify-center">
               <button className="text-white bg-[#101010] py-3 px-9 rounded-md">
                 Add to Cart
               </button>

@@ -79,9 +79,21 @@ export default function CheckoutPage() {
   // };
 
   return (
-    <div className="min-h-screen bg-[#F2F5F7] py-20">
-      <PaymentHeader />
+    <div className="min-h-screen bg-[#F2F5F7] py-14 md:py-20">
       <Container>
+        <h1 className="text-3xl md:text-[40px] font-semibold text-center mb-8">Cart</h1>
+        <div className="w-full flex justify-between gap-5 mb-8">
+          <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+            Accessories
+          </h3>
+          <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+            Cart
+          </h3>
+          <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+            Checkout
+          </h3>
+        </div>
+
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Column - Form */}
           <div className="flex-grow">
@@ -94,44 +106,63 @@ export default function CheckoutPage() {
                   </h2>
                   <hr className="flex-1 border-b border-[#D6D6D6]" />
                 </div>
-                <div className="flex gap-4 mb-4">
-                  <button className="flex-1 bg-[#ffc439] text-[#101010] py-2 px-4 rounded font-medium hover:bg-[#f4b800] transition-colors">
-                    PayPal Checkout
+                <div className="flex flex-col md:flex-row gap-4 mb-4">
+                  <button className="flex-1 bg-[#ffc439] text-[#101010] py-2.5 px-4 rounded font-medium hover:bg-[#f4b800] transition-colors">
+                    <span className="text-xl text-[#003087] font-bold">
+                      Pay
+                    </span>
+                    <span className="text-xl text-[#009CDE] font-bold">
+                      Pal
+                    </span>{" "}
+                    Checkout
                   </button>
-                  <button className="flex-1 bg-black text-white py-2 px-4 rounded font-medium hover:bg-gray-800 transition-colors">
+                  <button className="flex-1 bg-black text-white py-2.5 px-4 rounded font-medium hover:bg-gray-800 transition-colors">
                     Page.com{" "}
-                    <span className="bg-[#F4B6C7] text-[#17120F] px-2">
+                    <span
+                      className="bg-[#F4B6C7] text-[#17120F] rounded-md border border-white 
+                    px-2 py-1.5"
+                    >
                       Klarna
                     </span>
                   </button>
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="text-lg text-gray-600">
                   By confirming your order, you accept our{" "}
-                  <a href="#" className="underline">
+                  <Link href="#" className="underline">
                     General Terms and Conditions
-                  </a>
+                  </Link>
                   ,{" "}
-                  <a href="#" className="underline">
+                  <Link href="#" className="underline">
                     the Warranty Conditions
-                  </a>{" "}
+                  </Link>{" "}
                   and our{" "}
-                  <a href="#" className="underline">
+                  <Link href="#" className="underline">
                     Privacy Policy
-                  </a>
+                  </Link>
                   .
                 </p>
+
+                <div className="flex items-center justify-center py-4 space-x-3">
+                  <hr className="flex-1 border-b border-[#D6D6D6]" />
+                  <h2 className="text-[#101010] text-lg text-center whitespace-nowrap">
+                    Proceed without registration
+                  </h2>
+                  <hr className="flex-1 border-b border-[#D6D6D6]" />
+                </div>
               </div>
 
               <form onSubmit={handleSubmit}>
                 <div className="space-y-6">
                   <div>
-                    <h2 className="text-xl font-semibold mb-4">
+                    <h2 className="text-[32px] text-[#101010] font-semibold mb-4">
                       1. Delivery Details
                     </h2>
 
                     <div className="mb-4">
-                      <p className="mb-2">Your Name</p>
-                      <div className="flex gap-4 mb-4">
+                      <p className="mb-4 text-2xl text-[#404040] font-semibold">
+                        Your Name
+                      </p>
+                      <div className="flex gap-4 mb-5">
                         <label className="flex items-center">
                           <input
                             type="radio"
@@ -139,7 +170,7 @@ export default function CheckoutPage() {
                             value="Mr"
                             checked={formData.title === "Mr"}
                             onChange={handleInputChange}
-                            className="mr-2"
+                            className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                           />
                           Mr
                         </label>
@@ -150,7 +181,7 @@ export default function CheckoutPage() {
                             value="Mrs"
                             checked={formData.title === "Mrs"}
                             onChange={handleInputChange}
-                            className="mr-2"
+                            className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                           />
                           Mrs
                         </label>
@@ -161,7 +192,7 @@ export default function CheckoutPage() {
                             value="Agency"
                             checked={formData.title === "Agency"}
                             onChange={handleInputChange}
-                            className="mr-2"
+                            className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                           />
                           Agency
                         </label>
@@ -169,7 +200,7 @@ export default function CheckoutPage() {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm mb-1">
+                          <label className="block mb-1 text-lg font-medium leading-7">
                             First Name<span className="text-red-500">*</span>
                           </label>
                           <input
@@ -179,10 +210,11 @@ export default function CheckoutPage() {
                             onChange={handleInputChange}
                             required
                             className="w-full px-3 py-2 border rounded-md"
+                            placeholder="Jhon"
                           />
                         </div>
                         <div>
-                          <label className="block text-sm mb-1">
+                          <label className="block mb-1 text-lg font-medium leading-7">
                             Surname<span className="text-red-500">*</span>
                           </label>
                           <input
@@ -192,21 +224,22 @@ export default function CheckoutPage() {
                             onChange={handleInputChange}
                             required
                             className="w-full px-3 py-2 border rounded-md"
+                            placeholder="Doe"
                           />
                         </div>
                       </div>
                     </div>
 
                     <div className="mb-4">
-                      <h3 className="text-sm font-medium mb-2">
+                      <h3 className="text-2xl font-semibold text-[#404040] mb-2">
                         Shipping Information{" "}
-                        <span className="text-gray-500">
+                        <span className="text-[#5F5F5F] text-base font-normal">
                           (no parcel delivery station)
                         </span>
                       </h3>
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-sm mb-1">
+                          <label className="block text-lg text-[#101010] font-medium mb-1">
                             Address<span className="text-red-500">*</span>
                           </label>
                           <input
@@ -220,7 +253,7 @@ export default function CheckoutPage() {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
-                            <label className="block text-sm mb-1">
+                            <label className="block text-lg text-[#101010] font-medium mb-1">
                               ZIP CODE<span className="text-red-500">*</span>
                             </label>
                             <input
@@ -233,7 +266,7 @@ export default function CheckoutPage() {
                             />
                           </div>
                           <div>
-                            <label className="block text-sm mb-1">
+                            <label className="block text-lg text-[#101010] font-medium mb-1">
                               City<span className="text-red-500">*</span>
                             </label>
                             <input
@@ -249,10 +282,10 @@ export default function CheckoutPage() {
                       </div>
                     </div>
 
-                    <div className="mb-4">
+                    <div className="mb-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm mb-1">
+                          <label className="block text-lg text-[#101010] font-medium mb-1">
                             Nation<span className="text-red-500">*</span>
                           </label>
                           <select
@@ -269,7 +302,7 @@ export default function CheckoutPage() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm mb-1">
+                          <label className="block text-lg text-[#101010] font-medium mb-1">
                             Further contact information
                           </label>
                           <input
@@ -282,23 +315,28 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="mb-4">
-                      <h3 className="text-sm font-medium mb-2">
+                      <h3 className="block text-2xl font-semibold text-[#101010] mb-1">
                         Contact Information
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm mb-1">Email</label>
+                          <label className="block text-lg text-[#101010] font-medium mb-1">
+                            Email
+                          </label>
                           <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleInputChange}
                             className="w-full px-3 py-2 border rounded-md"
+                            placeholder="yourname@example.com"
                           />
                         </div>
                         <div>
-                          <label className="block text-sm mb-1">Phone</label>
-                          <div className="flex">
+                          <label className="block text-lg text-[#101010] font-medium mb-1">
+                            Phone
+                          </label>
+                          {/* <div className="flex">
                             <select
                               name="phoneCode"
                               value={formData.phoneCode}
@@ -314,7 +352,29 @@ export default function CheckoutPage() {
                               name="phone"
                               value={formData.phone}
                               onChange={handleInputChange}
-                              className="flex-1 px-3 py-2 border-y border-r rounded-r-md"
+                              className="max-w-[75%] lg:max-w-full flex-1 px-3 py-2 border-y border-r rounded-r-md"
+                              placeholder="470123456"
+                            />
+                          </div> */}
+
+                          <div className="flex w-full">
+                            <select
+                              name="phoneCode"
+                              value={formData.phoneCode}
+                              onChange={(e) => handleInputChange(e as any)}
+                              className="px-3 py-2 border rounded-l-md bg-white text-sm sm:text-base"
+                            >
+                              <option value="+32">+32</option>
+                              <option value="+33">+33</option>
+                              <option value="+34">+34</option>
+                            </select>
+                            <input
+                              type="tel"
+                              name="phone"
+                              value={formData.phone}
+                              onChange={handleInputChange}
+                              className="flex-1 px-3 py-2 border-y border-r rounded-r-md text-sm sm:text-base"
+                              placeholder="470123456"
                             />
                           </div>
                         </div>
@@ -322,7 +382,7 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="mb-4">
-                      <label className="flex items-center">
+                      <label className="flex items-center text-lg">
                         <input
                           type="checkbox"
                           name="sameAddress"
@@ -334,7 +394,7 @@ export default function CheckoutPage() {
                       </label>
                     </div>
 
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="text-lg text-[#2B2B2B] mb-4">
                       * Fields marked with an asterisk are mandatory
                     </p>
                     <Link href={"/paymentprocess"}>
@@ -478,12 +538,18 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="flex gap-2 mt-6">
-                <div className="h-8 px-3 flex items-center justify-center bg-pink-100 rounded">
-                  <span className="text-pink-600 font-medium">Klarna</span>
+              <div className="flex justify-center space-x-4 mt-4">
+                <div className="w-[70px] h-[48px] bg-[#F4B6C7] rounded flex items-center justify-center">
+                  <span className="text-[#17120F] font-medium">Klarna</span>
                 </div>
-                <div className="h-8 px-3 flex items-center justify-center bg-blue-100 rounded">
-                  <span className="text-blue-600 font-medium">PayPal</span>
+                <div className="w-[70px] h-12 bg-blue-100 rounded flex items-center justify-center">
+                  <Image
+                    src={"/payments/paypal.svg"}
+                    className="w-[70px] h-[48px] object-fill"
+                    width={70}
+                    height={48}
+                    alt="paypal"
+                  />
                 </div>
               </div>
 
