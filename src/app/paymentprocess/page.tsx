@@ -15,10 +15,11 @@ interface OrderItem {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = useState(3);
-  const [selectedPayment, setSelectedPayment] = useState<
-    "credit" | "paypal" | "klarna-installment" | "paypal-installment"
-  >("credit");
+  // const [selectedPayment, setSelectedPayment] = useState<
+  //   "credit" | "paypal" | "klarna-installment" | "paypal-installment"
+  // >("credit");
   const [quantity, setQuantity] = useState(1);
+  const [selectedPayment, setSelectedPayment] = useState("");
 
   const steps = [
     { id: 1, name: "Accessories" },
@@ -107,7 +108,11 @@ export default function Checkout() {
                   {/* Pay Now */}
                   <div className="flex items-center justify-between gap-6">
                     {/* Credit Card Option */}
-                    <div className="flex items-center space-x-4 p-5 border rounded-md">
+                    <div
+                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md cursor-pointer ${
+                        selectedPayment === "credit" ? "border-red-500" : null
+                      }`}
+                    >
                       <input
                         type="radio"
                         id="credit"
@@ -142,13 +147,17 @@ export default function Checkout() {
                     </div>
 
                     {/* PayPal Option */}
-                    <div className="flex items-center space-x-4 p-5">
+                    <div
+                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md cursor-pointer ${
+                        selectedPayment === "paypal" ? "border-red-500" : null
+                      }`}
+                    >
                       <input
                         type="radio"
                         id="paypal"
                         name="payment"
-                        checked={selectedPayment === "credit"}
-                        onChange={() => setSelectedPayment("credit")}
+                        checked={selectedPayment === "paypal"}
+                        onChange={() => setSelectedPayment("paypal")}
                         // className="h-4 w-4 text-blue-600"
                         className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                       />
@@ -183,13 +192,17 @@ export default function Checkout() {
                   {/* PayPal Installments */}
                   <div className="flex items-center justify-between gap-6">
                     {/* Credit Card Option */}
-                    <div className="flex items-center space-x-4 p-5">
+                    <div
+                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md cursor-pointer ${
+                        selectedPayment === "paypal2" ? "border-red-500" : null
+                      }`}
+                    >
                       <input
                         type="radio"
                         id="paypal2"
                         name="payment"
-                        checked={selectedPayment === "credit"}
-                        onChange={() => setSelectedPayment("credit")}
+                        checked={selectedPayment === "paypal2"}
+                        onChange={() => setSelectedPayment("paypal2")}
                         // className="h-4 w-4 text-blue-600"
                         className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                       />
@@ -218,13 +231,17 @@ export default function Checkout() {
                     </div>
 
                     {/* PayPal Option */}
-                    <div className="flex items-center space-x-4 p-5">
+                    <div
+                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md cursor-pointer ${
+                        selectedPayment === "klarna" ? "border-red-500" : null
+                      }`}
+                    >
                       <input
                         type="radio"
                         id="klarna"
                         name="payment"
-                        checked={selectedPayment === "credit"}
-                        onChange={() => setSelectedPayment("credit")}
+                        checked={selectedPayment === "klarna"}
+                        onChange={() => setSelectedPayment("klarna")}
                         // className="h-4 w-4 text-blue-600"
                         className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                       />
@@ -342,6 +359,54 @@ export default function Checkout() {
                 </button>
               </div>
             </div>
+
+            {/* <div className="border-b pb-4 mb-4">
+              <div className="flex gap-4">
+                <div className="relative w-20 h-20">
+                  <Image
+                    src="/buy/p1.png"
+                    alt={orderItem.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="font-medium">{orderItem.name}</h3>
+                  <p className="text-sm text-gray-600">
+                    Warranty: {orderItem.warranty} | {orderItem.storage}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Condition: {orderItem.condition}
+                  </p>
+                  <p className="text-sm text-green-600">
+                    Delivery: {orderItem.delivery}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Sales & Shipping: Console & you
+                  </p>
+                </div>
+
+                <div className="text-right">
+                  <p className="font-medium">${orderItem.price}</p>
+                  <div className="flex items-center gap-2 mt-2">
+                    <button
+                      // onClick={() => updateQuantity(false)}
+                      className="w-6 h-6 flex items-center justify-center border rounded"
+                    >
+                      -
+                    </button>
+                    <span>{orderItem.quantity}</span>
+                    <button
+                      // onClick={() => updateQuantity(true)}
+                      className="w-6 h-6 flex items-center justify-center border rounded"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button className="text-sm text-red-600 mt-2">Remove</button>
+                </div>
+              </div>
+            </div> */}
 
             {/* Price Summary */}
             <div className="bg-[#DAEDF2] p-4 rounded-lg space-y-2">

@@ -188,9 +188,10 @@ const ConsoleModal: React.FC = () => {
               Please select your console to add product to cart
             </p>
 
-            <select
+            {/* <select
               onChange={handleChooseConsole}
-              className="w-full px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              // className="w-[300px] max-w-full px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full max-w-xs sm:max-w-sm px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
               name="console"
               id="console"
               value={selectedConsole || ""}
@@ -201,7 +202,24 @@ const ConsoleModal: React.FC = () => {
               <option value="lucy">Lucy</option>
               <option value="yiminghe">Yiminghe</option>
               <option value="xios">XIos</option>
-            </select>
+            </select> */}
+
+            <div className="relative w-full">
+              <select
+                onChange={handleChooseConsole}
+                className="px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                name="console"
+                id="console"
+                value={selectedConsole || ""}
+              >
+                <option value="" disabled>
+                  Choose your console
+                </option>
+                <option value="lucy">Lucy</option>
+                <option value="yiminghe">Yiminghe</option>
+                <option value="xios">XIos</option>
+              </select>
+            </div>
           </div>
         );
 
@@ -258,7 +276,7 @@ const ConsoleModal: React.FC = () => {
           //     </div>
           //   </div>
           // </div>
-          <div className="w-full h-[500px]">
+          <div className="w-full min-h-[500px]">
             <h2 className="text-[40px] font-semibold text-[#101010] mt-8">
               Great! Let’s get started.
             </h2>

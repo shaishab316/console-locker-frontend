@@ -81,7 +81,9 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-[#F2F5F7] py-14 md:py-20">
       <Container>
-        <h1 className="text-3xl md:text-[40px] font-semibold text-center mb-8">Cart</h1>
+        <h1 className="text-3xl md:text-[40px] font-semibold text-center mb-8">
+          Cart
+        </h1>
         <div className="w-full flex justify-between gap-5 mb-8">
           <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
             Accessories
@@ -445,6 +447,7 @@ export default function CheckoutPage() {
                       Sales & Shipping: Console & you
                     </p>
                   </div>
+
                   <div className="text-right">
                     <p className="font-medium">${orderItem.price}</p>
                     <div className="flex items-center gap-2 mt-2">
