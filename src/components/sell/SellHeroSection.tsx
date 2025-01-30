@@ -84,7 +84,7 @@ export default function SellHeroSection() {
                     boxShadow: "none",
                     color: "white",
                   }}
-                  className="w-full lg:w-1/2 text-white"
+                  className="w-full lg:w-1/2 text-white custom-select"
                   onChange={(value) => setSelectedConsole(value)}
                   options={consoles.map((console) => ({
                     value: console.id,

@@ -111,3 +111,16 @@ body {
   border: 1px solid #101010;
   background-color: transparent;
 }
+
+
+/* custom css for sell hero section input */
+
+.custom-select .ant-select-selection-placeholder {
+  color: black !important;
+  /* Placeholder text color */
+}
+
+.custom-select .ant-select-arrow {
+  color: black !important;
+  /* Chevron icon color */
+}

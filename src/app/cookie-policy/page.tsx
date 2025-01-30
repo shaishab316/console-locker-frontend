@@ -25,13 +25,13 @@ const policy = [
 
 export default function CookiePolicy() {
   return (
-    <div className="min-h-screen bg-[#F2F5F7] py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#F2F5F7] py-12 lg:py-20 px-4 sm:px-6 lg:px-8">
       <Container>
-        <h1 className="text-[40px] font-semibold text-[#404040] mb-8">
+        <h1 className="text-[40px] font-semibold text-[#404040] text-center mb-8">
           Cookie Policy (EU)
         </h1>
 
-        <div className="bg-white shadow rounded-lg p-6 mb-8">
+        <div className="px-5 lg:px-16 mb-8">
           <p className="text-[#404040] text-lg mb-6">
             This cookie policy was last updated on December 5, 2019 and applies
             to citizens of the European Economic Area.
@@ -248,31 +248,6 @@ export default function CookiePolicy() {
               <p className="text-sm text-gray-600">{item.description}</p>
             </div>
           ))}
-          {/* <div className="text-center bg-[#FDFDFD] p-6 rounded-lg shadow-sm">
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Performs the now
-            </h3>
-            <p className="text-sm text-gray-600">
-              Solutions right now to make your business more sustainable
-            </p>
-          </div> */}
         </div>
       </Container>
     </div>

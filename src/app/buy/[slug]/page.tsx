@@ -374,13 +374,15 @@ const ProductDetailsPage: React.FC = () => {
                   </div>
 
                   {/* Additional Information */}
-                  <div className="text-gray-600">
-                    <p>
+                  <div className="text-gray-600 border-l-4 border-black rounded-s-lg">
+                    <p className="p-3">
                       After trade-in price estimate. We will ship the free
                       trade-in kit to your home address and refund the trade-in
                       value within 2-3 business days from receiving the phone.
                     </p>
                   </div>
+
+                  <div className="my-4 border-b"></div>
                 </div>
               )}
             </div>
@@ -442,8 +444,17 @@ const ProductDetailsPage: React.FC = () => {
 
             <div className="flex flex-col gap-4 space-y-4">
               <div className="flex items-center gap-4">
-                <Group />
-                <h1>Ready to be shipped.</h1>
+                <div className="bg-[#DAEDF2] p-3 rounded-md">
+                  <Image
+                    src="/sell/microusb.png"
+                    width={20}
+                    height={20}
+                    alt="usb"
+                  />
+                </div>
+                <h2 className="text-base font-medium text-[#101010]">
+                  Micro USB, HDMI Cable, Power Cable.
+                </h2>
               </div>
               <Link
                 href={"/payment"}
@@ -459,8 +470,8 @@ const ProductDetailsPage: React.FC = () => {
           <h3 className="text-[32px] font-semibold mb-4">You may also like</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.slice(0, 4).map((product) => (
-              <Link href={`/buy/${product.id}`}>
-                <div className="shadow-xl rounded-lg" key={product.id}>
+              <Link key={product.id} href={`/buy/${product.id}`} passHref>
+                <div className="shadow-sm hover:shadow-md border border-gray-100 rounded-lg pb-2">
                   <Image
                     src={product.image}
                     alt={product.title}
@@ -468,27 +479,28 @@ const ProductDetailsPage: React.FC = () => {
                     height={200}
                     className="object-center object-cover w-full"
                   />
-
                   <div className="px-3">
-                    <h3 className="text-lg font-semibold mb-2 mt-5">
+                    <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
                       {product.title}
                     </h3>
-                    <div className="text-gray-600 mb-2 flex items-center justify-between">
+                    <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
                       <div>
                         Condition:
-                        <span className="font-semibold">
+                        <span className="font-medium text-[#2B2B2B]">
                           {product.condition}
                         </span>
                       </div>
-                      <Info />
                     </div>
                     <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
                       <div className="flex items-center gap-2">
-                        <p> Price:</p>
-                        <span className="text-green-500 font-semibold">
+                        <p className="text-[#2B2B2B] text-base">Price:</p>
+                        <span className="text-[#00B67A] text-lg font-semibold">
                           {product.price}
                         </span>
                       </div>
+                      <span className="text-sm text-[#919191] line-through">
+                        New: 350
+                      </span>
                     </div>
                   </div>
                 </div>

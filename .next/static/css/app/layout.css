@@ -882,6 +882,14 @@ video {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
 .-ml-0 {
   margin-left: -0px;
 }
@@ -989,6 +997,12 @@ video {
 }
 .mt-auto {
   margin-top: auto;
+}
+.mb-2\.5 {
+  margin-bottom: 0.625rem;
+}
+.mb-1\.5 {
+  margin-bottom: 0.375rem;
 }
 .line-clamp-4 {
   overflow: hidden;
@@ -1233,6 +1247,9 @@ video {
 .max-w-xs {
   max-width: 20rem;
 }
+.max-w-3xl {
+  max-width: 48rem;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1430,6 +1447,11 @@ video {
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
+.space-x-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0px * var(--tw-space-x-reverse));
+  margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
+}
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1480,6 +1502,22 @@ video {
   border-top-left-radius: calc(var(--radius) - 4px);
   border-top-right-radius: calc(var(--radius) - 4px);
 }
+.rounded-l {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.rounded-s-lg {
+  border-start-start-radius: var(--radius);
+  border-end-start-radius: var(--radius);
+}
+.rounded-s-xl {
+  border-start-start-radius: 0.75rem;
+  border-end-start-radius: 0.75rem;
+}
+.rounded-s-md {
+  border-start-start-radius: calc(var(--radius) - 2px);
+  border-end-start-radius: calc(var(--radius) - 2px);
+}
 .border {
   border-width: 1px;
 }
@@ -1510,6 +1548,9 @@ video {
 }
 .border-t-2 {
   border-top-width: 2px;
+}
+.border-l-2 {
+  border-left-width: 2px;
 }
 .border-none {
   border-style: none;
@@ -1767,10 +1808,6 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
-.bg-red-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity, 1));
-}
 .bg-\[\] {
   background-color: ;
 }
@@ -1967,6 +2004,14 @@ video {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+.px-16 {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -2017,6 +2062,9 @@ video {
 }
 .pt-8 {
   padding-top: 2rem;
+}
+.pl-5 {
+  padding-left: 1.25rem;
 }
 .text-left {
   text-align: left;
@@ -2087,6 +2135,9 @@ video {
 .font-semibold {
   font-weight: 600;
 }
+.italic {
+  font-style: italic;
+}
 .leading-6 {
   line-height: 1.5rem;
 }
@@ -2104,6 +2155,12 @@ video {
 }
 .leading-tight {
   line-height: 1.25;
+}
+.leading-\[24\] {
+  line-height: 24;
+}
+.leading-\[24px\] {
+  line-height: 24px;
 }
 .tracking-tight {
   letter-spacing: -0.025em;
@@ -2266,6 +2323,9 @@ video {
 .text-yellow-400 {
   --tw-text-opacity: 1;
   color: rgb(250 204 21 / var(--tw-text-opacity, 1));
+}
+.text-\[\] {
+  color: ;
 }
 .underline {
   text-decoration-line: underline;
@@ -2439,6 +2499,19 @@ body {
   color: black;
   border: 1px solid #101010;
   background-color: transparent;
+}
+
+
+/* custom css for sell hero section input */
+
+.custom-select .ant-select-selection-placeholder {
+  color: black !important;
+  /* Placeholder text color */
+}
+
+.custom-select .ant-select-arrow {
+  color: black !important;
+  /* Chevron icon color */
 }
 
 .hover\:translate-x-2:hover {
@@ -2895,6 +2968,10 @@ body {
     margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
+  .sm\:p-8 {
+    padding: 2rem;
+  }
+
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -2917,6 +2994,11 @@ body {
   .sm\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 
@@ -3214,6 +3296,16 @@ body {
     padding-right: 2rem;
   }
 
+  .lg\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .lg\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
   .lg\:text-5xl {
     font-size: 3rem;
     line-height: 1;
@@ -3221,6 +3313,11 @@ body {
 
   .lg\:text-\[70px\] {
     font-size: 70px;
+  }
+
+  .lg\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 

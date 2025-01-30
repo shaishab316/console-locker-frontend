@@ -495,56 +495,41 @@ export default function CheckoutPage() {
 
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <span>12 Months Warranty</span>
+                  <Image
+                    src="/payments/warrent-protection.png"
+                    width={25}
+                    height={25}
+                    alt="Warranty"
+                  />
+                  <span className="text-lg text-[#101010] font-medium">
+                    12 Months Warranty
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                    />
-                  </svg>
-                  <span>Free Return</span>
+                  <Image
+                    src="/payments/free-return.png"
+                    width={25}
+                    height={25}
+                    alt="Warranty"
+                  />
+                  <span className="text-lg text-[#101010] font-medium">
+                    Free Return
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                  <span>Performs Like New</span>
+                  <Image
+                    src="/payments/like-new.png"
+                    width={25}
+                    height={25}
+                    alt="Warranty"
+                  />
+                  <span className="text-lg text-[#101010] font-medium">
+                    Performs Like New
+                  </span>
                 </div>
               </div>
 
-              <div className="flex justify-center space-x-4 mt-4">
+              <div className="flex justify-center space-x-4 my-5">
                 <div className="w-[70px] h-[48px] bg-[#F4B6C7] rounded flex items-center justify-center">
                   <span className="text-[#17120F] font-medium">Klarna</span>
                 </div>

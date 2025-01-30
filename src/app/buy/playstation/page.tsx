@@ -225,13 +225,17 @@ const ProductPage: React.FC = () => {
           <div className="flex gap-2 items-center cursor-pointer">
             <div
               onClick={() => setView("grid")}
-              className="hover:bg-gray-200 p-3 rounded-lg"
+              className={`hover:bg-gray-200 p-3 rounded-lg ${
+                view === "grid" ? "bg-gray-200" : ""
+              }`}
             >
               <LayoutGrid />
             </div>
             <div
               onClick={() => setView("list")}
-              className="hover:bg-gray-200 p-3 rounded-lg"
+              className={`hover:bg-gray-200 p-3 rounded-lg ${
+                view === "list" ? "bg-gray-200" : ""
+              }`}
             >
               <LayoutList />
             </div>
@@ -268,7 +272,7 @@ const ProductPage: React.FC = () => {
           >
             {paginatedProducts.map((product) => (
               <Link key={product.id} href={`/buy/${product.id}`} passHref>
-                <div className="shadow-xl rounded-lg pb-2">
+                <div className="shadow-sm hover:shadow-md border border-gray-100 rounded-lg pb-2">
                   <Image
                     src={product.image}
                     alt={product.title}
@@ -310,13 +314,13 @@ const ProductPage: React.FC = () => {
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12`}>
             {paginatedProducts.map((product) => (
               <Link key={product.id} href={`/buy/${product.id}`} passHref>
-                <div className="flex items-center shadow-xl rounded-lg pb-2">
+                <div className="flex items-center shadow-sm hover:shadow-md border border-gray-100 rounded-s-md">
                   <Image
                     src={product.image}
                     alt={product.title}
                     width={300}
                     height={200}
-                    className="object-center object-cover w-1/2"
+                    className="object-center object-cover w-1/2 h-full rounded-s-xl"
                   />
                   <div className="px-3">
                     <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
@@ -352,7 +356,7 @@ const ProductPage: React.FC = () => {
         ) : null}
 
         {/* Pagination */}
-        <div className="flex justify-center items-center gap-3 mt-6">
+        <div className="flex justify-center items-center gap-3 my-12">
           <button
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
             className="px-4 py-2 bg-gray-200 rounded-md mr-2"
