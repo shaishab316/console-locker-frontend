@@ -31,7 +31,7 @@ export default function HowDelivery() {
         </h1>
 
         <div className="grid lg:grid-cols-2 gap-8 items-center mt-8">
-          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm z-40">
             {deliverySteps.map((step, index) => (
               <div
                 key={step.number}
@@ -58,13 +58,14 @@ export default function HowDelivery() {
             ))}
           </div>
 
-          <div className="order-last">
+          <div className="order-last z-20">
             <Image
-              src="/sell/how-delivery.png"
+              // src="/sell/how-delivery.png"
+              src="/sell/sell.png"
               alt="Delivery person with laptop"
-              width={460}
-              height={460}
-              className="object-cover"
+              width={560}
+              height={560}
+              className="object-cover -ml-0 lg:-ml-20"
               priority
             />
           </div>

@@ -23,7 +23,7 @@ const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
       </div>
       <div className="flex justify-between items-center p-5">
         <div>
-          <h3 className="text-lg font-semibold text-[#101010]">
+          <h3 className="text-xl font-semibold text-[#101010]">
             {product.name}
           </h3>
           <p className="text-[#2B2B2B] text-base">

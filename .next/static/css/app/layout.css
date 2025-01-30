@@ -826,6 +826,15 @@ video {
 .z-50 {
   z-index: 50;
 }
+.z-20 {
+  z-index: 20;
+}
+.z-0 {
+  z-index: 0;
+}
+.z-40 {
+  z-index: 40;
+}
 .order-last {
   order: 9999;
 }
@@ -980,6 +989,15 @@ video {
 }
 .mt-auto {
   margin-top: auto;
+}
+.-ml-24 {
+  margin-left: -6rem;
+}
+.-ml-20 {
+  margin-left: -5rem;
+}
+.-ml-0 {
+  margin-left: -0px;
 }
 .line-clamp-4 {
   overflow: hidden;
@@ -3113,6 +3131,10 @@ body {
 
   .lg\:ml-6 {
     margin-left: 1.5rem;
+  }
+
+  .lg\:-ml-20 {
+    margin-left: -5rem;
   }
 
   .lg\:block {

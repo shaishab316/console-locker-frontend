@@ -39,7 +39,7 @@ export default function ContactPage() {
               Personal Information
             </h1>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="flex flex-col lg:flex-row items-start lg:space-x-6 space-y-2">
+              <div className="flex flex-col lg:flex-row items-start lg:space-x-6">
                 <div className="lg:flex-1 w-full lg:w-1/2">
                   <label
                     htmlFor="fullName"

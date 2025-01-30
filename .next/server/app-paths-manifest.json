@@ -1,6 +1,8 @@
 {
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/buy/playstation/page": "app/buy/playstation/page.js",
-  "/buy/xbox/page": "app/buy/xbox/page.js",
-  "/sell/page": "app/sell/page.js"
+  "/sell/next3/page": "app/sell/next3/page.js",
+  "/repair/page": "app/repair/page.js",
+  "/about/page": "app/about/page.js",
+  "/reviews/page": "app/reviews/page.js",
+  "/contact/page": "app/contact/page.js"
 }
