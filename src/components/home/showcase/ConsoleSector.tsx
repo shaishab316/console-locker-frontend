@@ -13,7 +13,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -21,7 +21,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -29,7 +29,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -37,7 +37,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -45,7 +45,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -53,7 +53,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -61,7 +61,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -69,7 +69,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -77,7 +77,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -85,7 +85,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -93,7 +93,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
     {
@@ -101,7 +101,7 @@ const consoles = {
       name: "PlayStation 5",
       model: "Series X",
       price: 399,
-      image: "/products/xbox.png",
+      image: "/products/Xbox.png",
       condition: "The device is in excellent condition",
     },
   ],
