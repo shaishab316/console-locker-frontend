@@ -386,15 +386,20 @@ export default function ConsoleSelector() {
                                   </span>
                                 </p>
 
-                                <p className="text-[#2B2B2B] text-base space-x-1">
+                                <p className="text-[#2B2B2B] text-base space-x-1 mb-2 md:mb-0">
                                   Price:
                                   <span className="text-[#00B67A] text-lg font-medium leading-7">
                                     {" "}
                                     $299
                                   </span>
-                                  <span className="text-sm text-[#919191] line-through">
+                                  <span className="hidden md:inline-block text-sm text-[#919191] line-through">
                                     New : 350
                                   </span>
+                                </p>
+
+                                {/* for mobile */}
+                                <p className="md:hidden text-sm text-[#919191] line-through">
+                                  New : 350
                                 </p>
                               </div>
                             </div>
