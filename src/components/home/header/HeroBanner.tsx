@@ -13,7 +13,7 @@ const HeroBanner = () => {
           {/* Content Section */}
           <div className="w-full md:w-1/2 text-center md:text-left px-4 md:px-0">
             {/* for mobile */}
-            <h1 className="lg:hidden text-[24px] text-left font-bold text-white leading-tight md:leading-normal mt-8">
+            <h1 className="lg:hidden text-[24px] text-left font-bold text-white leading-tight md:leading-normal mt-5">
               DAI UNA <br /> SECONDA POSSIBILITÀ ALLA TUA CONSOLE!
             </h1>
 
@@ -23,10 +23,10 @@ const HeroBanner = () => {
             </h1>
 
             {/* for mobile - horizontal line */}
-            <div className="lg:hidden border-b-4 border-gray-50 my-5"></div>
+            <div className="lg:hidden border-b-4 border-gray-50 my-2 hr-line-for-mobile"></div>
 
             {/* for mobile */}
-            <p className="lg:hidden text-white text-sm font-semibold text-left leading-[28px] mb-6 md:mb-8 max-w-[380px] mx-auto md:mx-0">
+            <p className="lg:hidden text-white text-sm font-semibold text-left mb-3 md:mb-8 max-w-[380px] mx-auto md:mx-0">
               Console Locker, fai spazio al nuovo <br /> e vendi la tua console
               usata. <br /> Risparmia con una console ricondizionata e vivi
               un&rsquo;esperienza gaming di prima scelta.
@@ -41,16 +41,16 @@ const HeroBanner = () => {
             </p>
 
             {/* for mobile */}
-            <div className="lg:hidden flex items-center justify-center md:justify-start gap-4 mb-5">
+            <div className="lg:hidden flex items-center justify-center md:justify-start gap-4 mb-3">
               <Link
                 href={"buy/playstation"}
-                className="w-1/2 md:w-auto bg-[#FDFDFD] text-base text-[#E95F00] font-semibold px-6 py-3 md:px-10 md:py-4 border rounded-md"
+                className="w-[170px] md:w-auto bg-[#FDFDFD] text-base text-[#E95F00] font-semibold py-3 md:px-10 md:py-4 border rounded-md"
               >
                 COMPRÀ ORA
               </Link>
               <Link
                 href={"/sell"}
-                className="w-1/2  md:w-auto bg-transparent text-base text-[#FDFDFD] font-semibold px-6 py-3 md:px-10 md:py-4 border-2 rounded-md"
+                className="w-[168px]  md:w-auto bg-transparent text-base text-[#FDFDFD] font-semibold py-3 md:px-10 md:py-4 border-2 rounded-md"
               >
                 VENDI ORA
               </Link>
