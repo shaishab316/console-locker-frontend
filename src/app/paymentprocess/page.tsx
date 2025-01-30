@@ -43,6 +43,8 @@ export default function Checkout() {
     }
   };
 
+  console.log({ selectedPayment });
+
   return (
     <div className="min-h-screen bg-[#F2F5F7] py-8">
       {/* Progress Steps */}
@@ -92,10 +94,10 @@ export default function Checkout() {
                   <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
                     {/* Credit Card Option */}
                     <div
-                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md ${
+                      className={`flex items-center space-x-4 p-5 border rounded-md ${
                         selectedPayment === "credit"
                           ? "border-emerald-950"
-                          : null
+                          : "border-[#FDFDFD]"
                       }`}
                     >
                       <input
@@ -133,10 +135,10 @@ export default function Checkout() {
 
                     {/* PayPal Option */}
                     <div
-                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md ${
+                      className={`flex items-center space-x-4 p-5 border rounded-md ${
                         selectedPayment === "paypal"
                           ? "border-emerald-950"
-                          : null
+                          : "border-[#FDFDFD]"
                       }`}
                     >
                       <input
@@ -180,10 +182,10 @@ export default function Checkout() {
                   <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
                     {/* Credit Card Option */}
                     <div
-                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md ${
+                      className={`flex items-center space-x-4 p-5 border rounded-md ${
                         selectedPayment === "paypal2"
                           ? "border-emerald-950"
-                          : null
+                          : "border-[#FDFDFD]"
                       }`}
                     >
                       <input
@@ -221,10 +223,10 @@ export default function Checkout() {
 
                     {/* PayPal Option */}
                     <div
-                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md ${
+                      className={`flex items-center space-x-4 p-5 border rounded-md ${
                         selectedPayment === "klarna"
                           ? "border-emerald-950"
-                          : null
+                          : "border-[#FDFDFD]"
                       }`}
                     >
                       <input

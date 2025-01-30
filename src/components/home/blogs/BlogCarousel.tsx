@@ -3,7 +3,7 @@
 import { Carousel, Button } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useRef } from "react";
-import { BlogCard } from "./Blog";
+import { BlogCard } from "./BlogCard";
 import Container from "@/components/common/Container";
 
 const blogs = [

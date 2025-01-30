@@ -1,7 +1,8 @@
 {
-  "/sell/next2/page": "app/sell/next2/page.js",
-  "/sell/next4/page": "app/sell/next4/page.js",
-  "/repair/page": "app/repair/page.js",
+  "/page": "app/page.js",
+  "/payment/page": "app/payment/page.js",
   "/buy/playstation/page": "app/buy/playstation/page.js",
-  "/page": "app/page.js"
+  "/blog/[slug]/page": "app/blog/[slug]/page.js",
+  "/checkout/page": "app/checkout/page.js",
+  "/paymentprocess/page": "app/paymentprocess/page.js"
 }

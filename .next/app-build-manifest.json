@@ -31,11 +31,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/checkout/page.js"
     ],
-    "/paymentprocess/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/paymentprocess/page.js"
-    ],
     "/empty/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -105,6 +100,21 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/repair/page.js"
+    ],
+    "/blog/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/blog/[slug]/page.js"
+    ],
+    "/payment/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/payment/page.js"
+    ],
+    "/paymentprocess/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/paymentprocess/page.js"
     ]
   }
 }

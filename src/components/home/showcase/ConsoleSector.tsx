@@ -327,7 +327,7 @@ export default function ConsoleSelector() {
               label: (
                 <div className="flex items-center justify-center">
                   <div
-                    className={`w-24 h-24 rounded-full flex items-center justify-center transition-all ${
+                    className={`w-20 md:w-24 h-20 md:h-24 rounded-full flex items-center justify-center transition-all ${
                       activeTab === "xbox"
                         ? "bg-gradient-to-r from-[#1B9E31] to-[#0E7A22]"
                         : "bg-gradient-to-r from-gray-300 to-gray-400"
@@ -356,7 +356,7 @@ export default function ConsoleSelector() {
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                       {consoles.xbox.map((console) => (
                         <Link
                           href={`/buy/${console?.id}`}
@@ -372,10 +372,10 @@ export default function ConsoleSelector() {
                               className="object-contain w-full h-full"
                             />
                           </div>
-                          <div className="p-4">
+                          <div className="p-1 md:p-4">
                             <div className="flex justify-between items-start mb-2">
                               <div>
-                                <h3 className="font-semibold text-[#101010] text-xl leading-[24px] mb-2.5">
+                                <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-2.5">
                                   {console.name}
                                 </h3>
                                 <p className="text-base text-[#2B2B2B] mb-1.5">
@@ -411,7 +411,7 @@ export default function ConsoleSelector() {
               label: (
                 <div className="flex items-center justify-center">
                   <div
-                    className={`w-24 h-24 rounded-full flex items-center justify-center transition-all ${
+                    className={`w-20 md:w-24 h-20 md:h-24 rounded-full flex items-center justify-center transition-all ${
                       activeTab === "playstation"
                         ? "bg-gradient-to-r from-[#023993] to-[#0050D4]"
                         : "bg-gradient-to-r from-gray-300 to-gray-400"
@@ -436,7 +436,7 @@ export default function ConsoleSelector() {
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                       {consoles.playstation.map((console) => (
                         <Link
                           href={`/buy/${console?.id}`}
@@ -452,10 +452,10 @@ export default function ConsoleSelector() {
                               className="object-contain w-full h-full"
                             />
                           </div>
-                          <div className="p-4">
+                          <div className="p-1 md:p-4">
                             <div className="flex justify-between items-start mb-2">
                               <div>
-                                <h3 className="font-semibold text-[#101010] text-xl leading-[24px] mb-2.5">
+                                <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-2.5">
                                   {console.name}
                                 </h3>
                                 <p className="text-base text-[#2B2B2B] mb-1.5">
@@ -491,7 +491,7 @@ export default function ConsoleSelector() {
               label: (
                 <div className="flex items-center justify-center w-max mx-auto">
                   <div
-                    className={`w-24 h-24 rounded-full flex items-center justify-center transition-all ${
+                    className={`w-20 md:w-24 h-20 md:h-24 rounded-full flex items-center justify-center transition-all ${
                       activeTab === "nintendo"
                         ? "bg-gradient-to-r from-red-500 to-red-700"
                         : "bg-gradient-to-r from-gray-300 to-gray-400"
@@ -516,7 +516,7 @@ export default function ConsoleSelector() {
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                       {consoles.nintendo.map((console) => (
                         <Link
                           href={`/buy/${console?.id}`}
@@ -532,10 +532,10 @@ export default function ConsoleSelector() {
                               className="object-contain w-full h-full"
                             />
                           </div>
-                          <div className="p-4">
+                          <div className="p-1 md:p-4">
                             <div className="flex justify-between items-start mb-2">
                               <div>
-                                <h3 className="font-semibold text-[#101010] text-xl leading-[24px] mb-2.5">
+                                <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-2.5">
                                   {console.name}
                                 </h3>
                                 <p className="text-base text-[#2B2B2B] mb-1.5">
