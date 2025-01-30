@@ -82,7 +82,7 @@ export default function CheckoutPage() {
     <div className="min-h-screen bg-[#F2F5F7] py-14 md:py-20">
       <Container>
         <h1 className="text-3xl md:text-[40px] font-semibold text-center mb-8">
-          Cart
+          Checkout
         </h1>
         <div className="w-full flex justify-between gap-5 mb-8">
           <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
@@ -96,9 +96,9 @@ export default function CheckoutPage() {
           </h3>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Column - Form */}
-          <div className="flex-grow">
+          <div className="lg:col-span-2 flex-grow">
             <div className="bg-white rounded-lg shadow-sm p-6">
               <div className="mb-6">
                 <div className="flex items-center justify-center py-8 space-x-3">
@@ -418,21 +418,24 @@ export default function CheckoutPage() {
           </div>
 
           {/* Right Column - Order Summary */}
-          <div className="w-full lg:w-96">
+          <div className="col-span-1">
             <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-semibold mb-4">Your Order</h2>
+              <h2 className="text-xl font-semibold text-[#101010] mb-4">
+                Your Order
+              </h2>
 
               <div className="border-b pb-4 mb-4">
                 <div className="flex gap-4">
-                  <div className="relative w-20 h-20">
+                  <div className="relative w-[120px] h-[120px]">
                     <Image
                       src="/buy/p1.png"
                       alt={orderItem.name}
-                      fill
-                      className="object-contain"
+                      width={120}
+                      height={120}
+                      className="object-cover"
                     />
                   </div>
-                  <div className="flex-grow">
+                  <div className="flex-grow space-y-1">
                     <h3 className="font-medium">{orderItem.name}</h3>
                     <p className="text-sm text-gray-600">
                       Warranty: {orderItem.warranty} | {orderItem.storage}

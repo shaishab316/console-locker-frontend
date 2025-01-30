@@ -1,9 +1,10 @@
 import Container from "@/components/common/Container";
+import Image from "next/image";
 import Link from "next/link";
 
 const HeroBanner = () => {
   return (
-    <div className="bg-[url(/hero-banner.png)] bg-cover bg-no-repeat min-h-[calc(100vh-80px)]">
+    <div className="bg-[url(/home/bannermobile1.png)] md:bg-[url(/hero-banner.png)] bg-cover bg-no-repeat min-h-[calc(100vh-80px)]">
       <Container>
         <div className="flex flex-col md:flex-row min-h-[calc(100vh-80px)] items-center justify-center">
           {/* Hidden on small screens */}
@@ -34,6 +35,15 @@ const HeroBanner = () => {
               >
                 Sell Now
               </Link>
+            </div>
+
+            <div className="flex items-end justify-end pr-0 md:pr-14">
+              <Image
+                src={"/home/banner-warranty.png"}
+                width={300}
+                height={160}
+                alt="warranty"
+              />
             </div>
           </div>
         </div>

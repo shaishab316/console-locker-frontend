@@ -327,9 +327,14 @@ export default function ConsoleSelector() {
               label: (
                 <div className="flex items-center justify-center">
                   <div
-                    className={`w-24 h-24 rounded-full flex items-center justify-center ${
-                      activeTab === "xbox" ? "bg-[#1B9E31]" : "bg-gray-300"
-                    }`}
+                    // className={`w-24 h-24 rounded-full flex items-center justify-center  hover:bg-[#1B9E31] ${
+                    //   activeTab === "xbox" ? "bg-[#1B9E31]" : "bg-gray-300"
+                    // }`}
+                    className={`w-24 h-24 rounded-full flex items-center justify-center transition-all ${
+                      activeTab === "xbox"
+                        ? "bg-gradient-to-r from-[#1B9E31] to-[#0E7A22]"
+                        : "bg-gradient-to-r from-gray-300 to-gray-400"
+                    } hover:bg-gradient-to-r hover:from-[#1B9E31] hover:to-[#0E7A22]`}
                   >
                     <Image
                       src="/tab/xbox.svg"
@@ -400,11 +405,17 @@ export default function ConsoleSelector() {
               label: (
                 <div className="flex items-center justify-center">
                   <div
-                    className={`w-24 h-24 rounded-full flex items-center justify-center ${
+                    // className={`w-24 h-24 rounded-full flex items-center justify-center hover:bg-[#023993] ${
+                    //   activeTab === "playstation"
+                    //     ? "bg-[#023993]"
+                    //     : "bg-gray-300"
+                    // }`}
+
+                    className={`w-24 h-24 rounded-full flex items-center justify-center transition-all ${
                       activeTab === "playstation"
-                        ? "bg-[#023993]"
-                        : "bg-gray-300"
-                    }`}
+                        ? "bg-gradient-to-r from-[#023993] to-[#0050D4]"
+                        : "bg-gradient-to-r from-gray-300 to-gray-400"
+                    } hover:bg-gradient-to-r hover:from-[#023993] hover:to-[#0050D4]`}
                   >
                     <Image
                       src="/tab/playstation.svg"
@@ -472,9 +483,15 @@ export default function ConsoleSelector() {
               label: (
                 <div className="flex items-center justify-center w-max mx-auto">
                   <div
-                    className={`w-24 h-24 rounded-full flex items-center justify-center ${
-                      activeTab === "nintendo" ? "bg-[#EB3333]" : "bg-gray-300"
-                    }`}
+                    // className={`w-24 h-24 rounded-full flex items-center justify-center hover:bg-[#EB3333] ${
+                    //   activeTab === "nintendo" ? "bg-[#EB3333]" : "bg-gray-300"
+                    // }`}
+
+                    className={`w-24 h-24 rounded-full flex items-center justify-center transition-all ${
+                      activeTab === "nintendo"
+                        ? "bg-gradient-to-r from-red-500 to-red-700"
+                        : "bg-gradient-to-r from-gray-300 to-gray-400"
+                    } hover:bg-gradient-to-r hover:from-red-500 hover:to-red-700`}
                   >
                     <Image
                       src="/tab/nintendo.svg"

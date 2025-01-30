@@ -4,7 +4,6 @@ import Image from "next/image";
 import {
   ChevronsLeft,
   ChevronsRight,
-  Info,
   LayoutGrid,
   LayoutList,
 } from "lucide-react";
@@ -287,7 +286,6 @@ const ProductPage: React.FC = () => {
                       Condition:
                       <span className="font-semibold">{product.condition}</span>
                     </div>
-                    <Info />
                   </div>
                   <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
                     <div className="flex items-center gap-2">

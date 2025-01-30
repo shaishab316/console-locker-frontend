@@ -94,9 +94,9 @@ export function Header() {
 
         {/* hide in mobile menu */}
         <div className="hidden lg:flex items-center space-x-4">
-          <Link href="/account" className="p-2">
+          {/* <Link href="/account" className="p-2">
             <User className="h-5 w-5" />
-          </Link>
+          </Link> */}
           <Link href="/cart" className="p-2">
             <ShoppingCart className="h-5 w-5" />
           </Link>

@@ -84,17 +84,21 @@ export function CartItem({
 
         {/* Product Details */}
         <div className="flex-grow">
-          <h3 className="text-lg font-medium text-center md:text-left">
+          <h3 className="text-xl font-semibold text-center md:text-left">
             {name}
           </h3>
           <div className="space-y-1 text-sm text-gray-600 mt-2 text-center md:text-left">
-            <p>
+            <p className="text-xs  text-[#101010]">
               Warranty: {warranty} | {storage}
             </p>
-            <p>Condition: {condition}</p>
-            <p className="text-green-600">Delivery: {delivery}</p>
-            <p>Sales & Shipping: Console & you</p>
-            <p>Warranty: {warranty}</p>
+            <p className="text-xs text-[#2B2B2B]">Condition: {condition}</p>
+            <p className="text-[#00B67A] font-medium text-sm">
+              Delivery: {delivery}
+            </p>
+            <p className="text-xs text-[#101010]">
+              Sales & Shipping: Console & you
+            </p>
+            <p className="text-xs text-[#101010]">Warranty: {warranty}</p>
           </div>
         </div>
 
@@ -103,7 +107,7 @@ export function CartItem({
           <span className="text-lg font-medium">${price}</span>
           <button
             onClick={() => onAddToCart(id)}
-            className="w-full md:w-32 text-sm font-medium text-[#222C9B] border border-[#222C9B] rounded-md px-4 py-1"
+            className="text-sm font-medium text-[#222C9B]"
           >
             Add to Cart
           </button>

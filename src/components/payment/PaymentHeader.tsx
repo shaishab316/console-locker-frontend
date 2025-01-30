@@ -67,7 +67,7 @@ export default function PaymentHeader() {
               </div>
             </div>
 
-            <div className="hidden lg:col-span-1 lf:flex items-center justify-center">
+            <div className="hidden lg:col-span-1 lg:flex items-center justify-center">
               <button className="text-white bg-[#101010] py-3 px-9 rounded-md">
                 Add to Cart
               </button>

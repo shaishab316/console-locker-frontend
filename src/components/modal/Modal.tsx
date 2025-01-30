@@ -188,26 +188,10 @@ const ConsoleModal: React.FC = () => {
               Please select your console to add product to cart
             </p>
 
-            {/* <select
-              onChange={handleChooseConsole}
-              // className="w-[300px] max-w-full px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              className="w-full max-w-xs sm:max-w-sm px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              name="console"
-              id="console"
-              value={selectedConsole || ""}
-            >
-              <option value="" disabled>
-                Choose your console
-              </option>
-              <option value="lucy">Lucy</option>
-              <option value="yiminghe">Yiminghe</option>
-              <option value="xios">XIos</option>
-            </select> */}
-
-            <div className="relative w-full">
+            {/* <div className="relative w-full">
               <select
                 onChange={handleChooseConsole}
-                className="px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full max-w-xs sm:max-w-sm px-3 py-2 my-3 text-gray-700 bg-white border border-gray-300 rounded-3xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 name="console"
                 id="console"
                 value={selectedConsole || ""}
@@ -219,6 +203,41 @@ const ConsoleModal: React.FC = () => {
                 <option value="yiminghe">Yiminghe</option>
                 <option value="xios">XIos</option>
               </select>
+            </div> */}
+
+            <div className="relative w-full">
+              <select
+                onChange={handleChooseConsole}
+                name="console"
+                id="console"
+                value={selectedConsole || ""}
+                className="
+                max-w-full px-3 py-2 border rounded-3xl bg-white text-sm sm:text-base appearance-none w-full"
+              >
+                <option value="" disabled>
+                  Choose your console
+                </option>
+                <option value="PlayStation 4 Pro">PlayStation 5</option>
+                <option value="Nintendo Switch">Nintendo Switch</option>
+                <option value="OLED Steam Deck">OLED Steam Deck</option>
+                <option value="PlayStation 4 Pro">PlayStation 4 Pro</option>
+              </select>
+
+              <div className="absolute inset-y-0 right-0 flex items-center px-3">
+                <svg
+                  className="w-4 h-4 text-gray-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         );

@@ -19,7 +19,7 @@ export default function Checkout() {
   //   "credit" | "paypal" | "klarna-installment" | "paypal-installment"
   // >("credit");
   const [quantity, setQuantity] = useState(1);
-  const [selectedPayment, setSelectedPayment] = useState("");
+  const [selectedPayment, setSelectedPayment] = useState("credit");
 
   const steps = [
     { id: 1, name: "Accessories" },
@@ -48,7 +48,7 @@ export default function Checkout() {
       {/* Progress Steps */}
       <Container>
         <div>
-          <h1 className="text-2xl font-bold text-center mb-8">Cart</h1>
+          <h1 className="text-2xl font-bold text-center mb-8">Checkout</h1>
           <div className="w-full flex justify-between gap-5 mb-8">
             <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
               Accessories
@@ -61,23 +61,6 @@ export default function Checkout() {
             </h3>
           </div>
         </div>
-
-        {/* <div className="flex items-center justify-between mb-8">
-          {steps.map((step, index) => (
-            <div key={step.id} className="flex items-center">
-              <div
-                className={`text-sm ${
-                  index + 1 === activeStep ? "text-gray-900" : "text-gray-500"
-                }`}
-              >
-                {step.name}
-              </div>
-              {index < steps.length - 1 && (
-                <div className="h-[1px] w-full mx-4 bg-gray-300" />
-              )}
-            </div>
-          ))}
-        </div> */}
 
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-[#F2F5F7]">
@@ -106,11 +89,13 @@ export default function Checkout() {
                   </h3>
 
                   {/* Pay Now */}
-                  <div className="flex items-center justify-between gap-6">
+                  <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
                     {/* Credit Card Option */}
                     <div
-                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md cursor-pointer ${
-                        selectedPayment === "credit" ? "border-red-500" : null
+                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md ${
+                        selectedPayment === "credit"
+                          ? "border-emerald-950"
+                          : null
                       }`}
                     >
                       <input
@@ -124,9 +109,9 @@ export default function Checkout() {
                       />
                       <label
                         htmlFor="credit"
-                        className="flex items-center space-x-2"
+                        className="flex items-center space-x-2 cursor-pointer"
                       >
-                        <p className="flex flex-col">
+                        <p className="flex flex-col mr-3">
                           <span className="text-lg font-medium text-[#101010]">
                             Credit / Debit Card
                           </span>
@@ -148,8 +133,10 @@ export default function Checkout() {
 
                     {/* PayPal Option */}
                     <div
-                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md cursor-pointer ${
-                        selectedPayment === "paypal" ? "border-red-500" : null
+                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md ${
+                        selectedPayment === "paypal"
+                          ? "border-emerald-950"
+                          : null
                       }`}
                     >
                       <input
@@ -163,9 +150,9 @@ export default function Checkout() {
                       />
                       <label
                         htmlFor="paypal"
-                        className="flex items-center space-x-2"
+                        className="flex items-center space-x-2 cursor-pointer"
                       >
-                        <p className="flex flex-col">
+                        <p className="flex flex-col mr-3">
                           <span className="text-lg font-medium text-[#101010]">
                             Pay Now
                           </span>
@@ -190,11 +177,13 @@ export default function Checkout() {
                     Pay in installments:
                   </h3>
                   {/* PayPal Installments */}
-                  <div className="flex items-center justify-between gap-6">
+                  <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
                     {/* Credit Card Option */}
                     <div
-                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md cursor-pointer ${
-                        selectedPayment === "paypal2" ? "border-red-500" : null
+                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md ${
+                        selectedPayment === "paypal2"
+                          ? "border-emerald-950"
+                          : null
                       }`}
                     >
                       <input
@@ -208,9 +197,9 @@ export default function Checkout() {
                       />
                       <label
                         htmlFor="paypal2"
-                        className="flex items-center space-x-2"
+                        className="flex items-center space-x-2 cursor-pointer"
                       >
-                        <p className="flex flex-col">
+                        <p className="flex flex-col mr-3">
                           <span className="text-lg font-medium text-[#101010]">
                             Pay in installments
                           </span>
@@ -220,7 +209,7 @@ export default function Checkout() {
                         </p>
                         <div className="flex space-x-2">
                           <Image
-                            src="/payments/visa-mastercard.svg"
+                            src="/payments/paypal2.svg"
                             alt="Visa"
                             width={32}
                             height={20}
@@ -232,8 +221,10 @@ export default function Checkout() {
 
                     {/* PayPal Option */}
                     <div
-                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md cursor-pointer ${
-                        selectedPayment === "klarna" ? "border-red-500" : null
+                      className={`flex items-center space-x-4 p-5 border border-transparent rounded-md ${
+                        selectedPayment === "klarna"
+                          ? "border-emerald-950"
+                          : null
                       }`}
                     >
                       <input
@@ -247,9 +238,9 @@ export default function Checkout() {
                       />
                       <label
                         htmlFor="klarna"
-                        className="flex items-center space-x-2"
+                        className="flex items-center space-x-2 cursor-pointer"
                       >
-                        <p className="flex flex-col">
+                        <p className="flex flex-col mr-3">
                           <span className="text-lg font-medium text-[#101010]">
                             Pay in Installments
                           </span>
@@ -259,11 +250,11 @@ export default function Checkout() {
                         </p>
                         <div className="flex space-x-2">
                           <Image
-                            src="/payments/paypal2.svg"
+                            src="/payments/klarna.png"
                             alt="Visa"
-                            width={32}
-                            height={20}
-                            className="h-5 w-auto"
+                            width={60}
+                            height={60}
+                            className="h-10 w-auto"
                           />
                         </div>
                       </label>
