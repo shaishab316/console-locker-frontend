@@ -26,7 +26,7 @@ export function Header() {
             className="mr-2 md:hidden"
             onClick={() => setIsMobileMenuOpen(true)}
           >
-            <Menu className="h-10 w-10" />
+            <Menu className="h-18 w-18" />
             <span className="sr-only">Toggle menu</span>
           </Button>
           <Link
@@ -45,12 +45,12 @@ export function Header() {
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-3 lg:space-x-8">
           <Link href="/" className="text-sm font-medium">
             Home
           </Link>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center space-x-1 text-sm font-medium">
+            <DropdownMenuTrigger className="flex items-center space-x-1.5 text-sm font-medium">
               <span>Buy</span>
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
@@ -101,7 +101,6 @@ export function Header() {
             <ShoppingCart className="h-5 w-5" />
           </Link>
 
-          
           <button className="hidden sm:flex items-center space-x-1 text-sm font-medium">
             <Image
               src="/germany.png"

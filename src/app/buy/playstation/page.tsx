@@ -225,16 +225,16 @@ const ProductPage: React.FC = () => {
           <div className="flex gap-2 items-center cursor-pointer">
             <div
               onClick={() => setView("grid")}
-              className={`hover:bg-gray-200 p-3 rounded-lg ${
-                view === "grid" ? "bg-gray-200" : ""
+              className={`hover:bg-[#DAEDF2] p-3 rounded-lg ${
+                view === "grid" ? "bg-[#DAEDF2]" : ""
               }`}
             >
               <LayoutGrid />
             </div>
             <div
               onClick={() => setView("list")}
-              className={`hover:bg-gray-200 p-3 rounded-lg ${
-                view === "list" ? "bg-gray-200" : ""
+              className={`hover:bg-[#DAEDF2] p-3 rounded-lg ${
+                view === "list" ? "bg-[#DAEDF2]" : ""
               }`}
             >
               <LayoutList />
@@ -244,6 +244,7 @@ const ProductPage: React.FC = () => {
             <Select
               showSearch
               style={{ width: 200 }}
+              className="custom-select"
               placeholder="Sort by"
               optionFilterProp="label"
               filterSort={(optionA, optionB) =>
