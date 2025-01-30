@@ -345,18 +345,18 @@ export default function ConsoleSelector() {
               ),
               children: (
                 <div
-                  className={`p-8 ${
+                  className={`p-4 md:p-8 ${
                     activeTab === "xbox" ? "bg-[#1B9E31]" : ""
                   }`}
                 >
-                  <Container>
+                  <Container className="w-full mx-auto">
                     <div className="flex items-center py-3 space-x-4">
                       <h2 className="text-5xl font-bold text-[#FDFDFD] mb-8">
                         Xbox
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
                       {consoles.xbox.map((console) => (
                         <Link
                           href={`/buy/${console?.id}`}
@@ -369,7 +369,7 @@ export default function ConsoleSelector() {
                               alt={`${console.name} ${console.model}`}
                               width={355}
                               height={500}
-                              className="object-contain w-full h-full"
+                              className="object-cover w-full h-full"
                             />
                           </div>
                           <div className="p-1 md:p-4">
@@ -378,7 +378,7 @@ export default function ConsoleSelector() {
                                 <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-2.5">
                                   {console.name}
                                 </h3>
-                                <p className="text-base text-[#2B2B2B] mb-1.5">
+                                <p className="text-base text-[#2B2B2B] mb-1 md:mb-1.5">
                                   {/* {console.model} */}
                                   Condition:{" "}
                                   <span className="text-base text-[#2B2B2B] font-medium">
@@ -433,15 +433,15 @@ export default function ConsoleSelector() {
                 </div>
               ),
               children: (
-                <div className="p-8 bg-[#023993]">
-                  <Container>
+                <div className="p-4 md:p-8 bg-[#023993]">
+                  <Container className="w-[98%] mx-auto">
                     <div className="flex items-center py-3 space-x-4">
                       <h2 className="text-5xl font-bold text-[#FDFDFD] mb-8">
                         Xbox
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
                       {consoles.playstation.map((console) => (
                         <Link
                           href={`/buy/${console?.id}`}
@@ -463,7 +463,7 @@ export default function ConsoleSelector() {
                                 <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-2.5">
                                   {console.name}
                                 </h3>
-                                <p className="text-base text-[#2B2B2B] mb-1.5">
+                                <p className="text-base text-[#2B2B2B] mb-1 md:mb-1.5">
                                   {/* {console.model} */}
                                   Condition:{" "}
                                   <span className="text-base text-[#2B2B2B] font-medium">
@@ -513,15 +513,15 @@ export default function ConsoleSelector() {
                 </div>
               ),
               children: (
-                <div className="p-8 bg-[#EB3333]">
-                  <Container>
+                <div className="p-4 md:p-8 bg-[#EB3333]">
+                  <Container className="w-[98%] mx-auto">
                     <div className="flex items-center py-3 space-x-4">
                       <h2 className="text-5xl font-bold text-[#FDFDFD] mb-8">
                         Xbox
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
                       {consoles.nintendo.map((console) => (
                         <Link
                           href={`/buy/${console?.id}`}
@@ -543,7 +543,7 @@ export default function ConsoleSelector() {
                                 <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-2.5">
                                   {console.name}
                                 </h3>
-                                <p className="text-base text-[#2B2B2B] mb-1.5">
+                                <p className="text-base text-[#2B2B2B] mb-1 md:mb-1.5">
                                   {/* {console.model} */}
                                   Condition:{" "}
                                   <span className="text-base text-[#2B2B2B] font-medium">
