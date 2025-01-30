@@ -31,7 +31,7 @@ export function Header() {
           </Button>
           <Link
             href="/"
-             className="absolute md:static left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 flex items-center space-x-2"
+            className="absolute md:static left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 flex items-center space-x-2"
           >
             <div className="relative h-8 w-8">
               <Image
@@ -100,6 +100,8 @@ export function Header() {
           <Link href="/cart" className="p-2">
             <ShoppingCart className="h-5 w-5" />
           </Link>
+
+          
           <button className="hidden sm:flex items-center space-x-1 text-sm font-medium">
             <Image
               src="/germany.png"
