@@ -136,12 +136,14 @@ export default function ContactPage() {
 
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
-                <Image
-                  src={"/contact/phone.png"}
-                  width={20}
-                  height={20}
-                  alt="Phone"
-                />
+                <div className="bg-[#DAEDF2] p-2 rounded-full">
+                  <Image
+                    src={"/contact/phone.png"}
+                    width={20}
+                    height={20}
+                    alt="Phone"
+                  />
+                </div>
                 <div className="space-y-1">
                   <p className="text-[#2B2B2B]">+42 000 000 0000</p>
                   <p className="text-[#2B2B2B]">+42 000 000 0000</p>
@@ -149,12 +151,14 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-center space-x-4">
-                <Image
-                  src={"/contact/email.png"}
-                  width={20}
-                  height={20}
-                  alt="Phone"
-                />
+                <div className="bg-[#DAEDF2] p-2 rounded-full">
+                  <Image
+                    src={"/contact/email.png"}
+                    width={20}
+                    height={20}
+                    alt="Phone"
+                  />
+                </div>
                 <div className="space-y-1">
                   <p className="text-[#2B2B2B] text-lg">
                     support@gaminghubbalzlam.com
@@ -166,12 +170,14 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-center space-x-4">
-                <Image
-                  src={"/contact/map.png"}
-                  width={20}
-                  height={20}
-                  alt="Phone"
-                />
+                <div className="bg-[#DAEDF2] p-2 rounded-full">
+                  <Image
+                    src={"/contact/map.png"}
+                    width={18}
+                    height={18}
+                    alt="Phone"
+                  />
+                </div>
                 <p className="text-lg text-[#101010]">
                   123 Gamer&apos;s Haven Street, Central District,
                   <br />
