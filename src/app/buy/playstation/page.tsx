@@ -262,45 +262,94 @@ const ProductPage: React.FC = () => {
         </div>
 
         {/* Products */}
-        <div
-          className={`grid ${
-            view === "grid" ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" : ""
-          } gap-6`}
-        >
-          {paginatedProducts.map((product) => (
-            <Link key={product.id} href={`/buy/${product.id}`} passHref>
-              <div className="shadow-xl rounded-lg pb-2">
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  width={300}
-                  height={200}
-                  className="object-center object-cover w-full"
-                />
-                <div className="px-3">
-                  <h3 className="text-lg font-semibold mb-2 mt-5">
-                    {product.title}
-                  </h3>
-                  <div className="text-gray-600 mb-2 flex items-center justify-between">
-                    <div>
-                      Condition:
-                      <span className="font-semibold">{product.condition}</span>
+        {view === "grid" ? (
+          <div
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6`}
+          >
+            {paginatedProducts.map((product) => (
+              <Link key={product.id} href={`/buy/${product.id}`} passHref>
+                <div className="shadow-xl rounded-lg pb-2">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    width={300}
+                    height={200}
+                    className="object-center object-cover w-full"
+                  />
+                  <div className="px-3">
+                    <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
+                      {product.title}
+                    </h3>
+                    <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
+                      <div>
+                        Condition:
+                        <span className="font-medium text-[#2B2B2B]">
+                          {product.condition}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
-                    <div className="flex items-center gap-2">
-                      <p>Price:</p>
-                      <span className="text-green-500 font-semibold">
-                        {product.price}
+                    <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
+                      <div className="flex items-center gap-2">
+                        <p className="text-[#2B2B2B] text-base">Price:</p>
+                        <span className="text-[#00B67A] text-lg font-semibold">
+                          {product.price}
+                        </span>
+                      </div>
+                      <span className="text-sm text-[#919191] line-through">
+                        New: 350
                       </span>
                     </div>
-                    <span className="line-through">New: 350</span>
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+              </Link>
+            ))}
+          </div>
+        ) : null}
+
+        {view === "list" ? (
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12`}>
+            {paginatedProducts.map((product) => (
+              <Link key={product.id} href={`/buy/${product.id}`} passHref>
+                <div className="flex items-center shadow-xl rounded-lg pb-2">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    width={300}
+                    height={200}
+                    className="object-center object-cover w-1/2"
+                  />
+                  <div className="px-3">
+                    <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
+                      {product.title}
+                    </h3>
+                    <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
+                      <div>
+                        Condition:
+                        <span className="font-medium text-[#2B2B2B]">
+                          {" "}
+                          {product.condition}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
+                      <div className="flex items-center gap-2">
+                        <p className="text-[#2B2B2B] text-base">
+                          Price:{" "}
+                          <span className="text-[#00B67A] text-lg font-semibold">
+                            {product.price}
+                          </span>
+                        </p>
+                      </div>
+                      <span className="text-sm text-[#919191] line-through">
+                        New: 350
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : null}
 
         {/* Pagination */}
         <div className="flex justify-center items-center gap-3 mt-6">
