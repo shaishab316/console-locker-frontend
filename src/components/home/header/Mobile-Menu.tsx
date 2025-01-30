@@ -13,6 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Image from "next/image";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -101,6 +102,55 @@ export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
           >
             Contact
           </Link>
+        </div>
+
+        <div className="absolute bottom-1">
+          <div className="flex items-center justify-between mt-auto">
+            <Image
+              src="/social/linkedin.png"
+              width={40}
+              height={40}
+              alt="linkedin"
+            />
+            <Image
+              src="/social/facebook.png"
+              width={40}
+              height={40}
+              alt="facebook"
+            />
+            <Image
+              src="/social/instragram.png"
+              width={40}
+              height={40}
+              alt="instragram"
+            />
+            <Image src="/social/x.png" width={40} height={40} alt="x" />
+          </div>
+
+          <div className="my-2 space-y-3">
+            <div className="flex items-center gap-1.5">
+              <Link
+                className="text-sm text-[#404040]"
+                href={"returns-and-refunds"}
+              >
+                Returns & Refunds
+              </Link>
+              <Link
+                className="text-sm text-[#404040]"
+                href={"terms-of-services"}
+              >
+                Terms of Services
+              </Link>
+            </div>
+            <div className="flex items-center gap-2">
+              <Link className="text-sm text-[#404040]" href={"cookie-policy"}>
+                Cookie Policy (EU)
+              </Link>
+              <Link className="text-sm text-[#404040]" href={"privacy-policy"}>
+                Privacy Policy
+              </Link>
+            </div>
+          </div>
         </div>
       </SheetContent>
     </Sheet>

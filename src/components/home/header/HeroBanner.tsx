@@ -26,7 +26,7 @@ const HeroBanner = () => {
             <div className="lg:hidden border-b-4 border-gray-50 my-2 hr-line-for-mobile"></div>
 
             {/* for mobile */}
-            <p className="lg:hidden text-white text-sm font-semibold text-left mb-3 md:mb-8 max-w-[380px] mx-auto md:mx-0">
+            <p className="lg:hidden text-white text-sm font-semibold text-left mb-3 md:mb-8 max-w-[380px] md:mx-0">
               Console Locker, fai spazio al nuovo <br /> e vendi la tua console
               usata. <br /> Risparmia con una console ricondizionata e vivi
               un&rsquo;esperienza gaming di prima scelta.

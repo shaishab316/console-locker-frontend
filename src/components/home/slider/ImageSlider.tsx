@@ -16,7 +16,7 @@ export default function ImageSlider() {
   });
 
   return (
-    <div className="w-full">
+    <div className="md:hidden w-full">
       <div className="flex items-center justify-center py-8 space-x-4">
         <hr className="flex-1 border-b border-gray-300" />
         <h2 className="max-w-[290px] mx-auto text-[#101010] text-2xl md:text-5xl font-semibold text-center">
