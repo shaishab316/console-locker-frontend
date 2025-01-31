@@ -34,7 +34,7 @@ export default function ContactPage() {
       <Container>
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Form Section */}
-          <div className="col-span-1 lg:col-span-2 bg-[#FDFDFD] p-8 rounded-lg shadow-sm border-4 border-blue-500">
+          <div className="col-span-1 lg:col-span-2 bg-[#FDFDFD] p-8 rounded-lg shadow-sm">
             <h1 className="text-3xl font-semibold text-[#101010] mb-6">
               Personal Information
             </h1>
@@ -125,7 +125,7 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Information Section */}
-          <div className="bg-[#FDFDFD] p-8 rounded-lg shadow-sm border-4 border-red-500">
+          <div className="bg-[#FDFDFD] p-8 rounded-lg shadow-sm">
             <h2 className="text-3xl text-[#101010] font-semibold mb-6">
               Contact Information
             </h2>

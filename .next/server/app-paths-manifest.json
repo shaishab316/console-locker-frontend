@@ -1,7 +1,7 @@
 {
+  "/contact/page": "app/contact/page.js",
   "/about/page": "app/about/page.js",
   "/page": "app/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/repair/page": "app/repair/page.js",
-  "/buy/[slug]/page": "app/buy/[slug]/page.js"
+  "/buy/[slug]/page": "app/buy/[slug]/page.js",
+  "/repair/page": "app/repair/page.js"
 }
