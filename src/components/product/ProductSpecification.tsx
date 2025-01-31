@@ -64,13 +64,24 @@ export default function ProductSpecification() {
             <h2 className="text-xl font-semibold mb-6">Specification</h2>
             <div className="divide-y">
               {specificationData.map((row, index) => (
-                <div
+                // <div
+                //   key={index}
+                //   className="grid grid-cols-1 md:grid-cols-[200px,1fr] py-4 gap-2"
+                // >
+                //   <div className="font-medium text-gray-900 border">
+                //     {row.label}
+                //   </div>
+                //   <div className="text-gray-600">{row.value}</div>
+                // </div>
+                <table
                   key={index}
                   className="grid grid-cols-1 md:grid-cols-[200px,1fr] py-4 gap-2"
                 >
-                  <div className="font-medium text-gray-900">{row.label}</div>
-                  <div className="text-gray-600">{row.value}</div>
-                </div>
+                  <tr className="font-medium text-gray-900">
+                    {row.label}
+                  </tr>
+                  <td className="text-gray-600">{row.value}</td>
+                </table>
               ))}
             </div>
           </div>

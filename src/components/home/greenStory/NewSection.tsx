@@ -22,8 +22,9 @@ export default function GreenStory() {
           priority
         />
       </div> */}
+
       <div
-        className="relative h-screen flex  bg-cover bg-center"
+        className="md:hidden relative h-screen flex  bg-cover bg-center"
         style={{ backgroundImage: "url('/home/eco1.png')" }}
       >
         {/* Overlay for better readability */}

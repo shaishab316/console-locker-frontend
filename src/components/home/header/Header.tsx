@@ -31,7 +31,7 @@ export function Header() {
           </Button>
           <Link
             href="/"
-            className="absolute md:static left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 flex items-center space-x-2"
+            className="absolute md:static left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 flex items-center space-x-1"
           >
             <div className="relative h-8 w-8">
               <Image
@@ -41,7 +41,7 @@ export function Header() {
                 className="object-contain"
               />
             </div>
-            <span className="text-xl font-bold">Console Locker</span>
+            <span className="text-base sm:text-xl font-bold">Console Locker</span>
           </Link>
         </div>
 
