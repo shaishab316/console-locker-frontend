@@ -60,7 +60,7 @@ export default function ReviewCarousel() {
           <h2 className=" text-xl md:text-3xl font-bold text-gray-900">
             Our Client Reviews
           </h2>
-          <div className="flex gap-4">
+          <div className="hidden md:flex gap-4">
             <button
               onClick={previous}
               className="px-2.5 py-2 rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"

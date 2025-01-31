@@ -8,9 +8,38 @@ export default function GreenStory() {
   );
 
   return (
-    <div className="h-[864px] flex flex-col md:flex-row mb-40 md:mb-10">
+    <div className="h-[864px] flex flex-col md:flex-row md:mb-10">
       {/* Image Section */}
-      <div className="relative w-full md:w-1/2 h-full">
+
+      {/* for mobile */}
+      {/* <div className="md:hidden relative w-full md:w-1/2 h-full">
+        <Image
+          src="/home/eco1.png"
+          alt="PlayStation 5 on green moss"
+          width={700}
+          height={700}
+          className="object-cover w-full h-full"
+          priority
+        />
+      </div> */}
+      <div
+        className="relative h-screen flex  bg-cover bg-center"
+        style={{ backgroundImage: "url('/home/eco1.png')" }}
+      >
+        {/* Overlay for better readability */}
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        {/* Blurred text container */}
+        <div className="relative p-4">
+          <h1 className="text-2xl font-medium text-[#FFFFFF] pb-3">
+            LA STORIA VERDE DI <br /> CONSOLE LOCKER.
+          </h1>
+          <div className="border h-[2px] min-w-full"></div>
+        </div>
+      </div>
+
+      {/* for desktop */}
+      <div className="hidden md:block relative w-full md:w-1/2 h-full">
         <Image
           src="/home/eco1.png"
           alt="PlayStation 5 on green moss"
@@ -49,7 +78,5 @@ export default function GreenStory() {
         </div>
       </div>
     </div>
-
-    
   );
 }

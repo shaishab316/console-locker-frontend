@@ -169,6 +169,7 @@ const products: Product[] = [
 const ProductPage: React.FC = () => {
   const [view, setView] = useState<"grid" | "list">("grid");
   const [page, setPage] = useState<number>(1);
+  const [filterView, setFilterView] = useState(false);
   const itemsPerPage = 9;
 
   const paginatedProducts = products.slice(
@@ -177,44 +178,120 @@ const ProductPage: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col lg:flex-row container mx-auto px-4 py-8">
+    <div className="relative flex flex-col lg:flex-row container mx-auto px-4 py-8">
       {/* Sidebar */}
-      <div className="w-full max-h-max lg:w-1/4 bg-white shadow-md rounded-md p-4 mb-5">
-        <h3 className="text-xl font-semibold mb-4">Filter</h3>
-        <div className="mb-4">
-          <h4 className="font-semibold mb-2">Products</h4>
-          <select className="w-full border rounded-md p-2">
-            <option>All</option>
-            <option>PlayStation</option>
-            <option>Xbox</option>
-            <option>Nintendo</option>
-          </select>
+      <div className={`w-full max-h-max lg:w-1/4 bg-white rounded-md  mb-5`}>
+        <h3 className="hidden md:flex text-xl font-semibold mb-4">Filter</h3>
+
+        {/* filter icon for mobile device */}
+        <div
+          onClick={() => setFilterView(!filterView)}
+          className={`flex md:hidden items-center gap-2 border ${
+            filterView && "bg-gray-200"
+          } rounded-lg w-max p-2`}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            className="lucide lucide-filter"
+          >
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+          </svg>
+          <h3 className="text-lg font-medium">Filter</h3>
         </div>
-        <div className="mb-4">
-          <h4 className="font-semibold mb-2">Brand</h4>
-          <select className="w-full border rounded-md p-2">
-            <option>All</option>
-            <option>PlayStation</option>
-            <option>Xbox</option>
-            <option>Nintendo</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <h4 className="font-semibold mb-2">Price Range</h4>
-          <select className="w-full border rounded-md p-2">
-            <option>All</option>
-            <option>$100 - $300</option>
-            <option>$300 - $500</option>
-            <option>$500+</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <h4 className="font-semibold mb-2">Condition</h4>
-          <select className="w-full border rounded-md p-2">
-            <option>All</option>
-            <option>Good</option>
-            <option>New</option>
-          </select>
+
+        {/* for mobile */}
+        {filterView && (
+          <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white rounded-lg p-5">
+            <div className="mb-4">
+              <h4 className="font-semibold mb-2">Products</h4>
+              <select className="w-full border rounded-md p-2">
+                <option>All</option>
+                <option>PlayStation</option>
+                <option>Xbox</option>
+                <option>Nintendo</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <h4 className="font-semibold mb-2">Brand</h4>
+              <select className="w-full border rounded-md p-2">
+                <option>All</option>
+                <option>PlayStation</option>
+                <option>Xbox</option>
+                <option>Nintendo</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <h4 className="font-semibold mb-2">Price Range</h4>
+              <select className="w-full border rounded-md p-2">
+                <option>All</option>
+                <option>$100 - $300</option>
+                <option>$300 - $500</option>
+                <option>$500+</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <h4 className="font-semibold mb-2">Condition</h4>
+              <select className="w-full border rounded-md p-2">
+                <option>All</option>
+                <option>Good</option>
+                <option>New</option>
+              </select>
+            </div>
+            <button
+              onClick={() => setFilterView(!filterView)}
+              className="bg-black text-white text-lg w-full rounded-xl py-3"
+            >
+              Filter
+            </button>
+          </div>
+        )}
+
+        {/* for desktop */}
+
+        <div className="">
+          <div className="mb-4">
+            <h4 className="font-semibold mb-2">Products</h4>
+            <select className="w-full border rounded-md p-2">
+              <option>All</option>
+              <option>PlayStation</option>
+              <option>Xbox</option>
+              <option>Nintendo</option>
+            </select>
+          </div>
+          <div className="mb-4">
+            <h4 className="font-semibold mb-2">Brand</h4>
+            <select className="w-full border rounded-md p-2">
+              <option>All</option>
+              <option>PlayStation</option>
+              <option>Xbox</option>
+              <option>Nintendo</option>
+            </select>
+          </div>
+          <div className="mb-4">
+            <h4 className="font-semibold mb-2">Price Range</h4>
+            <select className="w-full border rounded-md p-2">
+              <option>All</option>
+              <option>$100 - $300</option>
+              <option>$300 - $500</option>
+              <option>$500+</option>
+            </select>
+          </div>
+          <div className="mb-4">
+            <h4 className="font-semibold mb-2">Condition</h4>
+            <select className="w-full border rounded-md p-2">
+              <option>All</option>
+              <option>Good</option>
+              <option>New</option>
+            </select>
+          </div>
         </div>
       </div>
 

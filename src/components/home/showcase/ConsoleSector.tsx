@@ -356,7 +356,7 @@ export default function ConsoleSelector() {
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {consoles.xbox.map((console) => (
                         <Link
                           href={`/buy/${console?.id}`}
@@ -372,13 +372,14 @@ export default function ConsoleSelector() {
                               className="object-cover w-full h-full"
                             />
                           </div>
-                          <div className="p-1 md:p-4">
+                          <div className="p-2.5 md:p-4">
                             <div className="flex justify-between items-start mb-2">
                               <div>
-                                <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-2.5">
+                                <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-0 lg:mb-2.5">
                                   {console.name}
                                 </h3>
-                                <p className="text-base text-[#2B2B2B] mb-1 md:mb-1.5">
+
+                                <p className="text-sm md:text-base text-[#2B2B2B] -mb-1 md:mb-1.5">
                                   {/* {console.model} */}
                                   Condition:{" "}
                                   <span className="text-base text-[#2B2B2B] font-medium">
@@ -386,20 +387,15 @@ export default function ConsoleSelector() {
                                   </span>
                                 </p>
 
-                                <p className="text-[#2B2B2B] text-base space-x-1 mb-2 md:mb-0">
+                                <p className="text-[#2B2B2B] text-xs md:text-base space-x-1 -mb-2 md:mb-0">
                                   Price:
-                                  <span className="text-[#00B67A] text-lg font-medium leading-7">
+                                  <span className="text-[#00B67A] text-xs md:text-lg font-medium leading-7">
                                     {" "}
                                     $299
                                   </span>
-                                  <span className="hidden md:inline-block text-sm text-[#919191] line-through">
+                                  <span className="text-[10px] sm:text-sm md:text-sm text-[#919191] line-through">
                                     New : 350
                                   </span>
-                                </p>
-
-                                {/* for mobile */}
-                                <p className="md:hidden text-sm text-[#919191] line-through">
-                                  New : 350
                                 </p>
                               </div>
                             </div>
@@ -441,7 +437,7 @@ export default function ConsoleSelector() {
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {consoles.playstation.map((console) => (
                         <Link
                           href={`/buy/${console?.id}`}
@@ -521,7 +517,7 @@ export default function ConsoleSelector() {
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {consoles.nintendo.map((console) => (
                         <Link
                           href={`/buy/${console?.id}`}

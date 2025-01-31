@@ -10,7 +10,7 @@ export default function ImageSlider() {
     loop: true,
     mode: "snap",
     slides: {
-      perView: 2.2, // Show 2 full images and 10% of previous/next images
+      perView: 2.3, // Show 2 full images and 10% of previous/next images
       spacing: 15, // Adjust spacing for smooth layout
     },
   });

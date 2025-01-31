@@ -23,7 +23,10 @@ interface MobileMenuProps {
 export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
   return (
     <Sheet open={isOpen} onOpenChange={onOpenChange}>
-      <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+      <SheetContent
+        side="left"
+        className="w-[300px] sm:w-[400px] bg-[#DAEDF2] text-[#5F5F5F]"
+      >
         <SheetHeader>
           <SheetTitle className="text-left">Menu</SheetTitle>
         </SheetHeader>
@@ -41,7 +44,7 @@ export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
                 Buy
               </AccordionTrigger>
               <AccordionContent>
-                <div className="flex flex-col space-y-2 pl-4">
+                <div className="flex flex-col space-y-3 pl-4 bg-[#FDFDFD] py-3 px-5 rounded-lg">
                   <Link
                     href="/buy/playstation"
                     className="text-sm"
@@ -104,6 +107,7 @@ export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
           </Link>
         </div>
 
+        {/* social links */}
         <div className="absolute bottom-1">
           <div className="flex items-center justify-between mt-auto">
             <Image

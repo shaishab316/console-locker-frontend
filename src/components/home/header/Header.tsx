@@ -18,15 +18,15 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 pt-4 w-full border-b bg-white">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="relative container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="mr-2 md:hidden"
+            className="mr-2 md:hidden absolute right-1"
             onClick={() => setIsMobileMenuOpen(true)}
           >
-            <Menu className="h-18 w-18" />
+            <Menu className="h-24 w-24" />
             <span className="sr-only">Toggle menu</span>
           </Button>
           <Link
