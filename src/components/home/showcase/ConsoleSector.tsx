@@ -308,7 +308,7 @@ export default function ConsoleSelector() {
 
   return (
     <div className="min-h-screen bg-[#F2F5F7]">
-      <div className="flex items-center justify-center py-8 space-x-4">
+      <div className="flex items-center justify-center pt-7 md:py-8 space-x-4">
         <hr className="flex-1 border-b border-gray-300" />
         <h2 className="text-[#101010] text-2xl md:text-5xl font-semibold text-center whitespace-nowrap">
           Choose your console

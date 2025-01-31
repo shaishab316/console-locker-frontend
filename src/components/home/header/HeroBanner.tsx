@@ -41,7 +41,7 @@ const HeroBanner = () => {
             </p>
 
             {/* for mobile */}
-            <div className="lg:hidden flex items-center justify-center md:justify-start gap-4 mb-3">
+            <div className="lg:hidden flex items-center justify-start gap-4 mb-3">
               <Link
                 href={"buy/playstation"}
                 className="w-[170px] md:w-auto bg-[#FDFDFD] text-base text-[#E95F00] font-semibold py-3 md:px-10 md:py-4 border rounded-md"

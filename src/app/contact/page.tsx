@@ -32,9 +32,9 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#F2F5F7] py-12 sm:px-6 lg:px-8">
       <Container>
-        <div className="grid  lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8">
           {/* Form Section */}
-          <div className="col-span-1 lg:col-span-2 bg-[#FDFDFD] p-8 rounded-lg shadow-sm">
+          <div className="col-span-1 lg:col-span-2 bg-[#FDFDFD] p-8 rounded-lg shadow-sm border-4 border-blue-500">
             <h1 className="text-3xl font-semibold text-[#101010] mb-6">
               Personal Information
             </h1>
@@ -43,7 +43,7 @@ export default function ContactPage() {
                 <div className="lg:flex-1 w-full lg:w-1/2">
                   <label
                     htmlFor="fullName"
-                    className="block text-lg font-medium text-[#101010]"
+                    className="text-lg font-medium text-[#101010]"
                   >
                     Full Name<span className="text-red-500">*</span>
                   </label>
@@ -52,14 +52,14 @@ export default function ContactPage() {
                     id="fullName"
                     name="fullName"
                     required
-                    className="block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                 </div>
 
-                <div className="lg:flex-1 w-full lg:w-1/2`">
+                <div className="lg:flex-1 w-full lg:w-1/2">
                   <label
                     htmlFor="email"
-                    className="block text-lg font-medium text-[#101010]"
+                    className="text-lg font-medium text-[#101010]"
                   >
                     Email<span className="text-red-500">*</span>
                   </label>
@@ -68,7 +68,7 @@ export default function ContactPage() {
                     id="email"
                     name="email"
                     required
-                    className="block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                 </div>
               </div>
@@ -76,7 +76,7 @@ export default function ContactPage() {
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-lg font-medium text-[#101010]"
+                  className="text-lg font-medium text-[#101010]"
                 >
                   Your Subject
                 </label>
@@ -84,14 +84,14 @@ export default function ContactPage() {
                   type="text"
                   id="subject"
                   name="subject"
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-lg font-medium text-[#101010]"
+                  className=" text-lg font-medium text-[#101010]"
                 >
                   Messages
                 </label>
@@ -99,7 +99,7 @@ export default function ContactPage() {
                   id="message"
                   name="message"
                   rows={5}
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
               </div>
 
@@ -125,11 +125,11 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Information Section */}
-          <div className="bg-[#FDFDFD] p-8 rounded-lg shadow-sm">
+          <div className="bg-[#FDFDFD] p-8 rounded-lg shadow-sm border-4 border-red-500">
             <h2 className="text-3xl text-[#101010] font-semibold mb-6">
               Contact Information
             </h2>
-            <p className="text-[#2B2B2B] mb-8">
+            <p className="text-[#2B2B2B] mb-8 text-wrap">
               We&apos;ll create high-quality linkable content and build at least
               40 high-Authority.
             </p>
@@ -145,8 +145,12 @@ export default function ContactPage() {
                   />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-[#2B2B2B]">+42 000 000 0000</p>
-                  <p className="text-[#2B2B2B]">+42 000 000 0000</p>
+                  <p className="text-[#2B2B2B] text-base md:text-lg text-wrap">
+                    +42 000 000 0000
+                  </p>
+                  <p className="text-[#2B2B2B] text-base md:text-lg text-wrap">
+                    +42 000 000 0000
+                  </p>
                 </div>
               </div>
 
@@ -160,10 +164,10 @@ export default function ContactPage() {
                   />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-[#2B2B2B] text-lg">
-                    support@gaminghubbalzlam.com
+                  <p className="text-[#2B2B2B] text-base md:text-lg text-wrap">
+                    support@console.com
                   </p>
-                  <p className="text-[#2B2B2B] text-lg">
+                  <p className="text-[#2B2B2B] text-base md:text-lg text-wrap">
                     info@balzlamgames.com
                   </p>
                 </div>
@@ -178,7 +182,7 @@ export default function ContactPage() {
                     alt="Phone"
                   />
                 </div>
-                <p className="text-lg text-[#101010]">
+                <p className="text-base md:text-lg text-[#101010]">
                   123 Gamer&apos;s Haven Street, Central District,
                   <br />
                   Balzlam, BX 56789

@@ -17,8 +17,8 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 pt-4 w-full border-b bg-white">
-      <div className="relative container mx-auto flex h-16 items-center justify-between px-4">
+    <header className="top-0 z-50 md:pt-4 w-full min-h-10 border-b bg-white">
+      <div className="relative container mx-auto flex h-10 md:h-16 items-center justify-between px-4">
         <div className="flex items-center">
           <Button
             variant="ghost"
@@ -26,22 +26,23 @@ export function Header() {
             className="mr-2 md:hidden absolute right-1"
             onClick={() => setIsMobileMenuOpen(true)}
           >
-            <Menu className="h-24 w-24" />
+            <Menu className="h-30 w-30" />
             <span className="sr-only">Toggle menu</span>
           </Button>
           <Link
             href="/"
             className="absolute md:static left-1/2 md:left-0 transform -translate-x-1/2 md:translate-x-0 flex items-center space-x-1"
           >
-            <div className="relative h-8 w-8">
+            <div className="relative h-8 w-44 pt-1">
               <Image
-                src="/gamepad.jpg"
+                src="/home/logo.png"
                 alt="Console Locker"
-                fill
+                width={700}
+                height={200}
                 className="object-contain"
               />
             </div>
-            <span className="text-base sm:text-xl font-bold">Console Locker</span>
+            {/* <span className="text-base sm:text-xl font-bold">Console Locker</span> */}
           </Link>
         </div>
 
