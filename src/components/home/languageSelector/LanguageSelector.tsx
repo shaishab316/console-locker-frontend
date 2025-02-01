@@ -9,11 +9,17 @@ const languages = [
   { code: "es", name: "Spanish", flag: "/flag/spanish.png" },
 ];
 
+interface LanguageType {
+  code: string;
+  name: string;
+  flag: string;
+}
+
 const LanguageSelector = () => {
-  const [selectedLang, setSelectedLang] = useState(languages[0]); // Default to German
+  const [selectedLang, setSelectedLang] = useState(languages[0]);
   const [isOpen, setIsOpen] = useState(false);
 
-  const selectLanguage = (lang) => {
+  const selectLanguage = (lang: LanguageType) => {
     setSelectedLang(lang);
     setIsOpen(false);
   };
