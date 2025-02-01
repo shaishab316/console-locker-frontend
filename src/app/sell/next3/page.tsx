@@ -60,7 +60,7 @@ export default function PlayStationOffer() {
             </div>
 
             <Link href={"/sell/next4"}>
-              <button className="w-full bg-black text-white py-3 rounded-md mb-4">
+              <button className="w-full bg-black text-white py-3 rounded-md mb-5">
                 Continue
               </button>
             </Link>

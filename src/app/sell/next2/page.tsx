@@ -142,7 +142,7 @@ export default function ScreenCondition() {
           </h2>
 
           <div className="relative">
-            <div className="hidden lg:block absolute right-0 bottom-0">
+            <div className="hidden lg:block absolute -right-4 bottom-0">
               <Image
                 src="/sell/sell.png"
                 alt="Service representative"
@@ -152,7 +152,7 @@ export default function ScreenCondition() {
               />
             </div>
 
-            <div className="space-y-8 max-w-xl">
+            <div className="space-y-8 max-w-xl lg:pl-10">
               {SELLING_STEPS.map((step, index) => (
                 <div key={step.number} className="relative">
                   <div className="bg-white rounded-lg p-6 shadow-sm">
