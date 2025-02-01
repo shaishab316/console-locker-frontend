@@ -841,6 +841,9 @@ video {
 .-right-4 {
   right: -1rem;
 }
+.top-full {
+  top: 100%;
+}
 .z-10 {
   z-index: 10;
 }
@@ -1273,6 +1276,9 @@ video {
 }
 .w-max {
   width: max-content;
+}
+.w-40 {
+  width: 10rem;
 }
 .min-w-0 {
   min-width: 0px;
@@ -2174,6 +2180,12 @@ video {
 }
 .pl-10 {
   padding-left: 2.5rem;
+}
+.pt-10 {
+  padding-top: 2.5rem;
+}
+.pt-14 {
+  padding-top: 3.5rem;
 }
 .text-left {
   text-align: left;

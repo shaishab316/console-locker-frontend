@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MobileMenu } from "./Mobile-Menu";
+import LanguageSelector from "../languageSelector/LanguageSelector";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -94,37 +95,16 @@ export function Header() {
           </Link>
 
           <button className="hidden sm:flex items-center space-x-1 text-sm font-medium">
-            {/* <div> */}
-            <Image
+            {/* <Image
               src="/germany.png"
               alt="German"
               width={20}
               height={20}
               className="rounded"
             />
-            <span>German</span>
-            {/* </div> */}
+            <span>German</span> */}
 
-            {/* <div>
-              <Image
-                src="/germany.png"
-                alt="German"
-                width={20}
-                height={20}
-                className="rounded"
-              />
-              <span>German</span>
-            </div>
-            <div>
-              <Image
-                src="/germany.png"
-                alt="German"
-                width={20}
-                height={20}
-                className="rounded"
-              />
-              <span>German</span>
-            </div> */}
+            <LanguageSelector />
           </button>
         </div>
       </div>
