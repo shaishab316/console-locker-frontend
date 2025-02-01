@@ -1265,6 +1265,12 @@ video {
 .w-max {
   width: max-content;
 }
+.w-\[290px\] {
+  width: 290px;
+}
+.w-\[299px\] {
+  width: 299px;
+}
 .min-w-0 {
   min-width: 0px;
 }

@@ -25,7 +25,7 @@ export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
     <Sheet open={isOpen} onOpenChange={onOpenChange}>
       <SheetContent
         side="left"
-        className="w-[280px] sm:w-[400px] bg-[#DAEDF2] text-[#5F5F5F]"
+        className="w-[299px] sm:w-[400px] bg-[#DAEDF2] text-[#5F5F5F]"
       >
         <SheetHeader>
           <SheetTitle className="text-left">Menu</SheetTitle>
