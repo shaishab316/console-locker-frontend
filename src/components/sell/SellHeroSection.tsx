@@ -45,7 +45,15 @@ export default function SellHeroSection() {
               <div className="space-y-4 mb-6">
                 <div className="flex items-start gap-3 text-[#FDFDFD] lg:text-[#101010]">
                   <Image
+                    src={"/sell/free-shipping-white.png"}
+                    className="md:hidden"
+                    width={18}
+                    height={18}
+                    alt="free shipping"
+                  />
+                  <Image
                     src={"/sell/free-shipping.png"}
+                    className="hidden md:inline-block"
                     width={18}
                     height={18}
                     alt="free shipping"
@@ -56,7 +64,15 @@ export default function SellHeroSection() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Image
+                    src={"/sell/free-return-white.png"}
+                    className="md:hidden"
+                    width={18}
+                    height={18}
+                    alt="free shipping"
+                  />
+                  <Image
                     src={"/sell/free-return.png"}
+                    className="hidden md:inline-block"
                     width={18}
                     height={18}
                     alt="free shipping"
@@ -67,7 +83,15 @@ export default function SellHeroSection() {
                 </div>
                 <div className="flex items-center gap-3 text-gray-700">
                   <Image
+                    src={"/sell/fast-payment-white.png"}
+                    className="md:hidden"
+                    width={20}
+                    height={20}
+                    alt="free shipping"
+                  />
+                  <Image
                     src={"/sell/fast-delivery.png"}
+                    className="hidden md:inline-block"
                     width={18}
                     height={18}
                     alt="free shipping"
