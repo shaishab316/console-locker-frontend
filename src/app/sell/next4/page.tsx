@@ -1,6 +1,3 @@
-
-
-
 "use client";
 
 import { useState } from "react";
@@ -85,7 +82,8 @@ export default function CheckoutForm() {
                     htmlFor="firstName"
                     className="block text-lg font-medium text-[#101010] mb-1"
                   >
-                    First Name*
+                    First Name{" "}
+                    <span className="text-red-500 font-semibold">*</span>
                   </label>
                   <input
                     type="text"
@@ -102,7 +100,8 @@ export default function CheckoutForm() {
                     htmlFor="lastName"
                     className="block text-lg font-medium text-[#101010] mb-1"
                   >
-                    Last Name*
+                    Last Name
+                    <span className="text-red-500 font-semibold">*</span>
                   </label>
                   <input
                     type="text"
@@ -121,7 +120,7 @@ export default function CheckoutForm() {
                   htmlFor="email"
                   className="block text-lg font-medium text-[#101010] mb-1"
                 >
-                  Email*
+                  Email <span className="text-red-500 font-semibold">*</span>
                 </label>
                 <input
                   type="email"
@@ -182,7 +181,8 @@ export default function CheckoutForm() {
                     htmlFor="postcode"
                     className="block text-lg font-medium text-[#101010] mb-1"
                   >
-                    Postcode*
+                    Postcode{" "}
+                    <span className="text-red-500 font-semibold">*</span>
                   </label>
                   <input
                     type="text"
@@ -199,7 +199,8 @@ export default function CheckoutForm() {
                     htmlFor="town"
                     className="block text-lg font-medium text-[#101010] mb-1"
                   >
-                    Town / City*
+                    Town / City{" "}
+                    <span className="text-red-500 font-semibold">*</span>
                   </label>
                   <input
                     type="text"
@@ -253,7 +254,7 @@ export default function CheckoutForm() {
                   htmlFor="country"
                   className="block text-lg font-medium text-[#101010] mb-1"
                 >
-                  Country*
+                  Country <span className="text-red-500 font-semibold">*</span>
                 </label>
                 <select
                   id="country"
@@ -303,7 +304,8 @@ export default function CheckoutForm() {
                       htmlFor="iban"
                       className="block text-lg font-medium text-[#101010] mb-1"
                     >
-                      Bank details, IBAN*
+                      Bank details, IBAN{" "}
+                      <span className="text-red-500 font-semibold">*</span>
                     </label>
                     <input
                       type="text"

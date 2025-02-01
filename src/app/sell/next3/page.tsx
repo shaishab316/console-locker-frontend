@@ -11,7 +11,7 @@ export default function PlayStationOffer() {
   );
 
   return (
-    <div className="min-h-screen bg-[#F2F5F7] p-6 md:p-12">
+    <div className="bg-[#F2F5F7] p-6 md:p-12">
       <Container>
         <h1 className="text-3xl font-bold mb-6">Our Current offer:</h1>
 
