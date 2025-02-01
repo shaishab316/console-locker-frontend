@@ -11,29 +11,30 @@ const HeroBanner = () => {
           <div className="hidden md:block w-1/2"></div>
 
           {/* Content Section */}
-          <div className="w-full md:w-1/2 text-center md:text-left px-4 md:px-0">
+          <div className="w-full md:w-1/2 px-4 text-center md:px-0">
             {/* for mobile */}
-            <h1 className="lg:hidden text-[24px] text-left font-bold text-white leading-tight md:leading-normal mt-5">
+            {/* <h1 className="lg:hidden text-[24px] text-left font-bold text-white leading-tight md:leading-normal mt-5">
               DAI UNA <br /> SECONDA POSSIBILITÀ ALLA TUA CONSOLE!
-            </h1>
+            </h1> */}
 
             {/* for desktop */}
-            <h1 className="hidden lg:block text-[32px] md:text-4xl lg:text-[70px] font-bold text-white leading-tight md:leading-normal">
-              A SECOND CHANCE <br /> FOR YOUR CONSOLE!
+            <h1 className="text-[32px] md:text-4xl lg:text-[70px] font-bold text-left text-white leading-tight md:leading-normal mt-3">
+              A SECOND <br className="md:hidden" /> CHANCE FOR{" "}
+              <br className="md:hidden" /> YOUR CONSOLE!
             </h1>
 
             {/* for mobile - horizontal line */}
             <div className="lg:hidden border-b-4 border-gray-50 my-2 hr-line-for-mobile"></div>
 
             {/* for mobile */}
-            <p className="lg:hidden text-white text-sm font-semibold text-left mb-3 md:mb-8 max-w-[380px] md:mx-0">
+            {/* <p className="lg:hidden text-white text-sm font-semibold text-left mb-3 md:mb-8 max-w-[380px] md:mx-0">
               Console Locker, fai spazio al nuovo <br /> e vendi la tua console
               usata. <br /> Risparmia con una console ricondizionata e vivi
               un&rsquo;esperienza gaming di prima scelta.
-            </p>
+            </p> */}
 
             {/* for desktop */}
-            <p className="hidden lg:block text-white text-sm md:text-lg mb-6 md:mb-8 max-w-[380px] mx-auto md:mx-0">
+            <p className="text-white text-left text-sm md:text-lg mb-6 md:mb-8 max-w-[380px] mx-auto md:mx-0">
               Console Locker, make room for the new and sell your used console.{" "}
               <br />
               Save with a refurbished console and enjoy a first-class gaming
@@ -41,7 +42,7 @@ const HeroBanner = () => {
             </p>
 
             {/* for mobile */}
-            <div className="lg:hidden flex items-center justify-start gap-4 mb-3">
+            {/* <div className="lg:hidden flex items-center justify-start gap-4 mb-3">
               <Link
                 href={"buy/playstation"}
                 className="w-[170px] md:w-auto bg-[#FDFDFD] text-base text-[#E95F00] font-semibold py-3 md:px-10 md:py-4 border rounded-md"
@@ -54,19 +55,19 @@ const HeroBanner = () => {
               >
                 VENDI ORA
               </Link>
-            </div>
+            </div> */}
 
             {/* for desktop */}
-            <div className="hidden lg:flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
+            <div className="flex items-center justify-center md:justify-start gap-4 mb-3">
               <Link
                 href={"buy/playstation"}
-                className="bg-[#FDFDFD] text-[#E95F00] font-medium px-8 py-3 md:px-10 md:py-4 border rounded-md w-full md:w-auto"
+                className="w-1/2 md:w-auto bg-[#FDFDFD] text-[#E95F00] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
               >
                 Buy Now
               </Link>
               <Link
                 href={"/sell"}
-                className="bg-transparent text-[#FDFDFD] font-medium px-8 py-3 md:px-10 md:py-4 border rounded-md w-full md:w-auto"
+                className="w-1/2 md:w-auto bg-transparent text-[#FDFDFD] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
               >
                 Sell Now
               </Link>

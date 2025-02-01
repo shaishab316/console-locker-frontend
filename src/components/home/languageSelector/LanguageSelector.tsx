@@ -28,7 +28,7 @@ const LanguageSelector = () => {
     <div className="relative">
       {/* Selected Language Display */}
       <button
-        className="flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-lg shadow-sm bg-white w-full"
+        className="flex items-center gap-2 px-3 py-2 border border-gray-100 rounded-lg shadow-sm bg-white w-full"
         onClick={() => setIsOpen(!isOpen)}
       >
         <Image
