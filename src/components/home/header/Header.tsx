@@ -65,21 +65,12 @@ export function Header() {
               <DropdownMenuItem>
                 <Link href="/buy/nintendo">Nintendo</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/buy/nintendo">Bundle</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/buy/nintendo">Accessories</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/buy/nintendo">Games</Link>
-              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <Link href="/sell" className="text-sm font-medium">
             Sell
           </Link>
-          <Link href="/repair" className="text-sm font-medium">
+          <Link href="#" className="text-sm font-medium">
             Repair
           </Link>
           <Link href="/about" className="text-sm font-medium">
@@ -103,6 +94,7 @@ export function Header() {
           </Link>
 
           <button className="hidden sm:flex items-center space-x-1 text-sm font-medium">
+            {/* <div> */}
             <Image
               src="/germany.png"
               alt="German"
@@ -111,6 +103,28 @@ export function Header() {
               className="rounded"
             />
             <span>German</span>
+            {/* </div> */}
+
+            {/* <div>
+              <Image
+                src="/germany.png"
+                alt="German"
+                width={20}
+                height={20}
+                className="rounded"
+              />
+              <span>German</span>
+            </div>
+            <div>
+              <Image
+                src="/germany.png"
+                alt="German"
+                width={20}
+                height={20}
+                className="rounded"
+              />
+              <span>German</span>
+            </div> */}
           </button>
         </div>
       </div>

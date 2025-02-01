@@ -43,13 +43,13 @@ export default function PaymentHeader() {
         <div className="px-4 sm:px-6">
           <h1 className="text-2xl font-bold text-center mb-8">Cart</h1>
           <div className="w-full flex justify-between gap-5 mb-8">
-            <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+            <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
               Accessories
             </h3>
             <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
               Cart
             </h3>
-            <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+            <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
               Checkout
             </h3>
           </div>

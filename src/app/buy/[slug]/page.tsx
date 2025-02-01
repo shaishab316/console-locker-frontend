@@ -457,7 +457,7 @@ const ProductDetailsPage: React.FC = () => {
                 </h2>
               </div>
               <Link
-                href={"/payment"}
+                href={"/cart"}
                 className="bg-black text-white text-center px-6 py-3 rounded-md"
               >
                 Add to Cart

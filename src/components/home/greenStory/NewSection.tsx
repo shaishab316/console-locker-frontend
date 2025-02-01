@@ -64,7 +64,7 @@ export default function GreenStory() {
           <div className="w-full h-2 border-b-2 border-white mb-6"></div>
 
           {/* Cards */}
-          <div className="space-y-5">
+          <div className="max-w-[760px] space-y-5">
             {ecologicalPoints.map((text, index) => (
               <div
                 key={index}

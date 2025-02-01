@@ -28,38 +28,42 @@ export default function SellHeroSection() {
   };
 
   return (
-    <main className="bg-[url(/sell/sell-hero.png)] bg-cover bg-no-repeat min-h-scree min-h-[calc(100vh-80px)]">
+    <main className="bg-[url(/sell/sell-hero.png)] bg-cover bg-no-repeat min-h-[calc(100vh-180px)] bg-left-bottom">
       <Container>
-        <div className="flex min-h-">
+        <div className="flex h-[700px]">
           {/* Empty Div with 50% Width */}
           <div className="hidden md:block w-1/2"></div>
 
           {/* Content Section */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 lg:pl-32">
             <div className="flex flex-col translate-y-1/2">
-              <h1 className="text-4xl md:text-5xl font-bold text-[#101010] mb-6 ">
+              <h1 className="text-4xl md:text-5xl font-bold text-[#FDFDFD] lg:text-[#101010] mb-6 ">
                 Sell Your Console
               </h1>
 
               {/* Benefits Section */}
               <div className="space-y-4 mb-6">
-                <div className="flex items-start gap-3 text-gray-700">
+                <div className="flex items-start gap-3 text-[#FDFDFD] lg:text-[#101010]">
                   <Image
                     src={"/sell/free-shipping.png"}
                     width={18}
                     height={18}
                     alt="free shipping"
                   />
-                  <span className="text-lg text-[#2B2B2B]">Free Shipping</span>
+                  <span className="text-lg text-[#FDFDFD] lg:text-[#101010]">
+                    Free Shipping
+                  </span>
                 </div>
-                <div className="flex items-center gap-3 text-gray-700">
+                <div className="flex items-center gap-3">
                   <Image
                     src={"/sell/free-return.png"}
                     width={18}
                     height={18}
                     alt="free shipping"
                   />
-                  <span className="text-lg text-[#2B2B2B]">Free Return</span>
+                  <span className="text-lg text-[#FDFDFD] lg:text-[#101010]">
+                    Free Return
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-700">
                   <Image
@@ -68,7 +72,7 @@ export default function SellHeroSection() {
                     height={18}
                     alt="free shipping"
                   />
-                  <span className="text-lg text-[#2B2B2B]">
+                  <span className="text-lg text-[#FDFDFD] lg:text-[#101010]">
                     Fast Delivery within 48 hours
                   </span>
                 </div>

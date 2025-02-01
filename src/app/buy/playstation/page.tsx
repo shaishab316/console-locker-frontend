@@ -256,7 +256,7 @@ const ProductPage: React.FC = () => {
 
         {/* for desktop */}
 
-        <div className="">
+        <div className="hidden md:block">
           <div className="mb-4">
             <h4 className="font-semibold mb-2">Products</h4>
             <select className="w-full border rounded-md p-2">
@@ -392,13 +392,14 @@ const ProductPage: React.FC = () => {
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12`}>
             {paginatedProducts.map((product) => (
               <Link key={product.id} href={`/buy/${product.id}`} passHref>
-                <div className="flex items-center shadow-sm hover:shadow-md border border-gray-100 rounded-s-md">
+                <div className="flex items-center shadow-sm hover:shadow-md border border-gray-100 rounded-lg">
                   <Image
                     src={product.image}
                     alt={product.title}
                     width={300}
                     height={200}
                     className="object-center object-cover w-1/2 h-full rounded-s-xl"
+                    //
                   />
                   <div className="px-3">
                     <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">

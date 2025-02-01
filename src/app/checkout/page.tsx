@@ -85,10 +85,10 @@ export default function CheckoutPage() {
           Checkout
         </h1>
         <div className="w-full flex justify-between gap-5 mb-8">
-          <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+          <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
             Accessories
           </h3>
-          <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+          <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
             Cart
           </h3>
           <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
@@ -130,15 +130,24 @@ export default function CheckoutPage() {
                 </div>
                 <p className="text-lg text-gray-600">
                   By confirming your order, you accept our{" "}
-                  <Link href="#" className="underline">
+                  <Link
+                    href="#"
+                    className="underline text-blue-400 font-medium"
+                  >
                     General Terms and Conditions
                   </Link>
                   ,{" "}
-                  <Link href="#" className="underline">
+                  <Link
+                    href="#"
+                    className="underline text-blue-400 font-medium"
+                  >
                     the Warranty Conditions
                   </Link>{" "}
                   and our{" "}
-                  <Link href="#" className="underline">
+                  <Link
+                    href="#"
+                    className="underline text-blue-400 font-medium"
+                  >
                     Privacy Policy
                   </Link>
                   .
@@ -164,7 +173,7 @@ export default function CheckoutPage() {
                       <p className="mb-4 text-2xl text-[#404040] font-semibold">
                         Your Name
                       </p>
-                      <div className="flex gap-4 mb-5">
+                      <div className="flex gap-5 mb-5">
                         <label className="flex items-center">
                           <input
                             type="radio"
@@ -384,20 +393,21 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="mb-4">
-                      <label className="flex items-center text-lg">
+                      <label className="flex items-center text-sm md:text-lg">
                         <input
                           type="checkbox"
                           name="sameAddress"
                           checked={formData.sameAddress}
                           onChange={handleInputChange}
-                          className="mr-2"
+                          className="mr-2 w-4 h-4"
                         />
                         Billing address is the same as shipping address
                       </label>
                     </div>
 
                     <p className="text-lg text-[#2B2B2B] mb-4">
-                      * Fields marked with an asterisk are mandatory
+                      <span className="text-red-500 text-lg"> * </span> Fields marked
+                      with an asterisk are mandatory
                     </p>
                     <Link href={"/paymentprocess"}>
                       <button
@@ -477,7 +487,7 @@ export default function CheckoutPage() {
 
               <div className="space-y-2 mb-6">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">1 Article</span>
+                  <span className="text-gray-600 font-semibold">Xbox One</span>
                   <span>${orderItem.price.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">

@@ -402,9 +402,9 @@ export default function Checkout() {
             </div> */}
 
             {/* Price Summary */}
-            <div className="bg-[#DAEDF2] p-4 rounded-lg space-y-2">
+            <div className="bg-[#DAEDF2] mb-6 p-4 rounded-lg space-y-2">
               <div className="flex justify-between">
-                <span>1 Article</span>
+                <span className="text-gray-600 font-semibold">Xbox One</span>
                 <span>${orderItem.price * quantity}</span>
               </div>
               <div className="flex justify-between">
@@ -419,54 +419,39 @@ export default function Checkout() {
             </div>
 
             {/* Features */}
-            <div className="mt-6 space-y-3">
-              <div className="flex items-center space-x-2">
-                <svg
-                  className="w-5 h-5 text-gray-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"
-                  />
-                </svg>
-                <span className="text-sm">12 Months Warranty</span>
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/payments/warrent-protection.png"
+                  width={25}
+                  height={25}
+                  alt="Warranty"
+                />
+                <span className="text-lg text-[#101010] font-medium">
+                  12 Months Warranty
+                </span>
               </div>
-              <div className="flex items-center space-x-2">
-                <svg
-                  className="w-5 h-5 text-gray-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z"
-                  />
-                </svg>
-                <span className="text-sm">Free Return</span>
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/payments/free-return.png"
+                  width={25}
+                  height={25}
+                  alt="Warranty"
+                />
+                <span className="text-lg text-[#101010] font-medium">
+                  Free Return
+                </span>
               </div>
-              <div className="flex items-center space-x-2">
-                <svg
-                  className="w-5 h-5 text-gray-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                <span className="text-sm">Performs Like New</span>
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/payments/like-new.png"
+                  width={25}
+                  height={25}
+                  alt="Warranty"
+                />
+                <span className="text-lg text-[#101010] font-medium">
+                  Performs Like New
+                </span>
               </div>
             </div>
 

@@ -125,6 +125,23 @@ body {
   /* Chevron icon color */
 }
 
+@media (min-width: 300px) and (max-width: 768px) {
+
+  .custom-select .ant-select-selection-placeholder {
+    color: white !important;
+  }
+
+  .custom-select .ant-select-selector {
+    border: 1.5px solid white !important;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 768px) {
+  .custom-select .ant-select-arrow {
+    color: white !important;
+  }
+}
+
 /* .hr-line-for-mobile {
   margin: 20px 0;
 } */

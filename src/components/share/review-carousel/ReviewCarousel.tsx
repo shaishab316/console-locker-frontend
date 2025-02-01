@@ -40,7 +40,7 @@ const reviews = [
     rating: 4,
     avatar: "/clients/client1.png",
   },
-];
+]; 
 
 export default function ReviewCarousel() {
   const carouselRef = useRef<any>(null);

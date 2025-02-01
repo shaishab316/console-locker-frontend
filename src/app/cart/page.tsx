@@ -197,9 +197,7 @@ export default function CartPage() {
                 <div className="rounded-md bg-[#DAEDF2]">
                   <div className="p-4">
                     <div className="flex justify-between">
-                      <span className="text-[#101010]">
-                        {items.length} Article
-                      </span>
+                      <span className="text-[#101010] font-semibold">Xbox</span>
                       <span className="text-[#101010]">
                         ${subtotal.toFixed(2)}
                       </span>
