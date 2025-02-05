@@ -77,10 +77,8 @@ export default function ProductSpecification() {
                   key={index}
                   className="grid grid-cols-1 md:grid-cols-[200px,1fr] py-4 gap-2"
                 >
-                  <tr className="font-medium text-gray-900">
-                    {row.label}
-                  </tr>
-                  <td className="text-gray-600">{row.value}</td>
+                  <tr className="font-medium text-gray-900">{row.label}</tr>
+                  <tr className="text-gray-600">{row.value}</tr>
                 </table>
               ))}
             </div>
