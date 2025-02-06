@@ -225,6 +225,7 @@ const ProductPage: React.FC = () => {
                       <X onClick={() => setFilterView(false)} />
                     </p>
                   </div>
+
                   <select className="w-full border rounded-md p-2">
                     <option>All</option>
                     <option>PlayStation</option>

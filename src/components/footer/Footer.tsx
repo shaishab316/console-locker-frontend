@@ -48,10 +48,10 @@ export function ConsoleFooter() {
         <div className="lg:flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between gap-8 mb-16 pb-8">
           {/* Payment Methods */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-4">
+            <h4 className="text-white text-lg font-semibold mb-2">
               Payment Methods:
             </h4>
-            <div className="flex items-center flex-wrap gap-2">
+            <div className="flex items-center flex-wrap gap-2 mb-4">
               <Image
                 src="/payments/paypal.png"
                 // className="h-12 "
@@ -80,51 +80,47 @@ export function ConsoleFooter() {
                 width={50}
                 height={48}
               />
-              {/* <Image
-                src="/payments/apple-pay.png"
-                // className="h-12"
-                alt="Apple Pay"
-                width={50}
-                height={48}
-              /> */}
             </div>
 
-            <h4 className="text-white text-lg font-semibold mt-6 mb-4">
-              Social Links
-            </h4>
-            <div className="flex gap-4">
-              <Link href="#" className="text-white hover:text-gray-300">
-                <Image
-                  src={"/social/f-linkedin.png"}
-                  width={40}
-                  height={40}
-                  alt="linkedin"
-                />
-              </Link>
-              <Link href="#" className="text-white hover:text-gray-300">
-                <Image
-                  src={"/social/f-facebook.png"}
-                  width={40}
-                  height={40}
-                  alt="linkedin"
-                />{" "}
-              </Link>
-              <Link href="#" className="text-white hover:text-gray-300">
-                <Image
-                  src={"/social/f-instragram.png"}
-                  width={40}
-                  height={40}
-                  alt="linkedin"
-                />{" "}
-              </Link>
-              <Link href="#" className="text-white hover:text-gray-300">
-                <Image
-                  src={"/social/f-x.png"}
-                  width={40}
-                  height={40}
-                  alt="linkedin"
-                />{" "}
-              </Link>
+            {/* Social Links */}
+            <div>
+              <h4 className="text-white text-lg font-semibold mt-6 mb-4">
+                Social Links
+              </h4>
+              <div className="flex gap-4">
+                <Link href="#" className="text-white hover:text-gray-300">
+                  <Image
+                    src={"/social/f-linkedin.png"}
+                    width={40}
+                    height={40}
+                    alt="linkedin"
+                  />
+                </Link>
+                <Link href="#" className="text-white hover:text-gray-300">
+                  <Image
+                    src={"/social/f-facebook.png"}
+                    width={40}
+                    height={40}
+                    alt="linkedin"
+                  />{" "}
+                </Link>
+                <Link href="#" className="text-white hover:text-gray-300">
+                  <Image
+                    src={"/social/f-instragram.png"}
+                    width={40}
+                    height={40}
+                    alt="linkedin"
+                  />{" "}
+                </Link>
+                <Link href="#" className="text-white hover:text-gray-300">
+                  <Image
+                    src={"/social/f-x.png"}
+                    width={40}
+                    height={40}
+                    alt="linkedin"
+                  />{" "}
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -205,9 +201,12 @@ export function ConsoleFooter() {
       </Container>
 
       {/* Copyright */}
-      <div className="text-center bg-[#FDFDFD] text-[#101010] text-lg border-t border-gray-800 py-3">
-        © All Rights Reserved 2024 | VAT number IT17743751004 | Via Ogaden 4,
-        00199 Rome
+      <div className="h-[80px] flex items-center justify-center text-center bg-[#FDFDFD] border-t border-gray-800">
+        <p className="text-[#101010] text-lg">
+          {" "}
+          © All Rights Reserved 2024 | VAT number IT17743751004 | Via Ogaden 4,
+          00199 Rome
+        </p>
       </div>
     </footer>
   );

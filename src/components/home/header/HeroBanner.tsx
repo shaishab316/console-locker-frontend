@@ -16,7 +16,7 @@ const HeroBanner = () => {
             DAI UNA <br /> SECONDA POSSIBILITA <br /> PER LA TUA CONSOLE!
           </h1>
 
-          <div className="border-b-4 border-gray-50 my-2 hr-line-for-mobile overflow-x-auto"></div>
+          <div className="border-b-4 border-gray-50 mt-2 mb-5 hr-line-for-mobile overflow-x-auto"></div>
 
           <p className="text-white text-left text-sm md:text-lg mb-6 md:mb-8 max-w-[420px] md:mx-0">
             Console Locker, make room for the new and sell your used console.{" "}
@@ -47,16 +47,6 @@ const HeroBanner = () => {
               src={"/home/banner-warranty.png"}
               width={124}
               height={56}
-              alt="warranty"
-            />
-          </div>
-
-          {/* for desktop */}
-          <div className="absolute bottom-5 left-[42%] hidden lg:flex items-end justify-end pr-0 md:pr-14">
-            <Image
-              src={"/home/banner-warranty.png"}
-              width={280}
-              height={160}
               alt="warranty"
             />
           </div>

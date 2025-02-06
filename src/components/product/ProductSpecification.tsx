@@ -62,17 +62,8 @@ export default function ProductSpecification() {
         {activeTab === "Specification" && (
           <div className="p-6">
             <h2 className="text-xl font-semibold mb-6">Specification</h2>
-            <div className="divide-y">
+            {/* <div className="divide-y">
               {specificationData.map((row, index) => (
-                // <div
-                //   key={index}
-                //   className="grid grid-cols-1 md:grid-cols-[200px,1fr] py-4 gap-2"
-                // >
-                //   <div className="font-medium text-gray-900 border">
-                //     {row.label}
-                //   </div>
-                //   <div className="text-gray-600">{row.value}</div>
-                // </div>
                 <table
                   key={index}
                   className="grid grid-cols-1 md:grid-cols-[200px,1fr] py-4 gap-2"
@@ -81,6 +72,23 @@ export default function ProductSpecification() {
                   <tr className="text-gray-600">{row.value}</tr>
                 </table>
               ))}
+            </div> */}
+
+            <div className="overflow-x-auto rounded-[10px] border border-gray-300">
+              <table className="min-w-full border border-gray-300 border-collapse rounded-lg">
+                <tbody className="rounded-lg">
+                  {specificationData.map((row, index) => (
+                    <tr key={index} className="odd:bg-white even:bg-gray-50">
+                      <td className="border border-gray-300 px-6 py-4 text-base font-medium text-[#000000]">
+                        {row.label}
+                      </td>
+                      <td className="border border-gray-300 px-6 py-4 text-sm text-[#5F5F5F]">
+                        {row.value}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         )}

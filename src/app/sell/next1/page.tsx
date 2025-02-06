@@ -48,7 +48,7 @@ const SELLING_STEPS = [
 
 export default function ScreenCondition() {
   const [selectedCondition, setSelectedCondition] = useState("");
- const router = useRouter();
+  const router = useRouter();
 
   const handleRouter = (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,11 +108,10 @@ export default function ScreenCondition() {
               type="submit"
               disabled={!selectedCondition}
               onClick={handleRouter}
-              // className={`px-6 py-2 border border-[#101010] rounded-md text-base font-medium transition-colors`}
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-colors
+              className={`px-6 py-2 border rounded-md text-base font-medium transition-colors
                   ${
                     selectedCondition
-                      ? "bg-blue-600 text-white hover:bg-blue-700"
+                      ? "bg-[#F2F5F7] text-[#101010] border-[#101010] font-semibold"
                       : "bg-gray-100 text-gray-400 cursor-not-allowed"
                   }`}
             >

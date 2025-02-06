@@ -40,10 +40,10 @@ export default function ContactPage() {
             </h1>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="flex flex-col lg:flex-row items-start lg:space-x-6">
-                <div className="lg:flex-1 w-full lg:w-1/2">
+                <div className="lg:flex-1 w-full lg:w-1/2 mb-3 lg:mb-0">
                   <label
                     htmlFor="fullName"
-                    className="text-lg font-medium text-[#101010]"
+                    className="text-lg font-medium text-[#101010] mb-2"
                   >
                     Full Name<span className="text-red-500">*</span>
                   </label>
@@ -138,9 +138,9 @@ export default function ContactPage() {
               <div className="flex items-center space-x-4">
                 <div className="bg-[#DAEDF2] p-2 rounded-full">
                   <Image
-                    src={"/contact/phone.png"}
-                    width={20}
-                    height={20}
+                    src={"/contact/phone.svg"}
+                    width={24}
+                    height={24}
                     alt="Phone"
                   />
                 </div>
@@ -157,9 +157,9 @@ export default function ContactPage() {
               <div className="flex items-center space-x-4">
                 <div className="bg-[#DAEDF2] p-2 rounded-full">
                   <Image
-                    src={"/contact/email.png"}
-                    width={20}
-                    height={20}
+                    src={"/contact/mail.svg"}
+                    width={24}
+                    height={24}
                     alt="Phone"
                   />
                 </div>
@@ -176,9 +176,9 @@ export default function ContactPage() {
               <div className="flex items-center space-x-4">
                 <div className="bg-[#DAEDF2] p-2 rounded-full">
                   <Image
-                    src={"/contact/map.png"}
-                    width={18}
-                    height={18}
+                    src={"/contact/location.svg"}
+                    width={24}
+                    height={24}
                     alt="Phone"
                   />
                 </div>

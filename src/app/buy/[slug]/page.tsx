@@ -470,14 +470,19 @@ const ProductDetailsPage: React.FC = () => {
           <h3 className="text-[32px] font-semibold mb-4">You may also like</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.slice(0, 4).map((product) => (
-              <Link key={product.id} href={`/buy/${product.id}`} passHref>
+              <Link
+                key={product.id}
+                href={`/buy/${product.id}`}
+                className="rounded-lg"
+                passHref
+              >
                 <div className="shadow-sm hover:shadow-md border border-gray-100 rounded-lg pb-2">
                   <Image
                     src={product.image}
                     alt={product.title}
                     width={300}
                     height={200}
-                    className="object-center object-cover w-full"
+                    className="object-center object-cover w-full rounded-lg"
                   />
                   <div className="px-3">
                     <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">

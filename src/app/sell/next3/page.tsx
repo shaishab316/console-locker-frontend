@@ -15,7 +15,7 @@ export default function PlayStationOffer() {
       <Container>
         <h1 className="text-3xl font-bold mb-6">Our Current offer:</h1>
 
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid lg:grid-cols-4 gap-8 py-10">
           <div className="lg:col-span-2">
             <div className="h-max flex flex-col lg:flex-row lg:items-center gap-5 bg-[#F7F7F7] p-6 rounded-lg mb-12">
               <div>
@@ -65,12 +65,21 @@ export default function PlayStationOffer() {
               </button>
             </Link>
 
-            <p className="text-[#404040] text-2xl font-medium">
-              When you complete your transaction, your{" "}
-              <span className="text-[#101010]">
-                price will be reserved for 14 days.
-              </span>
-            </p>
+            <div className="flex items-start gap-2 text-[#404040] text-2xl font-medium">
+              <Image
+                src={"/sell/goon.svg"}
+                width={20}
+                height={20}
+                className="pt-1"
+                alt="goon"
+              />
+              <p>
+                When you complete your transaction, your{" "}
+                <span className="text-[#101010]">
+                  price will be reserved for 14 days.
+                </span>
+              </p>
+            </div>
           </div>
 
           {/* Product Details */}
