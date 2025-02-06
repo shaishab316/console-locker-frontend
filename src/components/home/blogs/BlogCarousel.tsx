@@ -59,13 +59,13 @@ export function BlogCarousel() {
               icon={<LeftOutlined />}
               onClick={previous}
               className="flex items-center justify-center"
-              shape="circle"
+              shape="default"
             />
             <Button
               icon={<RightOutlined />}
               onClick={next}
               className="flex items-center justify-center"
-              shape="circle"
+              shape="default"
             />
           </div>
         </div>

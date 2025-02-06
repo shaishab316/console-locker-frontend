@@ -202,7 +202,7 @@ export function ConsoleFooter() {
 
       {/* Copyright */}
       <div className="h-[80px] flex items-center justify-center text-center bg-[#FDFDFD] border-t border-gray-800">
-        <p className="text-[#101010] text-lg">
+        <p className="text-[#101010] text-sm lg:text-lg">
           {" "}
           © All Rights Reserved 2024 | VAT number IT17743751004 | Via Ogaden 4,
           00199 Rome

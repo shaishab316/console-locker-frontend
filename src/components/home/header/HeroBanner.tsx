@@ -26,24 +26,24 @@ const HeroBanner = () => {
           </p>
 
           {/* for desktop */}
-          <div className="max-w-[800px] flex items-center justify-between gap-4 mb-3">
-            <div className="flex gap-5">
+          <div className="w-full lg:max-w-[85%] flex items-center justify-between gap-4 mb-3">
+            <div className="w-full lg:w-auto flex gap-5">
               <Link
                 href={"buy/playstation"}
-                className="w-1/2 md:w-auto bg-[#FDFDFD] text-[#E95F00] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
+                className="w-1/2 md:w-auto flex items-center justify-center bg-[#FDFDFD] text-[#E95F00] font-medium px-2.5 sm:px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
               >
                 COMPRA ORA
               </Link>
               <Link
                 href={"/sell"}
-                className="w-1/2 md:w-auto bg-transparent text-[#FDFDFD] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
+                className="w-1/2 md:w-auto flex items-center justify-center bg-transparent text-[#FDFDFD] font-medium px-2.5 sm:px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
               >
                 VENDI ORA
               </Link>
             </div>
 
             {/* for desktop */}
-            <div>
+            <div className="hidden lg:flex items-end justify-end">
               <Image
                 src={"/home/banner-warranty.png"}
                 width={280}

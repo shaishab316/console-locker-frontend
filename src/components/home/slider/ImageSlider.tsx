@@ -11,7 +11,7 @@ export default function ImageSlider() {
     mode: "snap",
     slides: {
       perView: 2.3, // Show 2 full images and 10% of previous/next images
-      spacing: 15, // Adjust spacing for smooth layout
+      spacing: 5, // Adjust spacing for smooth layout
     },
   });
 

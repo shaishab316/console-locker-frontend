@@ -30,7 +30,7 @@ export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
         <SheetHeader>
           <SheetTitle className="text-left">Menu</SheetTitle>
         </SheetHeader>
-        <div className="mt-8 flex flex-col space-y-4">
+        <div className="mt-8 flex flex-col space-y-8">
           <Link
             href="/"
             className="text-lg font-medium"
@@ -44,7 +44,7 @@ export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
                 Buy
               </AccordionTrigger>
               <AccordionContent>
-                <div className="flex flex-col space-y-3 pl-4 bg-[#FDFDFD] py-3 px-5 rounded-lg">
+                <div className="flex flex-col space-y-6 pl-4 bg-[#FDFDFD] py-3 px-5 rounded-lg">
                   <Link
                     href="/buy/playstation"
                     className="text-sm"

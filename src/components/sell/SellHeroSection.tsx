@@ -104,7 +104,7 @@ export default function SellHeroSection() {
 
               {/* Console Selection and Price Estimate */}
               <div className="flex flex-col space-y-4">
-                <Select
+                {/* <Select
                   placeholder="CHOOSE YOUR CONSOLE"
                   style={{
                     backgroundColor: "transparent",
@@ -119,12 +119,26 @@ export default function SellHeroSection() {
                     label: console.name,
                   }))}
                   size="large"
-                />
+                /> */}
+
+                <select
+                  name=""
+                  id=""
+                  className={`w-full md:w-1/2 h-14 text-[#010101] rounded-sm px-2 border border-[#101010] bg-transparent`}
+                  onChange={(value) => setSelectedConsole(value)}
+                >
+                  <option value="PlayStation 5">PlayStation 5</option>
+                  <option value="PlayStation 4">PlayStation 4</option>
+                  <option value="PlayStation 4 Pro">PlayStation 4 Pro</option>
+                  <option value="Xbox Series X">Xbox Series X</option>
+                  <option value="Xbox Series S">Xbox Series S</option>
+                  <option value="Nintendo Switch">Nintendo Switch</option>
+                </select>
 
                 <button
                   onClick={getEstimate}
                   disabled={!selectedConsole || isLoading}
-                  className={`w-full md:w-1/2 h-12 text-white rounded-sm ${
+                  className={`w-full md:w-1/2 h-16 text-white rounded-sm ${
                     !selectedConsole || isLoading
                       ? "bg-[#101010] cursor-not-allowed"
                       : "bg-gray-700 hover:bg-gray-800"

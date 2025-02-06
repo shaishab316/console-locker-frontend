@@ -34,7 +34,7 @@ export default function StorageSelector() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center mb-24">
       <div className="w-full max-w-[798px] mx-auto my-20">
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="bg-white rounded-sm shadow-lg p-6">
           <div className="mb-6">
             <h1 className="text-xl font-semibold text-gray-900 mb-2">
               Playstation 4
@@ -42,7 +42,7 @@ export default function StorageSelector() {
             <h2 className="text-lg font-medium text-gray-900 mb-2">
               What is the storage of your items?
             </h2>
-            <p className="text-sm text-blue-600 bg-blue-50 p-3 rounded-md">
+            <p className="text-lg font-medium text-[#101010] bg-[#DAEDF2] p-3 rounded-md">
               You can check the storage by going to &quot;Settings&quot; &gt;
               &quot;General&quot; &gt; &quot;About&quot;
             </p>
@@ -78,10 +78,10 @@ export default function StorageSelector() {
                 type="submit"
                 disabled={!selectedStorage}
                 onClick={handleRouter}
-                className={`px-6 py-2 rounded-md text-sm font-medium transition-colors
+                className={`px-6 py-2 border rounded-md text-base font-medium transition-colors
                   ${
                     selectedStorage
-                      ? "bg-blue-600 text-white hover:bg-blue-700"
+                      ? "bg-[#F2F5F7] text-[#101010] border-[#101010] font-semibold"
                       : "bg-gray-100 text-gray-400 cursor-not-allowed"
                   }`}
               >

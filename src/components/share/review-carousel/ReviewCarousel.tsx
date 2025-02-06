@@ -40,7 +40,7 @@ const reviews = [
     rating: 4,
     avatar: "/clients/client1.png",
   },
-]; 
+];
 
 export default function ReviewCarousel() {
   const carouselRef = useRef<any>(null);
@@ -70,7 +70,7 @@ export default function ReviewCarousel() {
             </button>
             <button
               onClick={next}
-              className="p-2 rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
+              className="px-2.5 py-2 rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
               aria-label="Next review"
             >
               <ArrowRightOutlined className="text-xl" />
