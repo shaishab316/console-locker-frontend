@@ -23,7 +23,7 @@ export default function BlogDetail() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-12">
+    <div className="min-h-screen bg-[#F2F5F7] pb-12">
       <Container className="max-w-4xl mx-auto">
         {/* Title */}
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 my-6">
@@ -170,7 +170,7 @@ export default function BlogDetail() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3].map((i) => (
                 <Link href="#" key={i} className="group">
-                  <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div className="bg-[#FDFDFD] rounded-lg shadow-md overflow-hidden">
                     <div className="relative h-48">
                       <Image
                         src="/blogs/blog4.png"

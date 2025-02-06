@@ -61,7 +61,7 @@ export default function GreenStory() {
             CONSOLE LOCKER.
           </h1>
 
-          <div className="w-full h-2 border-b-2 border-white mb-6"></div>
+          <div className="w-full h-2 border-b-2 border-white mb-10"></div>
 
           {/* Cards */}
           <div className="max-w-[760px] space-y-5">
@@ -72,7 +72,9 @@ export default function GreenStory() {
               transform transition-all duration-300 hover:translate-x-2
               cursor-pointer"
               >
-                <p className="text-white text-sm md:text-base">{text}</p>
+                <p className="w-[440px] mx-auto text-center text-[#FFFFFF] text-base md:text-xl leading-6">
+                  {text}
+                </p>
               </div>
             ))}
           </div>

@@ -11,9 +11,9 @@ export default function Home() {
       <HeroBanner />
       <ConsoleSelector />
       <ImageSlider />
-      <ReviewCarousel />
-      <GreenStory />
-      <BlogCarousel />
+      {/* <ReviewCarousel /> */}
+      {/* <GreenStory /> */}
+      {/* <BlogCarousel /> */}
     </div>
   );
 }

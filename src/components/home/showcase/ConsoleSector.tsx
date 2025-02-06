@@ -329,9 +329,10 @@ export default function ConsoleSelector() {
                   <div
                     className={`w-20 md:w-24 h-20 md:h-24 rounded-full flex items-center justify-center transition-all ${
                       activeTab === "xbox"
-                        ? "bg-gradient-to-r from-[#1B9E31] to-[#0E7A22]"
-                        : "bg-gradient-to-r from-gray-300 to-gray-400"
-                    } hover:bg-gradient-to-r hover:from-[#1B9E31] hover:to-[#0E7A22]`}
+                        ? "bg-tab1-radial"
+                        : // ? "bg-gradient-to-r from-[#1B9E31] to-[#0E7A22]"
+                          "bg-gradient-to-r from-gray-300 to-gray-400"
+                    } hover:bg-tab1-radial`}
                   >
                     <Image
                       src="/tab/xbox.svg"
@@ -346,7 +347,7 @@ export default function ConsoleSelector() {
               children: (
                 <div
                   className={`p-4 md:p-8 ${
-                    activeTab === "xbox" ? "bg-[#1B9E31]" : ""
+                    activeTab === "xbox" ? "bg-[#63b95d]" : ""
                   }`}
                 >
                   <Container className="w-full mx-auto">
@@ -414,7 +415,7 @@ export default function ConsoleSelector() {
                   <div
                     className={`w-20 md:w-24 h-20 md:h-24 rounded-full flex items-center justify-center transition-all ${
                       activeTab === "playstation"
-                        ? "bg-gradient-to-r from-[#023993] to-[#0050D4]"
+                        ? "bg-tab2-radial"
                         : "bg-gradient-to-r from-gray-300 to-gray-400"
                     } hover:bg-gradient-to-r hover:from-[#023993] hover:to-[#0050D4]`}
                   >
@@ -429,7 +430,7 @@ export default function ConsoleSelector() {
                 </div>
               ),
               children: (
-                <div className="p-4 md:p-8 bg-[#023993]">
+                <div className="p-4 md:p-8 bg-[#1761bf]">
                   <Container className="w-[98%] mx-auto">
                     <div className="flex items-center py-3 space-x-4">
                       <h2 className="text-5xl font-bold text-[#FDFDFD] mb-8">
@@ -509,7 +510,7 @@ export default function ConsoleSelector() {
                 </div>
               ),
               children: (
-                <div className="p-4 md:p-8 bg-[#EB3333]">
+                <div className="p-4 md:p-8 bg-[#f34040]">
                   <Container className="w-[98%] mx-auto">
                     <div className="flex items-center py-3 space-x-4">
                       <h2 className="text-5xl font-bold text-[#FDFDFD] mb-8">

@@ -142,6 +142,17 @@ body {
   }
 }
 
-/* .hr-line-for-mobile {
-  margin: 20px 0;
-} */
+
+.bg-tab1-radial {
+  background-image: radial-gradient(#63B95D, #63B95D, #8BCB87);
+}
+
+.bg-tab2-radial {
+  /* background-image: radial-gradient(circle, #1761BF 70%, #6FA1E1); */
+  background: rgb(23, 97, 191);
+  background: radial-gradient(circle, rgba(23, 97, 191, 1) 35%, rgba(111, 161, 225, 0.8939950980392157) 100%);
+}
+
+.bg-tab3-radial {
+  background-image: radial-gradient(#63B95D, #63B95D, #8BCB87);
+}

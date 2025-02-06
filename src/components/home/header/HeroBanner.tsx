@@ -5,96 +5,64 @@ import Link from "next/link";
 const HeroBanner = () => {
   return (
     <div className="bg-[url(/home/bannermobile1.png)] md:bg-[url(/hero-banner.png)] bg-cover bg-no-repeat min-h-[calc(100vh-80px)]">
-      <Container>
-        <div className="flex flex-col md:flex-row min-h-[calc(100vh-80px)] lg:items-center lg:justify-center">
-          {/* Hidden on small screens */}
-          <div className="hidden md:block w-1/2"></div>
+      {/* <Container> */}
+      <div className="flex flex-col md:flex-row min-h-[calc(100vh-80px)] lg:items-center lg:justify-center">
+        {/* Hidden on small screens */}
+        <div className="hidden md:block w-1/2"></div>
 
-          {/* Content Section */}
-          <div className="w-full md:w-1/2 px-4 text-center md:px-0">
-            {/* for mobile */}
-            {/* <h1 className="lg:hidden text-[24px] text-left font-bold text-white leading-tight md:leading-normal mt-5">
-              DAI UNA <br /> SECONDA POSSIBILITÀ ALLA TUA CONSOLE!
-            </h1> */}
+        {/* Content Section */}
+        <div className="relative w-full md:w-1/2 px-4 text-center md:px-0">
+          <h1 className="text-[32px] md:text-4xl lg:text-[70px] font-bold text-left text-white leading-tight md:leading-[84px] mt-3">
+            DAI UNA <br /> SECONDA POSSIBILITA <br /> PER LA TUA CONSOLE!
+          </h1>
 
-            {/* for desktop */}
-            <h1 className="text-[32px] md:text-4xl lg:text-[70px] font-bold text-left text-white leading-tight md:leading-normal mt-3">
-              A SECOND <br className="md:hidden" /> CHANCE FOR{" "}
-              <br className="md:hidden" /> YOUR CONSOLE!
-            </h1>
+          <div className="border-b-4 border-gray-50 my-2 hr-line-for-mobile overflow-x-auto"></div>
 
-            {/* for mobile - horizontal line */}
-            <div className="lg:hidden border-b-4 border-gray-50 my-2 hr-line-for-mobile"></div>
+          <p className="text-white text-left text-sm md:text-lg mb-6 md:mb-8 max-w-[420px] md:mx-auto md:mx-0">
+            Console Locker, make room for the new and sell your used console.{" "}
+            <br />
+            Save with a refurbished console and enjoy a first-class gaming
+            experience.
+          </p>
 
-            {/* for mobile */}
-            {/* <p className="lg:hidden text-white text-sm font-semibold text-left mb-3 md:mb-8 max-w-[380px] md:mx-0">
-              Console Locker, fai spazio al nuovo <br /> e vendi la tua console
-              usata. <br /> Risparmia con una console ricondizionata e vivi
-              un&rsquo;esperienza gaming di prima scelta.
-            </p> */}
+          {/* for desktop */}
+          <div className="flex items-center justify-center md:justify-start gap-4 mb-3">
+            <Link
+              href={"buy/playstation"}
+              className="w-1/2 md:w-auto bg-[#FDFDFD] text-[#E95F00] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
+            >
+              COMPRA ORA
+            </Link>
+            <Link
+              href={"/sell"}
+              className="w-1/2 md:w-auto bg-transparent text-[#FDFDFD] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
+            >
+              VENDI ORA
+            </Link>
+          </div>
 
-            {/* for desktop */}
-            <p className="text-white text-left text-sm md:text-lg mb-6 md:mb-8 max-w-[380px] mx-auto md:mx-0">
-              Console Locker, make room for the new and sell your used console.{" "}
-              <br />
-              Save with a refurbished console and enjoy a first-class gaming
-              experience.
-            </p>
+          {/* for mobile  */}
+          <div className="lg:hidden flex items-end justify-end pr-0 md:pr-14">
+            <Image
+              src={"/home/banner-warranty.png"}
+              width={124}
+              height={56}
+              alt="warranty"
+            />
+          </div>
 
-            {/* for mobile */}
-            {/* <div className="lg:hidden flex items-center justify-start gap-4 mb-3">
-              <Link
-                href={"buy/playstation"}
-                className="w-[170px] md:w-auto bg-[#FDFDFD] text-base text-[#E95F00] font-semibold py-3 md:px-10 md:py-4 border rounded-md"
-              >
-                COMPRÀ ORA
-              </Link>
-              <Link
-                href={"/sell"}
-                className="w-[168px]  md:w-auto bg-transparent text-base text-[#FDFDFD] font-semibold py-3 md:px-10 md:py-4 border-2 rounded-md"
-              >
-                VENDI ORA
-              </Link>
-            </div> */}
-
-            {/* for desktop */}
-            <div className="flex items-center justify-center md:justify-start gap-4 mb-3">
-              <Link
-                href={"buy/playstation"}
-                className="w-1/2 md:w-auto bg-[#FDFDFD] text-[#E95F00] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
-              >
-                Buy Now
-              </Link>
-              <Link
-                href={"/sell"}
-                className="w-1/2 md:w-auto bg-transparent text-[#FDFDFD] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
-              >
-                Sell Now
-              </Link>
-            </div>
-
-            {/* for mobile  */}
-            <div className="lg:hidden flex items-end justify-end pr-0 md:pr-14">
-              <Image
-                src={"/home/banner-warranty.png"}
-                width={124}
-                height={56}
-                alt="warranty"
-              />
-            </div>
-
-            {/* for desktop */}
-            <div className="hidden lg:flex items-end justify-end pr-0 md:pr-14">
-              <Image
-                src={"/home/banner-warranty.png"}
-                width={300}
-                height={160}
-                alt="warranty"
-              />
-            </div>
+          {/* for desktop */}
+          <div className="absolute bottom-5 left-[42%] hidden lg:flex items-end justify-end pr-0 md:pr-14">
+            <Image
+              src={"/home/banner-warranty.png"}
+              width={280}
+              height={160}
+              alt="warranty"
+            />
           </div>
         </div>
-      </Container>
+      </div>
+      {/* </Container> */}
     </div>
   );
 };

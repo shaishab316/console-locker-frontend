@@ -42,20 +42,16 @@ export function BlogCard({
         <div className="flex items-center gap-4 mb-3">
           <div className="flex items-center gap-2">
             <Image src="/users/user.png" width={12} height={12} alt="User" />
-            <Text type="secondary">{author}</Text>
+            <p className="text[#101010] text-sm">{author}</p>
           </div>
           <div className="flex items-center gap-2">
             <Image src="/calendar.png" width={12} height={12} alt="Calendar" />
-            <Text type="secondary">{date}</Text>
+            <p className="text-[#101010] text-sm">{date}</p>
           </div>
         </div>
-        <Title level={5} style={{ marginTop: 0, marginBottom: 8 }}>
-          {title}
-        </Title>
-        <Text type="secondary" style={{ display: "block", marginBottom: 16 }}>
-          {excerpt}
-        </Text>
-        <Text className="text-blue-600 hover:text-blue-700">Read More</Text>
+        <h2 className="text-[#101010] text-xl font-semibold mb-2.5">{title}</h2>
+        <p className="text-base text-[#2B2B2B] mb-2">{excerpt}</p>
+        <p className="text-[#222C9B] hover:text-[#2c3acf]">Read More</p>
       </Card>
     </Link>
   );
