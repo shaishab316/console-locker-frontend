@@ -26,19 +26,31 @@ const HeroBanner = () => {
           </p>
 
           {/* for desktop */}
-          <div className="flex items-center justify-center md:justify-start gap-4 mb-3">
-            <Link
-              href={"buy/playstation"}
-              className="w-1/2 md:w-auto bg-[#FDFDFD] text-[#E95F00] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
-            >
-              COMPRA ORA
-            </Link>
-            <Link
-              href={"/sell"}
-              className="w-1/2 md:w-auto bg-transparent text-[#FDFDFD] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
-            >
-              VENDI ORA
-            </Link>
+          <div className="max-w-[800px] flex items-center justify-between gap-4 mb-3">
+            <div className="flex gap-5">
+              <Link
+                href={"buy/playstation"}
+                className="w-1/2 md:w-auto bg-[#FDFDFD] text-[#E95F00] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
+              >
+                COMPRA ORA
+              </Link>
+              <Link
+                href={"/sell"}
+                className="w-1/2 md:w-auto bg-transparent text-[#FDFDFD] font-medium px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
+              >
+                VENDI ORA
+              </Link>
+            </div>
+
+            {/* for desktop */}
+            <div>
+              <Image
+                src={"/home/banner-warranty.png"}
+                width={280}
+                height={160}
+                alt="warranty"
+              />
+            </div>
           </div>
 
           {/* for mobile  */}

@@ -32,7 +32,7 @@ export function ConsoleFooter() {
             </div>
           </div>
 
-          <div className="w-full lg:w-[30%] flex items-center justify-between border border-gray-800 rounded-md">
+          <div className="w-full lg:w-[50%] flex items-center justify-between border border-gray-800 rounded-md">
             <input
               className="border-none outline-none bg-transparent text-white px-2.5 py-3"
               type="text"
