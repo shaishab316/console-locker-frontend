@@ -9,6 +9,11 @@ export default {
   ],
   theme: {
   	extend: {
+		backgroundImage: {
+        'tab1-radial': 'radial-gradient(circle, rgba(99,185,93,1) 35%, rgba(139,203,135,0.83) 100%)',
+        'tab2-radial': 'radial-gradient(circle, rgba(23,97,191,1) 35%, rgba(111,161,225,0.89) 100%)',
+        'tab3-radial': 'radial-gradient(circle, rgba(243,64,64,1) 35%, rgba(246,117,117,0.75) 100%)',
+      },
 		fontFamily: {
 			sans: ['var(--font-poppins)', 'sans-serif'], 
 		  },

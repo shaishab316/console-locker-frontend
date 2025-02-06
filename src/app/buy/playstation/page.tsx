@@ -6,9 +6,11 @@ import {
   ChevronsRight,
   LayoutGrid,
   LayoutList,
+  X,
 } from "lucide-react";
 import { Select } from "antd";
 import Link from "next/link";
+import Container from "@/components/common/Container";
 
 interface Product {
   title: string;
@@ -178,293 +180,328 @@ const ProductPage: React.FC = () => {
   );
 
   return (
-    <div className="relative flex flex-col lg:flex-row container mx-auto px-4 py-8">
-      {/* Sidebar */}
-      <div className={`w-full max-h-max lg:w-1/4 bg-white rounded-md  mb-5`}>
-        <h3 className="hidden md:flex text-xl font-semibold mb-4">Filter</h3>
-
-        {/* filter icon for mobile device */}
-        <div
-          onClick={() => setFilterView(!filterView)}
-          className={`flex md:hidden items-center gap-2 border ${
-            filterView && "bg-gray-200"
-          } rounded-lg w-max p-2`}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            className="lucide lucide-filter"
-          >
-            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
-          </svg>
-          <h3 className="text-lg font-medium">Filter</h3>
-        </div>
-
-        {/* for mobile */}
-        {filterView && (
-          <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white rounded-lg p-5">
-            <div className="mb-4">
-              <h4 className="font-semibold mb-2">Products</h4>
-              <select className="w-full border rounded-md p-2">
-                <option>All</option>
-                <option>PlayStation</option>
-                <option>Xbox</option>
-                <option>Nintendo</option>
-              </select>
-            </div>
-            <div className="mb-4">
-              <h4 className="font-semibold mb-2">Brand</h4>
-              <select className="w-full border rounded-md p-2">
-                <option>All</option>
-                <option>PlayStation</option>
-                <option>Xbox</option>
-                <option>Nintendo</option>
-              </select>
-            </div>
-            <div className="mb-4">
-              <h4 className="font-semibold mb-2">Price Range</h4>
-              <select className="w-full border rounded-md p-2">
-                <option>All</option>
-                <option>$100 - $300</option>
-                <option>$300 - $500</option>
-                <option>$500+</option>
-              </select>
-            </div>
-            <div className="mb-4">
-              <h4 className="font-semibold mb-2">Condition</h4>
-              <select className="w-full border rounded-md p-2">
-                <option>All</option>
-                <option>Good</option>
-                <option>New</option>
-              </select>
-            </div>
-            <button
-              onClick={() => setFilterView(!filterView)}
-              className="bg-black text-white text-lg w-full rounded-xl py-3"
-            >
-              Filter
-            </button>
-          </div>
-        )}
-
-        {/* for desktop */}
-
-        <div className="hidden md:block">
-          <div className="mb-4">
-            <h4 className="font-semibold mb-2">Products</h4>
-            <select className="w-full border rounded-md p-2">
-              <option>All</option>
-              <option>PlayStation</option>
-              <option>Xbox</option>
-              <option>Nintendo</option>
-            </select>
-          </div>
-          <div className="mb-4">
-            <h4 className="font-semibold mb-2">Brand</h4>
-            <select className="w-full border rounded-md p-2">
-              <option>All</option>
-              <option>PlayStation</option>
-              <option>Xbox</option>
-              <option>Nintendo</option>
-            </select>
-          </div>
-          <div className="mb-4">
-            <h4 className="font-semibold mb-2">Price Range</h4>
-            <select className="w-full border rounded-md p-2">
-              <option>All</option>
-              <option>$100 - $300</option>
-              <option>$300 - $500</option>
-              <option>$500+</option>
-            </select>
-          </div>
-          <div className="mb-4">
-            <h4 className="font-semibold mb-2">Condition</h4>
-            <select className="w-full border rounded-md p-2">
-              <option>All</option>
-              <option>Good</option>
-              <option>New</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      {/* Product Grid */}
-      <div className="w-full lg:w-3/4 lg:ml-6">
-        {/* View Toggle */}
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex gap-2 items-center cursor-pointer">
-            <div
-              onClick={() => setView("grid")}
-              className={`hover:bg-[#DAEDF2] p-3 rounded-lg ${
-                view === "grid" ? "bg-[#DAEDF2]" : ""
-              }`}
-            >
-              <LayoutGrid />
-            </div>
-            <div
-              onClick={() => setView("list")}
-              className={`hover:bg-[#DAEDF2] p-3 rounded-lg ${
-                view === "list" ? "bg-[#DAEDF2]" : ""
-              }`}
-            >
-              <LayoutList />
-            </div>
-          </div>
-          <div className="flex gap-2">
-            <Select
-              showSearch
-              style={{ width: 200 }}
-              className="custom-select"
-              placeholder="Sort by"
-              optionFilterProp="label"
-              filterSort={(optionA, optionB) =>
-                (optionA?.label ?? "")
-                  .toLowerCase()
-                  .localeCompare((optionB?.label ?? "").toLowerCase())
-              }
-              options={[
-                {
-                  value: "1",
-                  label: "High to Low",
-                },
-                {
-                  value: "2",
-                  label: "Low to High",
-                },
-              ]}
-            />
-          </div>
-        </div>
-
-        {/* Products */}
-        {view === "grid" ? (
+    <div className="relative bg-[#F2F5F7] flex flex-col lg:flex-row py-8">
+      <Container>
+        {/* Sidebar */}
+        <div className="flex">
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6`}
+            className={`w-0 lg:max-h-max lg:w-1/4 bg-white rounded-md lg:p-5 lg:mb-5`}
           >
-            {paginatedProducts.map((product) => (
-              <Link key={product.id} href={`/buy/${product.id}`} passHref>
-                <div className="shadow-sm hover:shadow-md border border-gray-100 rounded-lg pb-2">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    width={300}
-                    height={200}
-                    className="object-center object-cover w-full"
-                  />
-                  <div className="px-3">
-                    <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
-                      {product.title}
-                    </h3>
-                    <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
-                      <div>
-                        Condition:
-                        <span className="font-medium text-[#2B2B2B]">
-                          {product.condition}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
-                      <div className="flex items-center gap-2">
-                        <p className="text-[#2B2B2B] text-base">Price:</p>
-                        <span className="text-[#00B67A] text-lg font-semibold">
-                          {product.price}
-                        </span>
-                      </div>
-                      <span className="text-sm text-[#919191] line-through">
-                        New: 350
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        ) : null}
+            <h3 className="hidden md:flex text-xl font-semibold mb-4">
+              Filter
+            </h3>
 
-        {view === "list" ? (
-          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12`}>
-            {paginatedProducts.map((product) => (
-              <Link key={product.id} href={`/buy/${product.id}`} passHref>
-                <div className="flex items-center shadow-sm hover:shadow-md border border-gray-100 rounded-lg">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    width={300}
-                    height={200}
-                    className="object-center object-cover w-1/2 h-full rounded-s-xl"
-                    //
-                  />
-                  <div className="px-3">
-                    <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
-                      {product.title}
-                    </h3>
-                    <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
-                      <div>
-                        Condition:
-                        <span className="font-medium text-[#2B2B2B]">
-                          {" "}
-                          {product.condition}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
-                      <div className="flex items-center gap-2">
-                        <p className="text-[#2B2B2B] text-base">
-                          Price:{" "}
-                          <span className="text-[#00B67A] text-lg font-semibold">
-                            {product.price}
-                          </span>
-                        </p>
-                      </div>
-                      <span className="text-sm text-[#919191] line-through">
-                        New: 350
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        ) : null}
-
-        {/* Pagination */}
-        <div className="flex justify-center items-center gap-3 my-12">
-          <button
-            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-            className="px-4 py-2 bg-gray-200 rounded-md mr-2"
-          >
-            <ChevronsLeft />
-          </button>
-          {[1, 2, 3].map((pageNumber) => (
-            <button
-              key={pageNumber}
-              onClick={() => setPage(pageNumber)}
-              className={`px-4 py-2 rounded-md ${
-                page === pageNumber ? "bg-black text-white" : "bg-gray-200"
-              }`}
+            {/* filter icon for mobile device */}
+            {/* <div
+              onClick={() => setFilterView(!filterView)}
+              className={`flex md:hidden items-center gap-2 border ${
+                filterView && "bg-gray-200"
+              } rounded-lg w-max p-2`}
             >
-              {pageNumber}
-            </button>
-          ))}
-          <button
-            onClick={() =>
-              setPage((prev) =>
-                Math.min(prev + 1, Math.ceil(products.length / itemsPerPage))
-              )
-            }
-            className="px-4 py-2 bg-gray-200 rounded-md ml-2"
-          >
-            <ChevronsRight />
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                className="lucide lucide-filter"
+              >
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+              </svg>
+              <h3 className="text-lg font-medium">Filter</h3>
+            </div> */}
+
+            {/* for mobile */}
+            {filterView && (
+              <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white rounded-lg p-5">
+                <div className="mb-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="font-semibold mb-2">Products</h4>
+                    <p>
+                      <X onClick={() => setFilterView(false)} />
+                    </p>
+                  </div>
+                  <select className="w-full border rounded-md p-2">
+                    <option>All</option>
+                    <option>PlayStation</option>
+                    <option>Xbox</option>
+                    <option>Nintendo</option>
+                  </select>
+                </div>
+                <div className="mb-4">
+                  <h4 className="font-semibold mb-2">Brand</h4>
+                  <select className="w-full border rounded-md p-2">
+                    <option>All</option>
+                    <option>PlayStation</option>
+                    <option>Xbox</option>
+                    <option>Nintendo</option>
+                  </select>
+                </div>
+                <div className="mb-4">
+                  <h4 className="font-semibold mb-2">Price Range</h4>
+                  <select className="w-full border rounded-md p-2">
+                    <option>All</option>
+                    <option>$100 - $300</option>
+                    <option>$300 - $500</option>
+                    <option>$500+</option>
+                  </select>
+                </div>
+                <div className="mb-4">
+                  <h4 className="font-semibold mb-2">Condition</h4>
+                  <select className="w-full border rounded-md p-2">
+                    <option>All</option>
+                    <option>Good</option>
+                    <option>New</option>
+                  </select>
+                </div>
+                <button
+                  onClick={() => setFilterView(!filterView)}
+                  className="bg-black text-white text-lg w-full rounded-xl py-3"
+                >
+                  Filter
+                </button>
+              </div>
+            )}
+            {/* for desktop */}
+            <div className="hidden lg:block">
+              <div className="mb-4">
+                <h4 className="font-semibold mb-2">Products</h4>
+                <select className="w-full border rounded-md p-2">
+                  <option>All</option>
+                  <option>PlayStation</option>
+                  <option>Xbox</option>
+                  <option>Nintendo</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <h4 className="font-semibold mb-2">Brand</h4>
+                <select className="w-full border rounded-md p-2">
+                  <option>All</option>
+                  <option>PlayStation</option>
+                  <option>Xbox</option>
+                  <option>Nintendo</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <h4 className="font-semibold mb-2">Price Range</h4>
+                <select className="w-full border rounded-md p-2">
+                  <option>All</option>
+                  <option>$100 - $300</option>
+                  <option>$300 - $500</option>
+                  <option>$500+</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <h4 className="font-semibold mb-2">Condition</h4>
+                <select className="w-full border rounded-md p-2">
+                  <option>All</option>
+                  <option>Good</option>
+                  <option>New</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Product Grid */}
+          <div className="w-full lg:w-3/4 lg:ml-6">
+            {/* View Toggle */}
+            <div className="bg-[#FDFDFD] flex justify-between items-center p-2.5 rounded-md mb-4">
+              <div
+                onClick={() => setFilterView(!filterView)}
+                className={`flex lg:hidden items-center gap-2 border ${
+                  filterView && "bg-gray-200"
+                } rounded-lg w-max p-2`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-filter"
+                >
+                  <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                </svg>
+                <h3 className="text-lg font-medium">Filter</h3>
+              </div>
+
+              {/* view - grid / list */}
+              <div className="hidden lg:flex gap-2 items-center cursor-pointer">
+                <div
+                  onClick={() => setView("grid")}
+                  className={`hover:bg-[#DAEDF2] p-3 rounded-lg ${
+                    view === "grid" ? "bg-[#DAEDF2]" : ""
+                  }`}
+                >
+                  {/* <LayoutGrid /> */}
+                  <Image
+                    src="/sell/grid.svg"
+                    width={20}
+                    height={20}
+                    alt="grid"
+                  />
+                </div>
+                <div
+                  onClick={() => setView("list")}
+                  className={`hover:bg-[#DAEDF2] p-3 rounded-lg ${
+                    view === "list" ? "bg-[#DAEDF2]" : ""
+                  }`}
+                >
+                  {/* <LayoutList /> */}
+                  <Image
+                    src="/sell/list.svg"
+                    width={20}
+                    height={20}
+                    alt="grid"
+                  />
+                </div>
+              </div>
+
+              {/* sorting */}
+              <div className="flex gap-2">
+                <select className="w-48 md:w-56 px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
+                  <option defaultValue={"Sort by"}>Sort by</option>
+                  <option value="High to low">High to Low</option>
+                  <option value="Low to high">Low to High</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Products */}
+            {view === "grid" ? (
+              <div
+                className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6`}
+              >
+                {paginatedProducts.map((product) => (
+                  <Link key={product.id} href={`/buy/${product.id}`} passHref>
+                    <div className="shadow-sm hover:shadow-md border border-gray-100 rounded-lg pb-2">
+                      <Image
+                        src={product.image}
+                        alt={product.title}
+                        width={300}
+                        height={200}
+                        className="object-center object-cover w-full"
+                      />
+                      <div className="px-3">
+                        <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
+                          {product.title}
+                        </h3>
+                        <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
+                          <div>
+                            Condition:
+                            <span className="font-medium text-[#2B2B2B]">
+                              {product.condition}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
+                          <div className="flex items-center gap-2">
+                            <p className="text-[#2B2B2B] text-base">Price:</p>
+                            <span className="text-[#00B67A] text-lg font-semibold">
+                              {product.price}
+                            </span>
+                          </div>
+                          <span className="text-sm text-[#919191] line-through">
+                            New: 350
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+
+            {view === "list" ? (
+              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12`}>
+                {paginatedProducts.map((product) => (
+                  <Link key={product.id} href={`/buy/${product.id}`} passHref>
+                    <div className="flex items-center shadow-sm hover:shadow-md border border-gray-100 rounded-lg">
+                      <Image
+                        src={product.image}
+                        alt={product.title}
+                        width={300}
+                        height={200}
+                        className="object-center object-cover w-1/2 h-full rounded-s-xl"
+                        //
+                      />
+                      <div className="px-3">
+                        <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
+                          {product.title}
+                        </h3>
+                        <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
+                          <div>
+                            Condition:
+                            <span className="font-medium text-[#2B2B2B]">
+                              {" "}
+                              {product.condition}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
+                          <div className="flex items-center gap-2">
+                            <p className="text-[#2B2B2B] text-base">
+                              Price:{" "}
+                              <span className="text-[#00B67A] text-lg font-semibold">
+                                {product.price}
+                              </span>
+                            </p>
+                          </div>
+                          <span className="text-sm text-[#919191] line-through">
+                            New: 350
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+
+            {/* Pagination */}
+            <div className="flex justify-center items-center gap-3 my-12">
+              <button
+                onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+                className="px-4 py-2 bg-gray-200 rounded-md mr-2"
+              >
+                <ChevronsLeft />
+              </button>
+              {[1, 2, 3].map((pageNumber) => (
+                <button
+                  key={pageNumber}
+                  onClick={() => setPage(pageNumber)}
+                  className={`px-4 py-2 rounded-md ${
+                    page === pageNumber ? "bg-black text-white" : "bg-gray-200"
+                  }`}
+                >
+                  {pageNumber}
+                </button>
+              ))}
+              <button
+                onClick={() =>
+                  setPage((prev) =>
+                    Math.min(
+                      prev + 1,
+                      Math.ceil(products.length / itemsPerPage)
+                    )
+                  )
+                }
+                className="px-4 py-2 bg-gray-200 rounded-md ml-2"
+              >
+                <ChevronsRight />
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };

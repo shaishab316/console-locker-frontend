@@ -18,7 +18,7 @@ const HeroBanner = () => {
 
           <div className="border-b-4 border-gray-50 my-2 hr-line-for-mobile overflow-x-auto"></div>
 
-          <p className="text-white text-left text-sm md:text-lg mb-6 md:mb-8 max-w-[420px] md:mx-auto md:mx-0">
+          <p className="text-white text-left text-sm md:text-lg mb-6 md:mb-8 max-w-[420px] md:mx-0">
             Console Locker, make room for the new and sell your used console.{" "}
             <br />
             Save with a refurbished console and enjoy a first-class gaming

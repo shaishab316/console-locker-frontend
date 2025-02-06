@@ -8,35 +8,33 @@ export default function GreenStory() {
   );
 
   return (
-    <div className="h-[864px] flex flex-col md:flex-row md:mb-10">
+    <div className="md:h-[864px] flex flex-col md:flex-row md:mb-10">
       {/* Image Section */}
 
-      {/* for mobile */}
-      {/* <div className="md:hidden relative w-full md:w-1/2 h-full">
-        <Image
-          src="/home/eco1.png"
-          alt="PlayStation 5 on green moss"
-          width={700}
-          height={700}
-          className="object-cover w-full h-full"
-          priority
-        />
-      </div> */}
-
-      <div
+      {/* <div
         className="md:hidden relative h-screen flex  bg-cover bg-center"
         style={{ backgroundImage: "url('/home/eco1.png')" }}
       >
-        {/* Overlay for better readability */}
         <div className="absolute inset-0 bg-black/50"></div>
 
-        {/* Blurred text container */}
         <div className="relative p-4">
           <h1 className="text-2xl font-medium text-[#FFFFFF] pb-3">
             LA STORIA VERDE DI <br /> CONSOLE LOCKER.
           </h1>
           <div className="border h-[2px] min-w-full"></div>
         </div>
+      </div> */}
+
+      {/* for mobile */}
+      <div className="md:hidden relative w-full md:w-1/2 h-full -mb-1">
+        <Image
+          src="/home/eco2.png"
+          alt="PlayStation 5 on green moss"
+          width={900}
+          height={900}
+          className="object-contain w-full h-full"
+          priority
+        />
       </div>
 
       {/* for desktop */}
@@ -52,16 +50,16 @@ export default function GreenStory() {
       </div>
 
       {/* Content Section */}
-      <div className="flex flex-col justify-center w-full md:w-1/2 bg-[#63B95E] p-8 md:p-12 h-full">
+      <div className="flex flex-col justify-center w-full md:w-1/2 bg-[#63B95E] p-4 md:p-12 h-full">
         <div>
           {/* Heading */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h1 className="hidden md:block text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             LA STORIA VERDE DI
             <br />
             CONSOLE LOCKER.
           </h1>
 
-          <div className="w-full h-2 border-b-2 border-white mb-10"></div>
+          <div className="hidden md:block w-full h-2 border-b-2 border-white mb-10"></div>
 
           {/* Cards */}
           <div className="max-w-[760px] space-y-5">
@@ -72,7 +70,7 @@ export default function GreenStory() {
               transform transition-all duration-300 hover:translate-x-2
               cursor-pointer"
               >
-                <p className="w-[440px] mx-auto text-center text-[#FFFFFF] text-base md:text-xl leading-6">
+                <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
                   {text}
                 </p>
               </div>

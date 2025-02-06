@@ -144,15 +144,16 @@ body {
 
 
 .bg-tab1-radial {
-  background-image: radial-gradient(#63B95D, #63B95D, #8BCB87);
+  background: rgb(99, 185, 93);
+  background: radial-gradient(circle, rgba(99, 185, 93, 1) 35%, rgba(139, 203, 135, 0.8295693277310925) 100%);
 }
 
 .bg-tab2-radial {
-  /* background-image: radial-gradient(circle, #1761BF 70%, #6FA1E1); */
   background: rgb(23, 97, 191);
-  background: radial-gradient(circle, rgba(23, 97, 191, 1) 35%, rgba(111, 161, 225, 0.8939950980392157) 100%);
+  background: radial-gradient(circle, rgba(23, 97, 191, 1) 35%, rgba(111, 161, 225, 0.8855917366946778) 100%);
 }
 
 .bg-tab3-radial {
-  background-image: radial-gradient(#63B95D, #63B95D, #8BCB87);
+  background: rgb(243, 64, 64);
+  background: radial-gradient(circle, rgba(243, 64, 64, 1) 35%, rgba(246, 117, 117, 0.7455357142857143) 100%);
 }
