@@ -6,15 +6,15 @@ export default function PrivacyPolicy() {
   return (
     <main className="min-h-screen py-16 lg:py-20 px-4 md:px-6 lg:px-8 bg-[#F2F5F7]">
       <Container>
-        <h1 className="text-3xl font-bold text-center mb-8">
+        <h1 className="text-3xl font-bold text-center">
           Terms of Services
         </h1>
 
-        <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen py-5 px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto p-2 sm:p-8">
-            <h1 className="text-2xl sm:text-3xl font-semibold text-center mb-8">
+            {/* <h1 className="text-2xl sm:text-3xl font-semibold text-center mb-8">
               Terms of Service
-            </h1>
+            </h1> */}
 
             <div className="space-y-6 text-sm sm:text-base text-gray-700">
               <p className="text-sm">

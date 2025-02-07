@@ -8,7 +8,7 @@ export default function GreenStory() {
   );
 
   return (
-    <div className="md:h-[864px] flex flex-col md:flex-row md:mb-10">
+    <div className="md:h-[864px] bg-[#F2F5F7] flex flex-col md:flex-row md:mb-10">
       {/* Image Section */}
 
       {/* <div

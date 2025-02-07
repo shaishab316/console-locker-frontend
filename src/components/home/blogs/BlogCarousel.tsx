@@ -1,7 +1,12 @@
 "use client";
 
 import { Carousel, Button } from "antd";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import {
+  ArrowLeftOutlined,
+  ArrowRightOutlined,
+  LeftOutlined,
+  RightOutlined,
+} from "@ant-design/icons";
 import { useRef } from "react";
 import { BlogCard } from "./BlogCard";
 import Container from "@/components/common/Container";
@@ -48,13 +53,13 @@ export function BlogCarousel() {
   const previous = () => carouselRef.current?.prev();
 
   return (
-    <section className="pt-8 pb-8 mb-12">
+    <section className="bg-[#F2F5F7] pt-8 pb-8 mb-12">
       <Container>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
             Our Recent Blogs
           </h2>
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             <Button
               icon={<LeftOutlined />}
               onClick={previous}
@@ -67,6 +72,23 @@ export function BlogCarousel() {
               className="flex items-center justify-center"
               shape="default"
             />
+          </div> */}
+
+          <div className="hidden md:flex gap-4">
+            <button
+              onClick={previous}
+              className="px-2.5 py-2 rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
+              aria-label="Previous review"
+            >
+              <ArrowLeftOutlined className="text-xl" />
+            </button>
+            <button
+              onClick={next}
+              className="px-2.5 py-2 rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
+              aria-label="Next review"
+            >
+              <ArrowRightOutlined className="text-xl" />
+            </button>
           </div>
         </div>
         <Carousel

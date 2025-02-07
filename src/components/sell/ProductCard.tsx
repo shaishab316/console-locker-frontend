@@ -12,7 +12,7 @@ interface ProductType {
 const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
   return (
     <div className="flex flex-col gap-4 bg-[#FDFDFD] border rounded-md hover:shadow">
-      <div className="bg-[#7E99CF] h-[350px] relative rounded-t-sm">
+      <div className="bg-[#D0DDD0] flex items-center justify-center h-[350px] relative rounded-t-sm">
         <Image
           src={product.img}
           alt="Product"

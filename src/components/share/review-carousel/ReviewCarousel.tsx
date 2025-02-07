@@ -44,7 +44,7 @@ const reviews = [
 
 export default function ReviewCarousel() {
   const carouselRef = useRef<any>(null);
-
+ 
   const next = () => {
     carouselRef.current?.next();
   };

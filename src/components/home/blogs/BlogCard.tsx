@@ -10,7 +10,7 @@ interface BlogCardProps {
   image: string;
   title: string;
   excerpt: string;
-  author: string;
+  author: string; 
   date: string;
 }
 

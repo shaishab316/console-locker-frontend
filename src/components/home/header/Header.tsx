@@ -19,12 +19,12 @@ export function Header() {
 
   return (
     <header className="top-0 z-50 md:pt-4 w-full min-h-10 border-b bg-white">
-      <div className="relative container mx-auto flex h-10 md:h-16 items-center justify-between px-4">
+      <div className="relative container mx-auto flex h-12 items-center justify-between px-4">
         <div className="flex items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="mr-2 md:hidden absolute right-1"
+            className="mr-2 lg:hidden absolute right-1"
             onClick={() => setIsMobileMenuOpen(true)}
           >
             <Menu className="h-30 w-30" />
@@ -46,7 +46,7 @@ export function Header() {
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center space-x-3 lg:space-x-8">
+        <nav className="hidden lg:flex items-center space-x-3 lg:space-x-8">
           <Link href="/" className="text-sm font-medium">
             Home
           </Link>

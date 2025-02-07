@@ -40,7 +40,7 @@ export default function PaymentHeader() {
   return (
     <div className="bg-[#F2F5F7]">
       <Container>
-        <div className="px-4 sm:px-6">
+        <div className="px-2 sm:px-6">
           <h1 className="text-2xl font-bold text-center mb-8">Cart</h1>
           <div className="w-full flex justify-between gap-5 mb-8">
             <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
