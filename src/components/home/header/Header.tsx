@@ -36,7 +36,7 @@ export function Header() {
           >
             <div className="relative h-8 w-44 pt-1">
               <Image
-                src="/home/logo.svg"
+                src="/home/logo.png"
                 alt="Console Locker"
                 width={700}
                 height={200}

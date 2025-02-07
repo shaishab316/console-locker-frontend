@@ -3,11 +3,11 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen py-16 px-4 bg-[#F2F5F7] md:px-6 lg:px-8">
+    <main className="min-h-screen pt-10 pb-20 px-4 bg-[#F2F5F7] md:px-6 lg:px-8">
       <Container>
         <h1 className="text-3xl font-bold text-center mb-8">About Us</h1>
 
-        <div className="space-y-6 text-gray-600">
+        <div className="space-y-6 text-lg text-[#404040]">
           <p>
             Welcome to our website, the reference point for refurbished gaming
             consoles in Italy! We are a young and dynamic company, born from a
@@ -62,52 +62,58 @@ export default function AboutPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-          <div className="text-center p-6">
-            <div className="bg-blue-50 w-16 h-16 mx-auto rounded-lg flex items-center justify-center mb-4">
+          <div className="h-[256px] flex flex-col items-center justify-center text-center p-6 bg-[#FDFDFD] py-5">
+            <div className="bg-[#DAEDF2] w-[96px] h-[96px] mx-auto rounded-lg flex items-center justify-center mb-4">
               <Image
                 src="/about/a1.png"
                 alt="Tools icon"
-                width={32}
-                height={32}
+                width={48}
+                height={48}
                 className="text-blue-500"
               />
             </div>
-            <h3 className="font-semibold mb-2">Start thinking circular</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="text-2xl text-[#101010] font-semibold mb-2">
+              Start thinking circular
+            </h3>
+            <p className="text-base text-[#101010]">
               Let&apos;s take technology further. It&apos;s good for the planet
               and your wallet.
             </p>
           </div>
 
-          <div className="text-center p-6">
-            <div className="bg-blue-50 w-16 h-16 mx-auto rounded-lg flex items-center justify-center mb-4">
+          <div className="h-[256px] flex flex-col items-center justify-center text-center p-6 bg-[#FDFDFD] py-5">
+            <div className="bg-[#DAEDF2] w-[96px] h-[96px] mx-auto rounded-lg flex items-center justify-center mb-4">
               <Image
                 src="/about/a2.png"
                 alt="Gift box icon"
-                width={32}
-                height={32}
+                width={48}
+                height={48}
                 className="text-blue-500"
               />
             </div>
-            <h3 className="font-semibold mb-2">Performs like new</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="text-2xl text-[#101010] font-semibold mb-2">
+              Performs like new
+            </h3>
+            <p className="text-base text-[#101010]">
               Reliable, high-quality phones refurbished by our experts in
               Europe.
             </p>
           </div>
 
-          <div className="text-center p-6">
-            <div className="bg-blue-50 w-16 h-16 mx-auto rounded-lg flex items-center justify-center mb-4">
+          <div className="h-[256px] flex flex-col items-center justify-center text-center p-6 bg-[#FDFDFD] py-5">
+            <div className="bg-[#DAEDF2] w-[96px] h-[96px] mx-auto rounded-lg flex items-center justify-center mb-4">
               <Image
                 src="/about/a3.png"
                 alt="Delivery truck icon"
-                width={32}
-                height={32}
+                width={48}
+                height={48}
                 className="text-blue-500"
               />
             </div>
-            <h3 className="font-semibold mb-2">Fast delivery</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="text-2xl text-[#101010] font-semibold mb-2">
+              Fast delivery
+            </h3>
+            <p className="text-base text-[#101010]">
               Full, money-back guarantee, free returns & a 12-month warranty
             </p>
           </div>
