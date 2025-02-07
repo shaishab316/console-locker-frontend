@@ -60,7 +60,7 @@ export default function HowDelivery() {
             </div>
           </Container>
 
-          <div className="order-last z-20">
+          <div className="order-last md:z-20">
             <Image
               // src="/sell/sell.png"
               src="/sell/sell.svg"

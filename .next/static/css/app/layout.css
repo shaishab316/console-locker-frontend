@@ -3264,6 +3264,10 @@ body {
     left: 0px;
   }
 
+  .md\:z-20 {
+    z-index: 20;
+  }
+
   .md\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
