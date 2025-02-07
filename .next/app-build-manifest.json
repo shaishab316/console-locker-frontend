@@ -66,6 +66,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/sell/next1/page.js"
+    ],
+    "/sell/next2/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/sell/next2/page.js"
+    ],
+    "/sell/next3/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/sell/next3/page.js"
     ]
   }
 }

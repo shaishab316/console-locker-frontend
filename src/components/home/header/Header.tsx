@@ -36,14 +36,13 @@ export function Header() {
           >
             <div className="relative h-8 w-44 pt-1">
               <Image
-                src="/home/logo.png"
+                src="/home/logo.svg"
                 alt="Console Locker"
                 width={700}
                 height={200}
                 className="object-contain"
               />
             </div>
-            {/* <span className="text-base sm:text-xl font-bold">Console Locker</span> */}
           </Link>
         </div>
 
@@ -94,18 +93,9 @@ export function Header() {
             <ShoppingCart className="h-5 w-5" />
           </Link>
 
-          <button className="hidden sm:flex items-center space-x-1 text-sm font-medium">
-            {/* <Image
-              src="/germany.png"
-              alt="German"
-              width={20}
-              height={20}
-              className="rounded"
-            />
-            <span>German</span> */}
-
+          <div className="hidden sm:flex items-center space-x-1 text-sm font-medium cursor-pointer">
             <LanguageSelector />
-          </button>
+          </div>
         </div>
       </div>
 

@@ -38,7 +38,7 @@ export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
           >
             Home
           </Link>
-          <Accordion type="single" collapsible>
+          <Accordion type="single" collapsible className="-my-10 border-none">
             <AccordionItem value="buy">
               <AccordionTrigger className="text-lg font-medium">
                 Buy

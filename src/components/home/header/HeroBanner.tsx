@@ -8,7 +8,7 @@ const HeroBanner = () => {
       {/* <Container> */}
       <div className="flex flex-col md:flex-row min-h-[calc(100vh-80px)] lg:items-center lg:justify-center">
         {/* Hidden on small screens */}
-        <div className="hidden md:block w-1/2"></div>
+        <div className="hidden lg:block md:w-1/4 lg:w-1/2"></div>
 
         {/* Content Section */}
         <div className="relative w-full md:w-1/2 px-4 text-center md:px-0">

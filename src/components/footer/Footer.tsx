@@ -32,7 +32,20 @@ export function ConsoleFooter() {
             </div>
           </div>
 
-          <div className="w-full lg:w-[50%] flex items-center justify-between border border-gray-800 rounded-md">
+          {/* for mobile */}
+          <div className="w-full lg:hidden flex items-center justify-between border border-gray-800 rounded-md">
+            <input
+              className="w-[60%] border-none outline-none bg-transparent text-white px-2.5 py-3"
+              type="text"
+              placeholder="Enter your email"
+            />
+            <button className="w-[30%] place-items-end bg-white text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
+              Subscribe
+            </button>
+          </div>
+
+          {/* for desktop */}
+          <div className="w-full lg:w-[50%] hidden lg:flex items-center justify-between border border-gray-800 rounded-md">
             <input
               className="border-none outline-none bg-transparent text-white px-2.5 py-3"
               type="text"
