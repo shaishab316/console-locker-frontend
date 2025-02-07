@@ -225,6 +225,7 @@ const ProductPage: React.FC = () => {
                       <X onClick={() => setFilterView(false)} />
                     </p>
                   </div>
+
                   <select className="w-full border rounded-md p-2">
                     <option>All</option>
                     <option>PlayStation</option>
@@ -266,6 +267,7 @@ const ProductPage: React.FC = () => {
                 </button>
               </div>
             )}
+
             {/* for desktop */}
             <div className="hidden lg:block">
               <div className="mb-4">
@@ -309,7 +311,8 @@ const ProductPage: React.FC = () => {
           {/* Product Grid */}
           <div className="w-full lg:w-3/4 lg:ml-6">
             {/* View Toggle */}
-            <div className="bg-[#FDFDFD] flex justify-between items-center p-2.5 rounded-md mb-4">
+            <div className="lg:bg-[#FDFDFD] flex justify-between items-center p-2.5 rounded-md mb-4">
+              {/*  */}
               <div
                 onClick={() => setFilterView(!filterView)}
                 className={`flex lg:hidden items-center gap-2 border ${
@@ -367,7 +370,7 @@ const ProductPage: React.FC = () => {
 
               {/* sorting */}
               <div className="flex gap-2">
-                <select className="w-48 md:w-56 px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
+                <select className="w-48 md:w-56 px-4 py-2 border border-gray-300 rounded-md text-xs bg-white text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
                   <option defaultValue={"Sort by"}>Sort by</option>
                   <option value="High to low">High to Low</option>
                   <option value="Low to high">Low to High</option>
@@ -381,14 +384,19 @@ const ProductPage: React.FC = () => {
                 className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6`}
               >
                 {paginatedProducts.map((product) => (
-                  <Link key={product.id} href={`/buy/${product.id}`} passHref>
+                  <Link
+                    key={product.id}
+                    href={`/buy/${product.id}`}
+                    className="rounded-lg"
+                    passHref
+                  >
                     <div className="shadow-sm hover:shadow-md border border-gray-100 rounded-lg pb-2">
                       <Image
                         src={product.image}
                         alt={product.title}
                         width={300}
                         height={200}
-                        className="object-center object-cover w-full"
+                        className="object-center object-cover w-full rounded-lg"
                       />
                       <div className="px-3">
                         <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
@@ -423,14 +431,19 @@ const ProductPage: React.FC = () => {
             {view === "list" ? (
               <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12`}>
                 {paginatedProducts.map((product) => (
-                  <Link key={product.id} href={`/buy/${product.id}`} passHref>
+                  <Link
+                    key={product.id}
+                    href={`/buy/${product.id}`}
+                    className="rounded-lg"
+                    passHref
+                  >
                     <div className="flex items-center shadow-sm hover:shadow-md border border-gray-100 rounded-lg">
                       <Image
                         src={product.image}
                         alt={product.title}
                         width={300}
                         height={200}
-                        className="object-center object-cover w-1/2 h-full rounded-s-xl"
+                        className="object-center object-cover w-1/2 h-full rounded-lg"
                         //
                       />
                       <div className="px-3">

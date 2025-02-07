@@ -58,7 +58,7 @@ export function ConsoleFooter() {
         </div>
 
         {/* Main Footer Content */}
-        <div className="lg:flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between gap-8 mb-16 pb-8">
+        <div className="lg:flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between gap-8 md:mb-16 pb-8">
           {/* Payment Methods */}
           <div>
             <h4 className="text-white text-lg font-semibold mb-2">

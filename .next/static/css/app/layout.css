@@ -2260,6 +2260,12 @@ video {
 .pt-8 {
   padding-top: 2rem;
 }
+.pb-24 {
+  padding-bottom: 6rem;
+}
+.pb-28 {
+  padding-bottom: 7rem;
+}
 .text-left {
   text-align: left;
 }
@@ -3307,6 +3313,10 @@ body {
     margin-bottom: 2rem;
   }
 
+  .md\:mb-16 {
+    margin-bottom: 4rem;
+  }
+
   .md\:block {
     display: block;
   }
@@ -3492,6 +3502,10 @@ body {
 
   .md\:pt-4 {
     padding-top: 1rem;
+  }
+
+  .md\:pb-28 {
+    padding-bottom: 7rem;
   }
 
   .md\:text-left {
