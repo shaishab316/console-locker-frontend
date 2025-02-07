@@ -346,7 +346,7 @@ export default function ConsoleSelector() {
               ),
               children: (
                 <div
-                  className={`pb-4 md:pb-20 ${
+                  className={`p-3 pb-4 md:pb-20 ${
                     activeTab === "xbox" ? "bg-[#63b95d]" : ""
                   }`}
                 >
@@ -430,7 +430,7 @@ export default function ConsoleSelector() {
                 </div>
               ),
               children: (
-                <div className="pb-4 md:pb-20 bg-[#1761bf]">
+                <div className="p-3 pb-4 md:pb-20 bg-[#1761bf]">
                   <Container className="w-[98%] mx-auto">
                     <div className="flex items-center py-3 space-x-4">
                       <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
@@ -510,7 +510,7 @@ export default function ConsoleSelector() {
                 </div>
               ),
               children: (
-                <div className="pb-4 md:pb-20 bg-[#f34040]">
+                <div className="p-3 pb-4 md:pb-20 bg-[#f34040]">
                   <Container className="w-[98%] mx-auto">
                     <div className="flex items-center py-3 space-x-4">
                       <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
