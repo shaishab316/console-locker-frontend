@@ -2299,6 +2299,9 @@ video {
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.text-\[2px\] {
+  font-size: 2px;
+}
 .font-bold {
   font-weight: 700;
 }

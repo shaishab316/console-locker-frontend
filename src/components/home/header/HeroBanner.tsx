@@ -12,7 +12,7 @@ const HeroBanner = () => {
 
         {/* Content Section */}
         <div className="relative w-full md:w-1/2 px-4 text-center md:px-0">
-          <h1 className="text-[32px] md:text-4xl lg:text-[70px] font-bold text-left text-white leading-tight md:leading-[84px] mt-3">
+          <h1 className="text-[24px] md:text-4xl lg:text-[70px] font-bold text-left text-white leading-tight md:leading-[84px] mt-3">
             DAI UNA <br /> SECONDA POSSIBILITA <br /> PER LA TUA CONSOLE!
           </h1>
 
