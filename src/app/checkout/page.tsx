@@ -169,7 +169,7 @@ export default function CheckoutPage() {
                       1. Delivery Details
                     </h2>
 
-                    <div className="mb-4">
+                    <div className="mb-5">
                       <p className="mb-4 text-2xl text-[#404040] font-semibold">
                         Your Name
                       </p>
@@ -242,7 +242,7 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="mb-4">
-                      <h3 className="text-2xl font-semibold text-[#404040] mb-2">
+                      <h3 className="text-2xl font-semibold text-[#404040] my-3">
                         Shipping Information{" "}
                         <span className="text-[#5F5F5F] text-base font-normal">
                           (no parcel delivery station)
@@ -250,7 +250,7 @@ export default function CheckoutPage() {
                       </h3>
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-lg text-[#101010] font-medium mb-1">
+                          <label className="block text-lg text-[#101010] font-medium mb-1.5">
                             Address<span className="text-red-500">*</span>
                           </label>
                           <input
@@ -264,7 +264,7 @@ export default function CheckoutPage() {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
-                            <label className="block text-lg text-[#101010] font-medium mb-1">
+                            <label className="block text-lg text-[#101010] font-medium mb-1.5">
                               ZIP CODE<span className="text-red-500">*</span>
                             </label>
                             <input
@@ -277,7 +277,7 @@ export default function CheckoutPage() {
                             />
                           </div>
                           <div>
-                            <label className="block text-lg text-[#101010] font-medium mb-1">
+                            <label className="block text-lg text-[#101010] font-medium mb-1.5">
                               City<span className="text-red-500">*</span>
                             </label>
                             <input
@@ -296,7 +296,7 @@ export default function CheckoutPage() {
                     <div className="mb-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-lg text-[#101010] font-medium mb-1">
+                          <label className="block text-lg text-[#101010] font-medium mb-1.5">
                             Nation<span className="text-red-500">*</span>
                           </label>
                           <select
@@ -313,7 +313,7 @@ export default function CheckoutPage() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-lg text-[#101010] font-medium mb-1">
+                          <label className="block text-lg text-[#101010] font-medium mb-1.5">
                             Further contact information
                           </label>
                           <input
@@ -331,7 +331,7 @@ export default function CheckoutPage() {
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-lg text-[#101010] font-medium mb-1">
+                          <label className="block text-lg text-[#101010] font-medium mb-1.5">
                             Email
                           </label>
                           <input
@@ -344,7 +344,7 @@ export default function CheckoutPage() {
                           />
                         </div>
                         <div>
-                          <label className="block text-lg text-[#101010] font-medium mb-1">
+                          <label className="block text-lg text-[#101010] font-medium mb-1.5">
                             Phone
                           </label>
                           {/* <div className="flex">
@@ -406,8 +406,8 @@ export default function CheckoutPage() {
                     </div>
 
                     <p className="text-lg text-[#2B2B2B] mb-4">
-                      <span className="text-red-500 text-lg"> * </span> Fields marked
-                      with an asterisk are mandatory
+                      <span className="text-red-500 text-lg"> * </span> Fields
+                      marked with an asterisk are mandatory
                     </p>
                     <Link href={"/paymentprocess"}>
                       <button

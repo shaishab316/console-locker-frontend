@@ -177,6 +177,7 @@ export default function ContactPage() {
                 <div className="bg-[#DAEDF2] p-2 rounded-full">
                   <Image
                     src={"/contact/location.svg"}
+                    className="w-6 h-6"
                     width={24}
                     height={24}
                     alt="Phone"

@@ -1,7 +1,10 @@
 {
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js",
-  "/sell/next1/page": "app/sell/next1/page.js",
+  "/sell/page": "app/sell/page.js",
   "/about/page": "app/about/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/repair/page": "app/repair/page.js",
   "/sell/[slug]/page": "app/sell/[slug]/page.js",
-  "/sell/next3/page": "app/sell/next3/page.js"
+  "/sell/next1/page": "app/sell/next1/page.js"
 }

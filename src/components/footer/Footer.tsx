@@ -51,31 +51,31 @@ export function ConsoleFooter() {
             <h4 className="text-white text-lg font-semibold mb-2">
               Payment Methods:
             </h4>
-            <div className="flex items-center flex-wrap gap-2 mb-4">
+            <div className="flex items-center flex-wrap gap-2 mb-8">
               <Image
                 src="/payments/paypal.png"
-                // className="h-12 "
+                className="cursor-pointer"
                 alt="PayPal"
                 width={50}
                 height={48}
               />
               <Image
                 src="/payments/visa.svg"
-                // className="h-full"
+                className="cursor-pointer"
                 alt="Visa"
                 width={50}
                 height={70}
               />
               <Image
                 src="/payments/mastercard.png"
-                // className="h-12"
+                className="cursor-pointer"
                 alt="Mastercard"
                 width={50}
                 height={48}
               />
               <Image
                 src="/payments/g-pay.png"
-                // className="h-12"
+                className="cursor-pointer"
                 alt="Google Pay"
                 width={50}
                 height={48}
@@ -88,7 +88,10 @@ export function ConsoleFooter() {
                 Social Links
               </h4>
               <div className="flex gap-4">
-                <Link href="#" className="text-white hover:text-gray-300">
+                <Link
+                  href="https://linkedin.com"
+                  className="text-white hover:text-gray-300"
+                >
                   <Image
                     src={"/social/f-linkedin.png"}
                     width={40}
@@ -96,7 +99,10 @@ export function ConsoleFooter() {
                     alt="linkedin"
                   />
                 </Link>
-                <Link href="#" className="text-white hover:text-gray-300">
+                <Link
+                  href="https://linkedin.com"
+                  className="text-white hover:text-gray-300"
+                >
                   <Image
                     src={"/social/f-facebook.png"}
                     width={40}
@@ -104,7 +110,10 @@ export function ConsoleFooter() {
                     alt="linkedin"
                   />{" "}
                 </Link>
-                <Link href="#" className="text-white hover:text-gray-300">
+                <Link
+                  href="https://linkedin.com"
+                  className="text-white hover:text-gray-300"
+                >
                   <Image
                     src={"/social/f-instragram.png"}
                     width={40}
@@ -112,7 +121,10 @@ export function ConsoleFooter() {
                     alt="linkedin"
                   />{" "}
                 </Link>
-                <Link href="#" className="text-white hover:text-gray-300">
+                <Link
+                  href="https://linkedin.com"
+                  className="text-white hover:text-gray-300"
+                >
                   <Image
                     src={"/social/f-x.png"}
                     width={40}
@@ -202,7 +214,7 @@ export function ConsoleFooter() {
 
       {/* Copyright */}
       <div className="h-[80px] flex items-center justify-center text-center bg-[#FDFDFD] border-t border-gray-800">
-        <p className="text-[#101010] text-sm lg:text-lg">
+        <p className="text-[#101010] px-2 text-sm lg:text-lg">
           {" "}
           © All Rights Reserved 2024 | VAT number IT17743751004 | Via Ogaden 4,
           00199 Rome

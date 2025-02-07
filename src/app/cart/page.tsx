@@ -91,7 +91,7 @@ export default function CartPage() {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  const shipping = 0; // Free shipping
+  const shipping = 0;
   const total = subtotal + shipping;
 
   return (
@@ -120,7 +120,7 @@ export default function CartPage() {
                       className="object-cover rounded-lg"
                     />
                   </div>
-                  <div className="flex-grow flex flex-col justify-between h-inherit">
+                  <div className="flex-grow flex flex-col justify-between space-y-2.5 h-inherit">
                     <h3 className="text-xl font-semibold text-[#101010] mb-1">
                       {item.name}
                     </h3>
@@ -129,7 +129,8 @@ export default function CartPage() {
                       {item.condition}
                     </p>
                     <p className="text-gray-500">
-                      Sales & Shipping: Console & you
+                      Sales & Shipping:{" "}
+                      <span className="underline">Console & you</span>
                     </p>
                   </div>
 
