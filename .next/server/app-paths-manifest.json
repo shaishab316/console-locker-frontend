@@ -1,7 +1,3 @@
 {
-  "/sell/page": "app/sell/page.js",
-  "/sell/[slug]/page": "app/sell/[slug]/page.js",
-  "/reviews/page": "app/reviews/page.js",
-  "/buy/[slug]/page": "app/buy/[slug]/page.js",
-  "/cart/page": "app/cart/page.js"
+  "/page": "app/page.js"
 }

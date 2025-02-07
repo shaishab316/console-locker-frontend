@@ -346,13 +346,13 @@ export default function ConsoleSelector() {
               ),
               children: (
                 <div
-                  className={`p-4 md:p-8 ${
+                  className={`pb-4 md:pb-20 ${
                     activeTab === "xbox" ? "bg-[#63b95d]" : ""
                   }`}
                 >
                   <Container className="w-full mx-auto">
                     <div className="flex items-center py-3 space-x-4">
-                      <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] mb-8">
+                      <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
                         Xbox
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
@@ -430,10 +430,10 @@ export default function ConsoleSelector() {
                 </div>
               ),
               children: (
-                <div className="p-4 md:p-8 bg-[#1761bf]">
+                <div className="pb-4 md:pb-20 bg-[#1761bf]">
                   <Container className="w-[98%] mx-auto">
                     <div className="flex items-center py-3 space-x-4">
-                      <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] mb-8">
+                      <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
                         Xbox
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />
@@ -510,10 +510,10 @@ export default function ConsoleSelector() {
                 </div>
               ),
               children: (
-                <div className="p-4 md:p-8 bg-[#f34040]">
+                <div className="pb-4 md:pb-20 bg-[#f34040]">
                   <Container className="w-[98%] mx-auto">
                     <div className="flex items-center py-3 space-x-4">
-                      <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] mb-8">
+                      <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
                         Xbox
                       </h2>
                       <hr className="flex-1 border-b border-gray-100 -mt-5" />

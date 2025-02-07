@@ -120,47 +120,49 @@ export default function CartPage() {
                       className="object-cover rounded-lg"
                     />
                   </div>
-                  <div className="flex-grow flex flex-col justify-between space-y-2.5 h-inherit">
-                    <h3 className="text-xl font-semibold text-[#101010] mb-1">
-                      {item.name}
-                    </h3>
-                    <p className="text-[#5F5F5F] mb-1">
-                      Warranty: {item.warranty} | {item.storage} | Condition:{" "}
-                      {item.condition}
-                    </p>
-                    <p className="text-gray-500">
-                      Sales & Shipping:{" "}
-                      <span className="underline">Console & you</span>
-                    </p>
-                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    <div className="flex-grow flex flex-col justify-between space-y-2.5 h-inherit">
+                      <h3 className="text-xl font-semibold text-[#101010] mb-1">
+                        {item.name}
+                      </h3>
+                      <p className="text-xs md:text-base text-[#5F5F5F] mb-1">
+                        Warranty: {item.warranty} | {item.storage} | Condition:{" "}
+                        {item.condition}
+                      </p>
+                      <p className="text-xs md:text-sm text-[#5F5F5F]">
+                        Sales & Shipping:{" "}
+                        <span className="underline">Console & you</span>
+                      </p>
+                    </div>
 
-                  <div className="text-right">
-                    <p className="text-lg font-medium text-gray-900">
-                      ${item.price}
-                    </p>
-                    <div className="flex items-center space-x-2 mt-2">
+                    <div className="text-right">
+                      <p className="text-lg font-medium text-gray-900">
+                        Price: ${item.price}
+                      </p>
+                      <div className="flex items-center space-x-2 mt-2">
+                        <button
+                          onClick={() => updateQuantity(item.id, false)}
+                          className="w-7 h-7 bg-transparent flex items-center justify-center text-lg border border-[#E6E6E6] rounded-md px-1 py-1 text-[#101010] hover:text-gray-700"
+                        >
+                          -
+                        </button>
+                        <span className="text-gray-700 px-1">
+                          {item.quantity}
+                        </span>
+                        <button
+                          onClick={() => updateQuantity(item.id, true)}
+                          className="w-7 h-7 bg-transparent flex items-center justify-center text-lg border border-[#E6E6E6] rounded-md px-1 py-1 text-[#101010] hover:text-gray-700"
+                        >
+                          +
+                        </button>
+                      </div>
                       <button
-                        onClick={() => updateQuantity(item.id, false)}
-                        className="w-7 h-7 bg-transparent flex items-center justify-center text-lg border border-[#E6E6E6] rounded-md px-1 py-1 text-[#101010] hover:text-gray-700"
+                        onClick={() => removeItem(item.id)}
+                        className="text-sm text-[#F04848] font-medium hover:text-[#ed3d3d] mt-2 underline"
                       >
-                        -
-                      </button>
-                      <span className="text-gray-700 px-1">
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() => updateQuantity(item.id, true)}
-                        className="w-7 h-7 bg-transparent flex items-center justify-center text-lg border border-[#E6E6E6] rounded-md px-1 py-1 text-[#101010] hover:text-gray-700"
-                      >
-                        +
+                        Remove
                       </button>
                     </div>
-                    <button
-                      onClick={() => removeItem(item.id)}
-                      className="text-sm text-[#101010] font-medium hover:text-[#202020] mt-2 underline"
-                    >
-                      Remove
-                    </button>
                   </div>
                 </div>
 
