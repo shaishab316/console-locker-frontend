@@ -838,6 +838,9 @@ video {
 .top-full {
   top: 100%;
 }
+.right-3 {
+  right: 0.75rem;
+}
 .z-10 {
   z-index: 10;
 }
@@ -1176,6 +1179,9 @@ video {
 .h-screen {
   height: 100vh;
 }
+.h-\[\] {
+  height: ;
+}
 .max-h-max {
   max-height: max-content;
 }
@@ -1202,6 +1208,15 @@ video {
 }
 .min-h-screen {
   min-height: 100vh;
+}
+.min-h-14 {
+  min-height: 3.5rem;
+}
+.min-h-1 {
+  min-height: 0.25rem;
+}
+.min-h-64 {
+  min-height: 16rem;
 }
 .w-0 {
   width: 0px;
@@ -1308,6 +1323,21 @@ video {
 .w-max {
   width: max-content;
 }
+.w-\[\] {
+  width: ;
+}
+.w-\[50\] {
+  width: 50;
+}
+.w-\[50\%\] {
+  width: 50%;
+}
+.w-\[30\%\] {
+  width: 30%;
+}
+.w-\[718px\] {
+  width: 718px;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -1367,6 +1397,9 @@ video {
 }
 .max-w-xs {
   max-width: 20rem;
+}
+.max-w-\[718px\] {
+  max-width: 718px;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1667,6 +1700,9 @@ video {
 .border-2 {
   border-width: 2px;
 }
+.border-4 {
+  border-width: 4px;
+}
 .border-y {
   border-top-width: 1px;
   border-bottom-width: 1px;
@@ -1771,6 +1807,18 @@ video {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
+}
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity, 1));
+}
+.border-blue-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(37 99 235 / var(--tw-border-opacity, 1));
+}
+.border-yellow-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(250 204 21 / var(--tw-border-opacity, 1));
 }
 .border-b-\[\#E6E6E6\] {
   --tw-border-opacity: 1;
@@ -1977,6 +2025,9 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.bg-\[\] {
+  background-color: ;
 }
 .bg-\[url\(\/home\/bannermobile1\.png\)\] {
   background-image: url(/home/bannermobile1.png);
@@ -2542,6 +2593,9 @@ video {
 .text-yellow-400 {
   --tw-text-opacity: 1;
   color: rgb(250 204 21 / var(--tw-text-opacity, 1));
+}
+.text-\[\] {
+  color: ;
 }
 .underline {
   text-decoration-line: underline;
@@ -3480,6 +3534,11 @@ body {
     padding-bottom: 1rem;
   }
 
+  .md\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
   .md\:pb-20 {
     padding-bottom: 5rem;
   }
@@ -3594,6 +3653,10 @@ body {
 
   .lg\:block {
     display: block;
+  }
+
+  .lg\:inline-block {
+    display: inline-block;
   }
 
   .lg\:flex {

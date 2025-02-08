@@ -18,8 +18,8 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="top-0 z-50 md:pt-4 w-full min-h-10 border-b bg-white">
-      <div className="relative container mx-auto flex h-12 items-center justify-between px-4">
+    <header className="top-0 z-50 md:pt-4 w-full  border-b bg-[#F2F5F7]">
+      <div className="border-2 relative h-[96px] container mx-auto flex items-center justify-between px-4">
         <div className="flex items-center">
           <Button
             variant="ghost"

@@ -219,7 +219,8 @@ export default function CheckoutForm() {
                   htmlFor="streetName"
                   className="block text-lg font-medium text-[#101010] mb-1"
                 >
-                  Street Name*
+                  Street Name{" "}
+                  <span className="text-red-500 font-semibold">*</span>
                 </label>
                 <input
                   type="text"
@@ -338,8 +339,27 @@ export default function CheckoutForm() {
                 </label>
               </div>
 
+              {/* take user email for receive payment */}
+              <div className="mt-8">
+                <label
+                  htmlFor="streetName"
+                  className="block text-lg font-medium text-[#101010] mb-1"
+                >
+                  Email <span className="text-red-500 font-semibold">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="streetName"
+                  name="streetName"
+                  required
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  value={formData.streetName}
+                  onChange={handleInputChange}
+                />
+              </div>
+
               {/* Terms and Submit */}
-              <div className="space-y-4 mt-10">
+              <div className="space-y-4 mt-6">
                 <button
                   type="submit"
                   className="w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition-colors"

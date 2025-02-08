@@ -29,38 +29,39 @@ export default function HowDelivery() {
         How deliver their console to us.
       </h1>
 
-      <div className="lg:ml-80">
-        <div className="grid lg:grid-cols-2 gap-8 items-center mt-8">
-          <Container>
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm z-40">
-              {deliverySteps.map((step, index) => (
-                <div
-                  key={step.number}
-                  className={`flex gap-6 ${
-                    index !== deliverySteps.length - 1 ? "mb-8" : ""
-                  }`}
-                >
-                  <div className="flex-shrink-0">
-                    <div className="text-2xl text-[#101010] font-semibold">
-                      {step.number}
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <h2 className="font-semibold text-lg text-gray-900">
-                      {step.title}
-                    </h2>
-                    {step.description.split("\n").map((line, i) => (
-                      <p key={i} className="text-gray-600">
-                        {line}
-                      </p>
-                    ))}
+      <div className="">
+        <div className="relative flex items-center justify-center py-12 mt-8">
+          {/* <div></div> */}
+          {/* <Container> */}
+          <div className="max-w-[718px] bg-white rounded-2xl shadow-sm z-40 p-10">
+            {deliverySteps.map((step, index) => (
+              <div
+                key={step.number}
+                className={`flex gap-6 ${
+                  index !== deliverySteps.length - 1 ? "mb-8" : ""
+                }`}
+              >
+                <div className="flex-shrink-0">
+                  <div className="text-2xl text-[#101010] font-semibold">
+                    {step.number}
                   </div>
                 </div>
-              ))}
-            </div>
-          </Container>
+                <div className="space-y-2">
+                  <h2 className="font-semibold text-lg text-[#101010]">
+                    {step.title}
+                  </h2>
+                  {step.description.split("\n").map((line, i) => (
+                    <p key={i} className="text-base text-[#404040]">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* </Container> */}
 
-          <div className="order-last md:z-20">
+          <div className="hidden lg:inline-block absolute right-3 bottom-0 order-last md:z-20">
             <Image
               // src="/sell/sell.png"
               src="/sell/sell.svg"
@@ -71,6 +72,8 @@ export default function HowDelivery() {
               priority
             />
           </div>
+
+          {/* <div></div> */}
         </div>
       </div>
     </main>

@@ -40,10 +40,10 @@ export default function ContactPage() {
             </h1>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="flex flex-col lg:flex-row items-start lg:space-x-6">
-                <div className="lg:flex-1 w-full lg:w-1/2 mb-3 lg:mb-0">
+                <div className="lg:flex-1 w-full lg:w-1/2 mb-3 lg:mb-0 space-y-3">
                   <label
                     htmlFor="fullName"
-                    className="text-lg font-medium text-[#101010] mb-2"
+                    className="text-lg font-medium text-[#101010]"
                   >
                     Full Name<span className="text-red-500">*</span>
                   </label>
@@ -52,11 +52,11 @@ export default function ContactPage() {
                     id="fullName"
                     name="fullName"
                     required
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full h-14 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                 </div>
 
-                <div className="lg:flex-1 w-full lg:w-1/2">
+                <div className="lg:flex-1 w-full lg:w-1/2 space-y-3">
                   <label
                     htmlFor="email"
                     className="text-lg font-medium text-[#101010]"
@@ -68,12 +68,12 @@ export default function ContactPage() {
                     id="email"
                     name="email"
                     required
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full h-14 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                 </div>
               </div>
 
-              <div>
+              <div className="space-y-3">
                 <label
                   htmlFor="subject"
                   className="text-lg font-medium text-[#101010]"
@@ -84,11 +84,11 @@ export default function ContactPage() {
                   type="text"
                   id="subject"
                   name="subject"
-                  className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="mt-1 w-full h-14 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
               </div>
 
-              <div>
+              <div className="space-y-3">
                 <label
                   htmlFor="message"
                   className=" text-lg font-medium text-[#101010]"
@@ -99,7 +99,7 @@ export default function ContactPage() {
                   id="message"
                   name="message"
                   rows={5}
-                  className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="mt-1 w-full min-h-64 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
               </div>
 
