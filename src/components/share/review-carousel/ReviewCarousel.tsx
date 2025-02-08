@@ -54,7 +54,7 @@ export default function ReviewCarousel() {
   };
 
   return (
-    <div className="py-20 bg-[#F2F5F7]">
+    <div className="pt-20 pb-14 bg-[#F2F5F7]">
       <Container>
         <div className="flex justify-between items-center mb-8">
           <h2 className=" text-xl md:text-3xl font-bold text-gray-900">

@@ -388,7 +388,7 @@ const ProductDetailsPage: React.FC = () => {
 
                   {/* Value Display */}
                   <div className="bg-[#e8f7f1] p-4 rounded-lg mb-6">
-                    <div className="flex items-center justify-start gap-3">
+                    <div className="flex items-start justify-start gap-2">
                       <button className="text-gray-600 hover:text-gray-900 transition-colors">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

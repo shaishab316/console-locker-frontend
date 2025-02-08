@@ -462,7 +462,7 @@ const ProductPage: React.FC = () => {
 
               {/* sorting */}
               <div className="h-10 relative flex gap-2">
-                <select className="appearance-none w-40 md:w-56 px-2 py-2 border border-[#101010] rounded-md font-medium text-sm bg-white text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
+                <select className="appearance-none w-40 md:w-56 px-2.5 py-2 border border-[#101010] rounded-md font-medium text-sm bg-transparent lg:bg-[#FDFDFD] text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
                   <option defaultValue={"Sort by"} className="text-[#101010]">
                     Sort by
                   </option>

@@ -30,7 +30,7 @@ export default function HowDelivery() {
       </h1>
 
       <div className="">
-        <div className="relative flex items-center justify-center py-12 mt-8">
+        <div className="relative flex items-center justify-center py-12 ">
           {/* <div></div> */}
           {/* <Container> */}
           <div className="max-w-[718px] bg-white rounded-2xl shadow-sm z-40 p-10">

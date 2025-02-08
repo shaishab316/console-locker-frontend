@@ -19,7 +19,7 @@ export function Header() {
 
   return (
     <header className="top-0 z-50 md:pt-4 w-full  border-b bg-[#F2F5F7]">
-      <div className="border-2 relative h-[96px] container mx-auto flex items-center justify-between px-4">
+      <div className="relative h-[96px] container mx-auto flex items-center justify-between px-4">
         <div className="flex items-center">
           <Button
             variant="ghost"

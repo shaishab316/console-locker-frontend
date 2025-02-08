@@ -60,7 +60,7 @@ export default function ScreenCondition() {
   return (
     <div className="min-h-screen bg-[#F2F5F7] pb-20">
       {/* Screen Condition Section */}
-      <div className="max-w-[798px] mx-auto p-4 pt-8">
+      <div className="max-w-[798px] mx-auto py-10">
         <h1 className="text-[#101010] text-xl font-medium mb-2">
           Playstation 4
         </h1>
@@ -123,26 +123,26 @@ export default function ScreenCondition() {
 
       {/* How to Sell Section */}
       <div className="bg-blue-50 pt-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-semibold text-center mb-12">
+        <div className="px-4">
+          <h2 className="text-2xl text-[40px] text-[#101010] font-semibold text-center mb-16">
             How to sell your Items
           </h2>
 
-          <div className="relative">
-            <div className="hidden lg:block absolute -right-4 bottom-0">
+          <div className="relative flex items-center justify-center pb-14">
+            <div className="hidden lg:block absolute right-[4%] bottom-0">
               <Image
                 src="/sell/sell.png"
                 alt="Service representative"
-                width={300}
-                height={400}
+                width={538}
+                height={484}
                 className="object-contain"
               />
             </div>
 
-            <div className="space-y-8 max-w-xl lg:pl-10">
+            <div className="max-w-[718px]">
               {SELLING_STEPS.map((step, index) => (
                 <div key={step.number} className="relative">
-                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <div className="bg-[#FDFDFD] rounded-lg p-6 shadow-sm">
                     <div className="flex items-start gap-4">
                       <span className="text-2xl text-[#101010] font-semibold">
                         {step.number}
@@ -158,7 +158,7 @@ export default function ScreenCondition() {
                     </div>
                   </div>
                   {index < SELLING_STEPS.length - 1 && (
-                    <div className="h-8 w-8 mx-auto my-2">
+                    <div className="h-6 w-6 mx-auto my-3">
                       <svg
                         className="w-full h-full text-[#101010]"
                         fill="none"
