@@ -223,7 +223,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.models.map((model) => (
                   <button
                     key={model}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
                       selectedModel === model
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -255,7 +255,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.controllers.map((controller) => (
                   <button
                     key={controller}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
                       selectedController === controller
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -278,7 +278,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.memories.map((memory) => (
                   <button
                     key={memory}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
                       selectedMemory === memory
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -301,7 +301,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.conditions.map((condition) => (
                   <button
                     key={condition}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
                       selectedCondition === condition
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -323,7 +323,7 @@ const ProductDetailsPage: React.FC = () => {
                     Trade-in:
                   </h4>
                   <button
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
                       modalState
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
