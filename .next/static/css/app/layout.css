@@ -3924,6 +3924,10 @@ body {
     --tw-text-opacity: 1;
     color: rgb(16 16 16 / var(--tw-text-opacity, 1));
   }
+
+  .lg\:text-\[\] {
+    color: ;
+  }
 }
 
 @media (min-width: 1280px) {

@@ -174,21 +174,25 @@ const ProductDetailsPage: React.FC = () => {
           </div>
 
           <div className="xl:w-1/2">
-            <div className="flex justify-between items-center">
-              <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-                {product.price}
-              </h2>
+            <div className="flex justify-between items-center mb-2.5">
+              <div className="flex flex-col gap-3">
+                <h1 className="text-3xl lg:text-[40px] text-[#101010] font-semibold">
+                  {product.title}
+                </h1>
+                <p className="text-[#2B2B2B] text-lg mb-2 flex items-center justify-between">
+                  {" "}
+                  {selectedModel} | {selectedMemory} | Black{" "}
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 items-end">
+                <h2 className="text-2xl lg:text-5xl font-semibold text-[#101010]">
+                  {product.price}
+                </h2>
+                <p className="text-lg text-[#6B6B6B]">incl. tax</p>
+              </div>
             </div>
-            <p className="text-[#2B2B2B] text-lg mb-2 flex items-center justify-between">
-              <span>
-                {" "}
-                {selectedModel} | {selectedMemory} | Black{" "}
-              </span>
-              <span className="text-sm text-gray-500">incl. tax</span>
-            </p>
 
-            <div className="flex items-center gap-2.5 mt-2 mb-3">
+            <div className="flex items-center gap-2.5 mb-6">
               <p className="flex items-center gap-2.5">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <svg
@@ -219,7 +223,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.models.map((model) => (
                   <button
                     key={model}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
                       selectedModel === model
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -234,7 +238,12 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="bg-[#daedf2] p-4 py-6 rounded-lg border-l-4 border-black">
-              {product.description}
+              <h3 className="text-base text-[#101010] inline-block">Model:</h3>{" "}
+              <p className="text-[]">
+                The phone will have heavy signs of wear, such as deeper
+                scratches, dents and other marks. The phone is unlocked, fully
+                tested and works like new.
+              </p>
             </div>
 
             {/* Controller */}
@@ -246,7 +255,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.controllers.map((controller) => (
                   <button
                     key={controller}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
                       selectedController === controller
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -269,7 +278,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.memories.map((memory) => (
                   <button
                     key={memory}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
                       selectedMemory === memory
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -292,7 +301,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.conditions.map((condition) => (
                   <button
                     key={condition}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
                       selectedCondition === condition
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -314,7 +323,7 @@ const ProductDetailsPage: React.FC = () => {
                     Trade-in:
                   </h4>
                   <button
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
                       modalState
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
