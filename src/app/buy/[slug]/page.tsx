@@ -181,9 +181,34 @@ const ProductDetailsPage: React.FC = () => {
               </h2>
             </div>
             <p className="text-[#2B2B2B] text-lg mb-2 flex items-center justify-between">
-              {selectedModel} | {selectedMemory} | Black{" "}
+              <span>
+                {" "}
+                {selectedModel} | {selectedMemory} | Black{" "}
+              </span>
               <span className="text-sm text-gray-500">incl. tax</span>
             </p>
+
+            <div className="flex items-center gap-2.5 mt-2 mb-3">
+              <p className="flex items-center gap-2.5">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect width="24" height="24" fill="#00B67A" />
+                    <path
+                      d="M11.2392 7.14165C11.4787 6.4046 12.5214 6.40461 12.7609 7.14165L13.6166 9.77509C13.7237 10.1047 14.0309 10.3279 14.3774 10.3279H17.1464C17.9214 10.3279 18.2436 11.3196 17.6166 11.7751L15.3765 13.4026C15.0961 13.6064 14.9788 13.9675 15.0859 14.2971L15.9415 16.9305C16.181 17.6676 15.3374 18.2805 14.7104 17.8249L12.4703 16.1974C12.1899 15.9937 11.8102 15.9937 11.5299 16.1974L9.28972 17.8249C8.66275 18.2805 7.81917 17.6676 8.05865 16.9305L8.9143 14.2971C9.0214 13.9675 8.90408 13.6064 8.62369 13.4026L6.38355 11.7751C5.75658 11.3196 6.0788 10.3279 6.85378 10.3279H9.62274C9.96932 10.3279 10.2765 10.1047 10.3836 9.77509L11.2392 7.14165Z"
+                      fill="#FDFDFD"
+                    />
+                  </svg>
+                ))}
+              </p>
+              <h2 className="font-medium">4.9</h2>
+              <p className="underline">(385 reviews)</p>
+            </div>
 
             {/* Model */}
             <div className="mb-6">
@@ -476,7 +501,7 @@ const ProductDetailsPage: React.FC = () => {
                 className="rounded-lg"
                 passHref
               >
-                <div className="shadow-sm hover:shadow-md border border-gray-100 rounded-lg pb-2">
+                <div className="shadow-sm bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-lg pb-2">
                   <Image
                     src={product.image}
                     alt={product.title}

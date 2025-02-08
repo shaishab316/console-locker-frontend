@@ -59,35 +59,21 @@ export function BlogCarousel() {
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
             Our Recent Blogs
           </h2>
-          {/* <div className="flex gap-2">
-            <Button
-              icon={<LeftOutlined />}
-              onClick={previous}
-              className="flex items-center justify-center"
-              shape="default"
-            />
-            <Button
-              icon={<RightOutlined />}
-              onClick={next}
-              className="flex items-center justify-center"
-              shape="default"
-            />
-          </div> */}
 
           <div className="hidden md:flex gap-4">
             <button
               onClick={previous}
-              className="px-2.5 py-2 rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
+              className="w-12 h-12 flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
               aria-label="Previous review"
             >
-              <ArrowLeftOutlined className="text-xl" />
+              <ArrowLeftOutlined className="text-sm" />
             </button>
             <button
               onClick={next}
-              className="px-2.5 py-2 rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
+              className="w-12 h-12 flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
               aria-label="Next review"
             >
-              <ArrowRightOutlined className="text-xl" />
+              <ArrowRightOutlined className="text-sm" />
             </button>
           </div>
         </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const HeroBanner = () => {
   return (
-    <div className="bg-[url(/home/bannermobile1.png)] md:bg-[url(/hero-banner.png)] bg-cover bg-no-repeat min-h-[calc(100vh-80px)]">
+    <div className="bg-[url(/home/bannermobile1.png)] md:bg-[url(/hero-banner.png)] bg-cover bg-no-repeat min-h-[calc(100vh-70px)]">
       {/* <Container> */}
       <div className="flex flex-col md:flex-row min-h-[calc(100vh-80px)] lg:items-center lg:justify-center">
         {/* Hidden on small screens */}
