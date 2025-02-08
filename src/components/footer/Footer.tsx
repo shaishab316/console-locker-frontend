@@ -25,7 +25,7 @@ export function ConsoleFooter() {
                 className="hidden md:inline-block absolute -top-28 left-0"
               />
               <div className="ml-0 lg:ml-52">
-                <h2 className="text-left text-white text-2xl font-semibold">
+                <h2 className="text-left text-[#FDFDFD] text-2xl md:text-[40px] font-semibold">
                   Sign Up to Our Newsletter
                 </h2>
               </div>
@@ -35,11 +35,11 @@ export function ConsoleFooter() {
           {/* for mobile */}
           <div className="w-full lg:hidden flex items-center justify-between border border-gray-800 rounded-md">
             <input
-              className="w-[60%] border-none outline-none bg-transparent text-white px-2.5 py-3"
+              className="w-[60%] text-sm border-none outline-none bg-transparent text-[#FDFDFD] px-2.5 py-3"
               type="text"
               placeholder="Enter your email"
             />
-            <button className="w-[40%] place-items-end bg-white text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
+            <button className="w-[40%] place-items-end bg-[#FDFDFD] text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
               Subscribe
             </button>
           </div>
@@ -47,11 +47,11 @@ export function ConsoleFooter() {
           {/* for desktop */}
           <div className="w-full lg:w-[50%] hidden lg:flex items-center justify-between border border-gray-800 rounded-md">
             <input
-              className="border-none outline-none bg-transparent text-white px-2.5 py-3"
+              className="border-none text-sm outline-none bg-transparent text-[#FDFDFD] px-2.5 py-3"
               type="text"
               placeholder="Enter your email"
             />
-            <button className="place-items-end bg-white text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
+            <button className="place-items-end bg-[#FDFDFD] text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
               Subscribe
             </button>
           </div>
@@ -60,7 +60,7 @@ export function ConsoleFooter() {
         <div className="lg:flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between gap-8 md:mb-16 px-3 lg:p-0 pb-6">
           {/* Payment Methods */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-6">
+            <h4 className="text-[#FDFDFD] text-[32px] font-semibold mb-6">
               Payment Methods:
             </h4>
             <div className="flex items-center flex-wrap gap-2 mb-12">
@@ -96,7 +96,7 @@ export function ConsoleFooter() {
 
             {/* Social Links */}
             <div>
-              <h4 className="text-white text-lg font-semibold mt-6 mb-6">
+              <h4 className="text-white text-2xl font-semibold mt-6 mb-6">
                 Social Links
               </h4>
               <div className="flex gap-4">
@@ -156,7 +156,7 @@ export function ConsoleFooter() {
             <ul className="space-y-6">
               {["Home", "Buy", "Sell", "About Us", "Reviews"].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-gray-300 hover:text-white">
+                  <Link href="#" className="text-[#FDFDFD] text-lg">
                     {item}
                   </Link>
                 </li>
@@ -171,26 +171,26 @@ export function ConsoleFooter() {
             </h4>
             <div className="space-y-6">
               <div>
-                <strong className="text-white block">Email</strong>
-                <p className="text-gray-300">info@consolelocker.it</p>
+                <strong className="text-[#FDFDFD] text-lg block">Email</strong>
+                <p className="text-[#FDFDFD]">info@consolelocker.it</p>
               </div>
               <div>
-                <strong className="text-white block">Phone</strong>
-                <p className="text-gray-300">+1 234 567 890</p>
+                <strong className="text-[#FDFDFD] text-lg block">Phone</strong>
+                <p className="text-[#FDFDFD] text-base">+1 234 567 890</p>
               </div>
             </div>
           </div>
 
           {/* Privacy & Policy */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-6">
+            <h4 className="text-[#FDFDFD] text-[32px] font-semibold mb-6">
               Privacy & Policy
             </h4>
             <ul className="space-y-6">
               <li>
                 <Link
                   href="/returns-and-refunds"
-                  className="text-gray-300 hover:text-white"
+                  className="text-lg text-[#FDFDFD]"
                 >
                   Returns & Refunds
                 </Link>
@@ -198,24 +198,18 @@ export function ConsoleFooter() {
               <li>
                 <Link
                   href="/terms-of-services"
-                  className="text-gray-300 hover:text-white"
+                  className="text-lg text-[#FDFDFD]"
                 >
                   Terms of Services
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/cookie-policy"
-                  className="text-gray-300 hover:text-white"
-                >
+                <Link href="/cookie-policy" className="text-lg text-[#FDFDFD]">
                   Cookie Policy (EU)
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/privacy-policy"
-                  className="text-gray-300 hover:text-white"
-                >
+                <Link href="/privacy-policy" className="text-lg text-[#FDFDFD]">
                   Privacy Policy
                 </Link>
               </li>

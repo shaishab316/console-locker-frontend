@@ -70,24 +70,24 @@ export default function ScreenCondition() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-[#F2F5F7] pb-20">
       {/* Screen Condition Section */}
       <div className="max-w-[798px] mx-auto p-4 pt-8">
-        <h1 className="text-[#101010] text-xl font-semibold mb-2">
+        <h1 className="text-[#101010] text-base font-medium mb-3">
           Playstation 4
         </h1>
-        <h2 className="text-2xl text-[#101010] font-semibold mb-4">
+        <h2 className="text-2xl text-[#101010] font-semibold mb-6">
           What is the condition of the screen?
         </h2>
 
-        <form className="space-y-3 mb-6">
+        <form className="space-y-4 mb-6">
           {SCREEN_CONDITIONS.map((condition) => (
             <label
               key={condition.id}
-              className={`block w-full rounded-md border p-4 cursor-pointer transition-colors
+              className={`block w-full bg-[#FDFDFD] rounded-md p-4 cursor-pointer transition-colors
                 ${
                   selectedCondition === condition.id
-                    ? "border-blue-500 bg-[#DAEDF2]"
+                    ? "bg-[#cbe4ea]"
                     : "border-gray-200 hover:border-gray-300"
                 }
               `}
@@ -100,11 +100,11 @@ export default function ScreenCondition() {
                     value={condition.id}
                     checked={selectedCondition === condition.id}
                     onChange={(e) => setSelectedCondition(e.target.value)}
-                    className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="h-6 w-6 border-gray-300 text-blue-600 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <p className="text-lg font-semibold text-[#101010]">
+                  <p className="text-xl font-semibold text-[#101010] mb-2">
                     {condition.title}
                   </p>
                   <p className="text-[#6B6B6B] text-lg mt-1">

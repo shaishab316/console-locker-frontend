@@ -196,9 +196,9 @@ const ProductPage: React.FC = () => {
         {/* Sidebar */}
         <div className="flex">
           <div
-            className={`w-0 lg:max-h-max lg:w-1/4 bg-white rounded-md lg:mb-5`}
+            className={`w-0 h-[1680px] lg:w-1/4 bg-white rounded-md lg:mb-5`}
           >
-            <h3 className="hidden md:flex text-[32px] text-[#101010] px-5 pt-4 pb-3 border-b font-semibold mb-4">
+            <h3 className="hidden lg:flex text-[32px] text-[#101010] px-5 pt-4 pb-3 border-b font-semibold mb-4">
               Filter
             </h3>
 
@@ -226,7 +226,7 @@ const ProductPage: React.FC = () => {
               <h3 className="text-lg font-medium">Filter</h3>
             </div> */}
 
-            {/* for mobile */}
+            {/* filter for mobile */}
             {filterView && (
               <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white rounded-lg p-5">
                 <div className="mb-4">
@@ -280,18 +280,18 @@ const ProductPage: React.FC = () => {
             )}
 
             {/* for desktop */}
-            <div className="hidden lg:block px-5 pb-3 pt-2">
+            <div className="hidden lg:block pb-3 mx-4 pt-2">
               <div className="relative mb-5 border-b-[.75px] border-[#969696]">
-                <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
                   Products
                 </h4>
-                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none pb-3">
+                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
                   <option>All</option>
                   <option>PlayStation</option>
                   <option>Xbox</option>
                   <option>Nintendo</option>
                 </select>
-                <div className="absolute top-9 right-0 flex items-center pr-3 pointer-events-none">
+                <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
                   <svg
                     className="w-6 h-6 text-[#101010]"
@@ -309,17 +309,18 @@ const ProductPage: React.FC = () => {
                   </svg>
                 </div>
               </div>
+
               <div className="relative mb-5 border-b-[.75px] border-[#969696]">
-                <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
                   Brand
                 </h4>
-                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none pb-3">
+                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
                   <option>All</option>
                   <option>PlayStation</option>
                   <option>Xbox</option>
                   <option>Nintendo</option>
                 </select>
-                <div className="absolute top-9 right-0 flex items-center pr-3 pointer-events-none">
+                <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
                   <svg
                     className="w-6 h-6 text-[#101010]"
@@ -337,18 +338,19 @@ const ProductPage: React.FC = () => {
                   </svg>
                 </div>
               </div>
+
               <div className="relative mb-5 border-b-[.75px] border-[#969696]">
-                <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
                   Price Range
                 </h4>
-                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none pb-3">
+                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
                   <option>All</option>
                   <option>$100 - $300</option>
                   <option>$300 - $500</option>
                   <option>$500+</option>
                 </select>
 
-                <div className="absolute top-9 right-0 flex items-center pr-3 pointer-events-none">
+                <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
                   <svg
                     className="w-6 h-6 text-[#101010]"
@@ -366,17 +368,18 @@ const ProductPage: React.FC = () => {
                   </svg>
                 </div>
               </div>
+
               <div className="relative mb-5 border-b-[.75px] border-[#969696]">
-                <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
                   Condition
                 </h4>
-                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none pb-3">
+                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
                   <option>All</option>
                   <option>Good</option>
                   <option>New</option>
                 </select>
 
-                <div className="absolute top-9 right-0 flex items-center pr-3 pointer-events-none">
+                <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
                   <svg
                     className="w-6 h-6 text-[#101010]"
@@ -401,10 +404,10 @@ const ProductPage: React.FC = () => {
           <div className="w-full lg:w-3/4 lg:ml-6">
             {/* View Toggle */}
             <div className="lg:bg-[#FDFDFD] flex justify-between items-center p-2.5 rounded-md mb-4">
-              {/*  */}
+              {/* filter icon for mobile */}
               <div
                 onClick={() => setFilterView(!filterView)}
-                className={`flex lg:hidden items-center gap-2 border ${
+                className={`flex h-10 lg:hidden items-center gap-2 border ${
                   filterView && "bg-gray-200"
                 } rounded-lg w-max p-2`}
               >
@@ -422,7 +425,7 @@ const ProductPage: React.FC = () => {
                 >
                   <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
                 </svg>
-                <h3 className="text-lg font-medium">Filter</h3>
+                <h3 className="text-sm font-medium">Filter</h3>
               </div>
 
               {/* view - grid / list */}
@@ -458,8 +461,8 @@ const ProductPage: React.FC = () => {
               </div>
 
               {/* sorting */}
-              <div className="relative flex gap-2">
-                <select className="appearance-none w-48 md:w-56 px-2 py-2 border border-[#101010] rounded-md text-base bg-white text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
+              <div className="h-10 relative flex gap-2">
+                <select className="appearance-none w-40 md:w-56 px-2 py-2 border border-[#101010] rounded-md font-medium text-sm bg-white text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
                   <option defaultValue={"Sort by"} className="text-[#101010]">
                     Sort by
                   </option>
@@ -496,16 +499,16 @@ const ProductPage: React.FC = () => {
                   <Link
                     key={product.id}
                     href={`/buy/${product.id}`}
-                    className="rounded-lg"
+                    className=""
                     passHref
                   >
-                    <div className="shadow-sm hover:shadow-md bg-[#FDFDFD]  border border-gray-100 rounded-lg pb-2">
+                    <div className="shadow-sm hover:shadow-md bg-[#FDFDFD] pb-2 rounded-lg">
                       <Image
                         src={product.image}
                         alt={product.title}
                         width={300}
-                        height={200}
-                        className="object-center object-cover w-full rounded-t-lg"
+                        height={500}
+                        className="object-center object-cover min-w-full h-full rounded-t-lg"
                       />
                       <div className="px-3">
                         <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">

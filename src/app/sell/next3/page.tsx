@@ -2,125 +2,196 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import Container from "@/components/common/Container";
+import { useRouter } from "next/navigation";
 
-export default function PlayStationOffer() {
-  const [selectedPayment, setSelectedPayment] = useState<"direct" | "voucher">(
-    "direct"
-  );
+const SCREEN_CONDITIONS = [
+  {
+    id: "cracked",
+    title: "Cracked or broken",
+    description:
+      "The screen is cracked, detached or has dead pixels. Cracks can be felt with fingernail.",
+  },
+  {
+    id: "Visible wear",
+    title: "Visible wear",
+    description:
+      "The screen has scratches or shows light signs of use. Scratches are visible with or without a light source.",
+  },
+  {
+    id: "wear",
+    title: "Signs of wear",
+    description:
+      "The screen has scratches or shows light signs of use. Scratches are visible with or without a light source.",
+  },
+  {
+    id: "Minimal Signs of wear",
+    title: "Minimal Signs of wear",
+    description:
+      "The screen has scratches or shows light signs of use. Scratches are visible with or without a light source.",
+  },
+  {
+    id: "new",
+    title: "No Signs of use",
+    description:
+      "The screen looks brand new. No signs of wear. No visible scratches that can be seen under a light source.",
+  },
+];
+
+const SELLING_STEPS = [
+  {
+    number: 1,
+    title: "Get a price estimate",
+    description:
+      "Quickly evaluate your phone and get a price offer in 2 minutes.",
+  },
+  {
+    number: 2,
+    title: "Get a free shipping pack",
+    description:
+      "We will send you a shipping pack within 1-3 working days.\nThe package contains everything you need to send the device for free.",
+  },
+  {
+    number: 3,
+    title: "Get paid",
+    description:
+      "After we receive your device, it will take 2-3 working days for inspection. We will then transfer your money on the same day or send you an email with an adjusted price quote.",
+  },
+];
+
+export default function ScreenCondition() {
+  const [selectedCondition, setSelectedCondition] = useState("");
+  const router = useRouter();
+
+  const handleRouter = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (selectedCondition) {
+      router.push("/sell/next4");
+    }
+  };
 
   return (
-    <div className="bg-[#F2F5F7] p-6 md:p-12">
-      <Container>
-        <h1 className="text-3xl font-bold mb-6">Our Current offer:</h1>
+    <div className="min-h-screen bg-[#F2F5F7] pb-20">
+      {/* Screen Condition Section */}
+      <div className="max-w-[798px] mx-auto p-4 pt-8">
+        <h1 className="text-[#101010] text-base font-medium mb-3">
+          Playstation 4
+        </h1>
+        <h2 className="text-2xl text-[#101010] font-semibold mb-6">
+          What is the condition of the screen?
+        </h2>
 
-        <div className="grid lg:grid-cols-4 gap-8 py-10">
-          <div className="lg:col-span-2">
-            <div className="h-max flex flex-col lg:flex-row lg:items-center gap-5 bg-[#F7F7F7] p-6 rounded-lg mb-12">
-              <div>
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/products/money-dollar.png"
-                    width={24}
-                    height={24}
-                    alt="money"
+        <form className="space-y-4 mb-6">
+          {SCREEN_CONDITIONS.map((condition) => (
+            <label
+              key={condition.id}
+              className={`block w-full bg-[#FDFDFD] rounded-md p-4 cursor-pointer transition-colors
+                ${
+                  selectedCondition === condition.id
+                    ? "bg-[#cbe4ea]"
+                    : "border-gray-200 hover:border-gray-300"
+                }
+              `}
+            >
+              <div className="flex items-start gap-3">
+                <div className="flex items-center h-5 mt-0.5">
+                  <input
+                    type="radio"
+                    name="condition"
+                    value={condition.id}
+                    checked={selectedCondition === condition.id}
+                    onChange={(e) => setSelectedCondition(e.target.value)}
+                    className="h-6 w-6 border-gray-300 text-blue-600 focus:ring-blue-500"
                   />
-                  <p className="text-2xl text-[#404040]">Direct Payout</p>
                 </div>
-                <h2 className="text-[40px] text-[#404040] font-semibold">
-                  $96.96
-                </h2>
-                <p className="text-lg text-[#404040] max-w-[350px]">
-                  Transfer vai PayPal or to your bank account
-                </p>
-              </div>
-
-              <div className="lg:hidden w-full border-t border-gray-500"></div>
-
-              <div className="hidden lg:block w-[2px] h-36 bg-gray-500 mx-4"></div>
-
-              <div>
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/products/gift.png"
-                    width={24}
-                    height={24}
-                    alt="money"
-                  />
-                  <p className="text-2xl text-[#404040]">Direct Payout</p>
+                <div>
+                  <p className="text-xl font-semibold text-[#101010] mb-2">
+                    {condition.title}
+                  </p>
+                  <p className="text-[#6B6B6B] text-lg mt-1">
+                    {condition.description}
+                  </p>
                 </div>
-                <h2 className="text-[40px] text-[#404040] font-semibold">
-                  $96.96
-                </h2>
-                <p className="text-lg font-medium bg-[#DBDDFA] w-max text-[#404040] max-w-[350px] rounded-sm p-1">
-                  10% extra
-                </p>
               </div>
-            </div>
+            </label>
+          ))}
 
-            <Link href={"/sell/next4"}>
-              <button className="w-full bg-black text-white py-3 rounded-md mb-5">
-                Continue
-              </button>
-            </Link>
-
-            <div className="flex items-start gap-2 text-[#404040] text-2xl font-medium">
-              <Image
-                src={"/sell/goon.svg"}
-                width={20}
-                height={20}
-                className="pt-1"
-                alt="goon"
-              />
-              <p>
-                When you complete your transaction, your{" "}
-                <span className="text-[#101010]">
-                  price will be reserved for 14 days.
-                </span>
-              </p>
-            </div>
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              disabled={!selectedCondition}
+              onClick={handleRouter}
+              className={`px-6 py-2 border rounded-md text-base font-medium transition-colors
+                  ${
+                    selectedCondition
+                      ? "bg-[#F2F5F7] text-[#101010] border-[#101010] font-semibold"
+                      : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  }`}
+            >
+              CONTINUE
+            </button>
           </div>
+        </form>
+      </div>
 
-          {/* Product Details */}
-          <div className="lg:col-span-2 flex flex-col items-center justify-center">
-            {/* <div className="w-full max-w-md"> */}
-            <div className="flex flex-col items-center justify-center">
-              <div className="aspect-square relative mb-2">
-                <Image
-                  src="/products/next3.png"
-                  alt="PlayStation 4 Console"
-                  width={320}
-                  height={300}
-                  className="object-contain"
-                  priority
-                />
-              </div>
+      {/* How to Sell Section */}
+      <div className="bg-blue-50 pt-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl font-semibold text-center mb-12">
+            How to sell your Items
+          </h2>
 
-              <h2 className="text-2xl font-bold mb-2">Playstation 4</h2>
+          <div className="relative">
+            <div className="hidden lg:block absolute -right-4 bottom-0">
+              <Image
+                src="/sell/sell.png"
+                alt="Service representative"
+                width={300}
+                height={400}
+                className="object-contain"
+              />
+            </div>
 
-              <div className="grid grid-cols-2 gap-y-3">
-                <div className="flex gap-2">
-                  <span className="text-gray-600">Model :</span>
-                  <span>Fat</span>
+            <div className="space-y-8 max-w-xl lg:pl-10">
+              {SELLING_STEPS.map((step, index) => (
+                <div key={step.number} className="relative">
+                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                    <div className="flex items-start gap-4">
+                      <span className="text-2xl text-[#101010] font-semibold">
+                        {step.number}
+                      </span>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-2">
+                          {step.title}
+                        </h3>
+                        <p className="text-gray-600 whitespace-pre-line">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  {index < SELLING_STEPS.length - 1 && (
+                    <div className="h-8 w-8 mx-auto my-2">
+                      <svg
+                        className="w-full h-full text-[#101010]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                        />
+                      </svg>
+                    </div>
+                  )}
                 </div>
-                <div className="flex gap-2">
-                  <span className="text-gray-600">Memory :</span>
-                  <span>1 TB</span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="text-gray-600">Controller :</span>
-                  <span>1</span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="text-gray-600">Conditions :</span>
-                  <span>Good</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 }

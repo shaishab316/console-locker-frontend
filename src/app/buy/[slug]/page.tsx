@@ -193,7 +193,7 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-2.5 mb-6">
-              <p className="flex items-center gap-2.5">
+              <p className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <svg
                     width="24"
@@ -240,7 +240,9 @@ const ProductDetailsPage: React.FC = () => {
             <div className="bg-[#daedf2] w-full p-6 rounded-lg border-l-4 border-black">
               <div className="flex gap-2 mb-2">
                 <p className="text-[#6B6B6B]">
-                  <span className="text-base text-[#101010] font-normal">Model: </span> 
+                  <span className="text-base text-[#101010] font-normal">
+                    Model:{" "}
+                  </span>
                   The phone will have heavy signs of wear, such as deeper
                   scratches, dents and other marks. The phone is unlocked, fully
                   tested and works like new.
@@ -283,7 +285,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.memories.map((memory) => (
                   <button
                     key={memory}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
+                    className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
                       selectedMemory === memory
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -328,15 +330,13 @@ const ProductDetailsPage: React.FC = () => {
                     Trade-in:
                   </h4>
                   <button
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
+                    className={`w-[120px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
                       modalState
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
                     }`}
                     onClick={() => {
                       handleTrade();
-                      // setTradeIn(!tradeIn);
-                      // setOpenModal(!openModal);
                     }}
                   >
                     {modalState ? "No" : "Yes"}
@@ -426,8 +426,8 @@ const ProductDetailsPage: React.FC = () => {
               )}
             </div>
 
-            <div className="flex justify-between items-center">
-              <p className="text-black text-[18px] font-medium mb-2 flex items-center justify-between">
+            <div className="flex justify-between items-center mb-6">
+              <p className="text-black text-[18px] font-medium flex items-center justify-between">
                 {selectedModel} | {selectedMemory} | Black
               </p>
               <div>
@@ -442,21 +442,17 @@ const ProductDetailsPage: React.FC = () => {
               <h4 className="font-normal mb-2">
                 Please select your console to add product to cart
               </h4>
-              {/* <select className="w-full border p-5 rounded-3xl">
-                <option>PlayStation 5 </option>
-                <option>Xbox Series X </option>
-                <option>Nintendo Switch </option>
-                <option>OLED Steam Deck</option>
-                <option>PlayStation 4 Pro</option>
-              </select> */}
 
               <div className="relative w-full">
                 <select
                   name="phoneCode"
                   // value={formData.phoneCode}
                   // onChange={(e) => handleInputChange(e as any)}
-                  className="px-3 py-2 border rounded-3xl bg-white text-sm sm:text-base appearance-none w-full"
+                  className="px-4 py-3 border rounded-3xl bg-white text-sm sm:text-base appearance-none w-full"
                 >
+                  <option value="" defaultValue={"Choose a console"}>
+                    Choose a console
+                  </option>
                   <option value="PlayStation 4 Pro">PlayStation 5</option>
                   <option value="Nintendo Switch">Nintendo Switch</option>
                   <option value="OLED Steam Deck">OLED Steam Deck</option>
@@ -465,7 +461,7 @@ const ProductDetailsPage: React.FC = () => {
 
                 <div className="absolute inset-y-0 right-0 flex items-center px-3">
                   <svg
-                    className="w-4 h-4 text-gray-500"
+                    className="w-6 h-6 text-gray-500"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -485,19 +481,19 @@ const ProductDetailsPage: React.FC = () => {
               <div className="flex items-center gap-4">
                 <div className="bg-[#DAEDF2] p-3 rounded-md">
                   <Image
-                    src="/sell/microusb.png"
+                    src="/sell/ship-ready.svg"
                     width={20}
                     height={20}
                     alt="usb"
                   />
                 </div>
                 <h2 className="text-base font-medium text-[#101010]">
-                  Micro USB, HDMI Cable, Power Cable.
+                  Ready to be shipped.
                 </h2>
               </div>
               <Link
                 href={"/cart"}
-                className="bg-black text-white text-center px-6 py-3 rounded-md"
+                className="h-14 flex items-center justify-center bg-black text-white text-center px-6 py-3 rounded-md"
               >
                 Add to Cart
               </Link>

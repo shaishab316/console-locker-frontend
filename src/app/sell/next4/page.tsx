@@ -4,390 +4,117 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/common/Container";
-import toast from "react-hot-toast";
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  postcode: string;
-  town: string;
-  streetName: string;
-  apartment: string;
-  country: string;
-  paymentMethod: "bank" | "paypal";
-  iban: string;
-  acceptTerms: boolean;
-}
-
-export default function CheckoutForm() {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    postcode: "",
-    town: "",
-    streetName: "",
-    apartment: "",
-    country: "",
-    paymentMethod: "bank",
-    iban: "",
-    acceptTerms: false,
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // console.log("Form submitted:", formData);
-    toast.success("Submitted successfully!");
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      postcode: "",
-      town: "",
-      streetName: "",
-      apartment: "",
-      country: "",
-      paymentMethod: "bank",
-      iban: "",
-      acceptTerms: false,
-    });
-  };
+export default function PlayStationOffer() {
+  const [selectedPayment, setSelectedPayment] = useState<"direct" | "voucher">(
+    "direct"
+  );
 
   return (
-    <div className="min-h-screen bg-[#F2F5F7] py-8">
+    <div className="bg-[#F2F5F7] p-6 md:p-12">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-12">
-          {/* Main Form */}
-          <form onSubmit={handleSubmit} className="lg:col-span-2 space-y-8">
-            {/* Personal Information */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-[32px] font-semibold text-[#101010] mb-6">
-                Personal information
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label
-                    htmlFor="firstName"
-                    className="block text-lg font-medium text-[#101010] mb-1"
-                  >
-                    First Name{" "}
-                    <span className="text-red-500 font-semibold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lastName"
-                    className="block text-lg font-medium text-[#101010] mb-1"
-                  >
-                    Last Name
-                    <span className="text-red-500 font-semibold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
+        <h1 className="text-3xl font-bold mb-6">Our Current offer:</h1>
 
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-lg font-medium text-[#101010] mb-1"
-                >
-                  Email <span className="text-red-500 font-semibold">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="phone"
-                  className="block text-lg font-medium text-[#101010] mb-1"
-                >
-                  Phone
-                </label>
-                <div className="flex">
-                  <div className="w-20 mr-2">
-                    <button
-                      type="button"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md flex items-center justify-between"
-                    >
-                      <Image
-                        src="/germany.png"
-                        alt="German flag"
-                        width={20}
-                        height={15}
-                        className="mr-1"
-                      />
-                      +42
-                    </button>
-                  </div>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.phone}
-                    onChange={handleInputChange}
+        <div className="grid items-center lg:grid-cols-4 gap-8 py-10">
+          <div className="lg:col-span-2">
+            <div className="h-max flex flex-col lg:flex-row lg:items-center gap-5 bg-[#F7F7F7] border p-6 rounded-lg mb-12">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Image
+                    src="/products/money-dollar.png"
+                    width={24}
+                    height={24}
+                    alt="money"
                   />
+                  <p className="text-2xl text-[#404040]">Direct Payout</p>
                 </div>
-                <p className="text-sm text-[#6B6B6B] mt-1">
-                  Please provide a mobile phone number in case we need to
-                  contact you about your order.
+                <h2 className="text-[40px] text-[#404040] font-semibold">
+                  $96.96
+                </h2>
+                <p className="text-lg text-[#404040] max-w-[350px]">
+                  Transfer vai PayPal or to your bank account
                 </p>
               </div>
-            </div>
 
-            {/* Address */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-6">Address</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label
-                    htmlFor="postcode"
-                    className="block text-lg font-medium text-[#101010] mb-1"
-                  >
-                    Postcode{" "}
-                    <span className="text-red-500 font-semibold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="postcode"
-                    name="postcode"
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.postcode}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="town"
-                    className="block text-lg font-medium text-[#101010] mb-1"
-                  >
-                    Town / City{" "}
-                    <span className="text-red-500 font-semibold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="town"
-                    name="town"
-                    required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.town}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
+              <div className="lg:hidden w-full border-t border-gray-500"></div>
 
-              <div className="mb-4">
-                <label
-                  htmlFor="streetName"
-                  className="block text-lg font-medium text-[#101010] mb-1"
-                >
-                  Street Name*
-                </label>
-                <input
-                  type="text"
-                  id="streetName"
-                  name="streetName"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  value={formData.streetName}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="apartment"
-                  className="block text-lg font-medium text-[#101010] mb-1"
-                >
-                  Apartment, suite, unit, etc. (Optional)
-                </label>
-                <input
-                  type="text"
-                  id="apartment"
-                  name="apartment"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  value={formData.apartment}
-                  onChange={handleInputChange}
-                />
-              </div>
+              <div className="hidden lg:block w-[2px] h-36 bg-gray-500 mx-4"></div>
 
               <div>
-                <label
-                  htmlFor="country"
-                  className="block text-lg font-medium text-[#101010] mb-1"
-                >
-                  Country <span className="text-red-500 font-semibold">*</span>
-                </label>
-                <select
-                  id="country"
-                  name="country"
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  value={formData.country}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      country: e.target.value,
-                    }))
-                  }
-                >
-                  <option value="">Select a country</option>
-                  <option value="DE">Germany</option>
-                  <option value="FR">France</option>
-                  <option value="GB">United Kingdom</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Payment */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-6">Payment</h2>
-              <div className="space-y-4">
-                <label className="flex items-center justify-between p-4 border rounded-md">
-                  <div className="flex items-center">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="bank"
-                      checked={formData.paymentMethod === "bank"}
-                      onChange={handleInputChange}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="ml-2 text-[#101010] text-xl font-semibold">
-                      Bank transfer (IBAN)
-                    </span>
-                  </div>
-                  <span className="font-medium">$5.00</span>
-                </label>
-
-                {formData.paymentMethod === "bank" && (
-                  <div className="pl-6">
-                    <label
-                      htmlFor="iban"
-                      className="block text-lg font-medium text-[#101010] mb-1"
-                    >
-                      Bank details, IBAN{" "}
-                      <span className="text-red-500 font-semibold">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="iban"
-                      name="iban"
-                      required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      placeholder="Example: FI14 1009 3000 1234 58"
-                      value={formData.iban}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                )}
-
-                <label className="flex items-center justify-between p-4 border rounded-md">
-                  <div className="flex items-center">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="paypal"
-                      checked={formData.paymentMethod === "paypal"}
-                      onChange={handleInputChange}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="ml-2 text-[#101010] text-xl font-semibold">
-                      PayPal: $5.00 minus $0.10 fees
-                    </span>
-                  </div>
-                  <span className="font-medium">$5.00</span>
-                </label>
-              </div>
-
-              {/* Terms and Submit */}
-              <div className="space-y-4 mt-10">
-                <button
-                  type="submit"
-                  className="w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition-colors"
-                >
-                  SEND
-                </button>
-
-                <p className="ml-2 text-base text-[#2B2B2B]">
-                  By clicking send you accept our{" "}
-                  <Link
-                    href="#"
-                    className="text-[#222C9B] font-medium hover:underline"
-                  >
-                    terms of sale
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                    href="#"
-                    className="text-[#222C9B] font-medium hover:underline"
-                  >
-                    privacy policy
-                  </Link>
+                <div className="flex items-center gap-2">
+                  <Image
+                    src="/products/gift.png"
+                    width={24}
+                    height={24}
+                    alt="money"
+                  />
+                  <p className="text-2xl text-[#404040]">Direct Payout</p>
+                </div>
+                <h2 className="text-[40px] text-[#404040] font-semibold">
+                  $96.96
+                </h2>
+                <p className="text-lg font-medium bg-[#DBDDFA] w-max text-[#404040] max-w-[350px] rounded-sm p-1">
+                  10% extra
                 </p>
               </div>
             </div>
-          </form>
 
-          {/* Summary */}
-          <div className="lg:col-span-1">
-            <div className="bg-white p-6 rounded-lg shadow-sm sticky top-4">
-              <h2 className="text-2xl text-[#101010] font-semibold mb-6">
-                Summary
-              </h2>
-              <div className="flex items-start space-x-4">
-                <div className="w-20 h-20 relative flex-shrink-0">
-                  <Image
-                    src="/sell/sell-checkout-product.png"
-                    alt="Playstation 4"
-                    fill
-                    className="object-contain"
-                  />
+            <Link href={"/sell/next5"}>
+              <button className="w-full bg-black text-white py-3 rounded-md mb-5">
+                Continue
+              </button>
+            </Link>
+
+            <div className="flex items-start gap-2 text-[#404040] text-2xl font-medium">
+              <Image
+                src={"/sell/goon.svg"}
+                width={20}
+                height={20}
+                className="pt-1"
+                alt="goon"
+              />
+              <p>
+                When you complete your transaction, your{" "}
+                <span className="text-[#101010]">
+                  price will be reserved for 14 days.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          {/* Product Details */}
+          <div className="lg:col-span-2 flex flex-col items-center justify-center">
+            {/* <div className="w-full max-w-md"> */}
+            <div className="flex flex-col items-center justify-center">
+              <div className="aspect-square relative mb-2">
+                <Image
+                  src="/products/next3.png"
+                  alt="PlayStation 4 Console"
+                  width={320}
+                  height={300}
+                  className="object-contain"
+                  priority
+                />
+              </div>
+
+              <h2 className="text-2xl font-bold mb-2">Playstation 4</h2>
+
+              <div className="grid grid-cols-2 gap-y-3">
+                <div className="flex gap-2">
+                  <span className="text-gray-600">Model :</span>
+                  <span>Fat</span>
                 </div>
-                <div>
-                  <h3 className="text-xl text-[#101010] font-medium">
-                    Playstation 4
-                  </h3>
-                  <p className="text-lg text-[#2B2B2B]">Your price estimate:</p>
-                  <p className="text-2xl text-[#101010] font-semibold">$5.00</p>
+                <div className="flex gap-2">
+                  <span className="text-gray-600">Memory :</span>
+                  <span>1 TB</span>
+                </div>
+                <div className="flex gap-2">
+                  <span className="text-gray-600">Controller :</span>
+                  <span>1</span>
+                </div>
+                <div className="flex gap-2">
+                  <span className="text-gray-600">Conditions :</span>
+                  <span>Good</span>
                 </div>
               </div>
             </div>

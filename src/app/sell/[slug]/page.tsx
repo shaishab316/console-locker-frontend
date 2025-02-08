@@ -32,14 +32,14 @@ export default function StorageSelector() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center mb-24">
+    <div className="min-h-screen bg-[#F2F5F7] flex flex-col items-center justify-center mb-24">
       <div className="w-full max-w-[798px] mx-auto my-20">
-        <div className="bg-white rounded-sm shadow-lg p-6">
+        <div className="p-6">
           <div className="mb-6">
-            <h1 className="text-xl font-semibold text-gray-900 mb-2">
+            <h1 className="text-base font-medium text-[#101010] mb-3">
               Playstation 4
             </h1>
-            <h2 className="text-lg font-medium text-gray-900 mb-2">
+            <h2 className="text-2xl font-semibold text-[#101010] mb-5">
               What is the storage of your items?
             </h2>
             <p className="text-lg font-medium text-[#101010] bg-[#DAEDF2] p-3 rounded-md">
@@ -53,11 +53,11 @@ export default function StorageSelector() {
               {STORAGE_OPTIONS.map((option) => (
                 <label
                   key={option.value}
-                  className={`block w-full border rounded-md p-3 cursor-pointer transition-colors
+                  className={`block w-full border-2 border-[#101010] rounded-md p-3 cursor-pointer transition-colors
                     ${
                       selectedStorage === option.value
-                        ? "border-blue-500 bg-blue-50"
-                        : "border-gray-200 hover:border-blue-200"
+                        ? "border-blue-500 bg-[#DAEDF2]"
+                        : "border-[#101010] hover:border-blue-500"
                     }`}
                 >
                   <input

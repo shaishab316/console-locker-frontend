@@ -40,7 +40,7 @@ export default function ProductSpecification() {
   return (
     <div className="bg-[#F2F5F7] mt-20 mb-8">
       {/* Tabs */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div className="flex flex-wrap gap-6 mb-6">
         {tabs.map((tab) => (
           <button
             key={tab}
@@ -49,7 +49,7 @@ export default function ProductSpecification() {
               ${
                 activeTab === tab
                   ? "bg-black text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  : "bg-transparent border-2 border-[#101010] text-[#101010]"
               }`}
           >
             {tab}
@@ -61,7 +61,10 @@ export default function ProductSpecification() {
       <div className="bg-[#FDFDFD] rounded-lg shadow-sm">
         {activeTab === "Specification" && (
           <div className="p-6">
-            <h2 className="text-xl font-semibold mb-6">Specification</h2>
+            <h2 className="text-xl text-[#101010] font-semibold mb-6">
+              Specification
+            </h2>
+
             {/* <div className="divide-y">
               {specificationData.map((row, index) => (
                 <table
@@ -78,7 +81,7 @@ export default function ProductSpecification() {
               <table className="min-w-full border border-gray-300 border-collapse rounded-lg">
                 <tbody className="rounded-lg">
                   {specificationData.map((row, index) => (
-                    <tr key={index} className="odd:bg-white even:bg-gray-50">
+                    <tr key={index} className="">
                       <td className="border border-gray-300 px-6 py-4 text-base font-medium text-[#000000]">
                         {row.label}
                       </td>
@@ -95,7 +98,9 @@ export default function ProductSpecification() {
 
         {activeTab === "Description" && (
           <div className="p-6">
-            <h2 className="text-xl font-semibold mb-4">Description</h2>
+            <h2 className="text-xl text-[#101010] font-semibold mb-4">
+              Description
+            </h2>
             <p className="text-gray-600">
               Product description content would go here.
             </p>
@@ -104,7 +109,9 @@ export default function ProductSpecification() {
 
         {activeTab === "Warranty" && (
           <div className="p-6">
-            <h2 className="text-xl font-semibold mb-4">Warranty</h2>
+            <h2 className="text-xl text-[#101010] font-semibold mb-4">
+              Warranty
+            </h2>
             <p className="text-gray-600">Warranty information would go here.</p>
           </div>
         )}

@@ -1,7 +1,7 @@
 {
-  "/buy/[slug]/page": "app/buy/[slug]/page.js",
-  "/page": "app/page.js",
-  "/buy/playstation/page": "app/buy/playstation/page.js",
-  "/buy/xbox/page": "app/buy/xbox/page.js",
-  "/buy/nintendo/page": "app/buy/nintendo/page.js"
+  "/sell/[slug]/page": "app/sell/[slug]/page.js",
+  "/sell/next2/page": "app/sell/next2/page.js",
+  "/sell/next3/page": "app/sell/next3/page.js",
+  "/sell/next4/page": "app/sell/next4/page.js",
+  "/sell/next5/page": "app/sell/next5/page.js"
 }
