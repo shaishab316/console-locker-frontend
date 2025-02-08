@@ -390,7 +390,7 @@ const ProductPage: React.FC = () => {
                     className="rounded-lg"
                     passHref
                   >
-                    <div className="shadow-sm hover:shadow-md border border-gray-100 rounded-lg pb-2">
+                    <div className="shadow-sm hover:shadow-md bg-[#FDFDFD]  border border-gray-100 rounded-lg pb-2">
                       <Image
                         src={product.image}
                         alt={product.title}
@@ -437,7 +437,7 @@ const ProductPage: React.FC = () => {
                     className="rounded-lg"
                     passHref
                   >
-                    <div className="flex items-center shadow-sm hover:shadow-md border border-gray-100 rounded-lg">
+                    <div className="flex items-center shadow-sm hover:shadow-md bg-[#FDFDFD]  border border-gray-100 rounded-lg">
                       <Image
                         src={product.image}
                         alt={product.title}
