@@ -297,7 +297,7 @@ export default function CheckoutForm() {
                       type="radio"
                       name="paymentMethod"
                       value="bank"
-                      checked={formData.paymentMethod === "bank"}
+                      checked={paymentMethod === "bank"}
                       onChange={handleInputChange}
                       className="h-4 w-4 text-blue-600 focus:ring-blue-500"
                     />
@@ -344,7 +344,7 @@ export default function CheckoutForm() {
                         type="radio"
                         name="paymentMethod"
                         value="bank"
-                        checked={formData.paymentMethod === "paypal"}
+                        checked={paymentMethod === "paypal"}
                         onChange={handleInputChange}
                         className="h-4 w-4 text-blue-600 focus:ring-blue-500"
                       />
