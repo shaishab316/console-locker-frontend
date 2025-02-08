@@ -70,7 +70,7 @@ export function Header() {
           <Link href="/sell" className="text-sm font-medium">
             Sell
           </Link>
-          <Link href="/" className="text-sm font-medium">
+          <Link href="#" className="text-sm font-medium">
             Repair
           </Link>
           <Link href="/about" className="text-sm font-medium">

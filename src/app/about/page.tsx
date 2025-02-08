@@ -62,7 +62,7 @@ export default function AboutPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-          <div className="h-[256px] flex flex-col items-center justify-center text-center p-6 bg-[#FDFDFD] py-5">
+          <div className="h-[265px] flex flex-col items-center justify-center text-center p-6 bg-[#FDFDFD] rounded-lg py-5">
             <div className="bg-[#DAEDF2] w-[96px] h-[96px] mx-auto rounded-lg flex items-center justify-center mb-4">
               <Image
                 src="/about/a1.png"
@@ -81,7 +81,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="h-[256px] flex flex-col items-center justify-center text-center p-6 bg-[#FDFDFD] py-5">
+          <div className="h-[265px] flex flex-col items-center justify-center text-center p-6 bg-[#FDFDFD] rounded-lg py-5">
             <div className="bg-[#DAEDF2] w-[96px] h-[96px] mx-auto rounded-lg flex items-center justify-center mb-4">
               <Image
                 src="/about/a2.png"
@@ -100,7 +100,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="h-[256px] flex flex-col items-center justify-center text-center p-6 bg-[#FDFDFD] py-5">
+          <div className="h-[265px] flex flex-col items-center justify-center text-center p-6 bg-[#FDFDFD] rounded-lg py-5">
             <div className="bg-[#DAEDF2] w-[96px] h-[96px] mx-auto rounded-lg flex items-center justify-center mb-4">
               <Image
                 src="/about/a3.png"
