@@ -16,9 +16,9 @@ const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
         <Image
           src={product.img}
           alt="Product"
-          width={300}
-          height={300}
-          className="object-cover p-5"
+          width={600}
+          height={600}
+          className="object-cover p-10"
         />
       </div>
       <div className="flex justify-between items-center p-5">
