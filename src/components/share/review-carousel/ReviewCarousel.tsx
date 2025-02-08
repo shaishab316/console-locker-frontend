@@ -54,10 +54,10 @@ export default function ReviewCarousel() {
   };
 
   return (
-    <div className="pt-20 pb-14 bg-[#F2F5F7]">
+    <div className="py-24 bg-[#F2F5F7]">
       <Container>
         <div className="flex justify-between items-center mb-8">
-          <h2 className=" text-xl md:text-3xl font-bold text-gray-900">
+          <h2 className="text-xl md:text-3xl font-bold text-gray-900">
             Our Client Reviews
           </h2>
           <div className="hidden md:flex gap-4">

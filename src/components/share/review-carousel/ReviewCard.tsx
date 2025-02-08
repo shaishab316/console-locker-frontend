@@ -19,7 +19,7 @@ export default function ReviewCard({
 }: ReviewCardProps) {
   const [textLength, setTextLength] = useState(130);
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg h-full flex flex-col">
+    <div className="bg-white p-6 rounded-lg h-full flex flex-col">
       {" "}
       {/* Full height */}
       <p className="text-[#000000] leading-7 text-lg mb-6 flex-grow overflow-hidden">
