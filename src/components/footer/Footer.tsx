@@ -13,7 +13,7 @@ export function ConsoleFooter() {
     <footer className="bg-[#101010]">
       <Container>
         {/* Newsletter Section */}
-        <div className="flex flex-col md:flex-row gap-8 justify-between items-center mb-16 pt-12">
+        <div className="flex flex-col md:flex-row gap-8 justify-between items-center mb-20 pt-12">
           <div className="w-full flex items-center">
             <div className="relative flex items-center md:gap-4">
               <Image
@@ -39,7 +39,7 @@ export function ConsoleFooter() {
               type="text"
               placeholder="Enter your email"
             />
-            <button className="w-[30%] place-items-end bg-white text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
+            <button className="w-[40%] place-items-end bg-white text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
               Subscribe
             </button>
           </div>
@@ -56,15 +56,14 @@ export function ConsoleFooter() {
             </button>
           </div>
         </div>
-
         {/* Main Footer Content */}
-        <div className="lg:flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between gap-8 md:mb-16 pb-8">
+        <div className="lg:flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between gap-8 md:mb-16 px-3 lg:p-0 pb-6">
           {/* Payment Methods */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-2">
+            <h4 className="text-white text-lg font-semibold mb-6">
               Payment Methods:
             </h4>
-            <div className="flex items-center flex-wrap gap-2 mb-8">
+            <div className="flex items-center flex-wrap gap-2 mb-12">
               <Image
                 src="/payments/paypal.png"
                 className="cursor-pointer"
@@ -97,7 +96,7 @@ export function ConsoleFooter() {
 
             {/* Social Links */}
             <div>
-              <h4 className="text-white text-lg font-semibold mt-6 mb-4">
+              <h4 className="text-white text-lg font-semibold mt-6 mb-6">
                 Social Links
               </h4>
               <div className="flex gap-4">
@@ -151,10 +150,10 @@ export function ConsoleFooter() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-4">
+            <h4 className="text-white text-lg font-semibold mb-6">
               Quick Links
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-6">
               {["Home", "Buy", "Sell", "About Us", "Reviews"].map((item) => (
                 <li key={item}>
                   <Link href="#" className="text-gray-300 hover:text-white">
@@ -167,10 +166,10 @@ export function ConsoleFooter() {
 
           {/* Contact Us */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-4">
+            <h4 className="text-white text-lg font-semibold mb-6">
               Contact Us
             </h4>
-            <div className="space-y-5">
+            <div className="space-y-6">
               <div>
                 <strong className="text-white block">Email</strong>
                 <p className="text-gray-300">info@consolelocker.it</p>
@@ -184,10 +183,10 @@ export function ConsoleFooter() {
 
           {/* Privacy & Policy */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-4">
+            <h4 className="text-white text-lg font-semibold mb-6">
               Privacy & Policy
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-6">
               <li>
                 <Link
                   href="/returns-and-refunds"
@@ -223,6 +222,7 @@ export function ConsoleFooter() {
             </ul>
           </div>
         </div>
+        5
       </Container>
 
       {/* Copyright */}

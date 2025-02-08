@@ -308,12 +308,12 @@ export default function ConsoleSelector() {
 
   return (
     <div className="min-h-screen bg-[#F2F5F7]">
-      <div className="flex items-center justify-center pt-14 space-x-4">
-        <hr className="flex-1 border-b border-gray-300" />
+      <div className="flex items-center justify-center pt-14 space-x-7 lg:space-x-9">
+        <hr className="flex-1 border-b-4 border-gray-300" />
         <h2 className="text-[#101010] text-2xl md:text-5xl font-semibold text-center whitespace-nowrap">
           Choose your console
         </h2>
-        <hr className="flex-1 border-b border-gray-300" />
+        <hr className="flex-1 border-b-4 border-gray-300" />
       </div>
 
       <div className="py-5">
@@ -351,11 +351,11 @@ export default function ConsoleSelector() {
                   }`}
                 >
                   <Container className="w-full mx-auto">
-                    <div className="flex items-center py-3 space-x-4">
+                    <div className="flex items-center py-3 space-x-4 lg:space-x-7">
                       <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
                         Xbox
                       </h2>
-                      <hr className="flex-1 border-b border-gray-100 -mt-5" />
+                      <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {consoles.xbox.map((console) => (
@@ -432,11 +432,11 @@ export default function ConsoleSelector() {
               children: (
                 <div className="p-3 pb-4 md:pb-20 bg-[#1761bf]">
                   <Container className="w-[98%] mx-auto">
-                    <div className="flex items-center py-3 space-x-4">
+                    <div className="flex items-center py-3 space-x-4 lg:space-x-7">
                       <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
                         Xbox
                       </h2>
-                      <hr className="flex-1 border-b border-gray-100 -mt-5" />
+                      <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {consoles.playstation.map((console) => (
@@ -512,11 +512,11 @@ export default function ConsoleSelector() {
               children: (
                 <div className="p-3 pb-4 md:pb-20 bg-[#f34040]">
                   <Container className="w-[98%] mx-auto">
-                    <div className="flex items-center py-3 space-x-4">
+                    <div className="flex items-center py-3 space-x-4 lg:space-x-7">
                       <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
                         Xbox
                       </h2>
-                      <hr className="flex-1 border-b border-gray-100 -mt-5" />
+                      <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {consoles.nintendo.map((console) => (

@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import {
+  ChevronLeft,
+  ChevronRight,
   ChevronsLeft,
   ChevronsRight,
   LayoutGrid,
@@ -168,6 +170,15 @@ const products: Product[] = [
   },
 ];
 
+const options = [
+  { value: "ps5", label: "PlayStation 5" },
+  { value: "ps4", label: "PlayStation 4" },
+  { value: "ps4pro", label: "PlayStation 4 Pro" },
+  { value: "xbox-series-x", label: "Xbox Series X" },
+  { value: "xbox-series-s", label: "Xbox Series S" },
+  { value: "switch", label: "Nintendo Switch" },
+];
+
 const ProductPage: React.FC = () => {
   const [view, setView] = useState<"grid" | "list">("grid");
   const [page, setPage] = useState<number>(1);
@@ -185,9 +196,9 @@ const ProductPage: React.FC = () => {
         {/* Sidebar */}
         <div className="flex">
           <div
-            className={`w-0 lg:max-h-max lg:w-1/4 bg-white rounded-md lg:p-5 lg:mb-5`}
+            className={`w-0 lg:max-h-max lg:w-1/4 bg-white rounded-md lg:mb-5`}
           >
-            <h3 className="hidden md:flex text-xl font-semibold mb-4">
+            <h3 className="hidden md:flex text-[32px] text-[#101010] px-5 pt-4 pb-3 border-b font-semibold mb-4">
               Filter
             </h3>
 
@@ -226,7 +237,7 @@ const ProductPage: React.FC = () => {
                     </p>
                   </div>
 
-                  <select className="w-full border rounded-md p-2">
+                  <select className="w-full border-none outline-none">
                     <option>All</option>
                     <option>PlayStation</option>
                     <option>Xbox</option>
@@ -235,7 +246,7 @@ const ProductPage: React.FC = () => {
                 </div>
                 <div className="mb-4">
                   <h4 className="font-semibold mb-2">Brand</h4>
-                  <select className="w-full border rounded-md p-2">
+                  <select className="w-full border-none outline-none">
                     <option>All</option>
                     <option>PlayStation</option>
                     <option>Xbox</option>
@@ -244,7 +255,7 @@ const ProductPage: React.FC = () => {
                 </div>
                 <div className="mb-4">
                   <h4 className="font-semibold mb-2">Price Range</h4>
-                  <select className="w-full border rounded-md p-2">
+                  <select className="w-full border-none outline-none">
                     <option>All</option>
                     <option>$100 - $300</option>
                     <option>$300 - $500</option>
@@ -253,7 +264,7 @@ const ProductPage: React.FC = () => {
                 </div>
                 <div className="mb-4">
                   <h4 className="font-semibold mb-2">Condition</h4>
-                  <select className="w-full border rounded-md p-2">
+                  <select className="w-full border-none outline-none">
                     <option>All</option>
                     <option>Good</option>
                     <option>New</option>
@@ -269,41 +280,119 @@ const ProductPage: React.FC = () => {
             )}
 
             {/* for desktop */}
-            <div className="hidden lg:block">
-              <div className="mb-4">
-                <h4 className="font-semibold mb-2">Products</h4>
-                <select className="w-full border rounded-md p-2">
+            <div className="hidden lg:block px-5 pb-3 pt-2">
+              <div className="relative mb-5 border-b-[.75px] border-[#969696]">
+                <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                  Products
+                </h4>
+                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none pb-3">
                   <option>All</option>
                   <option>PlayStation</option>
                   <option>Xbox</option>
                   <option>Nintendo</option>
                 </select>
+                <div className="absolute top-9 right-0 flex items-center pr-3 pointer-events-none">
+                  {/* <!-- Large Chevron Icon --> */}
+                  <svg
+                    className="w-6 h-6 text-[#101010]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
               </div>
-              <div className="mb-4">
-                <h4 className="font-semibold mb-2">Brand</h4>
-                <select className="w-full border rounded-md p-2">
+              <div className="relative mb-5 border-b-[.75px] border-[#969696]">
+                <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                  Brand
+                </h4>
+                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none pb-3">
                   <option>All</option>
                   <option>PlayStation</option>
                   <option>Xbox</option>
                   <option>Nintendo</option>
                 </select>
+                <div className="absolute top-9 right-0 flex items-center pr-3 pointer-events-none">
+                  {/* <!-- Large Chevron Icon --> */}
+                  <svg
+                    className="w-6 h-6 text-[#101010]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
               </div>
-              <div className="mb-4">
-                <h4 className="font-semibold mb-2">Price Range</h4>
-                <select className="w-full border rounded-md p-2">
+              <div className="relative mb-5 border-b-[.75px] border-[#969696]">
+                <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                  Price Range
+                </h4>
+                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none pb-3">
                   <option>All</option>
                   <option>$100 - $300</option>
                   <option>$300 - $500</option>
                   <option>$500+</option>
                 </select>
+
+                <div className="absolute top-9 right-0 flex items-center pr-3 pointer-events-none">
+                  {/* <!-- Large Chevron Icon --> */}
+                  <svg
+                    className="w-6 h-6 text-[#101010]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
               </div>
-              <div className="mb-4">
-                <h4 className="font-semibold mb-2">Condition</h4>
-                <select className="w-full border rounded-md p-2">
+              <div className="relative mb-5 border-b-[.75px] border-[#969696]">
+                <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                  Condition
+                </h4>
+                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none pb-3">
                   <option>All</option>
                   <option>Good</option>
                   <option>New</option>
                 </select>
+
+                <div className="absolute top-9 right-0 flex items-center pr-3 pointer-events-none">
+                  {/* <!-- Large Chevron Icon --> */}
+                  <svg
+                    className="w-6 h-6 text-[#101010]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
@@ -369,12 +458,32 @@ const ProductPage: React.FC = () => {
               </div>
 
               {/* sorting */}
-              <div className="flex gap-2">
-                <select className="w-48 md:w-56 px-4 py-2 border border-gray-300 rounded-md text-xs bg-white text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
-                  <option defaultValue={"Sort by"}>Sort by</option>
+              <div className="relative flex gap-2">
+                <select className="appearance-none w-48 md:w-56 px-2 py-2 border border-[#101010] rounded-md text-base bg-white text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
+                  <option defaultValue={"Sort by"} className="text-[#101010]">
+                    Sort by
+                  </option>
                   <option value="High to low">High to Low</option>
                   <option value="Low to high">Low to High</option>
                 </select>
+
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  {/* <!-- Large Chevron Icon --> */}
+                  <svg
+                    className="w-6 h-6 text-[#101010]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
 
@@ -396,7 +505,7 @@ const ProductPage: React.FC = () => {
                         alt={product.title}
                         width={300}
                         height={200}
-                        className="object-center object-cover w-full rounded-lg"
+                        className="object-center object-cover w-full rounded-t-lg"
                       />
                       <div className="px-3">
                         <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
@@ -443,7 +552,7 @@ const ProductPage: React.FC = () => {
                         alt={product.title}
                         width={300}
                         height={200}
-                        className="object-center object-cover w-1/2 h-full rounded-lg"
+                        className="object-center object-cover w-1/2 h-full rounded-s-lg"
                         //
                       />
                       <div className="px-3">
@@ -483,16 +592,18 @@ const ProductPage: React.FC = () => {
             <div className="flex justify-center items-center gap-3 my-12">
               <button
                 onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                className="px-4 py-2 bg-gray-200 rounded-md mr-2"
+                className="w-10 h-10 flex items-center justify-center bg-transparent mr-2"
               >
-                <ChevronsLeft />
+                <ChevronLeft />
               </button>
               {[1, 2, 3].map((pageNumber) => (
                 <button
                   key={pageNumber}
                   onClick={() => setPage(pageNumber)}
-                  className={`px-4 py-2 rounded-md ${
-                    page === pageNumber ? "bg-black text-white" : "bg-gray-200"
+                  className={`w-10 h-10 flex items-center justify-center rounded-md ${
+                    page === pageNumber
+                      ? "bg-black text-white"
+                      : "bg-transparent border-2 border-[#101010]"
                   }`}
                 >
                   {pageNumber}
@@ -507,9 +618,9 @@ const ProductPage: React.FC = () => {
                     )
                   )
                 }
-                className="px-4 py-2 bg-gray-200 rounded-md ml-2"
+                className="w-10 h-10 flex items-center justify-center bg-transparent ml-2"
               >
-                <ChevronsRight />
+                <ChevronRight />
               </button>
             </div>
           </div>

@@ -163,7 +163,7 @@ const ProductDetailsPage: React.FC = () => {
     <div className="py-16 bg-[#F2F5F7]">
       <Container>
         <div className="flex flex-col lg:flex-row gap-8">
-          <div className="lg:w-1/2">
+          <div className="xl:w-1/2">
             <Image
               src="/buy1.png"
               alt="Console Locker"
@@ -173,7 +173,7 @@ const ProductDetailsPage: React.FC = () => {
             />
           </div>
 
-          <div className="lg:w-1/2">
+          <div className="xl:w-1/2">
             <div className="flex justify-between items-center">
               <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
@@ -219,7 +219,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.models.map((model) => (
                   <button
                     key={model}
-                    className={`lg:px-20 px-10 py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
                       selectedModel === model
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -246,7 +246,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.controllers.map((controller) => (
                   <button
                     key={controller}
-                    className={`lg:px-20 px-10 py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
                       selectedController === controller
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -269,7 +269,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.memories.map((memory) => (
                   <button
                     key={memory}
-                    className={`lg:px-20 px-10 py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
                       selectedMemory === memory
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -292,7 +292,7 @@ const ProductDetailsPage: React.FC = () => {
                 {product.conditions.map((condition) => (
                   <button
                     key={condition}
-                    className={`lg:px-20 px-8 py-5 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
                       selectedCondition === condition
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -314,7 +314,7 @@ const ProductDetailsPage: React.FC = () => {
                     Trade-in:
                   </h4>
                   <button
-                    className={`px-20 py-8 border rounded-md ${
+                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
                       modalState
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"

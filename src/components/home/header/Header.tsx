@@ -46,7 +46,7 @@ export function Header() {
           </Link>
         </div>
 
-        <nav className="hidden lg:flex items-center space-x-3 lg:space-x-8">
+        <nav className="hidden lg:flex items-center space-x-3 lg:space-x-12">
           <Link href="/" className="text-sm font-medium">
             Home
           </Link>
