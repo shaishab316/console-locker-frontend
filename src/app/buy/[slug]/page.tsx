@@ -511,7 +511,7 @@ const ProductDetailsPage: React.FC = () => {
                 className="rounded-lg"
                 passHref
               >
-                <div className="shadow-sm bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-t-lg pb-2">
+                <div className="bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-lg pb-2">
                   <Image
                     src={product.image}
                     alt={product.title}

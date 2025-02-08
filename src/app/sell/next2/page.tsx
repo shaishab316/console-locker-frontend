@@ -154,7 +154,7 @@ export default function ScreenCondition() {
             <div className="max-w-[718px]">
               {SELLING_STEPS.map((step, index) => (
                 <div key={step.number} className="relative">
-                  <div className="bg-[#FDFDFD] rounded-lg p-6 shadow-sm">
+                  <div className="bg-[#FDFDFD] rounded-lg px-10 py-12 shadow-sm">
                     <div className="flex items-start gap-4">
                       <span className="text-2xl text-[#101010] font-semibold">
                         {step.number}

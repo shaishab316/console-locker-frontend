@@ -104,13 +104,13 @@ export default function CartPage() {
 
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Cart Items */}
-          <div className="bg-[#FDFDFD] flex-grow space-y-4">
+          <div className="bg-[#FDFDFD] rounded-lg flex-grow space-y-4">
             <div className="pt-6 pl-6">
               <h1 className="text-2xl font-bold text-[#101010]">Checkout</h1>
             </div>
             {items.map((item) => (
-              <div key={item.id} className="bg-white rounded-lg p-6">
-                <div className="flex items-start space-x-4">
+              <div key={item.id} className="bg-[#FDFDFD] rounded-lg p-6">
+                <div className="flex flex-wrap items-center justify-between space-x-4">
                   <div className="w-24 h-24 relative flex-shrink-0">
                     <Image
                       src={item.image || "/placeholder.svg"}
@@ -120,7 +120,8 @@ export default function CartPage() {
                       className="object-cover rounded-lg"
                     />
                   </div>
-                  <div className="flex flex-wrap gap-3">
+
+                  <div className="flex-1 flex flex-wrap gap-3">
                     <div className="flex-grow flex flex-col justify-between space-y-2.5 h-inherit">
                       <h3 className="text-xl font-semibold text-[#101010] mb-1">
                         {item.name}
@@ -192,7 +193,7 @@ export default function CartPage() {
 
           {/* Summary */}
           <div className="w-full lg:w-[550px]">
-            <div className="bg-[#FDFDFD] rounded-lg shadow p-6">
+            <div className="bg-[#FDFDFD] rounded-lg p-6">
               <h2 className="text-2xl font-semibold text-[#101010] mb-4">
                 Summary
               </h2>

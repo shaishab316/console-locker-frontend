@@ -1,5 +1,17 @@
 {
-  "node": {},
+  "node": {
+    "40a4ff8943335025d68e9ec82bd0c58bd2e92ca593": {
+      "workers": {
+        "app/reviews/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CbdCalling%5C%5CDesktop%5C%5Cconsole-locker%5C%5Csrc%5C%5Clib%5C%5Caction.ts%22%2C%5B%5B%2240a4ff8943335025d68e9ec82bd0c58bd2e92ca593%22%2C%22getReviews%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/reviews/page": "action-browser"
+      }
+    }
+  },
   "edge": {},
   "encryptionKey": "LCxWT3W6SrQBnKbniqsF+f+SGpG4kZu2DFt9IXLsjpI="
 }

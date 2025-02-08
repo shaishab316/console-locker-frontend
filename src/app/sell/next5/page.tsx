@@ -22,6 +22,8 @@ interface FormData {
 }
 
 export default function CheckoutForm() {
+  const [paymentMethod, setPaymentMethod] = useState("");
+
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -63,6 +65,10 @@ export default function CheckoutForm() {
       iban: "",
       acceptTerms: false,
     });
+  };
+
+  const handlePayment = (method: string) => {
+    setPaymentMethod(method);
   };
 
   return (
@@ -281,8 +287,11 @@ export default function CheckoutForm() {
             {/* Payment */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h2 className="text-xl font-semibold mb-6">Payment</h2>
-              <div className="space-y-4">
-                <label className="flex items-center justify-between p-4 border rounded-md">
+              <div className="space-y-4 mb-8">
+                <label
+                  onClick={() => handlePayment("bank")}
+                  className="flex items-center justify-between p-4 border rounded-md"
+                >
                   <div className="flex items-center">
                     <input
                       type="radio"
@@ -299,7 +308,8 @@ export default function CheckoutForm() {
                   <span className="font-medium">$5.00</span>
                 </label>
 
-                {formData.paymentMethod === "bank" && (
+                {/* {formData.paymentMethod === "paypal" && ( */}
+                {paymentMethod === "bank" && (
                   <div className="pl-6">
                     <label
                       htmlFor="iban"
@@ -320,27 +330,58 @@ export default function CheckoutForm() {
                     />
                   </div>
                 )}
+              </div>
 
-                <label className="flex items-center justify-between p-4 border rounded-md">
-                  <div className="flex items-center">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="paypal"
-                      checked={formData.paymentMethod === "paypal"}
-                      onChange={handleInputChange}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="ml-2 text-[#101010] text-xl font-semibold">
-                      PayPal: $5.00 minus $0.10 fees
-                    </span>
-                  </div>
-                  <span className="font-medium">$5.00</span>
-                </label>
+              {/* Paypal Payment */}
+              <div>
+                <div className="space-y-4">
+                  <label
+                    onClick={() => handlePayment("paypal")}
+                    className="flex items-center justify-between p-4 border rounded-md"
+                  >
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="bank"
+                        checked={formData.paymentMethod === "paypal"}
+                        onChange={handleInputChange}
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="ml-2 text-[#101010] text-xl font-semibold">
+                        PayPal: $5,00 minus $0,10 fees
+                      </span>
+                    </div>
+                    <span className="font-medium">$5.00</span>
+                  </label>
+
+                  {/* {formData.paymentMethod === "paypal" && ( */}
+                  {paymentMethod === "paypal" && (
+                    <div className="pl-6">
+                      <label
+                        htmlFor="iban"
+                        className="block text-lg font-medium text-[#101010] mb-1"
+                      >
+                        Bank details, IBAN{" "}
+                        <span className="text-red-500 font-semibold">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="iban"
+                        name="iban"
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        placeholder="Example: FI14 1009 3000 1234 58"
+                        value={formData.iban}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* take user email for receive payment */}
-              <div className="mt-8">
+              {/* <div className="mt-8">
                 <label
                   htmlFor="streetName"
                   className="block text-lg font-medium text-[#101010] mb-1"
@@ -356,7 +397,7 @@ export default function CheckoutForm() {
                   value={formData.streetName}
                   onChange={handleInputChange}
                 />
-              </div>
+              </div> */}
 
               {/* Terms and Submit */}
               <div className="space-y-4 mt-6">
