@@ -1297,6 +1297,9 @@ video {
 .w-max {
   width: max-content;
 }
+.w-40 {
+  width: 10rem;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -1305,6 +1308,9 @@ video {
 }
 .min-w-full {
   min-width: 100%;
+}
+.min-w-max {
+  min-width: max-content;
 }
 .max-w-3xl {
   max-width: 48rem;

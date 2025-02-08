@@ -58,7 +58,7 @@ const LanguageSelector = () => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-full flex items-center justify-center px-3 py-2 left-0 w-full mt-2 bg-white border rounded-lg shadow-md">
+        <div className="absolute top-full min-w-max flex flex-col items-center justify-center py-2 left-0 mt-2 bg-white border rounded-lg shadow-md">
           {languages.map((lang) => (
             <div
               key={lang.code}
