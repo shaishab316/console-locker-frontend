@@ -3,6 +3,5 @@
   "/sell/next4/page": "app/sell/next4/page.js",
   "/sell/next5/page": "app/sell/next5/page.js",
   "/buy/playstation/page": "app/buy/playstation/page.js",
-  "/sell/page": "app/sell/page.js",
-  "/sell/[slug]/page": "app/sell/[slug]/page.js"
+  "/sell/page": "app/sell/page.js"
 }

@@ -1212,6 +1212,9 @@ video {
 .max-h-\[calc\(100\%-100px\)\] {
   max-height: calc(100% - 100px);
 }
+.max-h-max {
+  max-height: max-content;
+}
 .min-h-10 {
   min-height: 2.5rem;
 }
