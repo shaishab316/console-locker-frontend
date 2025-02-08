@@ -169,7 +169,7 @@ const ProductDetailsPage: React.FC = () => {
               alt="Console Locker"
               width={1400}
               height={900}
-              className="rounded-lg"
+              className="rounded-lg w-full"
             />
           </div>
 
@@ -237,12 +237,17 @@ const ProductDetailsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-[#daedf2] p-4 py-6 rounded-lg border-l-4 border-black">
-              <h3 className="text-base text-[#101010] inline-block">Model:</h3>{" "}
-              <p className="text-[]">
-                The phone will have heavy signs of wear, such as deeper
-                scratches, dents and other marks. The phone is unlocked, fully
-                tested and works like new.
+            <div className="bg-[#daedf2] w-full p-6 rounded-lg border-l-4 border-black">
+              <div className="flex gap-2 mb-2">
+                <p className="text-[#6B6B6B]">
+                  <span className="text-base text-[#101010] font-normal">Model: </span> 
+                  The phone will have heavy signs of wear, such as deeper
+                  scratches, dents and other marks. The phone is unlocked, fully
+                  tested and works like new.
+                </p>
+              </div>
+              <p className="text-[#2E7EF6] text-base font-medium underline">
+                Learn more
               </p>
             </div>
 
@@ -510,13 +515,13 @@ const ProductDetailsPage: React.FC = () => {
                 className="rounded-lg"
                 passHref
               >
-                <div className="shadow-sm bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-lg pb-2">
+                <div className="shadow-sm bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-t-lg pb-2">
                   <Image
                     src={product.image}
                     alt={product.title}
                     width={300}
                     height={200}
-                    className="object-center object-cover w-full rounded-lg"
+                    className="object-center object-cover w-full rounded-t-lg"
                   />
                   <div className="px-3">
                     <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">

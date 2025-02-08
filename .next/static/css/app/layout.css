@@ -1086,6 +1086,9 @@ video {
 .inline-block {
   display: inline-block;
 }
+.inline {
+  display: inline;
+}
 .flex {
   display: flex;
 }
@@ -2357,6 +2360,9 @@ video {
 .text-right {
   text-align: right;
 }
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -2620,6 +2626,10 @@ video {
 }
 .text-\[\] {
   color: ;
+}
+.text-\[\#2E7EF6\] {
+  --tw-text-opacity: 1;
+  color: rgb(46 126 246 / var(--tw-text-opacity, 1));
 }
 .underline {
   text-decoration-line: underline;
