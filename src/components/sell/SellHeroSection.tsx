@@ -177,6 +177,7 @@ import Container from "../common/Container";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const consoles = [
   { id: "ps5", name: "PlayStation 5", basePrice: 400 },
@@ -203,6 +204,7 @@ export default function SellHeroSection() {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -234,7 +236,7 @@ export default function SellHeroSection() {
           <div className="w-full lg:w-1/2 lg:pl-32">
             <div className="flex flex-col translate-y-1/2 lg:-translate-x-20 xl:-translate-x-0">
               <h1 className="text-4xl md:text-5xl font-bold text-[#FDFDFD] lg:text-[#101010] mb-6 ">
-                Sell Your Console
+                {t("sellYourConsole")}
               </h1>
 
               {/* Benefits Section */}
@@ -255,7 +257,7 @@ export default function SellHeroSection() {
                     alt="free shipping"
                   />
                   <span className="text-lg text-[#FDFDFD] lg:text-[#101010]">
-                    Free Shipping
+                    {t("freeShipping")}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
@@ -274,7 +276,7 @@ export default function SellHeroSection() {
                     alt="free shipping"
                   />
                   <span className="text-lg text-[#FDFDFD] lg:text-[#101010]">
-                    Free Return
+                    {t("freeReturn")}
                   </span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-700">
@@ -293,7 +295,7 @@ export default function SellHeroSection() {
                     alt="free shipping"
                   />
                   <span className="text-lg text-[#FDFDFD] lg:text-[#101010]">
-                    Fast Delivery within 48 hours
+                    {t("fastDelivery")}
                   </span>
                 </div>
               </div>
@@ -310,10 +312,12 @@ export default function SellHeroSection() {
                     onClick={() => setIsOpen(!isOpen)}
                   >
                     <span className="text-[#FDFDFD] md:text-gray-700">
-                      {selectedConsole
-                        ? options.find((opt) => opt.value === selectedConsole)
-                            ?.label
-                        : "Select a console"}
+                      {selectedConsole ? (
+                        options.find((opt) => opt.value === selectedConsole)
+                          ?.label
+                      ) : (
+                        <>{t("selectAConsole")}</>
+                      )}
                     </span>
                     <ChevronDown
                       className={`w-5 h-5 text-[#FDFDFD] md:text-gray-500 transition-transform ${
@@ -351,7 +355,7 @@ export default function SellHeroSection() {
                         : "bg-gray-700 hover:bg-gray-800"
                     }`}
                   >
-                    GET A PRICE ESTIMATE
+                    {t("getAPriceEstimate")}
                   </button>
                 </Link>
               </div>

@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { StarFilled, StarOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ReviewCardProps {
   text: string;
+  text2: string;
   author: string;
   position: string;
   rating: number;
@@ -12,18 +15,35 @@ interface ReviewCardProps {
 
 export default function ReviewCard({
   text,
+  text2,
   author,
   position,
   rating,
   avatar,
 }: ReviewCardProps) {
   const [textLength, setTextLength] = useState(130);
+
+  const [selectedLang, setSelectedLang] = useState("");
+
+  useEffect(() => {
+    const lang = localStorage.getItem("i18nextLng");
+    setSelectedLang(lang || "");
+  }, []);
+
   return (
     <div className="bg-white p-6 rounded-lg h-full flex flex-col">
       {" "}
       {/* Full height */}
       <p className="text-[#000000] leading-7 text-lg mb-6 flex-grow overflow-hidden">
-        {text.length > textLength ? `${text.slice(0, textLength)} ...` : text}
+        {selectedLang === "en"
+          ? text.length > textLength
+            ? `${text.slice(0, textLength)} ...`
+            : text
+          : text2.length > textLength
+          ? `${text2.slice(0, textLength)} ...`
+          : text2}
+
+        {/* {text.length > textLength ? `${text.slice(0, textLength)} ...` : text} */}
       </p>
       <div className="flex items-center justify-between mt-auto">
         <div className="flex items-center gap-4">

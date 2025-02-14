@@ -1,54 +1,50 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import HowToSellYourItem from "@/components/sell/HowToSellYourItem";
+import { useTranslation } from "react-i18next";
 
 const SCREEN_CONDITIONS = [
   {
     id: "cracked",
     title: "Cracked or broken",
+    title2: "Incrinato o rotto",
     description:
       "The screen is cracked, detached or has dead pixels. Cracks can be felt with fingernail.",
+    description2:
+      "Lo schermo è incrinato, staccato o ha pixel morti. Le crepe possono essere percepite con l'unghia.",
   },
   {
     id: "wear",
     title: "Signs of wear",
+    title2: "Segni di usura",
     description:
       "The screen has scratches or shows light signs of use. Scratches are visible with or without a light source.",
+    description2:
+      "Lo schermo ha graffi o mostra lievi segni di utilizzo. I graffi sono visibili con o senza una fonte di luce.",
   },
   {
     id: "new",
     title: "No Signs of use",
+    title2: "Nessun segno di utilizzo",
     description:
       "The screen looks brand new. No signs of wear. No visible scratches that can be seen under a light source.",
-  },
-];
-
-const SELLING_STEPS = [
-  {
-    number: 1,
-    title: "Get a price estimate",
-    description:
-      "Quickly evaluate your phone and get a price offer in 2 minutes.",
-  },
-  {
-    number: 2,
-    title: "Get a free shipping pack",
-    description:
-      "We will send you a shipping pack within 1-3 working days.\nThe package contains everything you need to send the device for free.",
-  },
-  {
-    number: 3,
-    title: "Get paid",
-    description:
-      "After we receive your device, it will take 2-3 working days for inspection. We will then transfer your money on the same day or send you an email with an adjusted price quote.",
+    description2:
+      "Lo schermo sembra nuovo di zecca. Nessun segno di usura. Nessun graffio visibile che possa essere visto sotto una fonte di luce.",
   },
 ];
 
 export default function ScreenCondition() {
   const [selectedCondition, setSelectedCondition] = useState("");
   const router = useRouter();
+  const [selectedLang, setSelectedLang] = useState("");
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const lang = localStorage.getItem("i18nextLng");
+    setSelectedLang(lang || "");
+  }, []);
 
   const handleRouter = (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,7 +61,7 @@ export default function ScreenCondition() {
           Playstation 4
         </h1>
         <h2 className="text-2xl text-[#101010] font-semibold mb-4">
-          What is the condition of the screen?
+          {t("quizTitle")}
         </h2>
 
         <form className="space-y-4 mb-6">
@@ -93,10 +89,12 @@ export default function ScreenCondition() {
                 </div>
                 <div>
                   <p className="text-xl font-semibold text-[#101010]">
-                    {condition.title}
+                    {selectedLang === "en" ? condition.title : condition.title2}
                   </p>
                   <p className="text-[#6B6B6B] text-lg mt-1">
-                    {condition.description}
+                    {selectedLang === "en"
+                      ? condition.description
+                      : condition.description2}
                   </p>
                 </div>
               </div>
@@ -122,64 +120,7 @@ export default function ScreenCondition() {
       </div>
 
       {/* How to Sell Section */}
-      <div className="bg-blue-50 pt-16">
-        <div className="px-4">
-          <h2 className="text-2xl text-[40px] text-[#101010] font-semibold text-center mb-16">
-            How to sell your Items
-          </h2>
-
-          <div className="relative flex items-center justify-center pb-14">
-            <div className="hidden lg:block absolute right-[4%] bottom-0">
-              <Image
-                src="/sell/sell.png"
-                alt="Service representative"
-                width={538}
-                height={484}
-                className="object-contain"
-              />
-            </div>
-
-            <div className="max-w-[718px]">
-              {SELLING_STEPS.map((step, index) => (
-                <div key={step.number} className="relative">
-                  <div className="bg-[#FDFDFD] rounded-lg  px-10 py-12 shadow-sm">
-                    <div className="flex items-start gap-4">
-                      <span className="text-2xl text-[#101010] font-semibold">
-                        {step.number}
-                      </span>
-                      <div>
-                        <h3 className="font-semibold text-lg mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-gray-600 whitespace-pre-line">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  {index < SELLING_STEPS.length - 1 && (
-                    <div className="h-6 w-6 mx-auto my-3">
-                      <svg
-                        className="w-full h-full text-[#101010]"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      <HowToSellYourItem />
     </div>
   );
 }

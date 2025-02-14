@@ -4,11 +4,13 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/common/Container";
+import { useTranslation } from "react-i18next";
 
 export default function PlayStationOffer() {
   const [selectedPayment, setSelectedPayment] = useState<"direct" | "voucher">(
     "direct"
   );
+  const { t } = useTranslation();
 
   return (
     <div className="bg-[#F2F5F7] p-6 md:p-12">
@@ -74,9 +76,9 @@ export default function PlayStationOffer() {
                 alt="goon"
               />
               <p>
-                When you complete your transaction, your{" "}
+                {t("whenYouCompleteYourTransaction1")}{" "}
                 <span className="text-[#101010]">
-                  price will be reserved for 14 days.
+                  {t("whenYouCompleteYourTransaction2")}
                 </span>
               </p>
             </div>

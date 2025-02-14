@@ -4,10 +4,11 @@ import { Layout } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "../common/Container";
-
-const { Footer } = Layout;
+import { useTranslation } from "react-i18next";
 
 export function ConsoleFooter() {
+  const { t } = useTranslation();
+
   return (
     // <Footer style={{ background: "#000000", padding: "60px 0 20px" }}>
     <footer className="bg-[#101010]">
@@ -22,11 +23,11 @@ export function ConsoleFooter() {
                 width={150}
                 height={150}
                 style={{ objectFit: "contain" }}
-                className="hidden md:inline-block absolute -top-28 left-0"
+                className="hidden lg:inline-block absolute -top-28 left-0"
               />
               <div className="ml-0 lg:ml-52">
                 <h2 className="text-left text-[#FDFDFD] text-2xl md:text-[40px] font-semibold">
-                  Sign Up to Our Newsletter
+                  {t("signUpNewsLetter")}
                 </h2>
               </div>
             </div>
@@ -40,7 +41,7 @@ export function ConsoleFooter() {
               placeholder="Enter your email"
             />
             <button className="w-[40%] place-items-end bg-[#FDFDFD] text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
-              Subscribe
+              {t("subscribe")}
             </button>
           </div>
 
@@ -52,7 +53,7 @@ export function ConsoleFooter() {
               placeholder="Enter your email"
             />
             <button className="place-items-end bg-[#FDFDFD] text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
-              Subscribe
+              {t("subscribe")}
             </button>
           </div>
         </div>
@@ -61,7 +62,7 @@ export function ConsoleFooter() {
           {/* Payment Methods */}
           <div>
             <h4 className="text-[#FDFDFD] text-[32px] font-semibold mb-6">
-              Payment Methods:
+              {t("paymentMethods")}
             </h4>
             <div className="flex items-center flex-wrap gap-2 mb-12">
               <Image
@@ -97,7 +98,7 @@ export function ConsoleFooter() {
             {/* Social Links */}
             <div>
               <h4 className="text-white text-2xl font-semibold mt-6 mb-6">
-                Social Links
+                {t("socialLinks")}
               </h4>
               <div className="flex gap-4">
                 <Link
@@ -151,31 +152,53 @@ export function ConsoleFooter() {
           {/* Quick Links */}
           <div>
             <h4 className="text-white text-lg font-semibold mb-6">
-              Quick Links
+              {t("quickLinks")}
             </h4>
             <ul className="space-y-6">
-              {["Home", "Buy", "Sell", "About Us", "Reviews"].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-[#FDFDFD] text-lg">
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="#" className="text-[#FDFDFD] text-lg">
+                  {t("home")}
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-[#FDFDFD] text-lg">
+                  {t("buy")}
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-[#FDFDFD] text-lg">
+                  {t("sell")}
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-[#FDFDFD] text-lg">
+                  {t("aboutUs")}
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-[#FDFDFD] text-lg">
+                  {t("reviews")}
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Contact Us */}
           <div>
             <h4 className="text-white text-lg font-semibold mb-6">
-              Contact Us
+              {t("contactUs")}
             </h4>
             <div className="space-y-6">
               <div>
-                <strong className="text-[#FDFDFD] text-lg block">Email</strong>
+                <strong className="text-[#FDFDFD] text-lg block">
+                  {t("email")}
+                </strong>
                 <p className="text-[#FDFDFD]">info@consolelocker.it</p>
               </div>
               <div>
-                <strong className="text-[#FDFDFD] text-lg block">Phone</strong>
+                <strong className="text-[#FDFDFD] text-lg block">
+                  {t("phone")}
+                </strong>
                 <p className="text-[#FDFDFD] text-base">+1 234 567 890</p>
               </div>
             </div>
@@ -184,7 +207,7 @@ export function ConsoleFooter() {
           {/* Privacy & Policy */}
           <div>
             <h4 className="text-[#FDFDFD] text-[32px] font-semibold mb-6">
-              Privacy & Policy
+              {t("privacyPolicyTitle")}
             </h4>
             <ul className="space-y-6">
               <li>
@@ -192,7 +215,7 @@ export function ConsoleFooter() {
                   href="/returns-and-refunds"
                   className="text-lg text-[#FDFDFD]"
                 >
-                  Returns & Refunds
+                  {t("returnAndRefund")}
                 </Link>
               </li>
               <li>
@@ -200,17 +223,17 @@ export function ConsoleFooter() {
                   href="/terms-of-services"
                   className="text-lg text-[#FDFDFD]"
                 >
-                  Terms of Services
+                  {t("termsOfService")}
                 </Link>
               </li>
               <li>
                 <Link href="/cookie-policy" className="text-lg text-[#FDFDFD]">
-                  Cookie Policy (EU)
+                  {t("cookiePolicy")}
                 </Link>
               </li>
               <li>
                 <Link href="/privacy-policy" className="text-lg text-[#FDFDFD]">
-                  Privacy Policy
+                  {t("privacyPolicy")}
                 </Link>
               </li>
             </ul>
@@ -222,9 +245,7 @@ export function ConsoleFooter() {
       {/* Copyright */}
       <div className="h-[80px] flex items-center justify-center text-center bg-[#FDFDFD] border-t border-gray-800">
         <p className="text-[#101010] px-2 text-sm lg:text-lg">
-          {" "}
-          © All Rights Reserved 2024 | VAT number IT17743751004 | Via Ogaden 4,
-          00199 Rome
+          {t("copyRight")}
         </p>
       </div>
     </footer>

@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Container from "../common/Container";
+import { useTranslation } from "react-i18next";
 
 const deliverySteps = [
   {
@@ -23,10 +26,12 @@ const deliverySteps = [
 ];
 
 export default function HowDelivery() {
+  const { t } = useTranslation();
+
   return (
-    <main className="bg-[#DAEDF2] px-4 md:px-6 lg:px-8">
+    <main className="bg-[#DAEDF2] w-full  px-4 md:px-6 lg:px-8">
       <h1 className="text-3xl md:text-4xl pt-12 font-bold text-center text-gray-900">
-        How deliver their console to us.
+        {t("howDeliver")}
       </h1>
 
       <div className="">
@@ -34,7 +39,7 @@ export default function HowDelivery() {
           {/* <div></div> */}
           {/* <Container> */}
           <div className="max-w-[718px] bg-white rounded-2xl shadow-sm z-40 p-10">
-            {deliverySteps.map((step, index) => (
+            {/* {deliverySteps.map((step, index) => (
               <div
                 key={step.number}
                 className={`flex gap-6 ${
@@ -57,7 +62,46 @@ export default function HowDelivery() {
                   ))}
                 </div>
               </div>
-            ))}
+            ))} */}
+
+            <div className={`flex gap-6 mb-8`}>
+              <div className="flex-shrink-0">
+                <div className="text-2xl text-[#101010] font-semibold">1</div>
+              </div>
+              <div className="space-y-2">
+                <h2 className="font-semibold text-lg text-[#101010]">
+                  {t("sellBoxHeading1")}
+                </h2>
+
+                <p className="text-base text-[#404040]">{t("sellBoxDesc1")}</p>
+              </div>
+            </div>
+
+            <div className={`flex gap-6 mb-8`}>
+              <div className="flex-shrink-0">
+                <div className="text-2xl text-[#101010] font-semibold">2</div>
+              </div>
+              <div className="space-y-2">
+                <h2 className="font-semibold text-lg text-[#101010]">
+                  {t("sellBoxHeading2")}
+                </h2>
+
+                <p className="text-base text-[#404040]">{t("sellBoxDesc2")}</p>
+              </div>
+            </div>
+
+            <div className={`flex gap-6`}>
+              <div className="flex-shrink-0">
+                <div className="text-2xl text-[#101010] font-semibold">3</div>
+              </div>
+              <div className="space-y-2">
+                <h2 className="font-semibold text-lg text-[#101010]">
+                  {t("sellBoxHeading3")}
+                </h2>
+
+                <p className="text-base text-[#404040]">{t("sellBoxDesc3")}</p>
+              </div>
+            </div>
           </div>
           {/* </Container> */}
 

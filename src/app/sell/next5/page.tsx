@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/common/Container";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 interface FormData {
   firstName: string;
@@ -47,6 +48,8 @@ export default function CheckoutForm() {
     }));
   };
 
+  const { t } = useTranslation();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // console.log("Form submitted:", formData);
@@ -80,7 +83,7 @@ export default function CheckoutForm() {
             {/* Personal Information */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h2 className="text-[32px] font-semibold text-[#101010] mb-6">
-                Personal information
+                {t("personalInformation")}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
@@ -88,7 +91,7 @@ export default function CheckoutForm() {
                     htmlFor="firstName"
                     className="block text-lg font-medium text-[#101010] mb-1"
                   >
-                    First Name{" "}
+                    {t("firstName")}
                     <span className="text-red-500 font-semibold">*</span>
                   </label>
                   <input
@@ -106,7 +109,7 @@ export default function CheckoutForm() {
                     htmlFor="lastName"
                     className="block text-lg font-medium text-[#101010] mb-1"
                   >
-                    Last Name
+                    {t("lastName")}
                     <span className="text-red-500 font-semibold">*</span>
                   </label>
                   <input
@@ -126,7 +129,8 @@ export default function CheckoutForm() {
                   htmlFor="email"
                   className="block text-lg font-medium text-[#101010] mb-1"
                 >
-                  Email <span className="text-red-500 font-semibold">*</span>
+                  {t("email")}{" "}
+                  <span className="text-red-500 font-semibold">*</span>
                 </label>
                 <input
                   type="email"
@@ -144,7 +148,7 @@ export default function CheckoutForm() {
                   htmlFor="phone"
                   className="block text-lg font-medium text-[#101010] mb-1"
                 >
-                  Phone
+                  {t("phone")}
                 </label>
                 <div className="flex">
                   <div className="w-20 mr-2">
@@ -180,7 +184,7 @@ export default function CheckoutForm() {
 
             {/* Address */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-6">Address</h2>
+              <h2 className="text-xl font-semibold mb-6">{t("Address")}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
                   <label
@@ -205,7 +209,7 @@ export default function CheckoutForm() {
                     htmlFor="town"
                     className="block text-lg font-medium text-[#101010] mb-1"
                   >
-                    Town / City{" "}
+                    {t("townCity")}
                     <span className="text-red-500 font-semibold">*</span>
                   </label>
                   <input
@@ -225,7 +229,7 @@ export default function CheckoutForm() {
                   htmlFor="streetName"
                   className="block text-lg font-medium text-[#101010] mb-1"
                 >
-                  Street Name{" "}
+                  {t("streetName")}{" "}
                   <span className="text-red-500 font-semibold">*</span>
                 </label>
                 <input
@@ -244,7 +248,7 @@ export default function CheckoutForm() {
                   htmlFor="apartment"
                   className="block text-lg font-medium text-[#101010] mb-1"
                 >
-                  Apartment, suite, unit, etc. (Optional)
+                  {t("appointment")}
                 </label>
                 <input
                   type="text"
@@ -286,7 +290,7 @@ export default function CheckoutForm() {
 
             {/* Payment */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-6">Payment</h2>
+              <h2 className="text-xl font-semibold mb-6">{t("payment")}</h2>
               <div className="space-y-4 mb-8">
                 <label
                   onClick={() => handlePayment("bank")}
@@ -405,7 +409,7 @@ export default function CheckoutForm() {
                   type="submit"
                   className="w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 transition-colors"
                 >
-                  SEND
+                  {t("send")}
                 </button>
 
                 <p className="ml-2 text-base text-[#2B2B2B]">
@@ -432,7 +436,7 @@ export default function CheckoutForm() {
           <div className="lg:col-span-1">
             <div className="bg-white p-6 rounded-lg shadow-sm sticky top-4">
               <h2 className="text-2xl text-[#101010] font-semibold mb-6">
-                Summary
+                {t("summary")}
               </h2>
               <div className="flex items-start space-x-4">
                 <div className="w-20 h-20 relative flex-shrink-0">
@@ -447,7 +451,9 @@ export default function CheckoutForm() {
                   <h3 className="text-xl text-[#101010] font-medium">
                     Playstation 4
                   </h3>
-                  <p className="text-lg text-[#2B2B2B]">Your price estimate:</p>
+                  <p className="text-lg text-[#2B2B2B]">
+                    {t("yourPriceEstimate")}
+                  </p>
                   <p className="text-2xl text-[#101010] font-semibold">$5.00</p>
                 </div>
               </div>

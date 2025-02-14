@@ -1,12 +1,12 @@
 "use client";
+
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const languages = [
-  { code: "de", name: "German", flag: "/flag/germany.png" },
   { code: "en", name: "English", flag: "/flag/usa.png" },
-  { code: "fr", name: "French", flag: "/flag/french.png" },
-  { code: "es", name: "Spanish", flag: "/flag/spanish.png" },
+  { code: "it", name: "Italy", flag: "/flag/italy.png" },
 ];
 
 interface LanguageType {
@@ -19,10 +19,26 @@ const LanguageSelector = () => {
   const [selectedLang, setSelectedLang] = useState<LanguageType>(languages[0]);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { i18n } = useTranslation(); // Use i18n directly from useTranslation hook
+  const [selectedLanguageOnLocalStorage, setSelectedLanguageOnLocalStorage] =
+    useState<string | null>("");
 
-  const selectLanguage = (lang: LanguageType) => {
+  const handleSelectLanguage = (lang: LanguageType) => {
     setSelectedLang(lang);
     setIsOpen(false);
+    changeLanguage(lang.code); // Change language on selection
+  };
+
+  const changeLanguage = async (language: string) => {
+    try {
+      if (i18n.changeLanguage) {
+        await i18n.changeLanguage(language);
+      } else {
+        console.error("i18n.changeLanguage is not available");
+      }
+    } catch (error) {
+      console.error("Error changing language:", error);
+    }
   };
 
   // Close dropdown when clicking outside
@@ -40,34 +56,48 @@ const LanguageSelector = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const i18nextLng = localStorage.getItem("i18nextLng");
+    setSelectedLanguageOnLocalStorage(i18nextLng);
+    console.log(typeof i18nextLng);
+  }, [selectedLang]);
+
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative z-50" ref={dropdownRef}>
       {/* Selected Language Display */}
       <button
-        className="flex items-center gap-2 px-3 py-2 bg-transparent w-full"
+        className="flex items-center gap-2 w-24 h-9 bg-transparent"
         onClick={() => setIsOpen(!isOpen)}
       >
         <Image
-          src={selectedLang.flag}
-          width={20}
-          height={20}
+          src={
+            selectedLanguageOnLocalStorage === "en"
+              ? languages[0].flag
+              : languages[1].flag
+          }
+          width={24}
+          height={24}
           alt={selectedLang.name}
         />
-        <span className="text-sm">{selectedLang.name}</span>
+        <span className="text-sm">
+          {selectedLanguageOnLocalStorage === "en"
+            ? languages[0].name
+            : languages[1].name}
+        </span>
       </button>
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-full min-w-max flex flex-col items-center justify-center py-2 left-0 mt-2 bg-white border rounded-lg shadow-md">
+        <div className="absolute top-full w-28  flex flex-col items-center justify-left py-1.5 left-0 mt-2 bg-white border rounded-lg shadow-md">
           {languages.map((lang) => (
-            <div
+            <button
               key={lang.code}
-              className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100"
-              onClick={() => selectLanguage(lang)}
+              className="flex items-center justify-start w-full py-2 px-2 cursor-pointer hover:bg-gray-100"
+              onClick={() => handleSelectLanguage(lang)}
             >
-              <Image src={lang.flag} width={20} height={20} alt={lang.name} />
+              <Image src={lang.flag} width={24} height={24} alt={lang.name} />
               <span className="ml-1.5 text-sm">{lang.name}</span>
-            </div>
+            </button>
           ))}
         </div>
       )}

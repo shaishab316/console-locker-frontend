@@ -1,16 +1,25 @@
 "use client";
 
 import { Carousel } from "antd";
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
+import {
+  ArrowLeftOutlined,
+  ArrowRightOutlined,
+  StarFilled,
+  StarOutlined,
+} from "@ant-design/icons";
 import { useRef } from "react";
 import ReviewCard from "./ReviewCard";
 import Container from "@/components/common/Container";
+import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 // Sample review data
 const reviews = [
   {
     id: 1,
     text: "I bought a refurbished PlayStation 5, and it looks and works like new! The delivery was super fast, and the customer support team answered all my questions. Highly recommended!",
+    text2:
+      "Ho comprato una PlayStation 5 ristrutturata e sembra e funziona come nuova! La consegna è stata super veloce e il team di supporto clienti ha risposto a tutte le mie domande. Altamente raccomandato!",
     author: "Wade Warren",
     position: "President of Sales",
     rating: 4,
@@ -19,6 +28,8 @@ const reviews = [
   {
     id: 2,
     text: "Amazing service! The refurbished iPhone I bought was practically new. Customer service was prompt and friendly. Will shop again.",
+    text2:
+      "Servizio fantastico! L'iPhone ristrutturato che ho acquistato era praticamente nuovo. Il servizio clienti è stato rapido e cordiale. Acquisterò di nuovo.",
     author: "Jane Cooper",
     position: "CEO of Marketing",
     rating: 5,
@@ -27,6 +38,8 @@ const reviews = [
   {
     id: 3,
     text: "Fast delivery, great product quality, and very helpful customer service. Thank you for an awesome experience!",
+    text2:
+      "Consegna veloce, ottima qualità del prodotto e servizio clienti molto utile. Grazie per un'esperienza fantastica!",
     author: "Robert Fox",
     position: "Tech Enthusiast",
     rating: 5,
@@ -35,6 +48,8 @@ const reviews = [
   {
     id: 4,
     text: "Product arrived earlier than expected, and I’m very happy with the quality. Will recommend it to friends!",
+    text2:
+      "Il prodotto è arrivato prima del previsto e sono molto soddisfatto della qualità. Lo consiglierò agli amici!",
     author: "Kristin Watson",
     position: "Software Engineer",
     rating: 4,
@@ -44,6 +59,7 @@ const reviews = [
 
 export default function ReviewCarousel() {
   const carouselRef = useRef<any>(null);
+  const { t } = useTranslation();
 
   const next = () => {
     carouselRef.current?.next();
@@ -58,7 +74,7 @@ export default function ReviewCarousel() {
       <Container>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl md:text-3xl font-bold text-gray-900">
-            Our Client Reviews
+            {t("reviewTitle")}
           </h2>
           <div className="hidden md:flex gap-4">
             <button
@@ -83,6 +99,7 @@ export default function ReviewCarousel() {
           dots={false}
           slidesToShow={3}
           slidesToScroll={1}
+          className="space-x-4"
           infinite
           responsive={[
             {

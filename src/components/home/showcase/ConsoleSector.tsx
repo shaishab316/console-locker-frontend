@@ -5,6 +5,7 @@ import { Tabs } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const consoles = {
   xbox: [
@@ -305,13 +306,14 @@ const consoles = {
 
 export default function ConsoleSelector() {
   const [activeTab, setActiveTab] = useState("xbox");
+  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-[#F2F5F7]">
       <div className="flex items-center justify-center pt-14 space-x-7 lg:space-x-9">
         <hr className="flex-1 border-b-4 border-gray-300" />
         <h2 className="text-[#101010] text-2xl md:text-5xl font-semibold text-center whitespace-nowrap">
-          Choose your console
+          {t("consoleHeaderTitle")}
         </h2>
         <hr className="flex-1 border-b-4 border-gray-300" />
       </div>
@@ -434,7 +436,7 @@ export default function ConsoleSelector() {
                   <Container className="w-[98%] mx-auto">
                     <div className="flex items-center py-3 space-x-4 lg:space-x-7">
                       <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
-                        Xbox
+                        Playstation
                       </h2>
                       <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>
@@ -514,7 +516,7 @@ export default function ConsoleSelector() {
                   <Container className="w-[98%] mx-auto">
                     <div className="flex items-center py-3 space-x-4 lg:space-x-7">
                       <h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
-                        Xbox
+                        Nintendo
                       </h2>
                       <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>

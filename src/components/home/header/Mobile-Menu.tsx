@@ -22,7 +22,7 @@ interface MobileMenuProps {
 
 export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
   return (
-    <Sheet open={isOpen} onOpenChange={onOpenChange}>
+    <Sheet open={isOpen} onOpenChange={onOpenChange}> 
       <SheetContent
         side="left"
         className="w-[299px] sm:w-[400px] bg-[#DAEDF2] text-[#5F5F5F]"

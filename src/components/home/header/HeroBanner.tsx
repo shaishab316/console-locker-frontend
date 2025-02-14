@@ -1,8 +1,14 @@
+"use client";
+
 import Container from "@/components/common/Container";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 
 const HeroBanner = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="bg-[url(/home/bannermobile1.png)] md:bg-[url(/hero-banner.png)] bg-cover bg-no-repeat min-h-[calc(100vh-70px)]">
       {/* <Container> */}
@@ -13,8 +19,13 @@ const HeroBanner = () => {
         {/* Content Section */}
         <div className="relative w-full md:w-1/2 px-4 text-center md:px-0">
           <h1 className="text-[24px] md:text-4xl lg:text-[70px] font-bold text-left text-white leading-tight md:leading-[84px] mt-3">
-            DAI UNA <br /> SECONDA POSSIBILITA <br /> PER LA TUA CONSOLE!
+            {/* DAI UNA <br /> SECONDA POSSIBILITA <br /> PER LA TUA CONSOLE! */}
+            {/* {t("heroTitle")} */}
+            <Trans i18nKey="heroTitle" components={{ br: <br /> }} />
           </h1>
+
+          {/* TODO: test code ............ */}
+          {/* <h1>{t("welcome")}</h1> */}
 
           <div className="border-b-4 border-gray-50 mt-2 mb-5 hr-line-for-mobile overflow-x-auto"></div>
 

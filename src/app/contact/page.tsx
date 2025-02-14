@@ -45,7 +45,7 @@ export default function ContactPage() {
                     htmlFor="fullName"
                     className="text-lg font-medium text-[#101010]"
                   >
-                    Full Name<span className="text-red-500">*</span>
+                    Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
