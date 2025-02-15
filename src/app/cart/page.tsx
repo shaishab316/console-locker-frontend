@@ -280,7 +280,7 @@ export default function CartPage() {
                       />
                     </div>
                     <span className="text-gray-700">
-                      {t("performsLikeNew")}
+                      {t("performsLikeNewTitle")}
                     </span>
                   </div>
                 </div>
