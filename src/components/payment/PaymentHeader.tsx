@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CartItem } from "./CardItem";
 import Container from "../common/Container";
+import { useTranslation } from "react-i18next";
 
 const INITIAL_ITEMS = [
   {
@@ -32,6 +33,7 @@ const INITIAL_ITEMS = [
 export default function PaymentHeader() {
   const [items] = useState(INITIAL_ITEMS);
   const [cartItems, setCartItems] = useState<string[]>([]);
+  const { t } = useTranslation();
 
   const handleAddToCart = (id: string) => {
     setCartItems((prev) => [...prev, id]);
@@ -41,16 +43,16 @@ export default function PaymentHeader() {
     <div className="bg-[#F2F5F7]">
       <Container>
         <div className="px-2 sm:px-6">
-          <h1 className="text-2xl font-bold text-center mb-8">Cart</h1>
+          <h1 className="text-2xl font-bold text-center mb-8">{t("cart")}</h1>
           <div className="w-full flex justify-between gap-5 mb-8">
             <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
-              Accessories
+              {t("accessories")}
             </h3>
             <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
-              Cart
+              {t("cart")}
             </h3>
             <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
-              Checkout
+              {t("checkout")}
             </h3>
           </div>
 
@@ -69,7 +71,7 @@ export default function PaymentHeader() {
 
             <div className="hidden lg:col-span-1 lg:flex items-center justify-center">
               <button className="text-white bg-[#101010] py-3 px-9 rounded-md">
-                Add to Cart
+                {t("addToCart")}
               </button>
             </div>
           </div>

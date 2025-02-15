@@ -127,6 +127,7 @@
     "monthsWarranty": "12 Months Warranty",
     "applicableTaxLaw": "One of your products is subject to the margin regime according to the applicable tax law. VAT is not shown on the invoices",
     "goAhead": "Go ahead",
+    "remove": "Remove",
     "payFaster": "Pay Faster",
     "checkout1": "By confirming your order, you accept our",
     "checkout2": "General Terms and Conditions,",
@@ -140,7 +141,6 @@
     "mr": "Mr",
     "mrs": "Mrs",
     "agency": "Agency",
-    "remove": "Remove",
     "shippingInformation": "Shipping Information",
     "noParcelDeliveryStation)": "no parcel delivery station",
     "zipCode": "ZIP CODE",
@@ -164,5 +164,16 @@
     "paymentProcessT3": "and understand that we process your personal information in accordance with our",
     "paymentProcessT4": "Privacy Policy",
     "yourCartIsStillEmpty": "Your cart is still empty",
-    "continueShopping": "Continue Shopping"
+    "continueShopping": "Continue Shopping",
+    "model": "Model",
+    "controller": "Controller",
+    "memory": "Memory",
+    "conditions": "Conditions",
+    "tradeIn": "Trade-in",
+    "pleaseSelectYourConsole": "Please select your console to add product to cart",
+    "addToCart": "Add to Cart",
+    "startOver": "Start over",
+    "chooseAConsole": "Choose a console",
+    "cart": "Cart",
+    "accessories": "Accessories"
 }

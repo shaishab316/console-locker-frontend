@@ -165,7 +165,7 @@ export default function CartPage() {
                         onClick={() => removeItem(item.id)}
                         className="text-sm text-[#F04848] font-medium hover:text-[#ed3d3d] mt-2 underline"
                       >
-                        Remove
+                        {t("remove")}
                       </button>
                     </div>
                   </div>

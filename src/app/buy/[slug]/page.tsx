@@ -13,6 +13,7 @@ import ProductSpecification from "@/components/product/ProductSpecification";
 import ProductDescription from "@/components/product/ProductDescription";
 import Link from "next/link";
 import { showTradeInDescription } from "@/lib/features/tradeIn/showTradeInSlice";
+import { useTranslation } from "react-i18next";
 // import ProductDescription from "@/pages/ProductDescription";
 
 interface Product {
@@ -50,6 +51,7 @@ const ProductDetailsPage: React.FC = () => {
   const isOpenTradeIn = useSelector(
     (state: RootState) => state.showTradeInData.isOpenTradeIn
   );
+  const { t } = useTranslation();
 
   const product: Product = {
     title: "Xbox One",
@@ -217,7 +219,7 @@ const ProductDetailsPage: React.FC = () => {
             {/* Model */}
             <div className="mb-6">
               <h4 className="text-2xl font-semibold text-[#101010] mb-2">
-                Model:
+                {t("model")}:
               </h4>
               <div className="flex gap-4">
                 {product.models.map((model) => (
@@ -241,7 +243,7 @@ const ProductDetailsPage: React.FC = () => {
               <div className="flex gap-2 mb-2">
                 <p className="text-[#6B6B6B]">
                   <span className="text-base text-[#101010] font-normal">
-                    Model:{" "}
+                    {t("model")}:{" "}
                   </span>
                   The phone will have heavy signs of wear, such as deeper
                   scratches, dents and other marks. The phone is unlocked, fully
@@ -256,7 +258,7 @@ const ProductDetailsPage: React.FC = () => {
             {/* Controller */}
             <div className="mb-6 mt-3">
               <h4 className="text-2xl font-semibold text-[#101010] mb-2">
-                Controller:
+                {t("controller")}:
               </h4>
               <div className="flex gap-4">
                 {product.controllers.map((controller) => (
@@ -279,7 +281,7 @@ const ProductDetailsPage: React.FC = () => {
             {/* Memory */}
             <div className="mb-6">
               <h4 className="text-2xl font-semibold text-[#101010] mb-2">
-                Memory:
+                {t("memory")}:
               </h4>
               <div className="flex gap-4">
                 {product.memories.map((memory) => (
@@ -302,7 +304,7 @@ const ProductDetailsPage: React.FC = () => {
             {/* Conditions */}
             <div className="mb-6">
               <h4 className="text-2xl font-semibold text-[#101010] mb-2">
-                Conditions:
+                {t("conditions")}:
               </h4>
               <div className="flex gap-4">
                 {product.conditions.map((condition) => (
@@ -327,7 +329,7 @@ const ProductDetailsPage: React.FC = () => {
               {!isOpenTradeIn ? (
                 <>
                   <h4 className="text-2xl font-semibold text-[#101010] mb-2">
-                    Trade-in:
+                    {t("tradeIn")}:
                   </h4>
                   <button
                     className={`w-[120px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
@@ -382,7 +384,7 @@ const ProductDetailsPage: React.FC = () => {
                           d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
                         />
                       </svg>
-                      Start over
+                      {t("startOver")}
                     </button>
                   </div>
 
@@ -440,7 +442,7 @@ const ProductDetailsPage: React.FC = () => {
 
             <div className="mb-6">
               <h4 className="font-normal mb-2">
-                Please select your console to add product to cart
+                {t("pleaseSelectYourConsole")}
               </h4>
 
               <div className="relative w-full">
@@ -451,7 +453,7 @@ const ProductDetailsPage: React.FC = () => {
                   className="px-4 py-3 border rounded-3xl bg-white text-sm sm:text-base appearance-none w-full"
                 >
                   <option value="" defaultValue={"Choose a console"}>
-                    Choose a console
+                    {t("chooseAConsole")}
                   </option>
                   <option value="PlayStation 4 Pro">PlayStation 5</option>
                   <option value="Nintendo Switch">Nintendo Switch</option>
@@ -495,7 +497,7 @@ const ProductDetailsPage: React.FC = () => {
                 href={"/cart"}
                 className="h-14 flex items-center justify-center bg-black text-white text-center px-6 py-3 rounded-md"
               >
-                Add to Cart
+                {t("addToCart")}
               </Link>
             </div>
           </div>
