@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import ReviewCard from "./ReviewCard";
 import Pagination from "./Pagination";
 import { getReviews } from "@/lib/action";
+import { useTranslation } from "react-i18next";
 
 interface Review {
   id: string;
@@ -27,6 +28,7 @@ export default function ReviewsSection() {
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchReviews(currentPage);
@@ -57,7 +59,7 @@ export default function ReviewsSection() {
   return (
     <section id="reviews-section" className="py-12 bg-[#F2F5F7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12">Reviews</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">{t("reviews")}</h2>
 
         {error ? (
           <div className="text-center text-red-600 mb-8">

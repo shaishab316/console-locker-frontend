@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/common/Container";
+import { useTranslation } from "react-i18next";
 
 interface OrderItem {
   id: string;
@@ -20,6 +21,7 @@ export default function Checkout() {
   // >("credit");
   const [quantity, setQuantity] = useState(1);
   const [selectedPayment, setSelectedPayment] = useState("credit");
+  const { t } = useTranslation();
 
   const steps = [
     { id: 1, name: "Accessories" },
@@ -43,14 +45,14 @@ export default function Checkout() {
     }
   };
 
-  console.log({ selectedPayment });
-
   return (
     <div className="min-h-screen bg-[#F2F5F7] py-8">
       {/* Progress Steps */}
       <Container>
         <div>
-          <h1 className="text-2xl font-bold text-center mb-8">Checkout</h1>
+          <h1 className="text-2xl font-bold text-center mb-8">
+            {t("checkout")}
+          </h1>
           <div className="w-full flex justify-between gap-5 mb-8">
             <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
               Accessories
@@ -71,7 +73,7 @@ export default function Checkout() {
             {/* Delivery Details */}
             <div className="bg-[#FBFBFB] border p-5 rounded-lg shadow-sm">
               <h2 className="text-2xl font-semibold text-[#101010]">
-                1. Delivery Details
+                1. {t("deliveryDetails")}
               </h2>
               {/* Add delivery form fields here */}
             </div>
@@ -80,14 +82,14 @@ export default function Checkout() {
             <div className="bg-transparent rounded-lg shadow-sm">
               <div className="border p-5 rounded-lg shadow-sm">
                 <h2 className="text-2xl font-semibold text-[#101010]">
-                  2. Pay
+                  2. {"pay"}
                 </h2>
               </div>
 
               <div className="p-7">
                 <div className="space-y-6">
                   <h3 className="font-semibold text-2xl text-[#404040]">
-                    Pay Now:
+                    {t("payNow")}:
                   </h3>
 
                   {/* Pay Now */}
@@ -115,10 +117,10 @@ export default function Checkout() {
                       >
                         <p className="flex flex-col mr-3">
                           <span className="text-lg font-medium text-[#101010]">
-                            Credit / Debit Card
+                            {t("creditDebitCard")}
                           </span>
                           <span className="text-[#5F5F5F]">
-                            Instant payment by credit card
+                            {t("instantPaymentByCreditCard")}
                           </span>
                         </p>
                         <div className="flex space-x-2">
@@ -156,10 +158,10 @@ export default function Checkout() {
                       >
                         <p className="flex flex-col mr-3">
                           <span className="text-lg font-medium text-[#101010]">
-                            Pay Now
+                            {t("payNow")}
                           </span>
                           <span className="text-[#5F5F5F]">
-                            Pay now with you PayPal account
+                            {t("payNowWithYouPayPalAccount")}
                           </span>
                         </p>
                         <div className="flex space-x-2">
@@ -176,7 +178,7 @@ export default function Checkout() {
                   </div>
 
                   <h3 className="text-2xl font-semibold text-[#404040] pt-4">
-                    Pay in installments:
+                    {t("payInInstallments")}:
                   </h3>
                   {/* PayPal Installments */}
                   <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
@@ -203,10 +205,10 @@ export default function Checkout() {
                       >
                         <p className="flex flex-col mr-3">
                           <span className="text-lg font-medium text-[#101010]">
-                            Pay in installments
+                            {t("payInInstallments")}:
                           </span>
                           <span className="text-[#5F5F5F]">
-                            Pay in 3 interest-free installments
+                            {t("payIn3InterestFreeInstallments")}
                           </span>
                         </p>
                         <div className="flex space-x-2">
@@ -244,10 +246,10 @@ export default function Checkout() {
                       >
                         <p className="flex flex-col mr-3">
                           <span className="text-lg font-medium text-[#101010]">
-                            Pay in Installments
+                            {t("payInInstallments")}:
                           </span>
                           <span className="text-[#5F5F5F]">
-                            Pay in 3 interest-free installments
+                            {t("payIn3InterestFreeInstallments")}
                           </span>
                         </p>
                         <div className="flex space-x-2">
@@ -267,30 +269,29 @@ export default function Checkout() {
                 {/* Error Message */}
                 <div className="mt-6">
                   <p className="text-xl font-semibold text-[#F04848]">
-                    Did you miss a field or make a typo?
+                    {t("didYouMissAField")}
                   </p>
                   <p className="text-base text-[#F04848]">
-                    Please re-enter your details below.
+                    {t("pleaseReEnterYourDetailsBelow")}
                   </p>
                 </div>
 
                 {/* Proceed Button */}
                 <Link href={"/empty"}>
                   <button className="w-full bg-black text-white py-3 rounded mt-6 hover:bg-gray-800 transition-colors">
-                    Proceed to Purchase
+                    {t("proceedToPurchase")}
                   </button>
                 </Link>
 
                 {/* Terms and Privacy */}
                 <p className="mt-4 text-lg text-[#2B2B2B]">
-                  By placing an order, you agree to the{" "}
+                  {t("paymentProcessT1")}{" "}
                   <Link href="#" className="text-blue-600 hover:underline">
-                    Terms and Conditions
+                    {t("paymentProcessT2")}
                   </Link>{" "}
-                  and understand that we process your personal information in
-                  accordance with our{" "}
+                  {t("paymentProcessT3")}{" "}
                   <Link href="#" className="text-blue-600 hover:underline">
-                    Privacy Policy
+                    {t("paymentProcessT4")}
                   </Link>
                   .
                 </p>
@@ -301,7 +302,7 @@ export default function Checkout() {
           {/* Right Column - Order Summary */}
           <div className="bg-[#FDFDFD] p-6 rounded-lg shadow-sm">
             <h2 className="text-2xl font-semibold text-[#101010] mb-6">
-              Your Order
+              {t("yourOrder")}
             </h2>
 
             {/* Product Details */}
@@ -318,14 +319,14 @@ export default function Checkout() {
                   {orderItem.name}
                 </h3>
                 <p className="text-xs text-[#2B2B2B]">
-                  Warranty: 12 months | 128Gb
+                  {t("warranty")}: 12 months | 128Gb
                 </p>
-                <p className="text-xs text-[#2B2B2B]">Condition: Good</p>
+                <p className="text-xs text-[#2B2B2B]">{t("condition")}: Good</p>
                 <p className="text-xs text-[#00B67A]">
-                  Delivery: Jan 20 - Jan 22
+                  {t("delivery")}: Jan 20 - Jan 22
                 </p>
                 <p className="text-xs text-[#2B2B2B]">
-                  Sales & Shipping: Console & you
+                  {t("salesAndShipping")}: Console & you
                 </p>
               </div>
               <div className="text-right space-y-4">
@@ -408,14 +409,16 @@ export default function Checkout() {
                 <span>${orderItem.price * quantity}</span>
               </div>
               <div className="flex justify-between">
-                <span>Shipping</span>
-                <span className="text-gray-500">Included</span>
+                <span>{t("shipping")}</span>
+                <span className="text-gray-500">{t("included")}</span>
               </div>
               <div className="flex justify-between font-medium pt-2 border-t">
-                <span>Grand Total</span>
+                <span>{t("grandTotal")}</span>
                 <span>${orderItem.price * quantity}</span>
               </div>
-              <p className="text-xs text-gray-500">The price includes VAT</p>
+              <p className="text-xs text-gray-500">
+                {t("thePriceIncludesVAT")}
+              </p>
             </div>
 
             {/* Features */}
@@ -428,7 +431,7 @@ export default function Checkout() {
                   alt="Warranty"
                 />
                 <span className="text-lg text-[#101010] font-medium">
-                  12 Months Warranty
+                  {t("monthsWarranty")}
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -439,7 +442,7 @@ export default function Checkout() {
                   alt="Warranty"
                 />
                 <span className="text-lg text-[#101010] font-medium">
-                  Free Return
+                  {t("freeReturn")}
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -450,7 +453,7 @@ export default function Checkout() {
                   alt="Warranty"
                 />
                 <span className="text-lg text-[#101010] font-medium">
-                  Performs Like New
+                  {t("performsLikeNewTitle")}
                 </span>
               </div>
             </div>

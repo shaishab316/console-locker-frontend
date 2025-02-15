@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function EmptyCart() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-[700px] flex flex-col items-center justify-center p-4 bg-[#F2F5F7]">
       {/* Empty Cart Icon and Message */}
@@ -23,7 +26,7 @@ export default function EmptyCart() {
           />
         </svg>
         <h1 className="text-2xl font-semibold text-gray-900 mb-4">
-          Your cart is still empty
+          {t("yourCartIsStillEmpty")}
         </h1>
       </div>
 
@@ -33,7 +36,7 @@ export default function EmptyCart() {
         className="w-full max-w-md bg-black text-white py-3 px-4 rounded text-center 
                    hover:bg-gray-800 transition-colors duration-200 mb-12"
       >
-        Continue Shopping
+        {t("continueShopping")}
       </Link>
 
       {/* Features Section */}
@@ -47,7 +50,7 @@ export default function EmptyCart() {
             alt="Warranty"
           />
           <span className="text-base md:text-lg text-[#101010] font-medium leading-7">
-            12 Months Warranty
+            {t("monthsWarranty")}
           </span>
         </div>
 
@@ -60,7 +63,7 @@ export default function EmptyCart() {
             alt="Warranty"
           />
           <span className="text-base md:text-lg text-[#101010] font-medium leading-7">
-            Free Return
+            {t("freeReturn")}
           </span>
         </div>
 
@@ -73,7 +76,7 @@ export default function EmptyCart() {
             alt="Warranty"
           />
           <span className="text-base md:text-lg text-[#101010] font-medium leading-7">
-            Performs Like New
+            {t("performsLikeNewTitle")}
           </span>
         </div>
       </div>

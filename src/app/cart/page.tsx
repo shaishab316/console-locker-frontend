@@ -5,6 +5,7 @@ import PaymentHeader from "@/components/payment/PaymentHeader";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface CartItem {
   id: string;
@@ -67,6 +68,7 @@ export default function CartPage() {
       available: true,
     },
   ]);
+  const { t } = useTranslation();
 
   const updateQuantity = (id: string, increment: boolean) => {
     setItems(
@@ -106,7 +108,9 @@ export default function CartPage() {
           {/* Cart Items */}
           <div className="bg-[#FDFDFD] rounded-lg flex-grow space-y-4">
             <div className="pt-6 pl-6">
-              <h1 className="text-2xl font-bold text-[#101010]">Checkout</h1>
+              <h1 className="text-2xl font-bold text-[#101010]">
+                {t("checkout")}
+              </h1>
             </div>
             {items.map((item) => (
               <div key={item.id} className="bg-[#FDFDFD] rounded-lg p-6">
@@ -127,18 +131,18 @@ export default function CartPage() {
                         {item.name}
                       </h3>
                       <p className="text-xs md:text-base text-[#5F5F5F] mb-1">
-                        Warranty: {item.warranty} | {item.storage} | Condition:{" "}
-                        {item.condition}
+                        {t("warranty")}: {item.warranty} | {item.storage} |
+                        {t("condition")}: {item.condition}
                       </p>
                       <p className="text-xs md:text-sm text-[#5F5F5F]">
-                        Sales & Shipping:{" "}
+                        {t("salesAndShipping")}:{" "}
                         <span className="underline">Console & you</span>
                       </p>
                     </div>
 
                     <div className="text-right">
                       <p className="text-lg font-medium text-gray-900">
-                        Price: ${item.price}
+                        {t("price")}: ${item.price}
                       </p>
                       <div className="flex items-center space-x-2 mt-2">
                         <button
@@ -183,7 +187,7 @@ export default function CartPage() {
                 <div className="flex items-center justify-center py-8 space-x-3">
                   <hr className="flex-1 border-b border-[#D6D6D6]" />
                   <h2 className="text-[#222C9B] text-base font-semibold text-center whitespace-nowrap">
-                    + Discover the accessories
+                    + {t("discoverTheAccessories")}
                   </h2>
                   <hr className="flex-1 border-b border-[#D6D6D6]" />
                 </div>
@@ -195,7 +199,7 @@ export default function CartPage() {
           <div className="w-full lg:w-[550px]">
             <div className="bg-[#FDFDFD] rounded-lg p-6">
               <h2 className="text-2xl font-semibold text-[#101010] mb-4">
-                Summary
+                {t("summary")}
               </h2>
               <div>
                 <div className="rounded-md bg-[#DAEDF2]">
@@ -208,24 +212,24 @@ export default function CartPage() {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#101010] font-medium">
-                        Shipping
+                        {t("shipping")}
                       </span>
                       <span className="text[#101010] font-medium">
-                        Included
+                        {t("included")}
                       </span>
                     </div>
                   </div>
                   <div className="border-t border-[#cccbcb] p-4">
                     <div className="flex justify-between">
                       <span className="font-semibold text-xl text-[#101010]">
-                        Grand Total
+                        {t("grandTotal")}
                       </span>
                       <span className="font-semibold text-xl text-[#101010]">
                         ${total.toFixed(2)}
                       </span>
                     </div>
                     <p className="text-base text-[#101010] mt-1">
-                      The price includes VAT
+                      {t("thePriceIncludesVAT")}
                     </p>
                   </div>
                 </div>
@@ -237,7 +241,7 @@ export default function CartPage() {
                     className="w-full px-4 py-2.5 border rounded-lg"
                   />
                   <button className=" bg-gray-800 text-white px-4 py-2.5 rounded-lg hover:bg-gray-700">
-                    APPLY
+                    {t("apply")}
                   </button>
                 </div>
 
@@ -251,7 +255,9 @@ export default function CartPage() {
                         alt="warrent-protection"
                       />
                     </div>
-                    <span className="text-gray-700">12 Months Warranty</span>
+                    <span className="text-gray-700">
+                      {"12 Months Warranty"}
+                    </span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-6 h-6">
@@ -262,7 +268,7 @@ export default function CartPage() {
                         alt="warrent-protection"
                       />
                     </div>
-                    <span className="text-gray-700">Free Return</span>
+                    <span className="text-gray-700">{t("freeReturn")}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-6 h-6">
@@ -273,7 +279,9 @@ export default function CartPage() {
                         alt="warrent-protection"
                       />
                     </div>
-                    <span className="text-gray-700">Performs Like New</span>
+                    <span className="text-gray-700">
+                      {t("performsLikeNew")}
+                    </span>
                   </div>
                 </div>
 
@@ -294,15 +302,13 @@ export default function CartPage() {
 
                 <div className="py-2">
                   <p className="text-sm text-[#5F5F5F]">
-                    One of your products is subject to the margin regime
-                    according to the applicable tax law. VAT is not shown on the
-                    invoices
+                    {t("applicableTaxLaw")}
                   </p>
                 </div>
 
                 <Link href={"/checkout"}>
                   <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 mt-6">
-                    Go ahead
+                    {t("goAhead")}
                   </button>
                 </Link>
               </div>

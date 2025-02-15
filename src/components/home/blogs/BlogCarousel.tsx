@@ -10,6 +10,7 @@ import {
 import { useRef } from "react";
 import { BlogCard } from "./BlogCard";
 import Container from "@/components/common/Container";
+import { useTranslation } from "react-i18next";
 
 const blogs = [
   {
@@ -48,6 +49,7 @@ const blogs = [
 
 export function BlogCarousel() {
   const carouselRef = useRef<any>(null);
+  const { t } = useTranslation();
 
   const next = () => carouselRef.current?.next();
   const previous = () => carouselRef.current?.prev();
@@ -57,7 +59,7 @@ export function BlogCarousel() {
       <Container>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
-            Our Recent Blogs
+            {t("ourRecentBlogs")}
           </h2>
 
           <div className="hidden md:flex gap-4">

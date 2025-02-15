@@ -5,6 +5,7 @@ import Image from "next/image";
 import Container from "@/components/common/Container";
 import Link from "next/link";
 import PaymentHeader from "@/components/payment/PaymentHeader";
+import { useTranslation } from "react-i18next";
 
 interface OrderItem {
   id: string;
@@ -31,6 +32,7 @@ export default function CheckoutPage() {
     phoneCode: "+32",
     sameAddress: false,
   });
+  const { t } = useTranslation();
 
   const [orderItem] = useState<OrderItem>({
     id: "1",
@@ -82,7 +84,7 @@ export default function CheckoutPage() {
     <div className="min-h-screen bg-[#F2F5F7] py-14 md:py-20">
       <Container>
         <h1 className="text-3xl md:text-[40px] font-semibold text-center mb-8">
-          Checkout
+          {t("checkout")}
         </h1>
         <div className="w-full flex justify-between gap-5 mb-8">
           <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
@@ -104,7 +106,7 @@ export default function CheckoutPage() {
                 <div className="flex items-center justify-center py-8 space-x-3">
                   <hr className="flex-1 border-b border-[#D6D6D6]" />
                   <h2 className="text-[#101010] text-lg text-center whitespace-nowrap">
-                    Pay Faster
+                    {t("payFaster")}
                   </h2>
                   <hr className="flex-1 border-b border-[#D6D6D6]" />
                 </div>
@@ -156,7 +158,7 @@ export default function CheckoutPage() {
                 <div className="flex items-center justify-center py-4 space-x-3">
                   <hr className="flex-1 border-b border-[#D6D6D6]" />
                   <h2 className="text-[#101010] text-lg text-center whitespace-nowrap">
-                    Proceed without registration
+                    {t("proceedWithoutRegistration")}
                   </h2>
                   <hr className="flex-1 border-b border-[#D6D6D6]" />
                 </div>
@@ -166,12 +168,12 @@ export default function CheckoutPage() {
                 <div className="space-y-6">
                   <div>
                     <h2 className="text-[32px] text-[#101010] font-semibold mb-4">
-                      1. Delivery Details
+                      1. {t("deliveryDetails")}
                     </h2>
 
                     <div className="mb-5">
                       <p className="mb-4 text-2xl text-[#404040] font-semibold">
-                        Your Name
+                        {t("yourName")}
                       </p>
                       <div className="flex gap-5 mb-5">
                         <label className="flex items-center">
@@ -183,7 +185,7 @@ export default function CheckoutPage() {
                             onChange={handleInputChange}
                             className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                           />
-                          Mr
+                          {t("mr")}
                         </label>
                         <label className="flex items-center">
                           <input
@@ -194,7 +196,7 @@ export default function CheckoutPage() {
                             onChange={handleInputChange}
                             className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                           />
-                          Mrs
+                          {t("mrs")}
                         </label>
                         <label className="flex items-center">
                           <input
@@ -205,14 +207,15 @@ export default function CheckoutPage() {
                             onChange={handleInputChange}
                             className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                           />
-                          Agency
+                          {t("agency")}
                         </label>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label className="block mb-1 text-lg font-medium leading-7">
-                            First Name<span className="text-red-500">*</span>
+                            {t("firstName")}
+                            <span className="text-red-500">*</span>
                           </label>
                           <input
                             type="text"
@@ -226,7 +229,8 @@ export default function CheckoutPage() {
                         </div>
                         <div>
                           <label className="block mb-1 text-lg font-medium leading-7">
-                            Surname<span className="text-red-500">*</span>
+                            {t("surname")}
+                            <span className="text-red-500">*</span>
                           </label>
                           <input
                             type="text"
@@ -243,15 +247,16 @@ export default function CheckoutPage() {
 
                     <div className="mb-4">
                       <h3 className="text-2xl font-semibold text-[#404040] my-3">
-                        Shipping Information{" "}
+                        {t("shippingInformation")}{" "}
                         <span className="text-[#5F5F5F] text-base font-normal">
-                          (no parcel delivery station)
+                          ({"noParcelDeliveryStation"})
                         </span>
                       </h3>
                       <div className="space-y-4">
                         <div>
                           <label className="block text-lg text-[#101010] font-medium mb-1.5">
-                            Address<span className="text-red-500">*</span>
+                            {t("address")}
+                            <span className="text-red-500">*</span>
                           </label>
                           <input
                             type="text"
@@ -265,7 +270,8 @@ export default function CheckoutPage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-lg text-[#101010] font-medium mb-1.5">
-                              ZIP CODE<span className="text-red-500">*</span>
+                              {t("zipCode")}
+                              <span className="text-red-500">*</span>
                             </label>
                             <input
                               type="text"
@@ -278,7 +284,8 @@ export default function CheckoutPage() {
                           </div>
                           <div>
                             <label className="block text-lg text-[#101010] font-medium mb-1.5">
-                              City<span className="text-red-500">*</span>
+                              {t("city")}
+                              <span className="text-red-500">*</span>
                             </label>
                             <input
                               type="text"
@@ -297,7 +304,8 @@ export default function CheckoutPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-lg text-[#101010] font-medium mb-1.5">
-                            Nation<span className="text-red-500">*</span>
+                            {t("nation")}
+                            <span className="text-red-500">*</span>
                           </label>
                           <select
                             name="nation"
@@ -314,7 +322,7 @@ export default function CheckoutPage() {
                         </div>
                         <div>
                           <label className="block text-lg text-[#101010] font-medium mb-1.5">
-                            Further contact information
+                            {t("furtherContactInformation")}
                           </label>
                           <input
                             type="text"
@@ -327,12 +335,12 @@ export default function CheckoutPage() {
 
                     <div className="mb-4">
                       <h3 className="block text-2xl font-semibold text-[#101010] mb-1">
-                        Contact Information
+                        {t("contactInformation")}
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-lg text-[#101010] font-medium mb-1.5">
-                            Email
+                            {t("email")}
                           </label>
                           <input
                             type="email"
@@ -345,7 +353,7 @@ export default function CheckoutPage() {
                         </div>
                         <div>
                           <label className="block text-lg text-[#101010] font-medium mb-1.5">
-                            Phone
+                            {t("phone")}
                           </label>
                           {/* <div className="flex">
                             <select
@@ -401,26 +409,26 @@ export default function CheckoutPage() {
                           onChange={handleInputChange}
                           className="mr-2 w-4 h-4"
                         />
-                        Billing address is the same as shipping address
+                        {t("billingAddress")}
                       </label>
                     </div>
 
                     <p className="text-lg text-[#2B2B2B] mb-4">
-                      <span className="text-red-500 text-lg"> * </span> Fields
-                      marked with an asterisk are mandatory
+                      <span className="text-red-500 text-lg"> * </span>{" "}
+                      {t("fieldsMarked")}
                     </p>
                     <Link href={"/paymentprocess"}>
                       <button
                         type="submit"
                         className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition-colors"
                       >
-                        Continue
+                        {t("continue")}
                       </button>
                     </Link>
                   </div>
 
                   <div className="border p-5 rounded">
-                    <h2 className="text-xl font-semibold">2. Pay</h2>
+                    <h2 className="text-xl font-semibold">2. {t("pay")}</h2>
                   </div>
                 </div>
               </form>
@@ -431,7 +439,7 @@ export default function CheckoutPage() {
           <div className="col-span-1">
             <div className="bg-white rounded-lg shadow-sm p-6">
               <h2 className="text-xl font-semibold text-[#101010] mb-4">
-                Your Order
+                {t("yourOrder")}
               </h2>
 
               <div className="border-b pb-4 mb-4">
@@ -448,16 +456,17 @@ export default function CheckoutPage() {
                   <div className="flex-grow space-y-1">
                     <h3 className="font-medium">{orderItem.name}</h3>
                     <p className="text-sm text-gray-600">
-                      Warranty: {orderItem.warranty} | {orderItem.storage}
+                      {t("warranty")}: {orderItem.warranty} |{" "}
+                      {orderItem.storage}
                     </p>
                     <p className="text-sm text-gray-600">
-                      Condition: {orderItem.condition}
+                      {t("condition")}: {orderItem.condition}
                     </p>
                     <p className="text-sm text-green-600">
-                      Delivery: {orderItem.delivery}
+                      {t("delivery")}: {orderItem.delivery}
                     </p>
                     <p className="text-sm text-gray-600">
-                      Sales & Shipping: Console & you
+                      {t("salesAndShipping")}: Console & you
                     </p>
                   </div>
 
@@ -491,16 +500,18 @@ export default function CheckoutPage() {
                   <span>${orderItem.price.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Shipping</span>
-                  <span>Included</span>
+                  <span className="text-gray-600">{t("shipping")}</span>
+                  <span>{t("included")}</span>
                 </div>
                 <div className="flex justify-between font-medium pt-2 border-t">
-                  <span>Grand Total</span>
+                  <span>{t("grandTotal")}</span>
                   <span>
                     ${(orderItem.price * orderItem.quantity).toFixed(2)}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600">The price includes VAT</p>
+                <p className="text-sm text-gray-600">
+                  {t("thePriceIncludesVAT")}
+                </p>
               </div>
 
               <div className="space-y-4">
@@ -512,7 +523,7 @@ export default function CheckoutPage() {
                     alt="Warranty"
                   />
                   <span className="text-lg text-[#101010] font-medium">
-                    12 Months Warranty
+                    {t("monthsWarranty")}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -523,7 +534,7 @@ export default function CheckoutPage() {
                     alt="Warranty"
                   />
                   <span className="text-lg text-[#101010] font-medium">
-                    Free Return
+                    {t("freeReturn")}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -534,7 +545,7 @@ export default function CheckoutPage() {
                     alt="Warranty"
                   />
                   <span className="text-lg text-[#101010] font-medium">
-                    Performs Like New
+                    {t("performsLikeNewTitle")}
                   </span>
                 </div>
               </div>
@@ -555,8 +566,7 @@ export default function CheckoutPage() {
               </div>
 
               <p className="text-sm text-gray-600 mt-4">
-                One of your products is subject to the margin regime according
-                to the applicable tax law. VAT is not shown on the invoices
+                {t("applicableTaxLaw")}
               </p>
             </div>
           </div>
