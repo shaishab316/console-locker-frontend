@@ -3,12 +3,14 @@
 import { useState } from "react";
 import Container from "@/components/common/Container";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const { t } = useTranslation();
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -36,7 +38,7 @@ export default function ContactPage() {
           {/* Form Section */}
           <div className="col-span-1 lg:col-span-2 bg-[#FDFDFD] p-8 rounded-lg shadow-sm">
             <h1 className="text-3xl font-semibold text-[#101010] mb-6">
-              Personal Information
+              {t("personalInformation")}
             </h1>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="flex flex-col lg:flex-row items-start lg:space-x-6">
@@ -45,7 +47,7 @@ export default function ContactPage() {
                     htmlFor="fullName"
                     className="text-lg font-medium text-[#101010]"
                   >
-                    Full Name <span className="text-red-500">*</span>
+                    {t("fullName")} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -61,7 +63,8 @@ export default function ContactPage() {
                     htmlFor="email"
                     className="text-lg font-medium text-[#101010]"
                   >
-                    Email<span className="text-red-500">*</span>
+                    {t("email")}
+                    <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -78,7 +81,7 @@ export default function ContactPage() {
                   htmlFor="subject"
                   className="text-lg font-medium text-[#101010]"
                 >
-                  Your Subject
+                  {t("yourSubject")}
                 </label>
                 <input
                   type="text"
@@ -93,7 +96,7 @@ export default function ContactPage() {
                   htmlFor="message"
                   className=" text-lg font-medium text-[#101010]"
                 >
-                  Messages
+                  {t("Messages")}
                 </label>
                 <textarea
                   id="message"
@@ -127,11 +130,10 @@ export default function ContactPage() {
           {/* Contact Information Section */}
           <div className="bg-[#FDFDFD] p-8 rounded-lg shadow-sm">
             <h2 className="text-3xl text-[#101010] font-semibold mb-6">
-              Contact Information
+              {t("contactInformation")}
             </h2>
             <p className="text-[#2B2B2B] mb-8 text-wrap">
-              We&apos;ll create high-quality linkable content and build at least
-              40 high-Authority.
+              {t("linkableContent")}
             </p>
 
             <div className="space-y-6">

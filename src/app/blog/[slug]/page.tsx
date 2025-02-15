@@ -23,7 +23,7 @@ export default function BlogDetail() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F2F5F7] pb-12">
+    <div className="min-h-screen pb-12">
       <Container className="max-w-4xl mx-auto">
         {/* Title */}
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 my-6">

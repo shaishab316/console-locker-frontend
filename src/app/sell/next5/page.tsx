@@ -413,19 +413,19 @@ export default function CheckoutForm() {
                 </button>
 
                 <p className="ml-2 text-base text-[#2B2B2B]">
-                  By clicking send you accept our{" "}
+                  {t("next5TermsOfSale1")}{" "}
                   <Link
                     href="#"
                     className="text-[#222C9B] font-medium hover:underline"
                   >
-                    terms of sale
+                    {t("next5TermsOfSale2")}
                   </Link>{" "}
-                  and{" "}
+                  {t("next5TermsOfSale3")}{" "}
                   <Link
                     href="#"
                     className="text-[#222C9B] font-medium hover:underline"
                   >
-                    privacy policy
+                    {t("next5TermsOfSale4")}
                   </Link>
                 </p>
               </div>

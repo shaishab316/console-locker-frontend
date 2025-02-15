@@ -12,6 +12,11 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
+    "/blog/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/blog/[slug]/page.js"
+    ],
     "/sell/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -31,31 +36,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/sell/next2/page.js"
-    ],
-    "/buy/playstation/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/buy/playstation/page.js"
-    ],
-    "/buy/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/buy/[slug]/page.js"
-    ],
-    "/contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/contact/page.js"
-    ],
-    "/cart/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/cart/page.js"
-    ],
-    "/checkout/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/checkout/page.js"
     ],
     "/sell/next3/page": [
       "static/chunks/webpack.js",
@@ -77,10 +57,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/reviews/page.js"
     ],
-    "/buy/nintendo/page": [
+    "/contact/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/buy/nintendo/page.js"
+      "static/chunks/app/contact/page.js"
     ]
   }
 }

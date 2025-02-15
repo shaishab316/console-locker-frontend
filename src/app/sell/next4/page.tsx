@@ -15,7 +15,7 @@ export default function PlayStationOffer() {
   return (
     <div className="bg-[#F2F5F7] p-6 md:p-12">
       <Container>
-        <h1 className="text-3xl font-bold mb-6">Our Current offer:</h1>
+        <h1 className="text-3xl font-bold mb-6">{t("ourCurrentOffer")}</h1>
 
         <div className="grid items-center lg:grid-cols-4 gap-8 py-10">
           <div className="lg:col-span-2">
@@ -28,13 +28,13 @@ export default function PlayStationOffer() {
                     height={24}
                     alt="money"
                   />
-                  <p className="text-2xl text-[#404040]">Direct Payout</p>
+                  <p className="text-2xl text-[#404040]">{t("directPayout")}</p>
                 </div>
                 <h2 className="text-[40px] text-[#404040] font-semibold">
                   $96.96
                 </h2>
                 <p className="text-lg text-[#404040] max-w-[350px]">
-                  Transfer vai PayPal or to your bank account
+                  {t("transferVaiPayPal")}
                 </p>
               </div>
 
@@ -50,7 +50,7 @@ export default function PlayStationOffer() {
                     height={24}
                     alt="money"
                   />
-                  <p className="text-2xl text-[#404040]">Direct Payout</p>
+                  <p className="text-2xl text-[#404040]">{t("directPayout")}</p>
                 </div>
                 <h2 className="text-[40px] text-[#404040] font-semibold">
                   $96.96
@@ -63,7 +63,7 @@ export default function PlayStationOffer() {
 
             <Link href={"/sell/next5"}>
               <button className="w-full bg-black text-white py-3 rounded-md mb-5">
-                Continue
+                {t("continue")}
               </button>
             </Link>
 

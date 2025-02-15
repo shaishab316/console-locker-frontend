@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 export default function GreenStory() {
   const ecologicalPoints = Array(4).fill(
     "Acquistare o vendere una console usata non è solo conveniente, ma è anche una scelta ecologica."
   );
+  const { t } = useTranslation();
 
   return (
     <div className="md:h-[864px] bg-[#F2F5F7] flex flex-col md:flex-row md:mb-10">
