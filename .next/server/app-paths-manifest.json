@@ -1,7 +1,8 @@
 {
-  "/empty/page": "app/empty/page.js",
-  "/paymentprocess/page": "app/paymentprocess/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/reviews/page": "app/reviews/page.js",
   "/page": "app/page.js",
-  "/about/page": "app/about/page.js"
+  "/about/page": "app/about/page.js",
+  "/empty/page": "app/empty/page.js",
+  "/buy/playstation/page": "app/buy/playstation/page.js"
 }
