@@ -26,6 +26,7 @@ export default function AboutPage() {
           <p>{t("aboutPara6")}</p>
         </div>
 
+        {/* common box */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
           <div className="h-[265px] flex flex-col items-center justify-center text-center p-6 bg-[#FDFDFD] rounded-lg py-5">
             <div className="bg-[#DAEDF2] w-[96px] h-[96px] mx-auto rounded-sm flex items-center justify-center mb-4">
@@ -38,11 +39,10 @@ export default function AboutPage() {
               />
             </div>
             <h3 className="text-2xl text-[#101010] font-semibold mb-2">
-              Start thinking circular
+              {t("startThinkingCircularTitle")}
             </h3>
             <p className="text-base text-[#101010]">
-              Let&apos;s take technology further. It&apos;s good for the planet
-              and your wallet.
+              {t("startThinkingCircularDesc")}
             </p>
           </div>
 
@@ -57,11 +57,10 @@ export default function AboutPage() {
               />
             </div>
             <h3 className="text-2xl text-[#101010] font-semibold mb-2">
-              Performs like new
+              {t("performsLikeNewTitle")}
             </h3>
             <p className="text-base text-[#101010]">
-              Reliable, high-quality phones refurbished by our experts in
-              Europe.
+              {t("performsLikeNewDesc")}
             </p>
           </div>
 
@@ -76,11 +75,9 @@ export default function AboutPage() {
               />
             </div>
             <h3 className="text-2xl text-[#101010] font-semibold mb-2">
-              Fast delivery
+              {t("fastDeliveryTitle")}
             </h3>
-            <p className="text-base text-[#101010]">
-              Full, money-back guarantee, free returns & a 12-month warranty
-            </p>
+            <p className="text-base text-[#101010]">{t("fastDeliveryDesc")}</p>
           </div>
         </div>
       </Container>
