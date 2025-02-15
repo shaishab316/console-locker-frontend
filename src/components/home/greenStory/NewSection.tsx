@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";
 
@@ -8,7 +9,16 @@ export default function GreenStory() {
   const ecologicalPoints = Array(4).fill(
     "Acquistare o vendere una console usata non è solo conveniente, ma è anche una scelta ecologica."
   );
+
+  const [selectedLang, setSelectedLang] = useState("");
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const lang = localStorage.getItem("i18nextLng");
+    setSelectedLang(lang || "");
+  }, []);
+
+  console.log(selectedLang);
 
   return (
     <div className="md:h-[864px] bg-[#F2F5F7] flex flex-col md:flex-row md:mb-10">
@@ -56,7 +66,7 @@ export default function GreenStory() {
       <div className="flex flex-col justify-center w-full md:w-1/2 bg-[#63B95E] p-4 md:p-12 h-full">
         <div>
           {/* Heading */}
-          <h1 className="hidden md:block text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h1 className="hidden md:block uppercase text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             <Trans i18nKey="greenHistroy" components={{ br: <br /> }} />
           </h1>
 
@@ -77,13 +87,24 @@ export default function GreenStory() {
               </div>
             ))}
           </div> */}
-          <div className="max-w-[760px] space-y-5">
+
+          <div
+            className={`${
+              selectedLang === "en"
+                ? "max-w-[760px] space-y-5"
+                : "max-w-[920px] space-y-4"
+            }`}
+          >
             <div
               className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
               transform transition-all duration-300 hover:translate-x-2
               cursor-pointer"
             >
-              <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
+              <p
+                className={`${
+                  selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
+                } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
+              >
                 {t("greenHistoryDescription")}
               </p>
             </div>
@@ -92,7 +113,11 @@ export default function GreenStory() {
               transform transition-all duration-300 hover:translate-x-2
               cursor-pointer"
             >
-              <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
+              <p
+                className={`${
+                  selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
+                } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
+              >
                 {t("greenHistoryDescription")}
               </p>
             </div>
@@ -101,7 +126,11 @@ export default function GreenStory() {
               transform transition-all duration-300 hover:translate-x-2
               cursor-pointer"
             >
-              <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
+              <p
+                className={`${
+                  selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
+                } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
+              >
                 {t("greenHistoryDescription")}
               </p>
             </div>
@@ -110,7 +139,11 @@ export default function GreenStory() {
               transform transition-all duration-300 hover:translate-x-2
               cursor-pointer"
             >
-              <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
+              <p
+                className={`${
+                  selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
+                } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
+              >
                 {t("greenHistoryDescription")}
               </p>
             </div>
@@ -119,7 +152,11 @@ export default function GreenStory() {
               transform transition-all duration-300 hover:translate-x-2
               cursor-pointer"
             >
-              <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
+              <p
+                className={`${
+                  selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
+                } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
+              >
                 {t("greenHistoryDescription")}
               </p>
             </div>
