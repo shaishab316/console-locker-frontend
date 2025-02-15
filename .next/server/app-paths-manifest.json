@@ -1,8 +1,8 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/checkout/page": "app/checkout/page.js",
   "/paymentprocess/page": "app/paymentprocess/page.js",
-  "/about/page": "app/about/page.js",
   "/reviews/page": "app/reviews/page.js",
-  "/empty/page": "app/empty/page.js"
+  "/empty/page": "app/empty/page.js",
+  "/about/page": "app/about/page.js",
+  "/page": "app/page.js"
 }
