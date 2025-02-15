@@ -13,6 +13,7 @@ import {
 import { Select } from "antd";
 import Link from "next/link";
 import Container from "@/components/common/Container";
+import { useTranslation } from "react-i18next";
 
 interface Product {
   title: string;
@@ -185,6 +186,8 @@ const ProductPage: React.FC = () => {
   const [filterView, setFilterView] = useState(false);
   const itemsPerPage = 9;
 
+  const { t } = useTranslation();
+
   const paginatedProducts = products.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -199,7 +202,7 @@ const ProductPage: React.FC = () => {
             className={`w-0 h-[1680px] lg:w-1/4 bg-white rounded-md lg:mb-5`}
           >
             <h3 className="hidden lg:flex text-[32px] text-[#101010] px-5 pt-4 pb-3 border-b font-semibold mb-4">
-              Filter
+              {t("filter")}
             </h3>
 
             {/* filter icon for mobile device */}
@@ -283,13 +286,13 @@ const ProductPage: React.FC = () => {
             <div className="hidden lg:block pb-3 mx-4 pt-2">
               <div className="relative mb-5 border-b-[.75px] border-[#969696]">
                 <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
-                  Products
+                  {t("products")}
                 </h4>
                 <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
-                  <option>All</option>
-                  <option>PlayStation</option>
-                  <option>Xbox</option>
-                  <option>Nintendo</option>
+                  <option>{t("all")}</option>
+                  <option>{t("playStation")}</option>
+                  <option>{"xbox"}</option>
+                  <option>{t("nintendo")}</option>
                 </select>
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
@@ -312,13 +315,13 @@ const ProductPage: React.FC = () => {
 
               <div className="relative mb-5 border-b-[.75px] border-[#969696]">
                 <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
-                  Brand
+                  {t("brand")}
                 </h4>
                 <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
-                  <option>All</option>
-                  <option>PlayStation</option>
-                  <option>Xbox</option>
-                  <option>Nintendo</option>
+                  <option>{t("all")}</option>
+                  <option>{t("playStation")}</option>
+                  <option>{t("xbox")}</option>
+                  <option>{"nintendo"}</option>
                 </select>
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
@@ -341,13 +344,13 @@ const ProductPage: React.FC = () => {
 
               <div className="relative mb-5 border-b-[.75px] border-[#969696]">
                 <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
-                  Price Range
+                  {t("priceRange")}
                 </h4>
                 <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
-                  <option>All</option>
-                  <option>$100 - $300</option>
-                  <option>$300 - $500</option>
-                  <option>$500+</option>
+                  <option>{t("all")}</option>
+                  <option>{t("100to300")}</option>
+                  <option>{t("300to500")}</option>
+                  <option>{"up500"}</option>
                 </select>
 
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
@@ -371,12 +374,12 @@ const ProductPage: React.FC = () => {
 
               <div className="relative mb-5 border-b-[.75px] border-[#969696]">
                 <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
-                  Condition
+                  {t("condition")}
                 </h4>
                 <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
-                  <option>All</option>
-                  <option>Good</option>
-                  <option>New</option>
+                  <option>{t("all")}</option>
+                  <option>{t("good")}</option>
+                  <option>{t("new")}</option>
                 </select>
 
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
@@ -425,7 +428,7 @@ const ProductPage: React.FC = () => {
                 >
                   <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
                 </svg>
-                <h3 className="text-sm font-medium">Filter</h3>
+                <h3 className="text-sm font-medium">{t("filter")}</h3>
               </div>
 
               {/* view - grid / list */}
@@ -462,12 +465,12 @@ const ProductPage: React.FC = () => {
 
               {/* sorting */}
               <div className="h-10 relative flex gap-2">
-                <select className="appearance-none w-40 md:w-56 px-2 py-2 border border-[#101010] rounded-md font-medium text-sm bg-white text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
+                <select className="appearance-none w-40 md:w-56 px-2.5 py-2 border border-[#101010] rounded-md font-medium text-sm bg-transparent lg:bg-[#FDFDFD] text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
                   <option defaultValue={"Sort by"} className="text-[#101010]">
-                    Sort by
+                    {t("sortBy")}
                   </option>
-                  <option value="High to low">High to Low</option>
-                  <option value="Low to high">Low to High</option>
+                  <option value="High to low">{t("highToLow")}</option>
+                  <option value="Low to high">{t("lowToHigh")}</option>
                 </select>
 
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
