@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 
 export default function GreenStory() {
   const ecologicalPoints = Array(4).fill(
@@ -56,15 +57,13 @@ export default function GreenStory() {
         <div>
           {/* Heading */}
           <h1 className="hidden md:block text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            LA STORIA VERDE DI
-            <br />
-            CONSOLE LOCKER.
+            <Trans i18nKey="greenHistroy" components={{ br: <br /> }} />
           </h1>
 
           <div className="hidden md:block w-full h-2 border-b-2 border-white mb-10"></div>
 
           {/* Cards */}
-          <div className="max-w-[760px] space-y-5">
+          {/* <div className="max-w-[760px] space-y-5">
             {ecologicalPoints.map((text, index) => (
               <div
                 key={index}
@@ -77,6 +76,53 @@ export default function GreenStory() {
                 </p>
               </div>
             ))}
+          </div> */}
+          <div className="max-w-[760px] space-y-5">
+            <div
+              className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
+              transform transition-all duration-300 hover:translate-x-2
+              cursor-pointer"
+            >
+              <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
+                {t("greenHistoryDescription")}
+              </p>
+            </div>
+            <div
+              className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
+              transform transition-all duration-300 hover:translate-x-2
+              cursor-pointer"
+            >
+              <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
+                {t("greenHistoryDescription")}
+              </p>
+            </div>
+            <div
+              className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
+              transform transition-all duration-300 hover:translate-x-2
+              cursor-pointer"
+            >
+              <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
+                {t("greenHistoryDescription")}
+              </p>
+            </div>
+            <div
+              className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
+              transform transition-all duration-300 hover:translate-x-2
+              cursor-pointer"
+            >
+              <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
+                {t("greenHistoryDescription")}
+              </p>
+            </div>
+            <div
+              className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
+              transform transition-all duration-300 hover:translate-x-2
+              cursor-pointer"
+            >
+              <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
+                {t("greenHistoryDescription")}
+              </p>
+            </div>
           </div>
         </div>
       </div>
