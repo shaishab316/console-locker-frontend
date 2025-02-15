@@ -113,7 +113,7 @@ export default function ScreenCondition() {
                       : "bg-gray-100 text-gray-400 cursor-not-allowed"
                   }`}
             >
-              CONTINUE
+              {t("continue")}
             </button>
           </div>
         </form>
