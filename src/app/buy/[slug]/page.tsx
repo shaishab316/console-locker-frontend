@@ -250,7 +250,7 @@ const ProductDetailsPage: React.FC = () => {
                   tested and works like new.
                 </p>
               </div>
-              <p className="text-[#2E7EF6] text-base font-medium underline">
+              <p className="text-[#2E7EF6] text-base font-medium underline cursor-pointer">
                 Learn more
               </p>
             </div>

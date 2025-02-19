@@ -4,6 +4,7 @@ import Container from "@/components/common/Container";
 import { Tabs } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -307,15 +308,24 @@ const consoles = {
 export default function ConsoleSelector() {
   const [activeTab, setActiveTab] = useState("xbox");
   const { t } = useTranslation();
+  const pathname = usePathname();
+
+  console.log(pathname);
 
   return (
     <div className="min-h-screen bg-[#F2F5F7]">
       <div className="flex items-center justify-center pt-14 space-x-7 lg:space-x-9">
-        <hr className="flex-1 border-b-4 border-gray-300" />
-        <h2 className="text-[#101010] text-2xl md:text-5xl font-semibold text-center whitespace-nowrap">
+        <hr className="flex-1 border-b-2 border-gray-300" />
+        <h2
+          className={`${
+            pathname === "/"
+              ? ""
+              : "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md"
+          } text-[#101010] text-2xl md:text-5xl font-semibold text-center whitespace-nowrap`}
+        >
           {t("consoleHeaderTitle")}
         </h2>
-        <hr className="flex-1 border-b-4 border-gray-300" />
+        <hr className="flex-1 border-b-2 border-gray-300" />
       </div>
 
       <div className="py-5">
