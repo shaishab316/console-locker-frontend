@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
+import { Trans, useTranslation } from "react-i18next";
 
 const FindOutConsole = () => {
+  const { t } = useTranslation();
   return (
     <div className="relative z-50 bg-[#F2F5F7] py-8">
       <div className="z-50 w-[94%] mr-auto -mt-12 mb-10 bg-[#FDFDFD] rounded-e-[20px] border-t-2 border-r-2 border-b-2 border-[#FF9934]">
@@ -20,23 +24,24 @@ const FindOutConsole = () => {
           </svg>
 
           <h2 className="text-2xl max-w-[300px] font-semibold text-[#FF9934] leading-7">
-            FIND OUT HOW MUCH YOUR CONSOLE IS WORTH!
+            {t("FINDOUTHOWMUCHYOURCONSOLEISWORTH")}
           </h2>
         </div>
 
         <div className="w-[92%] mx-auto border-b-2 border-b-[#FF9934]"></div>
 
         <p className="text-[#101010] text-sm leading-[21px] p-4">
-          We will send you packaging for shipping your device within 1-3
-          business days. Inside, you will find everything needed to send us your
-          device for free!
+          {t("packagingForShippingYourDevice")}
         </p>
       </div>
 
       <div className="w-[94%] mr-auto mb-10 bg-[#FDFDFD] rounded-e-[20px] border-t-2 border-r-2 border-b-2 border-[#FF9934]">
         <div className="p-4 flex items-end justify-end gap-3">
           <h2 className="text-2xl max-w-[300px] text-right font-semibold text-[#FF9934] leading-7">
-            SHIP YOUR DEVICE AT <br /> NO COST
+            <Trans
+              i18nKey="SHIPYOURDEVICEATNOCOST"
+              components={{ br: <br /> }}
+            />
           </h2>
           <svg
             width="36"
@@ -55,9 +60,7 @@ const FindOutConsole = () => {
         <div className="w-[92%] mx-auto border-b-2 border-b-[#FF9934]"></div>
 
         <p className="text-[#101010] text-sm leading-[21px] p-4">
-          We will send you packaging for shipping your device within 1-3
-          business days. Inside, you will find everything needed to send us your
-          device for free!
+          {t("packagingForShippingYourDevice")}
         </p>
       </div>
 
@@ -77,15 +80,14 @@ const FindOutConsole = () => {
           </svg>
 
           <h2 className="text-2xl max-w-[300px] text-left font-semibold text-[#FF9934] leading-7">
-            GET YOUR PAYMENT!
+            {t("GETYOURPAYMENT")}
           </h2>
         </div>
 
         <div className="w-[92%] mx-auto border-b-2 border-b-[#FF9934]"></div>
 
         <p className="text-[#101010] text-sm leading-[21px] p-4">
-          After receiving your device, we will take 2-3 business days to test
-          it, after which we will send you the estimated amount.
+          {t("afterReceivingYourDevice")}
         </p>
       </div>
     </div>

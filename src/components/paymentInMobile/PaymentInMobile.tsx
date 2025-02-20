@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const PaymentInMobile = () => {
   const [formData, setFormData] = useState({
@@ -12,24 +13,28 @@ const PaymentInMobile = () => {
     appointments: "",
     country: "",
   });
+  const [paymentMethod, setPaymentMethod] = useState("bankTransfer");
+
+  const { t } = useTranslation();
+
   return (
     <div className="z-20 min-h-screen relative bg-[url('/sell/back_sell.png')] bg-cover bg-center overflow-hidden">
       {/* Diagonal lines background */}
-      <div className="absolute inset-0 opacity-10" />
+      {/* <div className="absolute inset-0 opacity-10" /> */}
 
-      <div className="p-5">
+      <form className="p-5">
         {/* Personal Information */}
         <h2 className="text-lg font-semibold text-[#FFFFFF]">
-          Personal information
+          {t("personalInformation")}
         </h2>
 
         <div className="w-full mx-auto h-1 border-b-2 border-b-[#FDFDFD] mb-5" />
 
-        <form className="bg-[#FDFDFD] p-3 rounded-lg space-y-3 mb-5">
+        <div className="bg-[#FDFDFD] p-3 rounded-lg space-y-3 mb-5">
           <div className="flex items-center gap-6">
             <div className="flex-1 flex flex-col gap-1 w-[45%] max-w-[50%]">
               <label htmlFor="firstName" className="text-sm leading-[21px]">
-                First Name <span className="text-red-500">*</span>{" "}
+                {t("firstName")} <span className="text-red-500">*</span>{" "}
               </label>
 
               <input
@@ -37,15 +42,16 @@ const PaymentInMobile = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, firstName: e.target.value })
                 }
+                value={formData.firstName}
                 id="firstName"
-                className="px-2 py-5 h-10 border-2 rounded-md"
+                className="px-2 py-2 border-2 rounded-md"
                 placeholder="First Name"
               />
             </div>
 
             <div className="flex-1 flex flex-col gap-1 w-[45%] max-w-[50%]">
               <label htmlFor="lastName" className="text-sm leading-[21px]">
-                Last Name <span className="text-red-500">*</span>{" "}
+                {t("lastName")} <span className="text-red-500">*</span>{" "}
               </label>
 
               <input
@@ -53,8 +59,9 @@ const PaymentInMobile = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, lastName: e.target.value })
                 }
+                value={formData.lastName} // Bind value to state
                 id="lastName"
-                className="px-2 py-5 h-10 border-2 rounded-md"
+                className="px-2 py-2 border-2 rounded-md"
                 placeholder="Last Name"
               />
             </div>
@@ -62,7 +69,7 @@ const PaymentInMobile = () => {
 
           <div className="flex flex-col gap-1 w-full">
             <label htmlFor="email" className="text-sm leading-[21px]">
-              Email <span className="text-red-500">*</span>{" "}
+              {t("email")} <span className="text-red-500">*</span>{" "}
             </label>
 
             <input
@@ -70,38 +77,39 @@ const PaymentInMobile = () => {
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
+              value={formData.email} // Bind value to state
               id="email"
-              className="px-2 py-5 h-10 border-2 rounded-md"
+              className="px-2 py-2 border-2 rounded-md"
               placeholder="Enter email"
             />
           </div>
 
           <div className="flex flex-col gap-1 w-full">
             <label htmlFor="phone" className="text-sm leading-[21px]">
-              Phone Number <span className="text-red-500">*</span>{" "}
+              {t("phoneNumber")} <span className="text-red-500">*</span>{" "}
             </label>
 
             <input
-              type="text"
+              type="tel"
               onChange={(e) =>
                 setFormData({ ...formData, phone: e.target.value })
               }
+              value={formData.phone} // Bind value to state
               id="phone"
-              className="px-2 py-5 h-10 border-2 rounded-md"
+              className="px-2 py-2 border-2 rounded-md"
               placeholder="Phone Number"
             />
           </div>
-        </form>
+        </div>
 
         {/* Address */}
-
-        <h2 className="text-lg font-semibold text-[#FFFFFF]">Address</h2>
+        <h2 className="text-lg font-semibold text-[#FFFFFF]">{t("address")}</h2>
         <div className="w-full mx-auto h-1 border-b-2 border-b-[#FDFDFD] mb-5" />
-        <form className="bg-[#FDFDFD] p-3 rounded-lg space-y-3 mb-5">
+        <div className="bg-[#FDFDFD] p-3 rounded-lg space-y-3 mb-5">
           <div className="flex items-center gap-6">
             <div className="flex-1 flex flex-col gap-1 w-[45%] max-w-[50%]">
               <label htmlFor="city" className="text-sm leading-[21px]">
-                City <span className="text-red-500">*</span>{" "}
+                {t("city")} <span className="text-red-500">*</span>{" "}
               </label>
 
               <input
@@ -109,15 +117,16 @@ const PaymentInMobile = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, city: e.target.value })
                 }
+                value={formData.city} // Bind value to state
                 id="city"
-                className="px-2 py-5 h-10 border-2 rounded-md"
+                className="px-2 py-2 border-2 rounded-md"
                 placeholder="City"
               />
             </div>
 
             <div className="flex-1 flex flex-col gap-1 w-[45%] max-w-[50%]">
               <label htmlFor="postalCode" className="text-sm leading-[21px]">
-                Postal Code <span className="text-red-500">*</span>{" "}
+                {t("postalCode")} <span className="text-red-500">*</span>{" "}
               </label>
 
               <input
@@ -125,8 +134,9 @@ const PaymentInMobile = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, postCode: e.target.value })
                 }
+                value={formData.postCode} // Bind value to state
                 id="postalCode"
-                className="px-2 py-5 h-10 border-2 rounded-md"
+                className="px-2 py-2 border-2 rounded-md"
                 placeholder="Postal Code"
               />
             </div>
@@ -134,7 +144,7 @@ const PaymentInMobile = () => {
 
           <div className="flex flex-col gap-1 w-full">
             <label htmlFor="shippingAddress" className="text-sm leading-[21px]">
-              Shipping Address <span className="text-red-500">*</span>{" "}
+              {t("shippingAddress")} <span className="text-red-500">*</span>{" "}
             </label>
 
             <input
@@ -142,15 +152,16 @@ const PaymentInMobile = () => {
               onChange={(e) =>
                 setFormData({ ...formData, shippingAddress: e.target.value })
               }
+              value={formData.shippingAddress} // Bind value to state
               id="shippingAddress"
-              className="px-2 py-5 h-10 border-2 rounded-md"
+              className="px-2 py-2 border-2 rounded-md"
               placeholder="Shipping Address"
             />
           </div>
 
           <div className="flex flex-col gap-1 w-full">
-            <label htmlFor="phone" className="text-sm leading-[21px]">
-              Apartment, Staircase, etc. (optional)
+            <label htmlFor="appointments" className="text-sm leading-[21px]">
+              {t("apartmentStaircase")}
             </label>
 
             <input
@@ -158,45 +169,68 @@ const PaymentInMobile = () => {
               onChange={(e) =>
                 setFormData({ ...formData, appointments: e.target.value })
               }
-              id="phone"
-              className="px-2 py-5 h-10 border-2 rounded-md"
+              value={formData.appointments} // Bind value to state
+              id="appointments"
+              className="px-2 py-2 border-2 rounded-md"
               placeholder="Apartment, Staircase, etc."
             />
           </div>
-        </form>
+        </div>
 
         {/* Payment */}
-        <h2 className="text-lg font-semibold text-[#FFFFFF]">Payment</h2>
+        <h2 className="text-lg font-semibold text-[#FFFFFF]">{t("payment")}</h2>
         <div className="w-full mx-auto h-1 border-b-2 border-b-[#FDFDFD] mb-5" />
 
-        <form className="bg-[#FDFDFD] p-3 rounded-lg space-y-3 mb-5">
-          <div className="flex items-center justify-between gap-3">
+        <div className="bg-[#FDFDFD] p-5 rounded-lg space-y-3 mb-5">
+          <div
+            onClick={() => setPaymentMethod("bankTransfer")}
+            className={`h-14 ${
+              paymentMethod === "bankTransfer"
+                ? "border-2 border-[#FF9934]"
+                : ""
+            } flex items-center justify-between gap-3 rounded-lg p-4`}
+          >
             <div className="flex items-center gap-3">
-              <input type="radio" className="w-6 h-6" />
+              <input
+                type="radio"
+                checked={paymentMethod === "bankTransfer"} // Bind checked to state
+                onChange={() => setPaymentMethod("bankTransfer")}
+                className="w-6 h-6"
+              />
               <h2 className="text-xs font-medium text-[#101010]">
-                Trasferimento Bancario (IBAN)
+                {t("bankTransfer")}
               </h2>
             </div>
             <h3 className="text-sm font-medium text-[#101010]">$5,00</h3>
           </div>
-          <div className="flex items-center justify-between gap-3">
+          <div
+            onClick={() => setPaymentMethod("payPalFees")}
+            className={`h-14 ${
+              paymentMethod === "payPalFees" ? "border-2 border-[#FF9934]" : ""
+            } flex items-center justify-between gap-3 rounded-lg p-4`}
+          >
             <div className="flex items-center gap-3">
-              <input type="radio" className="w-6 h-6" />
+              <input
+                type="radio"
+                checked={paymentMethod === "payPalFees"} // Bind checked to state
+                onChange={() => setPaymentMethod("payPalFees")}
+                className="w-6 h-6"
+              />
               <h2 className="text-xs font-medium text-[#101010]">
-                PayPal: Commissioni $0,10
+                {t("payPalFees")}
               </h2>
             </div>
             <h3 className="text-sm font-medium text-[#101010]">$5,00</h3>
           </div>
-        </form>
-      </div>
+        </div>
 
-      {/* Continue Button */}
-      <div className="bg-[#FDFDFD] p-6">
-        <button className="w-full h-14 bg-[#FF9934] rounded-lg text-[#FDFDFD] text-base font-semibold">
-          CONTINUA
-        </button>
-      </div>
+        {/* Continue Button */}
+        <div className="bg-[#FDFDFD] p-6">
+          <button className="w-full h-14 bg-[#FF9934] rounded-lg text-[#FDFDFD] text-base font-semibold">
+            {t("continue")}
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

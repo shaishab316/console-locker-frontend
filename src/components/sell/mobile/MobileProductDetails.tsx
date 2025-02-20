@@ -118,8 +118,7 @@ const MobileProductDetails = () => {
               "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
             }
           >
-            {/* {t("consoleHeaderTitle")} */}
-            What is the storage capacity? (Not applicable for Xbox One X)
+            {t("storageCapacity")}
           </h2>
           <hr className="flex-1 border-b-2 border-gray-300" />
         </div>
@@ -150,8 +149,7 @@ const MobileProductDetails = () => {
               "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
             }
           >
-            {/* {t("consoleHeaderTitle")} */}
-            What is the condition of your console?
+            {t("consoleCondition")}
           </h2>
           <hr className="flex-1 border-b-2 border-gray-300" />
         </div>
@@ -176,16 +174,21 @@ const MobileProductDetails = () => {
       {/* TODO: do it later */}
       {/* BRAND */}
       <div className="p-5">
-        <div className="border-2 border-[#64B95E] p-3 rounded-lg">
-          <p>
-            <span className="text-[#64B95E]">BRAND NEW:</span> The device is in
+        <div className="border-2 border-[#64B95E]  p-3 rounded-lg">
+          <p className="border-b-2 border-dashed inline-block">
+            <span className="text-[#64B95E] inline-block">BRAND NEW:</span> The device is in
             perfect condition and has no signs
           </p>
-          <p>
+          <p className="border-b-2 border-dashed">
             of wear or scratches. Its functionality is equivalent to a factory-
           </p>
-          <p>fresh item, responsiveness to commands is instantaneous, and it</p>
-          <p> does not have any overheating issues.</p>
+          <p className="border-b-2 border-dashed">
+            fresh item, responsiveness to commands is instantaneous, and it
+          </p>
+          <p className="border-b-2 border-dashed">
+            {" "}
+            does not have any overheating issues.
+          </p>
         </div>
       </div>
 
@@ -198,8 +201,7 @@ const MobileProductDetails = () => {
               "bg-[#FDFDFD] py-4 px-[14px] rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
             }
           >
-            {/* {t("consoleHeaderTitle")} */}
-            Is the console fully functional and free of technical defects?
+            {t("consoleFullyFunctional")}
           </h2>
           <hr className="flex-1 border-b-2 border-gray-300" />
         </div>
@@ -230,8 +232,7 @@ const MobileProductDetails = () => {
               "bg-[#FDFDFD] py-4 px-[14px] rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
             }
           >
-            {/* {t("consoleHeaderTitle")} */}
-            How many controllers will you send us?
+            {t("consoleControllers")}
           </h2>
           <hr className="flex-1 border-b-2 border-gray-300" />
         </div>
@@ -262,8 +263,7 @@ const MobileProductDetails = () => {
               "bg-[#FDFDFD] py-4 px-[14px] rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
             }
           >
-            {/* {t("consoleHeaderTitle")} */}
-            Will you also send us the original accessories?
+            {t("originalAccessories")}
           </h2>
           <hr className="flex-1 border-b-2 border-gray-300" />
         </div>
@@ -294,13 +294,38 @@ const MobileProductDetails = () => {
               "bg-[#FDFDFD] py-4 px-[14px] rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
             }
           >
-            {/* {t("consoleHeaderTitle")} */}
-            Would you like to leave us a note?
+            {t("leaveUsANote")}
           </h2>
           <hr className="flex-1 border-b-2 border-gray-300" />
         </div>
 
-        <h1>helllo ..................</h1>
+        <div className="p-5">
+          <div className="border-2 border-[#64B95E] p-3 rounded-lg">
+            <p className="border-b-2 border-dashed">
+              <span className="text-[#64B95E]">BRAND NEW:</span> The device is
+              in perfect condition and has no signs
+            </p>
+            <p className="border-b-2 border-dashed">
+              of wear or scratches. Its functionality is equivalent to a
+              factory-
+            </p>
+            <p className="border-b-2 border-dashed">
+              fresh item, responsiveness to commands is instantaneous, and it
+            </p>
+            <p className="border-b-2 border-dashed">
+              {" "}
+              does not have any overheating issues.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* submit button */}
+
+      <div className="p-5 bg-[#FDFDFD]">
+        <button className="w-full text-[#FDFDFD] font-semibold bg-[#64B95E] h-14 rounded-lg">
+          SUBMIT FORM
+        </button>
       </div>
     </div>
   );

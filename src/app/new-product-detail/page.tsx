@@ -7,8 +7,8 @@ const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
-    setIsOpen((prev) => !prev);
-
+    // setIsOpen((prev) => !prev);
+    setIsOpen(!isOpen);
     console.log(isOpen);
   };
 
@@ -32,6 +32,7 @@ const Page = () => {
           <div className="w-full">
             <Image
               src={"/sell/product-detail.png"}
+              className="w-full"
               width={700}
               height={700}
               alt="product-detail"
@@ -82,54 +83,56 @@ const Page = () => {
 
           {/* togglable description */}
 
-          <div className="flex flex-wrap gap-x-2 gap-y-6">
-            <div className="w-[98px] flex flex-col items-center justify-center gap-3">
-              <h2 className="text-sm font-bold text-[#101010] text-center">
-                Modello
-              </h2>
+          {isOpen && (
+            <div className="flex flex-wrap gap-x-2 gap-y-6">
+              <div className="w-[98px] flex flex-col items-center justify-center gap-3">
+                <h2 className="text-sm font-bold text-[#101010] text-center">
+                  Modello
+                </h2>
 
-              <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                ONE X
+                <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
+                  ONE X
+                </div>
+              </div>
+
+              <div className="w-[98px] flex flex-col items-center justify-center gap-3">
+                <h2 className="text-sm font-bold text-[#101010] text-center">
+                  Modello
+                </h2>
+
+                <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
+                  ONE X
+                </div>
+              </div>
+              <div className="w-[98px] flex flex-col items-center justify-center gap-3">
+                <h2 className="text-sm font-bold text-[#101010] text-center">
+                  Modello
+                </h2>
+
+                <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
+                  ONE X
+                </div>
+              </div>
+              <div className="w-[98px] flex flex-col items-center justify-center gap-3">
+                <h2 className="text-sm font-bold text-[#101010] text-center">
+                  Modello
+                </h2>
+
+                <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
+                  ONE X
+                </div>
+              </div>
+              <div className="w-[98px] flex flex-col items-center justify-center gap-3">
+                <h2 className="text-sm font-bold text-[#101010] text-center">
+                  Modello
+                </h2>
+
+                <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
+                  ONE X
+                </div>
               </div>
             </div>
-
-            <div className="w-[98px] flex flex-col items-center justify-center gap-3">
-              <h2 className="text-sm font-bold text-[#101010] text-center">
-                Modello
-              </h2>
-
-              <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                ONE X
-              </div>
-            </div>
-            <div className="w-[98px] flex flex-col items-center justify-center gap-3">
-              <h2 className="text-sm font-bold text-[#101010] text-center">
-                Modello
-              </h2>
-
-              <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                ONE X
-              </div>
-            </div>
-            <div className="w-[98px] flex flex-col items-center justify-center gap-3">
-              <h2 className="text-sm font-bold text-[#101010] text-center">
-                Modello
-              </h2>
-
-              <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                ONE X
-              </div>
-            </div>
-            <div className="w-[98px] flex flex-col items-center justify-center gap-3">
-              <h2 className="text-sm font-bold text-[#101010] text-center">
-                Modello
-              </h2>
-
-              <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                ONE X
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
 
@@ -137,8 +140,8 @@ const Page = () => {
 
       <div className="relative p-5">
         <div className="bg-[#FDFDFD] h-[209px] rounded-lg flex items-center">
-          <div className="w-1/2"></div>
-          <div className="w-1/2">
+          <div className="w-[40%]"></div>
+          <div className="w-[60%]">
             <h2 className="text-lg font-semibold leading-[27px] text-[#101010] pb-2 border-b border-b-[#D6D6D6]">
               Direct Payment
             </h2>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { Trans, useTranslation } from "react-i18next";
 
 export default function MobileSellHero() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,7 @@ export default function MobileSellHero() {
     "Nintendo Switch",
   ];
   const [selectedConsole, setSelectedConsole] = useState("");
+  const { t } = useTranslation();
 
   return (
     <main className="z-20 min-h-[796px] relative bg-[url('/sell/back_sell.png')] bg-cover bg-center overflow-hidden">
@@ -29,18 +31,20 @@ export default function MobileSellHero() {
             WebkitTextFillColor: "transparent",
           }}
         >
-          VENDI
+          {t("SELL")}
         </h1>
         <h2 className="text-[40px] text-white font-bold -mt-4">
-          LA TUA CONSOLE
+          {t("YOURCONSOLE")}
         </h2>
 
         <div className="border-b-2 border-white my-5 w-[96%] h-1 ml-5"></div>
 
         {/* Shipping info */}
         <p className="w-full text-white text-left text-2xl font-semibold leading-7 px-5 mb-8">
-          Spedizione gratuita
-          <br /> e consegna veloce in 48h
+          <Trans
+            i18nKey="freeshippingAndFastDelivery"
+            components={{ br: <br /> }}
+          />
         </p>
 
         {/* Console selector dropdown */}
@@ -76,7 +80,7 @@ export default function MobileSellHero() {
         {/* Estimate button */}
         <div className="w-full h-14 px-5">
           <button className="w-full h-14 bg-white text-[#E95D00] py-3 px-4 rounded-lg font-medium">
-            GET A PRICE ESTIMATE
+            {t("GETAPRICEESTIMATE")}
           </button>
         </div>
 
