@@ -2,6 +2,6 @@
   "/buy/nintendo/page": "app/buy/nintendo/page.js",
   "/buy/playstation/page": "app/buy/playstation/page.js",
   "/about/page": "app/about/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/paymentprocess/page": "app/paymentprocess/page.js"
+  "/paymentprocess/page": "app/paymentprocess/page.js",
+  "/contact/page": "app/contact/page.js"
 }

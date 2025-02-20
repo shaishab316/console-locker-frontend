@@ -86,17 +86,17 @@ export default function Checkout() {
                 </h2>
               </div>
 
-              <div className="lg:p-6">
+              <div className="lg:p-7 pt-6">
                 <div className="space-y-6">
                   <h3 className="font-semibold text-2xl text-[#404040]">
                     {t("payNow")}:
                   </h3>
 
                   {/* Pay Now */}
-                  <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-2">
+                  <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
                     {/* Credit Card Option */}
                     <div
-                      className={`flex items-center space-x-4 p-5 border rounded-md ${
+                      className={`flex items-center justify-between space-x-4 p-2.5 lg:p-5 border rounded-md ${
                         selectedPayment === "credit"
                           ? "border-emerald-950"
                           : "border-[#FDFDFD]"
@@ -116,10 +116,10 @@ export default function Checkout() {
                         className="flex items-center space-x-2 cursor-pointer"
                       >
                         <p className="flex flex-col mr-3">
-                          <span className="text-lg font-medium text-[#101010]">
+                          <span className="text-base lg:text-lg font-medium text-[#101010]">
                             {t("creditDebitCard")}
                           </span>
-                          <span className="text-[#5F5F5F]">
+                          <span className="text-[#5F5F5F] text-xs md:text-base">
                             {t("instantPaymentByCreditCard")}
                           </span>
                         </p>
@@ -157,10 +157,10 @@ export default function Checkout() {
                         className="flex items-center space-x-2 cursor-pointer"
                       >
                         <p className="flex flex-col mr-3">
-                          <span className="text-lg font-medium text-[#101010]">
+                          <span className="text-base lg:text-lg font-medium text-[#101010]">
                             {t("payNow")}
                           </span>
-                          <span className="text-[#5F5F5F]">
+                          <span className="text-[#5F5F5F] text-xs md:text-base">
                             {t("payNowWithYouPayPalAccount")}
                           </span>
                         </p>
@@ -204,10 +204,10 @@ export default function Checkout() {
                         className="flex items-center space-x-2 cursor-pointer"
                       >
                         <p className="flex flex-col mr-3">
-                          <span className="text-lg font-medium text-[#101010]">
+                          <span className="text-base lg:text-lg font-medium text-[#101010]">
                             {t("payInInstallments")}:
                           </span>
-                          <span className="text-[#5F5F5F]">
+                          <span className="text-[#5F5F5F] text-xs md:text-base">
                             {t("payIn3InterestFreeInstallments")}
                           </span>
                         </p>
@@ -245,10 +245,10 @@ export default function Checkout() {
                         className="flex items-center space-x-2 cursor-pointer"
                       >
                         <p className="flex flex-col mr-3">
-                          <span className="text-lg font-medium text-[#101010]">
+                          <span className="text-base lg:text-lg font-medium text-[#101010]">
                             {t("payInInstallments")}:
                           </span>
-                          <span className="text-[#5F5F5F]">
+                          <span className="text-[#5F5F5F] text-xs md:text-base">
                             {t("payIn3InterestFreeInstallments")}
                           </span>
                         </p>
