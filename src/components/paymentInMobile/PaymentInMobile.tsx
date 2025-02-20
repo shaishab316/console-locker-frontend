@@ -21,7 +21,7 @@ const PaymentInMobile = () => {
 
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast.success("Ordered Submitted successfully!");
 
