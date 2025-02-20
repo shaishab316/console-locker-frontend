@@ -85,13 +85,19 @@ export function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuItem>
-                <Link href="/buy/playstation">PlayStation</Link>
+                <Link href="/buy/playstation" className="w-full px-5">
+                  PlayStation
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href="/buy/xbox">Xbox</Link>
+                <Link href="/buy/xbox" className="w-full px-5">
+                  Xbox
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href="/buy/nintendo">Nintendo</Link>
+                <Link href="/buy/nintendo" className="w-full px-5">
+                  Nintendo
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

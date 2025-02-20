@@ -83,51 +83,68 @@ const SelectedProduct = () => {
           {/* togglable description */}
 
           {isOpen && (
-            <div className="flex flex-wrap gap-x-2 gap-y-6">
-              <div className="w-[98px] flex flex-col items-center justify-center gap-3">
-                <h2 className="text-sm font-bold text-[#101010] text-center">
-                  Model
-                </h2>
+            <div className="">
+              <div className="flex flex-wrap gap-x-2 gap-y-6 mb-6">
+                <div className="w-[98px] flex flex-col items-center justify-center gap-3">
+                  <h2 className="text-sm font-bold text-[#101010] text-center">
+                    Model
+                  </h2>
 
-                <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                  ONE X
+                  <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
+                    ONE X
+                  </div>
+                </div>
+
+                <div className="w-[98px] flex flex-col items-center justify-center gap-3">
+                  <h2 className="text-sm font-bold text-[#101010] text-center">
+                    Condition
+                  </h2>
+
+                  <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
+                    BRAND NEW
+                  </div>
+                </div>
+                <div className="w-[98px] flex flex-col items-center justify-center gap-3">
+                  <h2 className="text-sm font-bold text-[#101010] text-center">
+                    Technical
+                  </h2>
+
+                  <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
+                    ABSENT
+                  </div>
+                </div>
+                <div className="w-[98px] flex flex-col items-center justify-center gap-3">
+                  <h2 className="text-sm font-bold text-[#101010] text-center">
+                    Controller
+                  </h2>
+
+                  <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
+                    +1
+                  </div>
+                </div>
+                <div className="w-[98px] flex flex-col items-center justify-center gap-3">
+                  <h2 className="text-sm font-bold text-[#101010] text-center">
+                    Accessories
+                  </h2>
+
+                  <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
+                    SI
+                  </div>
                 </div>
               </div>
 
-              <div className="w-[98px] flex flex-col items-center justify-center gap-3">
-                <h2 className="text-sm font-bold text-[#101010] text-center">
-                  Condition
+              {/* Note */}
+
+              <div>
+                <h2 className="text-lg font-semibold text-[#101010] text-center mb-3">
+                  Note
                 </h2>
 
-                <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                  BRAND NEW
-                </div>
-              </div>
-              <div className="w-[98px] flex flex-col items-center justify-center gap-3">
-                <h2 className="text-sm font-bold text-[#101010] text-center">
-                  Technical
-                </h2>
+                <div className="h-[104px] text-[10px] leading-4 text-center border border-[#5F5F5F] rounded-lg p-3">
+                  <p>La playstation ha a accumulato un po’ di polvere</p>
 
-                <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                  ABSENT
-                </div>
-              </div>
-              <div className="w-[98px] flex flex-col items-center justify-center gap-3">
-                <h2 className="text-sm font-bold text-[#101010] text-center">
-                  Controller
-                </h2>
-
-                <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                  +1
-                </div>
-              </div>
-              <div className="w-[98px] flex flex-col items-center justify-center gap-3">
-                <h2 className="text-sm font-bold text-[#101010] text-center">
-                  Accessories
-                </h2>
-
-                <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                  SI
+                  <div className="h-[1px] border-b border-dashed border-[#919191] mt-4 mb-8"></div>
+                  <div className="h-[1px] border-b border-dashed border-[#919191]"></div>
                 </div>
               </div>
             </div>

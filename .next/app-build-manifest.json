@@ -96,6 +96,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/repair/page.js"
+    ],
+    "/buy/nintendo/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/buy/nintendo/page.js"
+    ],
+    "/buy/xbox/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/buy/xbox/page.js"
     ]
   }
 }
