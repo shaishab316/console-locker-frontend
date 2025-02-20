@@ -18,12 +18,11 @@ const Page = () => {
       <div className="absolute inset-0 opacity-10" />
 
       <div className="p-5">
-        <div className="bg-[#FDFDFD] h-[100px] flex items-center justify-center text-center rounded-lg p-5">
-          <h2 className="text-[#101010] text-2xl font-semibold">
+        <div className="bg-[#FDFDFD] h-[100px] flex items-center justify-between text-center rounded-lg p-5">
+          <h3 className="text-[#101010] text-lg font-semibold">
             La Nostra Offerta
-            <span className="inline-block w-[3px] h-10 bg-[#D6D6D6] -mb-3" />
-            $200,50
-          </h2>
+          </h3>
+          <h3 className="text-[#101010] text-lg font-semibold">$200,50</h3>
         </div>
       </div>
 
@@ -41,7 +40,7 @@ const Page = () => {
 
           <div
             onClick={handleToggle}
-            className="border-2 flex items-center justify-end gap-3 border-b border-b-[#DAEDF2] py-3 mb-3"
+            className="flex items-center justify-end gap-3 border-b border-b-[#DAEDF2] py-3 mb-3"
           >
             <h2 className="text-sm text-[#101010]">
               {isOpen ? "Reduce" : "View the summary in detail"}
@@ -136,7 +135,7 @@ const Page = () => {
 
       {/* Direct Payment */}
 
-      <div className="border-2 p-5">
+      <div className="relative p-5">
         <div className="bg-[#FDFDFD] h-[209px] rounded-lg flex items-center">
           <div className="w-1/2"></div>
           <div className="w-1/2">
@@ -152,18 +151,26 @@ const Page = () => {
           </div>
         </div>
 
-        <div>
+        <div className="py-5 max-w-[250px] ml-auto text-right">
+          <p className="text-xs text-[#FDFDFD]">
+            Quando completi la tua transazione, il tou prezzo sara riservato per
+            14 giorni
+          </p>
+        </div>
+
+        <div className="absolute -bottom-2.5 -left-5 rounded-lg p-2">
           <Image
             src={"/products/owy-man.png"}
-            width={600}
-            height={700}
+            className="max-w-[187px] max-h-[291px]"
+            width={500}
+            height={500}
             alt="man"
           />
         </div>
       </div>
 
       {/* Continue Button */}
-      <div className="bg-[#FDFDFD] p-6">
+      <div className="bg-[#FDFDFD] p-6 mb-6">
         <button className="w-full h-14 bg-[#FF9934] rounded-lg text-[#FDFDFD] text-base font-semibold">
           CONTINUA
         </button>
