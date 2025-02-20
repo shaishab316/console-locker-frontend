@@ -131,26 +131,26 @@ export default function CheckoutPage() {
                   </button>
                 </div>
                 <p className="text-sm lg:text-lg text-gray-600">
-                  By confirming your order, you accept our{" "}
+                  {t("checkout1")}{" "}
                   <Link
                     href="#"
                     className="underline text-blue-400 font-medium"
                   >
-                    General Terms and Conditions
+                    {t("checkout2")}
                   </Link>
                   ,{" "}
                   <Link
                     href="#"
                     className="underline text-blue-400 font-medium"
                   >
-                    the Warranty Conditions
+                   {t("checkout3")}
                   </Link>{" "}
                   and our{" "}
                   <Link
                     href="#"
                     className="underline text-blue-400 font-medium"
                   >
-                    Privacy Policy
+                    {t("checkout4")}
                   </Link>
                   .
                 </p>

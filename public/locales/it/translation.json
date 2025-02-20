@@ -184,5 +184,11 @@
   "packagingForShippingYourDevice": "Ti invieremo l'imballaggio per spedire il tuo dispositivo entro 1-3 giorni lavorativi. All'interno troverai tutto il necessario per inviarci il tuo dispositivo gratuitamente!",
   "SHIPYOURDEVICEATNOCOST": "SPEDISCI IL TUO DISPOSITIVO A <br /> NESSUN COSTO",
   "GETYOURPAYMENT": "RICEVI IL TUO PAGAMENTO!",
-  "afterReceivingYourDevice": "Dopo aver ricevuto il tuo dispositivo, impiegheremo 2-3 giorni lavorativi per testarlo, dopodiché ti invieremo l'importo stimato."
+  "afterReceivingYourDevice": "Dopo aver ricevuto il tuo dispositivo, impiegheremo 2-3 giorni lavorativi per testarlo, dopodiché ti invieremo l'importo stimato.",
+  "proceedWithoutRegistration": "Procedi senza registrazione",
+  "checkout1": "Confermando il tuo ordine, accetti i nostri",
+  "checkout2": "Termini e Condizioni Generali,",
+  "checkout3": "le Condizioni di Garanzia",
+  "checkout4": "e la nostra",
+  "checkout5": "Informativa sulla Privacy."
 }
