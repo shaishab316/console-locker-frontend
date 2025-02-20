@@ -3792,6 +3792,11 @@ body {
     padding-bottom: 1rem;
   }
 
+  .md\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
   .md\:pb-20 {
     padding-bottom: 5rem;
   }
@@ -3806,6 +3811,18 @@ body {
 
   .md\:pt-4 {
     padding-top: 1rem;
+  }
+
+  .md\:pt-16 {
+    padding-top: 4rem;
+  }
+
+  .md\:pt-12 {
+    padding-top: 3rem;
+  }
+
+  .md\:pt-1 {
+    padding-top: 0.25rem;
   }
 
   .md\:text-left {

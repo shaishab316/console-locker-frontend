@@ -81,12 +81,12 @@ export default function CheckoutPage() {
   // };
 
   return (
-    <div className="min-h-screen bg-[#F2F5F7] py-14 md:py-20">
+    <div className="min-h-screen bg-[#F2F5F7] py-10">
       <Container>
         <h1 className="text-3xl md:text-[40px] font-semibold text-center mb-8">
           {t("checkout")}
         </h1>
-        <div className="w-full flex justify-between gap-5 mb-8">
+        <div className="w-full flex justify-between gap-5 mb-5">
           <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
             {t("accessories")}
           </h3>
@@ -130,7 +130,7 @@ export default function CheckoutPage() {
                     </span>
                   </button>
                 </div>
-                <p className="text-lg text-gray-600">
+                <p className="text-sm lg:text-lg text-gray-600">
                   By confirming your order, you accept our{" "}
                   <Link
                     href="#"
