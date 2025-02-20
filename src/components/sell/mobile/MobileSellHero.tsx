@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { Trans, useTranslation } from "react-i18next";
+import Link from "next/link";
 
 export default function MobileSellHero() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,10 +18,13 @@ export default function MobileSellHero() {
   const [selectedConsole, setSelectedConsole] = useState("");
   const { t } = useTranslation();
 
+  const handleNext = () => {
+    console.log("first");
+  };
+
   return (
-    <main className="z-20 min-h-[796px] relative bg-[url('/sell/back_sell.png')] bg-cover bg-center overflow-hidden">
+    <main className="z-10 min-h-[796px] relative bg-[url('/sell/back_sell.png')] bg-cover bg-center overflow-hidden">
       {/* Diagonal lines background */}
-      <div className="absolute inset-0 opacity-10" />
 
       <div className="py-6 flex flex-col items-center">
         {/* Main heading */}
@@ -78,10 +82,15 @@ export default function MobileSellHero() {
         </div>
 
         {/* Estimate button */}
-        <div className="w-full h-14 px-5">
-          <button className="w-full h-14 bg-white text-[#E95D00] py-3 px-4 rounded-lg font-medium">
-            {t("GETAPRICEESTIMATE")}
-          </button>
+        <div className="w-full h-14 px-5 relative z-[999]">
+          <Link href={"/sell/next6"}>
+            <button
+              onClick={handleNext}
+              className="w-full h-14 bg-white text-[#E95D00] py-3 px-4 rounded-lg font-medium"
+            >
+              {t("GETAPRICEESTIMATE")}
+            </button>
+          </Link>
         </div>
 
         {/* Floating currency symbols */}

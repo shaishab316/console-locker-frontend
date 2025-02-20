@@ -1,4 +1,6 @@
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 
 const PaymentInMobile = () => {
@@ -17,12 +19,21 @@ const PaymentInMobile = () => {
 
   const { t } = useTranslation();
 
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success("Ordered Submitted successfully!");
+
+    router.push("/");
+  };
+
   return (
     <div className="z-20 min-h-screen relative bg-[url('/sell/back_sell.png')] bg-cover bg-center overflow-hidden">
       {/* Diagonal lines background */}
       {/* <div className="absolute inset-0 opacity-10" /> */}
 
-      <form className="p-5">
+      <form onSubmit={handleSubmit} className="p-5">
         {/* Personal Information */}
         <h2 className="text-lg font-semibold text-[#FFFFFF]">
           {t("personalInformation")}
@@ -46,6 +57,7 @@ const PaymentInMobile = () => {
                 id="firstName"
                 className="px-2 py-2 border-2 rounded-md"
                 placeholder="First Name"
+                required
               />
             </div>
 

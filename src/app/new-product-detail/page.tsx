@@ -1,30 +1,29 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
-const Page = () => {
+const SelectedProduct = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
-    // setIsOpen((prev) => !prev);
-    setIsOpen(!isOpen);
-    console.log(isOpen);
+    setIsOpen((prev) => !prev);
+    // setIsOpen(!isOpen);
   };
 
   return (
     <div className="z-20 min-h-screen relative bg-[url('/sell/back_sell.png')] bg-cover bg-center overflow-hidden">
       {/* Diagonal lines background */}
-      <div className="absolute inset-0 opacity-10" />
 
-      <div className="p-5">
+      {/* <div className="p-5">
         <div className="bg-[#FDFDFD] h-[100px] flex items-center justify-between text-center rounded-lg p-5">
           <h3 className="text-[#101010] text-lg font-semibold">
             La Nostra Offerta
           </h3>
           <h3 className="text-[#101010] text-lg font-semibold">$200,50</h3>
         </div>
-      </div>
+      </div> */}
 
       {/* product with togglable detail */}
       <div className="p-5">
@@ -41,7 +40,7 @@ const Page = () => {
 
           <div
             onClick={handleToggle}
-            className="flex items-center justify-end gap-3 border-b border-b-[#DAEDF2] py-3 mb-3"
+            className="flex items-center justify-end gap-3 z-10 relative border-b border-b-[#DAEDF2] py-3 mb-3"
           >
             <h2 className="text-sm text-[#101010]">
               {isOpen ? "Reduce" : "View the summary in detail"}
@@ -155,13 +154,13 @@ const Page = () => {
         </div>
 
         <div className="py-5 max-w-[250px] ml-auto text-right">
-          <p className="text-xs text-[#FDFDFD]">
+          <p className="text-xs text-[#FDFDFD] PL-2">
             Quando completi la tua transazione, il tou prezzo sara riservato per
             14 giorni
           </p>
         </div>
 
-        <div className="absolute -bottom-2.5 -left-5 rounded-lg p-2">
+        <div className="absolute -bottom-2.5 -left-9 rounded-lg p-2">
           <Image
             src={"/products/owy-man.png"}
             className="max-w-[187px] max-h-[291px]"
@@ -173,13 +172,15 @@ const Page = () => {
       </div>
 
       {/* Continue Button */}
-      <div className="bg-[#FDFDFD] p-6 mb-6">
-        <button className="w-full h-14 bg-[#FF9934] rounded-lg text-[#FDFDFD] text-base font-semibold">
-          CONTINUA
-        </button>
+      <div className="bg-[#FDFDFD] p-6">
+        <Link href={"/sell/next5"}>
+          <button className="w-full h-14 bg-[#FF9934] rounded-lg text-[#FDFDFD] text-base font-semibold">
+            CONTINUA
+          </button>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default Page;
+export default SelectedProduct;

@@ -97,7 +97,7 @@ export default function CartPage() {
 
   return (
     <>
-      <div className="hidden md:block min-h-screen bg-[#F2F5F7] pt-16 pb-20">
+      <div className="min-h-screen bg-[#F2F5F7] pt-16 pb-20">
         <PaymentHeader />
         <Container>
           {/* <div className="text-center mb-8">
@@ -312,9 +312,9 @@ export default function CartPage() {
         </Container>
       </div>
 
-      <div className="md:hidden">
+      {/* <div className="md:hidden">
         <PaymentInMobile />
-      </div>
+      </div> */}
     </>
   );
 }

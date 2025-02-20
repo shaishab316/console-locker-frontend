@@ -324,7 +324,7 @@ const MobileProductDetails = () => {
       {/* submit button */}
 
       <div className="p-5 bg-[#FDFDFD]">
-        <Link href={"/sell/summary"}>
+        <Link href={"/sell/next4"}>
           <button className="w-full text-[#FDFDFD] font-semibold bg-[#64B95E] h-14 rounded-lg">
             SUBMIT FORM
           </button>
