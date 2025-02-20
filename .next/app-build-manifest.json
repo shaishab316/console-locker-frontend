@@ -91,6 +91,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/empty/page.js"
+    ],
+    "/repair/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/repair/page.js"
     ]
   }
 }

@@ -86,7 +86,7 @@ const SelectedProduct = () => {
             <div className="flex flex-wrap gap-x-2 gap-y-6">
               <div className="w-[98px] flex flex-col items-center justify-center gap-3">
                 <h2 className="text-sm font-bold text-[#101010] text-center">
-                  Modello
+                  Model
                 </h2>
 
                 <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
@@ -96,38 +96,38 @@ const SelectedProduct = () => {
 
               <div className="w-[98px] flex flex-col items-center justify-center gap-3">
                 <h2 className="text-sm font-bold text-[#101010] text-center">
-                  Modello
+                  Condition
                 </h2>
 
                 <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                  ONE X
+                  BRAND NEW
                 </div>
               </div>
               <div className="w-[98px] flex flex-col items-center justify-center gap-3">
                 <h2 className="text-sm font-bold text-[#101010] text-center">
-                  Modello
+                  Technical
                 </h2>
 
                 <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                  ONE X
+                  ABSENT
                 </div>
               </div>
               <div className="w-[98px] flex flex-col items-center justify-center gap-3">
                 <h2 className="text-sm font-bold text-[#101010] text-center">
-                  Modello
+                  Controller
                 </h2>
 
                 <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                  ONE X
+                  +1
                 </div>
               </div>
               <div className="w-[98px] flex flex-col items-center justify-center gap-3">
                 <h2 className="text-sm font-bold text-[#101010] text-center">
-                  Modello
+                  Accessories
                 </h2>
 
                 <div className="w-full h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center">
-                  ONE X
+                  SI
                 </div>
               </div>
             </div>
