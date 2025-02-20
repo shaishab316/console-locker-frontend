@@ -30,10 +30,7 @@ const HeroBanner = () => {
           <div className="border-b-4 border-gray-50 mt-2 mb-5 hr-line-for-mobile overflow-x-auto"></div>
 
           <p className="text-white text-left text-sm md:text-lg mb-6 md:mb-8 max-w-[420px] md:mx-0">
-            Console Locker, make room for the new and sell your used console.{" "}
-            <br />
-            Save with a refurbished console and enjoy a first-class gaming
-            experience.
+            <Trans i18nKey="heroDescription" components={{ br: <br /> }} />
           </p>
 
           {/* for desktop */}
