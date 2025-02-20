@@ -4034,6 +4034,11 @@ body {
     background-color: rgb(253 253 253 / var(--tw-bg-opacity, 1));
   }
 
+  .lg\:bg-white {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  }
+
   .lg\:p-0 {
     padding: 0px;
   }
