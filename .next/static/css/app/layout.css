@@ -1923,6 +1923,9 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
+.border-transparent {
+  border-color: transparent;
+}
 .border-b-\[\#D6D6D6\] {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(214 214 214 / var(--tw-border-opacity, 1));
@@ -2988,6 +2991,11 @@ body {
 .bg-tab3-radial {
   background: rgb(243, 64, 64);
   background: radial-gradient(circle, rgba(243, 64, 64, 1) 35%, rgba(246, 117, 117, 0.7455357142857143) 100%);
+}
+
+.placeholder\:text-sm::placeholder {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .hover\:translate-x-2:hover {

@@ -57,7 +57,7 @@ const PaymentInMobile = () => {
                   }
                   value={formData.firstName}
                   id="firstName"
-                  className="px-2 py-2 border-2 rounded-md"
+                  className="px-2 py-2 h-10 border-2 rounded-md placeholder:text-sm"
                   placeholder="First Name"
                   required
                 />
@@ -75,7 +75,7 @@ const PaymentInMobile = () => {
                   }
                   value={formData.lastName} // Bind value to state
                   id="lastName"
-                  className="px-2 py-2 border-2 rounded-md"
+                  className="px-2 py-2 border-2 rounded-md placeholder:text-sm"
                   placeholder="Last Name"
                 />
               </div>
@@ -93,7 +93,7 @@ const PaymentInMobile = () => {
                 }
                 value={formData.email} // Bind value to state
                 id="email"
-                className="px-2 py-2 border-2 rounded-md"
+                className="px-2 py-2 border-2 rounded-md placeholder:text-sm"
                 placeholder="Enter email"
               />
             </div>
@@ -110,7 +110,7 @@ const PaymentInMobile = () => {
                 }
                 value={formData.phone} // Bind value to state
                 id="phone"
-                className="px-2 py-2 border-2 rounded-md"
+                className="px-2 py-2 border-2 rounded-md placeholder:text-sm"
                 placeholder="Phone Number"
               />
             </div>
@@ -135,7 +135,7 @@ const PaymentInMobile = () => {
                   }
                   value={formData.city} // Bind value to state
                   id="city"
-                  className="px-2 py-2 border-2 rounded-md"
+                  className="px-2 py-2 border-2 rounded-md placeholder:text-sm"
                   placeholder="City"
                 />
               </div>
@@ -152,7 +152,7 @@ const PaymentInMobile = () => {
                   }
                   value={formData.postCode} // Bind value to state
                   id="postalCode"
-                  className="px-2 py-2 border-2 rounded-md"
+                  className="px-2 py-2 border-2 rounded-md placeholder:text-sm"
                   placeholder="Postal Code"
                 />
               </div>
@@ -173,7 +173,7 @@ const PaymentInMobile = () => {
                 }
                 value={formData.shippingAddress} // Bind value to state
                 id="shippingAddress"
-                className="px-2 py-2 border-2 rounded-md"
+                className="px-2 py-2 border-2 rounded-md placeholder:text-sm"
                 placeholder="Shipping Address"
               />
             </div>
@@ -190,7 +190,7 @@ const PaymentInMobile = () => {
                 }
                 value={formData.appointments} // Bind value to state
                 id="appointments"
-                className="px-2 py-2 border-2 rounded-md"
+                className="px-2 py-2 border-2 rounded-md placeholder:text-sm"
                 placeholder="Apartment, Staircase, etc."
               />
             </div>

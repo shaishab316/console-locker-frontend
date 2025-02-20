@@ -82,7 +82,7 @@ export default function MobileSellHero() {
         </div>
 
         {/* Estimate button */}
-        <div className="w-full h-14 px-5 relative z-[999]">
+        <div className="w-full h-14 px-5 relative">
           <Link href={"/sell/next6"}>
             <button
               onClick={handleNext}

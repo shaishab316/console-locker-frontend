@@ -383,9 +383,9 @@ export default function CheckoutPage() {
                               onChange={(e) => handleInputChange(e as any)}
                               className="px-3 py-2 border rounded-l-md bg-white text-sm sm:text-base"
                             >
-                              <option value="+32">+32</option>
-                              <option value="+33">+33</option>
-                              <option value="+34">+34</option>
+                              <option value="+32">+39</option>
+                              <option value="+33">+49</option>
+                              <option value="+34">+37</option>
                             </select>
                             <input
                               type="tel"
