@@ -1,8 +1,7 @@
 {
-  "/sell/next4/page": "app/sell/next4/page.js",
-  "/sell/next5/page": "app/sell/next5/page.js",
-  "/buy/playstation/page": "app/buy/playstation/page.js",
   "/buy/nintendo/page": "app/buy/nintendo/page.js",
+  "/buy/playstation/page": "app/buy/playstation/page.js",
+  "/about/page": "app/about/page.js",
   "/contact/page": "app/contact/page.js",
-  "/about/page": "app/about/page.js"
+  "/paymentprocess/page": "app/paymentprocess/page.js"
 }

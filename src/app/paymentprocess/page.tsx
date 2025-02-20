@@ -86,14 +86,14 @@ export default function Checkout() {
                 </h2>
               </div>
 
-              <div className="p-7">
+              <div className="lg:p-6">
                 <div className="space-y-6">
                   <h3 className="font-semibold text-2xl text-[#404040]">
                     {t("payNow")}:
                   </h3>
 
                   {/* Pay Now */}
-                  <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
+                  <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-2">
                     {/* Credit Card Option */}
                     <div
                       className={`flex items-center space-x-4 p-5 border rounded-md ${
