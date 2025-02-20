@@ -1389,6 +1389,18 @@ video {
 .w-max {
   width: max-content;
 }
+.w-\[\] {
+  width: ;
+}
+.w-\[90\%\] {
+  width: 90%;
+}
+.w-\[\%\] {
+  width: %;
+}
+.w-\[86\%\] {
+  width: 86%;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -1466,6 +1478,15 @@ video {
 }
 .max-w-xs {
   max-width: 20rem;
+}
+.max-w-\[\] {
+  max-width: ;
+}
+.max-w-\[90\%\] {
+  max-width: 90%;
+}
+.max-w-\[92\%\] {
+  max-width: 92%;
 }
 .flex-1 {
   flex: 1 1 0%;

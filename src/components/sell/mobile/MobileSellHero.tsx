@@ -64,7 +64,7 @@ export default function MobileSellHero() {
           </button>
 
           {isOpen && (
-            <div className="absolute w-full mt-2 bg-white rounded-lg shadow-lg z-10">
+            <div className="absolute max-w-[92%] mt-2 bg-white rounded-lg shadow-lg z-10">
               {consoles.map((console) => (
                 <button
                   key={console}
