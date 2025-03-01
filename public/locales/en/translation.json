@@ -36,9 +36,10 @@
     "nintendo": "Nintendo",
     "brand": "Brand",
     "priceRange": "Price Range",
+    "below100": "Below $100",
     "100to300": "$100 - $300",
     "300to500": "$300  - $500",
-    "up500": "$500+",
+    "upFiveHundread": "$500+",
     "condition": "Condition",
     "salesAndShipping": "Sales & Shipping",
     "unfortunately": "Unfortunately this item is no longer available. You can complete your order without or purchase alternative products.",
@@ -199,5 +200,6 @@
     "packagingForShippingYourDevice": " We will send you packaging for shipping your device within 1-3 business days. Inside, you will find everything needed to send us your device for free!",
     "SHIPYOURDEVICEATNOCOST": "SHIP YOUR DEVICE AT <br /> NO COST",
     "GETYOURPAYMENT": "GET YOUR PAYMENT!",
-    "afterReceivingYourDevice": " After receiving your device, we will take 2-3 business days to test it, after which we will send you the estimated amount."
+    "afterReceivingYourDevice": " After receiving your device, we will take 2-3 business days to test it, after which we will send you the estimated amount.",
+    "basePrice": "Base Price"
 }

@@ -12,6 +12,9 @@ import {
   Share2,
 } from "lucide-react";
 import Container from "@/components/common/Container";
+import { useGetBlogQuery } from "@/redux/features/blogs/BlogAPI";
+import { useParams } from "next/navigation";
+import Loading from "@/app/loading";
 
 export default function BlogDetail() {
   const [copied, setCopied] = useState(false);
@@ -22,19 +25,32 @@ export default function BlogDetail() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const params = useParams();
+
+  const { slug } = params;
+
+  console.log(slug);
+
+  const { data: blog, isLoading, isError } = useGetBlogQuery(slug as string);
+
+  if (isLoading) return <div><Loading /></div>;
+  if (isError) return <div>Error Occured! {isError.valueOf()}</div>;
+
+  const BASE_API_URL = process.env.NEXT_PUBLIC_API_URL;
+  console.log(blog && blog?.data);
+
   return (
     <div className="min-h-screen pb-12">
       <Container className="max-w-4xl mx-auto">
         {/* Title */}
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 my-6">
-          Why It's Smarter To Buy A Refurbished iPhone Rather Than A Brand New
-          One
+          {blog?.data?.title}
         </h1>
 
         {/* Hero Section */}
         <div className="w-full h-[300px] sm:h-[400px] lg:h-[500px] relative">
           <Image
-            src="/hero-banner.png"
+            src={`${BASE_API_URL}${blog?.data?.image}`}
             alt="Gaming Console"
             fill
             className="w-1/2 mx-auto object-cover"
@@ -82,7 +98,7 @@ export default function BlogDetail() {
                   <path d="M16 18h.01" />
                 </svg>
               </span>
-              <time>19 Jun 2024</time>
+              <time>{blog?.data?.createdAt?.split("T")[0]}</time>
             </div>
 
             {/* Share buttons */}
@@ -110,6 +126,8 @@ export default function BlogDetail() {
 
             {/* Content */}
             <div className="prose prose-lg max-w-none">
+              <p>{blog?.data?.description}</p>
+
               <p>
                 In today's fast-paced technological world, staying up-to-date
                 with the latest iPhone models can be an expensive endeavor.

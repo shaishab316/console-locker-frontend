@@ -11,6 +11,8 @@ import { useRef } from "react";
 import { BlogCard } from "./BlogCard";
 import Container from "@/components/common/Container";
 import { useTranslation } from "react-i18next";
+import { useGetBlogsQuery } from "@/redux/features/blogs/BlogAPI";
+import Loading from "@/app/loading";
 
 const blogs = [
   {
@@ -47,12 +49,31 @@ const blogs = [
   },
 ];
 
+interface IBlog {
+  _id: string;
+  image: string;
+  title: string;
+  description: string;
+  slug: string;
+  createdAt: string;
+}
+
 export function BlogCarousel() {
   const carouselRef = useRef<any>(null);
   const { t } = useTranslation();
 
   const next = () => carouselRef.current?.next();
   const previous = () => carouselRef.current?.prev();
+
+  const { data: blogs, isLoading, isError } = useGetBlogsQuery({});
+
+  if (isLoading)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
+  if (isError) return <div>Error Occured! {isError.valueOf()}</div>;
 
   return (
     <section className="bg-[#F2F5F7] pt-8 pb-20 md:pb-28">
@@ -99,8 +120,8 @@ export function BlogCarousel() {
             },
           ]}
         >
-          {blogs.map((blog, index) => (
-            <div key={index} className="px-2">
+          {blogs?.data?.blogs?.map((blog: IBlog) => (
+            <div key={blog?._id} className="px-2">
               <BlogCard {...blog} />
             </div>
           ))}

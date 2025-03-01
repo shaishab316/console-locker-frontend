@@ -5,8 +5,8 @@ import { Check, Group, Info, MoveLeft } from "lucide-react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
-import { toggleModal } from "@/lib/features/modal/modalSlice";
-import { showTradeInDescription } from "@/lib/features/tradeIn/showTradeInSlice";
+import { toggleModal } from "@/redux/features/modal/modalSlice";
+import { showTradeInDescription } from "@/redux/features/tradeIn/showTradeInSlice";
 
 interface Product {
   title: string;

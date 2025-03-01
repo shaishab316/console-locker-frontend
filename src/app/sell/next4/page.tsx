@@ -54,9 +54,7 @@ export default function PlayStationOffer() {
                       height={24}
                       alt="money"
                     />
-                    <p className="text-2xl text-[#404040]">
-                      {t("directPayout")}
-                    </p>
+                    <p className="text-2xl text-[#404040]">{t("basePrice")}</p>
                   </div>
                   <h2 className="text-[40px] text-[#404040] font-semibold">
                     $96.96

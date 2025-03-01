@@ -7,6 +7,7 @@ import { Header } from "@/components/home/header/Header";
 import StoreProvider from "./StoreProvider";
 import { Toaster } from "react-hot-toast";
 import "../i18n";
+import Providers from "@/redux/Provider";
 
 // Load the Poppins font with correct configuration
 const poppins = Poppins({
@@ -30,13 +31,13 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`antialiased ${poppins.className}`}>
         <Toaster position="top-center" />
-        <StoreProvider>
+        <Providers>
           <AntdRegistry>
             <Header />
             {children}
             <ConsoleFooter />
           </AntdRegistry>
-        </StoreProvider>
+        </Providers>
       </body>
     </html>
   );

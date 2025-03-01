@@ -10,8 +10,8 @@ export default function ImageSlider() {
     loop: true,
     mode: "snap",
     slides: {
-      perView: 2.3, // Show 2 full images and 10% of previous/next images
-      spacing: 5, // Adjust spacing for smooth layout
+      perView: 2.3,
+      spacing: 5,
     },
   });
 
@@ -83,31 +83,3 @@ export default function ImageSlider() {
     </div>
   );
 }
-
-// "use client";
-
-// import * as React from "react";
-// import "./styles.css";
-// import { useKeenSlider } from "keen-slider/react";
-// import "keen-slider/keen-slider.min.css";
-
-// export default function ImageSlider() {
-//   const [ref] = useKeenSlider<HTMLDivElement>({
-//     loop: true,
-//     mode: "free-snap",
-//     slides: {
-//       perView: 2.5,
-//       spacing: 15,
-//     },
-//   });
-//   return (
-//     <div ref={ref} className="keen-slider">
-//       <div className="keen-slider__slide number-slide1">1</div>
-//       <div className="keen-slider__slide number-slide2">2</div>
-//       <div className="keen-slider__slide number-slide3">3</div>
-//       <div className="keen-slider__slide number-slide4">4</div>
-//       <div className="keen-slider__slide number-slide5">5</div>
-//       <div className="keen-slider__slide number-slide6">6</div>
-//     </div>
-//   );
-// }

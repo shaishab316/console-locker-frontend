@@ -6,7 +6,7 @@ interface ModalState {
 
 const initialState : ModalState= {
   modal: false,
-};
+}; 
 
 const modalSlice = createSlice({
   name: "modal",
@@ -17,7 +17,7 @@ const modalSlice = createSlice({
     },
   },
 });
-
+ 
 export const { toggleModal } = modalSlice.actions;
 
 export default modalSlice.reducer;

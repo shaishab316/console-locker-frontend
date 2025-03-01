@@ -1,197 +1,176 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import {
-  ChevronLeft,
-  ChevronRight,
-  ChevronsLeft,
-  ChevronsRight,
-  LayoutGrid,
-  LayoutList,
-  X,
-} from "lucide-react";
-import { Select } from "antd";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Link from "next/link";
 import Container from "@/components/common/Container";
 import { useTranslation } from "react-i18next";
+import { useGetAllProductsQuery } from "@/redux/features/products/ProductAPI";
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
+import Loading from "@/app/loading";
 
-interface Product {
-  title: string;
-  condition: string;
-  price: string;
-  image: string;
+interface IProduct {
+  _id: string;
+  admin: string;
+  images: string[];
+  name: string;
+  description: string;
+  price: number;
+  offer_price: number;
   brand: string;
-  id: number;
+  model: string;
+  condition: string;
+  controller: string;
+  memory: string;
+  quantity: number;
+  isVariant: false;
+  product_type: string;
+  slug: string;
 }
-
-const products: Product[] = [
-  {
-    id: 1,
-    title: "PlayStation 5",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p1.png",
-    brand: "PlayStation",
-  },
-  {
-    id: 2,
-    title: "Zeust Xbox One S",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p2.png",
-    brand: "Xbox",
-  },
-  {
-    id: 3,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p3.png",
-    brand: "Xbox",
-  },
-  {
-    id: 4,
-    title: "PlayStation 5",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p4.png",
-    brand: "PlayStation",
-  },
-  {
-    id: 5,
-    title: "Zeust Xbox One S",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p5.png",
-    brand: "Xbox",
-  },
-  {
-    id: 6,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p6.png",
-    brand: "Xbox",
-  },
-  {
-    id: 7,
-    title: "PlayStation 5",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p7.png",
-    brand: "PlayStation",
-  },
-  {
-    id: 8,
-    title: "Zeust Xbox One S",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p8.png",
-    brand: "Xbox",
-  },
-  {
-    id: 9,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p9.png",
-    brand: "Xbox",
-  },
-  {
-    id: 943,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p9.png",
-    brand: "Xbox",
-  },
-  {
-    id: 935,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p9.png",
-    brand: "Xbox",
-  },
-  {
-    id: 921,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p9.png",
-    brand: "Xbox",
-  },
-  {
-    id: 249,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p9.png",
-    brand: "Xbox",
-  },
-  {
-    id: 93543,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p9.png",
-    brand: "Xbox",
-  },
-  {
-    id: 589,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p9.png",
-    brand: "Xbox",
-  },
-  {
-    id: 4079,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p9.png",
-    brand: "Xbox",
-  },
-  {
-    id: 3079,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p9.png",
-    brand: "Xbox",
-  },
-  {
-    id: 325439,
-    title: "Xbox",
-    condition: "Good",
-    price: "$299",
-    image: "/buy/p9.png",
-    brand: "Xbox",
-  },
-];
-
-const options = [
-  { value: "ps5", label: "PlayStation 5" },
-  { value: "ps4", label: "PlayStation 4" },
-  { value: "ps4pro", label: "PlayStation 4 Pro" },
-  { value: "xbox-series-x", label: "Xbox Series X" },
-  { value: "xbox-series-s", label: "Xbox Series S" },
-  { value: "switch", label: "Nintendo Switch" },
-];
 
 const ProductPage: React.FC = () => {
   const [view, setView] = useState<"grid" | "list">("grid");
   const [page, setPage] = useState<number>(1);
   const [filterView, setFilterView] = useState(false);
-  const itemsPerPage = 9;
-
   const { t } = useTranslation();
 
-  const paginatedProducts = products.slice(
-    (page - 1) * itemsPerPage,
-    page * itemsPerPage
-  );
+  const [searchProduct, setSearchProduct] = useState<string>("");
+  const [brandSearch, setBrandSearch] = useState<string>("");
+  const [priceRange, setPriceRange] = useState<[number, number]>([]);
+  const [condition, setCondition] = useState<string>("");
+
+  const [maxPriceForFilter, setMaxPriceForFilter] = useState<number>();
+
+  const [filterableProduct, setFilterableProduct] = useState<string[]>([]);
+  const [filterableBrand, setFilterableBrand] = useState<string[]>([]);
+  const [filterablePrice, setFilterablePrice] = useState<string[]>([]);
+  const [filterableCondition, setFilterableCondition] = useState<string[]>([]);
+
+  const [sortBy, setSortBy] = useState<string>("");
+
+  const isFirstRender = useRef(true);
+  const isMaxPriceSet = useRef(true);
+  const itemsPerPage = 9;
+
+  const {
+    data: products,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetAllProductsQuery({
+    product_type: searchProduct,
+    brand: brandSearch,
+    price: priceRange.length ? priceRange : undefined,
+    condition: condition,
+    // limit: 10,
+  } as any);
+
+  // useEffect(() => {
+  //   refetch();
+  // }, []);
+
+  const URL = process.env.NEXT_PUBLIC_API_URL;
+
+  useEffect(() => {
+    if (isFirstRender.current && products?.data?.products.length > 0) {
+      const filterableProducts = products.data.products.map(
+        (product: any) => product.product_type
+      );
+      isFirstRender.current = false;
+
+      setFilterableProduct([...new Set(filterableProducts)] as string[]);
+    }
+  }, [products]);
+
+  useEffect(() => {
+    if (products?.data?.products) {
+      const filterableBrand = products.data.products.map(
+        (product: any) => product.brand
+      );
+      setFilterableBrand([...new Set(filterableBrand)] as string[]);
+    }
+  }, [products]);
+
+  useEffect(() => {
+    if (products?.data?.products) {
+      const filterableCondition = products.data.products.map(
+        (product: any) => product.condition
+      );
+      setFilterableCondition([...new Set(filterableCondition)] as string[]);
+    }
+  }, [products]);
+
+  const getPrice =
+    products?.data?.products
+      ?.map((product: any) => Number(product?.offer_price))
+      ?.filter((price: number) => !isNaN(price) && price > 0) || [];
+
+  const minPrice = getPrice.length > 0 ? Math.min(...getPrice) : 0;
+  const maxPrice = getPrice.length > 0 ? Math.max(...getPrice) : 0;
+
+  useEffect(() => {
+    if (isMaxPriceSet.current && maxPrice > 0) {
+      setMaxPriceForFilter(maxPrice);
+      isMaxPriceSet.current = false;
+    }
+  }, [maxPrice]);
+
+  // useEffect(() => {
+  //   if (products?.data?.products.length > 0) {
+  //     setPriceRange([minPrice, maxPrice]);
+  //   }
+  // }, []);
+
+  if (isLoading) {
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
+  }
+
+  // const paginatedProducts = products.slice(
+  //   (page - 1) * itemsPerPage,
+  //   page * itemsPerPage
+  // );
+
+  const paginatedProducts = 10;
+
+  const handlePriceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+
+    console.log("price value: ", value);
+
+    let min = null;
+    let max = null;
+
+    switch (value) {
+      case "below100":
+        max = 100;
+        break;
+      case "100to300":
+        min = 100;
+        max = 300;
+        break;
+      case "300to500":
+        min = 300;
+        max = 500;
+        break;
+      case "up500":
+        min = 500;
+        break;
+      default:
+        min = null;
+        max = null;
+    }
+
+    setPriceRange([min ?? 0, max ?? maxPrice]);
+  };
+
+  console.log("condition", condition);
+  // console.log(searchProduct, brandSearch, priceRange, condition);
 
   return (
     <div className="relative bg-[#F2F5F7] flex flex-col lg:flex-row py-8">
@@ -204,30 +183,6 @@ const ProductPage: React.FC = () => {
             <h3 className="hidden lg:flex text-[32px] text-[#101010] px-5 pt-4 pb-3 border-b font-semibold mb-4">
               {t("filter")}
             </h3>
-
-            {/* filter icon for mobile device */}
-            {/* <div
-              onClick={() => setFilterView(!filterView)}
-              className={`flex md:hidden items-center gap-2 border ${
-                filterView && "bg-gray-200"
-              } rounded-lg w-max p-2`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="lucide lucide-filter"
-              >
-                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
-              </svg>
-              <h3 className="text-lg font-medium">Filter</h3>
-            </div> */}
 
             {/* filter for mobile */}
             {filterView && (
@@ -282,18 +237,28 @@ const ProductPage: React.FC = () => {
               </div>
             )}
 
-            {/* for desktop */}
+            {/* filter for desktop */}
             <div className="hidden lg:block pb-3 mx-4 pt-2">
               <div className="relative mb-5 border-b-[.75px] border-[#969696]">
                 <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
                   {t("products")}
                 </h4>
-                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
-                  <option>{t("all")}</option>
-                  <option>{t("playStation")}</option>
-                  <option>{"xbox"}</option>
-                  <option>{t("nintendo")}</option>
+
+                <select
+                  onChange={(e) => setSearchProduct(e.target.value)}
+                  className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
+                >
+                  {/* "All" option to reset search */}
+                  <option value="">{t("all")}</option>
+
+                  {/* Dynamically rendered options */}
+                  {filterableProduct?.map((product, ind) => (
+                    <option key={ind} value={product as string}>
+                      {product as string}
+                    </option>
+                  ))}
                 </select>
+
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
                   <svg
@@ -317,11 +282,19 @@ const ProductPage: React.FC = () => {
                 <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
                   {t("brand")}
                 </h4>
-                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
-                  <option>{t("all")}</option>
-                  <option>{t("playStation")}</option>
-                  <option>{t("xbox")}</option>
-                  <option>{"nintendo"}</option>
+                <select
+                  onChange={(e) => setBrandSearch(e.target.value)}
+                  className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
+                >
+                  <option onChange={() => setBrandSearch("")} value="">
+                    {t("all")}
+                  </option>
+
+                  {filterableBrand?.map((brand, ind) => (
+                    <option key={ind} value={brand as string}>
+                      {brand as string}
+                    </option>
+                  ))}
                 </select>
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
@@ -346,11 +319,18 @@ const ProductPage: React.FC = () => {
                 <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
                   {t("priceRange")}
                 </h4>
-                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
-                  <option>{t("all")}</option>
-                  <option>{t("100to300")}</option>
-                  <option>{t("300to500")}</option>
-                  <option>{"up500"}</option>
+                <select
+                  onChange={handlePriceChange}
+                  className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
+                >
+                  <option onChange={() => setPriceRange([0, 1500])} value="">
+                    {t("all")}
+                  </option>
+
+                  <option value="below100">{t("below100")}</option>
+                  <option value="100to300">{t("100to300")}</option>
+                  <option value="300to500">{t("300to500")}</option>
+                  <option value="up500">{t("upFiveHundread")}</option>
                 </select>
 
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
@@ -376,10 +356,14 @@ const ProductPage: React.FC = () => {
                 <h4 className="text-[#101010] text-xl font-semibold mb-2 px-4">
                   {t("condition")}
                 </h4>
-                <select className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4">
-                  <option>{t("all")}</option>
-                  <option>{t("good")}</option>
-                  <option>{t("new")}</option>
+                <select
+                  onChange={(e) => setCondition(e.target.value)}
+                  className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
+                >
+                  <option value="">{t("all")}</option>
+                  {filterableCondition?.map((condition, ind) => (
+                    <option key={ind}>{condition as string}</option>
+                  ))}
                 </select>
 
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
@@ -465,8 +449,16 @@ const ProductPage: React.FC = () => {
 
               {/* sorting */}
               <div className="h-10 relative flex gap-2">
-                <select className="appearance-none w-40 md:w-56 px-2.5 py-2 border border-[#101010] rounded-md font-medium text-sm bg-transparent lg:bg-[#FDFDFD] text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer">
-                  <option defaultValue={"Sort by"} className="text-[#101010]">
+                <select
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="appearance-none w-40 md:w-56 px-2.5 py-2 border border-[#101010] rounded-md font-medium text-sm bg-transparent lg:bg-[#FDFDFD] text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer"
+                >
+                  <option
+                    defaultValue={""}
+                    value={""}
+                    className="text-[#101010]"
+                    disabled
+                  >
                     {t("sortBy")}
                   </option>
                   <option value="High to low">{t("highToLow")}</option>
@@ -493,35 +485,41 @@ const ProductPage: React.FC = () => {
               </div>
             </div>
 
+            {products?.data?.products.length < 1 ? (
+              <div className="flex items-center justify-center h-[calc(100vh-200px)] text-2xl font-medium">
+                No, data found!
+              </div>
+            ) : null}
+
             {/* Products */}
             {view === "grid" ? (
               <div
                 className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6`}
               >
-                {paginatedProducts.map((product) => (
+                {products?.data?.products?.map((product: IProduct) => (
                   <Link
-                    key={product.id}
-                    href={`/buy/${product.id}`}
+                    key={product._id}
+                    href={`/buy/${product.slug}`}
                     className=""
                     passHref
                   >
                     <div className="shadow-sm hover:shadow-md bg-[#FDFDFD] pb-2 rounded-lg">
                       <Image
-                        src={product.image}
-                        alt={product.title}
+                        src={`${URL}${product.images[0]}`}
+                        alt={product.name}
                         width={300}
                         height={500}
-                        className="object-center object-cover min-w-full h-full rounded-t-lg"
+                        className="object-center object-cover min-w-full h-[387px] rounded-t-lg"
                       />
                       <div className="px-3">
                         <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
-                          {product.title}
+                          {product?.name}
                         </h3>
                         <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
                           <div>
-                            Condition:
+                            Condition: &nbsp;
                             <span className="font-medium text-[#2B2B2B]">
-                              {product.condition}
+                              {product?.condition}
                             </span>
                           </div>
                         </div>
@@ -529,11 +527,11 @@ const ProductPage: React.FC = () => {
                           <div className="flex items-center gap-2">
                             <p className="text-[#2B2B2B] text-base">Price:</p>
                             <span className="text-[#00B67A] text-lg font-semibold">
-                              {product.price}
+                              {product?.offer_price}
                             </span>
                           </div>
                           <span className="text-sm text-[#919191] line-through">
-                            New: 350
+                            New: {product?.price}
                           </span>
                         </div>
                       </div>
@@ -545,25 +543,24 @@ const ProductPage: React.FC = () => {
 
             {view === "list" ? (
               <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12`}>
-                {paginatedProducts.map((product) => (
+                {products?.data?.products?.map((product: IProduct) => (
                   <Link
-                    key={product.id}
-                    href={`/buy/${product.id}`}
+                    key={product._id}
+                    href={`/buy/${product._id}`}
                     className="rounded-lg"
                     passHref
                   >
                     <div className="flex items-center shadow-sm hover:shadow-md bg-[#FDFDFD]  border border-gray-100 rounded-lg">
                       <Image
-                        src={product.image}
-                        alt={product.title}
+                        src={`${URL}${product.images[0]}`}
+                        alt={product.name}
                         width={300}
                         height={200}
-                        className="object-center object-cover w-1/2 h-full rounded-s-lg"
-                        //
+                        className="object-center object-cover w-1/2 h-[280px] rounded-s-lg"
                       />
                       <div className="px-3">
                         <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
-                          {product.title}
+                          {product.name}
                         </h3>
                         <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
                           <div>
@@ -579,12 +576,12 @@ const ProductPage: React.FC = () => {
                             <p className="text-[#2B2B2B] text-base">
                               Price:{" "}
                               <span className="text-[#00B67A] text-lg font-semibold">
-                                {product.price}
+                                {product?.price}
                               </span>
                             </p>
                           </div>
                           <span className="text-sm text-[#919191] line-through">
-                            New: 350
+                            New: {product?.offer_price}
                           </span>
                         </div>
                       </div>
@@ -595,40 +592,42 @@ const ProductPage: React.FC = () => {
             ) : null}
 
             {/* Pagination */}
-            <div className="flex justify-center items-center gap-3 my-12">
-              <button
-                onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                className="w-10 h-10 flex items-center justify-center bg-transparent mr-2"
-              >
-                <ChevronLeft />
-              </button>
-              {[1, 2, 3].map((pageNumber) => (
+            {products?.data?.products.length > 9 && (
+              <div className="flex justify-center items-center gap-3 my-12">
                 <button
-                  key={pageNumber}
-                  onClick={() => setPage(pageNumber)}
-                  className={`w-10 h-10 flex items-center justify-center rounded-md ${
-                    page === pageNumber
-                      ? "bg-black text-white"
-                      : "bg-transparent border-2 border-[#101010]"
-                  }`}
+                  onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+                  className="w-10 h-10 flex items-center justify-center bg-transparent mr-2"
                 >
-                  {pageNumber}
+                  <ChevronLeft />
                 </button>
-              ))}
-              <button
-                onClick={() =>
-                  setPage((prev) =>
-                    Math.min(
-                      prev + 1,
-                      Math.ceil(products.length / itemsPerPage)
+                {[1, 2, 3].map((pageNumber) => (
+                  <button
+                    key={pageNumber}
+                    onClick={() => setPage(pageNumber)}
+                    className={`w-10 h-10 flex items-center justify-center rounded-md ${
+                      page === pageNumber
+                        ? "bg-black text-white"
+                        : "bg-transparent border-2 border-[#101010]"
+                    }`}
+                  >
+                    {pageNumber}
+                  </button>
+                ))}
+                <button
+                  onClick={() =>
+                    setPage((prev) =>
+                      Math.min(
+                        prev + 1,
+                        Math.ceil(products.length / itemsPerPage)
+                      )
                     )
-                  )
-                }
-                className="w-10 h-10 flex items-center justify-center bg-transparent ml-2"
-              >
-                <ChevronRight />
-              </button>
-            </div>
+                  }
+                  className="w-10 h-10 flex items-center justify-center bg-transparent ml-2"
+                >
+                  <ChevronRight />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </Container>

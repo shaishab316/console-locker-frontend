@@ -255,8 +255,8 @@ export default function CartPage() {
                         alt="warrent-protection"
                       />
                     </div>
-                    <span className="text-gray-700">
-                      {"12 Months Warranty"}
+                    <span className="text-[#101010]">
+                      {"12 Months Warranty"} 
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -268,7 +268,7 @@ export default function CartPage() {
                         alt="warrent-protection"
                       />
                     </div>
-                    <span className="text-gray-700">{t("freeReturn")}</span>
+                    <span className="text-[#101010]">{t("freeReturn")}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-6 h-6">
@@ -279,7 +279,7 @@ export default function CartPage() {
                         alt="warrent-protection"
                       />
                     </div>
-                    <span className="text-gray-700">
+                    <span className="text-[#101010]">
                       {t("performsLikeNewTitle")}
                     </span>
                   </div>

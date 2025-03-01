@@ -3,18 +3,20 @@ import Link from "next/link";
 import React from "react";
 
 interface ProductType {
-  id: string;
+  _id: string;
+  image: string;
   name: string;
-  price: number;
-  img: string;
+  base_price: number;
 }
 
 const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   return (
     <div className="flex flex-col gap-4 bg-[#FDFDFD] rounded-lg hover:shadow">
       <div className="bg-[#D0DDD0] flex items-center justify-center h-[350px] relative rounded-t-lg">
         <Image
-          src={product.img}
+          src={`${API_URL}${product?.image}`}
           alt="Product"
           width={400}
           height={400}
@@ -27,11 +29,11 @@ const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
             {product.name}
           </h3>
           <p className="text-[#2B2B2B] text-base">
-            Price Estimate: ${product.price}
+            Price Estimate: ${product?.base_price}
           </p>
         </div>
         <Link
-          href={`/sell/${product.id}`}
+          href={`/sell/${product?._id}`}
           className="py-3 px-8 bg-[#101010] text-[#FDFDFD] rounded-sm"
         >
           SELL

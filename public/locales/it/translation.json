@@ -36,9 +36,10 @@
   "nintendo": "Nintendo",
   "brand": "Marca",
   "priceRange": "Fascia di prezzo",
+  "below100": "Sotto $100",
   "100to300": "100€ - 300€",
   "300to500": "300€ - 500€",
-  "up500": "500€+",
+  "upFiveHundread": "500€+",
   "condition": "Condizione",
   "salesAndShipping": "Vendita e Spedizione",
   "unfortunately": "Purtroppo questo articolo non è più disponibile. Puoi completare il tuo ordine senza di esso o acquistare prodotti alternativi.",
@@ -190,5 +191,6 @@
   "checkout2": "Termini e Condizioni Generali,",
   "checkout3": "le Condizioni di Garanzia",
   "checkout4": "e la nostra",
-  "checkout5": "Informativa sulla Privacy."
+  "checkout5": "Informativa sulla Privacy.",
+  "basePrice": "Prezzo Base"
 }

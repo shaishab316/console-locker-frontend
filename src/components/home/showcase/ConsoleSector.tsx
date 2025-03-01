@@ -4,9 +4,10 @@ import Container from "@/components/common/Container";
 import { Tabs } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useGetAllProductsQuery } from "@/redux/features/products/ProductAPI";
 
 const consoles = {
   xbox: [
@@ -305,12 +306,44 @@ const consoles = {
   ],
 };
 
+interface IConsole {
+  admin: string;
+  brand: string;
+  condition: string;
+  controller: string;
+  description: string;
+  images: string[];
+  isVariant: boolean;
+  memory: string;
+  model: string;
+  name: string;
+  offer_price: number;
+  price: number;
+  product_type: string;
+  quantity: number;
+  slug: string;
+  _id: string;
+}
+
 export default function ConsoleSelector() {
   const [activeTab, setActiveTab] = useState("xbox");
+  const [searchProduct, setSearchProduct] = useState("xbox");
+  const [filteredConsole, setFilteredConsole] = useState([]);
   const { t } = useTranslation();
   const pathname = usePathname();
 
-  console.log(pathname);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+  const {
+    data: products,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetAllProductsQuery({
+    product_type: activeTab,
+  } as any);
+
+  console.log(products);
 
   return (
     <div className="min-h-screen bg-[#F2F5F7]">
@@ -370,15 +403,15 @@ export default function ConsoleSelector() {
                       <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
-                      {consoles.xbox.map((console) => (
+                      {products?.data?.products?.map((console: IConsole) => (
                         <Link
-                          href={`/buy/${console?.id}`}
-                          key={console.id}
+                          href={`/buy/${console?._id}`}
+                          key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative">
+                          <div className="relative h-[387px]">
                             <Image
-                              src={console.image || ""}
+                              src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
                               width={355}
                               height={500}
@@ -389,26 +422,30 @@ export default function ConsoleSelector() {
                             <div className="flex justify-between items-start mb-2">
                               <div>
                                 <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-0 lg:mb-2.5">
-                                  {console.name}
+                                  {console?.name}
                                 </h3>
 
                                 <p className="text-sm md:text-base text-[#2B2B2B] -mb-1 md:mb-1.5">
                                   {/* {console.model} */}
                                   Condition:{" "}
-                                  <span className="text-base text-[#2B2B2B] font-medium">
-                                    Good
+                                  <span className="text-base text-[#2B2B2B] capitalize font-medium">
+                                    {console?.condition}
                                   </span>
                                 </p>
 
-                                <p className="text-[#2B2B2B] text-xs md:text-base space-x-1 -mb-2 md:mb-0">
+                                <p className="text-[#2B2B2B] text-xs md:text-base space-x-1 md:mb-2">
                                   Price:
                                   <span className="text-[#00B67A] text-xs md:text-lg font-medium leading-7">
                                     {" "}
-                                    $299
+                                    ${console?.offer_price}
                                   </span>
                                   <span className="text-[10px] sm:text-sm md:text-sm text-[#919191] line-through">
-                                    New : 350
+                                    New : {console?.price}
                                   </span>
+                                </p>
+
+                                <p className="text-xs sm:text-sm md:text-sm text-green-500">
+                                  In Stoack: {console?.quantity}
                                 </p>
                               </div>
                             </div>
@@ -451,19 +488,19 @@ export default function ConsoleSelector() {
                       <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
-                      {consoles.playstation.map((console) => (
+                      {products?.data?.products?.map((console: IConsole) => (
                         <Link
-                          href={`/buy/${console?.id}`}
-                          key={console.id}
+                          href={`/buy/${console?._id}`}
+                          key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative">
+                          <div className="relative h-[387px]">
                             <Image
-                              src={console.image || ""}
+                              src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
                               width={355}
                               height={500}
-                              className="object-contain w-full h-full"
+                              className="object-cover w-full h-full"
                             />
                           </div>
                           <div className="p-1 md:p-4">
@@ -472,7 +509,7 @@ export default function ConsoleSelector() {
                                 <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-2.5">
                                   {console.name}
                                 </h3>
-                                <p className="text-base text-[#2B2B2B] mb-1 md:mb-1.5">
+                                <p className="text-sm md:text-base text-[#2B2B2B] -mb-1 md:mb-1.5">
                                   {/* {console.model} */}
                                   Condition:{" "}
                                   <span className="text-base text-[#2B2B2B] font-medium">
@@ -480,15 +517,18 @@ export default function ConsoleSelector() {
                                   </span>
                                 </p>
 
-                                <p className="text-[#2B2B2B] text-base space-x-1">
+                                <p className="text-[#2B2B2B] text-xs md:text-base space-x-1 md:mb-2">
                                   Price:
-                                  <span className="text-[#00B67A] text-lg font-medium leading-7">
+                                  <span className="text-[#00B67A] text-xs md:text-lg font-medium leading-7">
                                     {" "}
                                     $299
                                   </span>
-                                  <span className="text-sm text-[#919191] line-through">
+                                  <span className="text-[10px] sm:text-sm md:text-sm text-[#919191] line-through">
                                     New : 350
                                   </span>
+                                </p>
+                                <p className="text-xs sm:text-sm md:text-sm text-green-500">
+                                  In Stoack: 24
                                 </p>
                               </div>
                             </div>
@@ -531,28 +571,28 @@ export default function ConsoleSelector() {
                       <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
-                      {consoles.nintendo.map((console) => (
+                      {products?.data?.products?.map((console: IConsole) => (
                         <Link
-                          href={`/buy/${console?.id}`}
-                          key={console.id}
+                          href={`/buy/${console?._id}`}
+                          key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative">
+                          <div className="relative h-[387px]">
                             <Image
-                              src={console.image || ""}
+                              src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
                               width={355}
                               height={500}
-                              className="object-contain w-full h-full"
+                              className="object-cover w-full h-full"
                             />
                           </div>
                           <div className="p-1 md:p-4">
                             <div className="flex justify-between items-start mb-2">
                               <div>
-                                <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-2.5">
+                                <h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-1.5">
                                   {console.name}
                                 </h3>
-                                <p className="text-base text-[#2B2B2B] mb-1 md:mb-1.5">
+                                <p className="text-sm md:text-base text-[#2B2B2B] -mb-1 md:mb-1.5">
                                   {/* {console.model} */}
                                   Condition:{" "}
                                   <span className="text-base text-[#2B2B2B] font-medium">
@@ -560,15 +600,19 @@ export default function ConsoleSelector() {
                                   </span>
                                 </p>
 
-                                <p className="text-[#2B2B2B] text-base space-x-1">
+                                <p className="text-[#2B2B2B] text-xs md:text-base space-x-1 md:mb-2">
                                   Price:
-                                  <span className="text-[#00B67A] text-lg font-medium leading-7">
+                                  <span className="text-[#00B67A] text-xs md:text-lg font-medium leading-7">
                                     {" "}
                                     $299
                                   </span>
-                                  <span className="text-sm text-[#919191] line-through">
+                                  <span className="text-[10px] sm:text-sm md:text-sm text-[#919191] line-through">
                                     New : 350
                                   </span>
+                                </p>
+
+                                <p className="text-xs sm:text-sm md:text-sm text-green-500">
+                                  In Stoack: 24
                                 </p>
                               </div>
                             </div>

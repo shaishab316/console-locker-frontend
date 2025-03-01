@@ -7,13 +7,19 @@ import Container from "@/components/common/Container";
 import { BlogCarousel } from "@/components/home/blogs/BlogCarousel";
 import ConsoleModal from "@/components/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModal } from "@/lib/features/modal/modalSlice";
-import { RootState } from "@/lib/store";
+import { toggleModal } from "@/redux/features/modal/modalSlice";
+
 import ProductSpecification from "@/components/product/ProductSpecification";
 import ProductDescription from "@/components/product/ProductDescription";
 import Link from "next/link";
-import { showTradeInDescription } from "@/lib/features/tradeIn/showTradeInSlice";
+import { showTradeInDescription } from "@/redux/features/tradeIn/showTradeInSlice";
 import { useTranslation } from "react-i18next";
+import { RootState } from "@/redux/store/store";
+import {
+  useGetAllProductsQuery,
+  useGetSingleProductQuery,
+} from "@/redux/features/products/ProductAPI";
+import Loading from "@/app/loading";
 // import ProductDescription from "@/pages/ProductDescription";
 
 interface Product {
@@ -28,12 +34,13 @@ interface Product {
 }
 
 interface RelatedProduct {
-  id: number;
+  _id: string;
   title: string;
   condition: string;
   price: string;
-  image: string;
+  images: [number];
   brand: string;
+  slug: string;
 }
 
 const ProductDetailsPage: React.FC = () => {
@@ -47,106 +54,134 @@ const ProductDetailsPage: React.FC = () => {
   const [deviceModel, setDeviceModel] = useState("IpHOME 8 PLUS, 500gb");
   const [addTradeIn, setAddTradeIn] = useState(true);
   const dispatch = useDispatch();
-  const modalState = useSelector((state: RootState) => state.modal.modal);
+  const modalState = useSelector((state: RootState) => state?.modal?.modal);
   const isOpenTradeIn = useSelector(
-    (state: RootState) => state.showTradeInData.isOpenTradeIn
+    (state: RootState) => state?.showTradeInData?.isOpenTradeIn
   );
   const { t } = useTranslation();
 
-  const product: Product = {
-    title: "Xbox One",
-    price: "$1191",
-    image: "/productss/a1.png",
-    description:
-      "The phone will have heavy signs of wear, such as deeper scratches, dents, and other marks. The phone is unlocked, fully tested, and works like new.",
-    models: ["Fat", "Slim", "Pro"],
-    controllers: [0, 1, 2],
-    memories: ["500 Gb", "1 Tb"],
-    conditions: ["Fair", "Good", "Excellent"],
-  };
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  const products: RelatedProduct[] = [
-    {
-      title: "PlayStation 5",
-      condition: "Good",
-      price: "$299",
-      image: "/dynamic/p1.png",
-      brand: "PlayStation",
-      id: 1,
-    },
-    {
-      title: "Zeust Xbox One S",
-      condition: "Good",
-      price: "$299",
-      image: "/dynamic/p2.png",
-      brand: "Xbox",
-      id: 2,
-    },
-    {
-      title: "Xbox",
-      condition: "Good",
-      price: "$299",
-      image: "/dynamic/p3.png",
-      brand: "Xbox",
-      id: 3,
-    },
-    {
-      title: "Xbox",
-      condition: "Good",
-      price: "$299",
-      image: "/dynamic/p4.png",
-      brand: "Xbox",
-      id: 4,
-    },
-    {
-      title: "Xbox",
-      condition: "Good",
-      price: "$299",
-      image: "/dynamic/a5.png",
-      brand: "Xbox",
-      id: 5,
-    },
-    {
-      title: "Xbox",
-      condition: "Good",
-      price: "$299",
-      image: "/products/a6.png",
-      brand: "Xbox",
-      id: 6,
-    },
-    {
-      title: "Xbox",
-      condition: "Good",
-      price: "$299",
-      image: "/products/a7.png",
-      brand: "Xbox",
-      id: 7,
-    },
-    {
-      title: "Xbox",
-      condition: "Good",
-      price: "$299",
-      image: "/products/a8.png",
-      brand: "Xbox",
-      id: 8,
-    },
-    {
-      title: "Xbox",
-      condition: "Good",
-      price: "$299",
-      image: "/products/a9.png",
-      brand: "Xbox",
-      id: 9,
-    },
-    {
-      title: "Xbox",
-      condition: "Good",
-      price: "$299",
-      image: "/products/a10.png",
-      brand: "Xbox",
-      id: 10,
-    },
-  ];
+  const {
+    data: singleProduct,
+    isLoading,
+    isError,
+  } = useGetSingleProductQuery({
+    slug: "nintendo-switch-pro-500gb-2-nintendo-nintendo-switch-pro-excellent",
+  });
+
+  const {
+    data: products,
+    isLoading: productsLoading,
+    isError: productsError,
+  } = useGetAllProductsQuery({});
+
+  if (isLoading || productsLoading)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
+  if (isError) return <div>Error Occur!</div>;
+
+  const product = singleProduct?.data;
+
+  console.log(products?.data?.products);
+
+  // const product: Product = {
+  //   title: "Xbox One",
+  //   price: "$1191",
+  //   image: "/productss/a1.png",
+  //   description:
+  //     "The phone will have heavy signs of wear, such as deeper scratches, dents, and other marks. The phone is unlocked, fully tested, and works like new.",
+  //   models: ["Fat", "Slim", "Pro"],
+  //   controllers: [0, 1, 2],
+  //   memories: ["500 Gb", "1 Tb"],
+  //   conditions: ["Fair", "Good", "Excellent"],
+  // };
+
+  // const products: RelatedProduct[] = [
+  //   {
+  //     title: "PlayStation 5",
+  //     condition: "Good",
+  //     price: "$299",
+  //     image: "/dynamic/p1.png",
+  //     brand: "PlayStation",
+  //     id: 1,
+  //   },
+  //   {
+  //     title: "Zeust Xbox One S",
+  //     condition: "Good",
+  //     price: "$299",
+  //     image: "/dynamic/p2.png",
+  //     brand: "Xbox",
+  //     id: 2,
+  //   },
+  //   {
+  //     title: "Xbox",
+  //     condition: "Good",
+  //     price: "$299",
+  //     image: "/dynamic/p3.png",
+  //     brand: "Xbox",
+  //     id: 3,
+  //   },
+  //   {
+  //     title: "Xbox",
+  //     condition: "Good",
+  //     price: "$299",
+  //     image: "/dynamic/p4.png",
+  //     brand: "Xbox",
+  //     id: 4,
+  //   },
+  //   {
+  //     title: "Xbox",
+  //     condition: "Good",
+  //     price: "$299",
+  //     image: "/dynamic/a5.png",
+  //     brand: "Xbox",
+  //     id: 5,
+  //   },
+  //   {
+  //     title: "Xbox",
+  //     condition: "Good",
+  //     price: "$299",
+  //     image: "/products/a6.png",
+  //     brand: "Xbox",
+  //     id: 6,
+  //   },
+  //   {
+  //     title: "Xbox",
+  //     condition: "Good",
+  //     price: "$299",
+  //     image: "/products/a7.png",
+  //     brand: "Xbox",
+  //     id: 7,
+  //   },
+  //   {
+  //     title: "Xbox",
+  //     condition: "Good",
+  //     price: "$299",
+  //     image: "/products/a8.png",
+  //     brand: "Xbox",
+  //     id: 8,
+  //   },
+  //   {
+  //     title: "Xbox",
+  //     condition: "Good",
+  //     price: "$299",
+  //     image: "/products/a9.png",
+  //     brand: "Xbox",
+  //     id: 9,
+  //   },
+  //   {
+  //     title: "Xbox",
+  //     condition: "Good",
+  //     price: "$299",
+  //     image: "/products/a10.png",
+  //     brand: "Xbox",
+  //     id: 10,
+  //   },
+  // ];
 
   const handleTrade = () => {
     dispatch(toggleModal());
@@ -159,15 +194,13 @@ const ProductDetailsPage: React.FC = () => {
     // setAddTradeIn(true);
   };
 
-  console.log(addTradeIn);
-
   return (
     <div className="py-16 bg-[#F2F5F7]">
       <Container>
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="xl:w-1/2">
             <Image
-              src="/buy1.png"
+              src={`${API_URL}${product?.product?.images[0]}`}
               alt="Console Locker"
               width={1400}
               height={900}
@@ -179,7 +212,7 @@ const ProductDetailsPage: React.FC = () => {
             <div className="flex justify-between items-center mb-2.5">
               <div className="flex flex-col gap-3">
                 <h1 className="text-3xl lg:text-[40px] text-[#101010] font-semibold">
-                  {product.title}
+                  {product?.product?.name}
                 </h1>
                 <p className="text-[#2B2B2B] text-lg mb-2 flex items-center justify-between">
                   {" "}
@@ -188,7 +221,7 @@ const ProductDetailsPage: React.FC = () => {
               </div>
               <div className="flex flex-col gap-3 items-end">
                 <h2 className="text-2xl lg:text-5xl font-semibold text-[#101010]">
-                  {product.price}
+                  ${product?.product?.offer_price}
                 </h2>
                 <p className="text-lg text-[#6B6B6B]">incl. tax</p>
               </div>
@@ -222,10 +255,10 @@ const ProductDetailsPage: React.FC = () => {
                 {t("model")}:
               </h4>
               <div className="flex gap-4">
-                {product.models.map((model) => (
+                {product?.meta?.models?.map((model: string) => (
                   <button
                     key={model}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
+                    className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
                       selectedModel === model
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -261,10 +294,10 @@ const ProductDetailsPage: React.FC = () => {
                 {t("controller")}:
               </h4>
               <div className="flex gap-4">
-                {product.controllers.map((controller) => (
+                {product?.meta?.controllers?.map((controller: number) => (
                   <button
                     key={controller}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
+                    className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
                       selectedController === controller
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -284,7 +317,7 @@ const ProductDetailsPage: React.FC = () => {
                 {t("memory")}:
               </h4>
               <div className="flex gap-4">
-                {product.memories.map((memory) => (
+                {product?.meta?.memories?.map((memory: string) => (
                   <button
                     key={memory}
                     className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
@@ -307,10 +340,10 @@ const ProductDetailsPage: React.FC = () => {
                 {t("conditions")}:
               </h4>
               <div className="flex gap-4">
-                {product.conditions.map((condition) => (
+                {product?.meta?.conditions?.map((condition: string) => (
                   <button
                     key={condition}
-                    className={`w-auto md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
+                    className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
                       selectedCondition === condition
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -332,7 +365,7 @@ const ProductDetailsPage: React.FC = () => {
                     {t("tradeIn")}:
                   </h4>
                   <button
-                    className={`w-[120px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex-1 lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
+                    className={`w-[120px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
                       modalState
                         ? "border-black bg-[#E7E7E7]"
                         : "border-gray-300"
@@ -506,48 +539,50 @@ const ProductDetailsPage: React.FC = () => {
         <div className="mt-16">
           <h3 className="text-[32px] font-semibold mb-4">You may also like</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.slice(0, 4).map((product) => (
-              <Link
-                key={product.id}
-                href={`/buy/${product.id}`}
-                className="rounded-lg"
-                passHref
-              >
-                <div className="bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-lg pb-2">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    width={300}
-                    height={200}
-                    className="object-center object-cover w-full rounded-t-lg"
-                  />
-                  <div className="px-3">
-                    <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
-                      {product.title}
-                    </h3>
-                    <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
-                      <div>
-                        Condition:
-                        <span className="font-medium text-[#2B2B2B]">
-                          {product.condition}
+            {products?.data?.products
+              ?.slice(0, 4)
+              .map((product: RelatedProduct) => (
+                <Link
+                  key={product._id}
+                  href={`/buy/${product?.slug}`}
+                  className="rounded-lg"
+                  passHref
+                >
+                  <div className="bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-lg pb-2">
+                    <Image
+                      src={`${API_URL}${product.images[0]}`}
+                      alt={product.title}
+                      width={300}
+                      height={387}
+                      className="object-center object-cover w-full h-[387px] rounded-t-lg"
+                    />
+                    <div className="px-3">
+                      <h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
+                        {product.title}
+                      </h3>
+                      <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
+                        <div>
+                          Condition:
+                          <span className="font-medium text-[#2B2B2B]">
+                            {product.condition}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
+                        <div className="flex items-center gap-2">
+                          <p className="text-[#2B2B2B] text-base">Price:</p>
+                          <span className="text-[#00B67A] text-lg font-semibold">
+                            {product.price}
+                          </span>
+                        </div>
+                        <span className="text-sm text-[#919191] line-through">
+                          New: 350
                         </span>
                       </div>
-                    </div>
-                    <div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
-                      <div className="flex items-center gap-2">
-                        <p className="text-[#2B2B2B] text-base">Price:</p>
-                        <span className="text-[#00B67A] text-lg font-semibold">
-                          {product.price}
-                        </span>
-                      </div>
-                      <span className="text-sm text-[#919191] line-through">
-                        New: 350
-                      </span>
                     </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
           </div>
         </div>
 

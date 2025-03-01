@@ -46,7 +46,7 @@ export default function Checkout() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F2F5F7] py-8">
+    <div className="min-h-screen bg-[#F2F5F7] pt-8 pb-16">
       {/* Progress Steps */}
       <Container>
         <div>
@@ -69,7 +69,7 @@ export default function Checkout() {
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-[#F2F5F7]">
           {/* Left Column - Payment Form */}
-          <div className="lg:col-span-2 space-y-6 bg-[#FDFDFD] p-6">
+          <div className="lg:col-span-2 space-y-6 bg-[#FDFDFD] rounded-xl p-6">
             {/* Delivery Details */}
             <div className="bg-[#FBFBFB] border p-5 rounded-lg shadow-sm">
               <h2 className="text-2xl font-semibold text-[#101010]">
@@ -237,7 +237,6 @@ export default function Checkout() {
                         name="payment"
                         checked={selectedPayment === "klarna"}
                         onChange={() => setSelectedPayment("klarna")}
-                        // className="h-4 w-4 text-blue-600"
                         className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                       />
                       <label

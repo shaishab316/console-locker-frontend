@@ -12,6 +12,7 @@
 //   ...tseslint.configs.recommended,
 //   pluginReact.configs.flat.recommended,
 // ];
+
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
