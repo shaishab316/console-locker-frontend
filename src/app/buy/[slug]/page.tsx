@@ -1,14 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Check, Group, Info } from "lucide-react";
+import { Check } from "lucide-react";
 import ReviewCarousel from "@/components/share/review-carousel/ReviewCarousel";
 import Container from "@/components/common/Container";
 import { BlogCarousel } from "@/components/home/blogs/BlogCarousel";
 import ConsoleModal from "@/components/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "@/redux/features/modal/modalSlice";
-
+import qs from "qs";
+import slugify from "slugify";
 import ProductSpecification from "@/components/product/ProductSpecification";
 import ProductDescription from "@/components/product/ProductDescription";
 import Link from "next/link";
@@ -20,7 +21,7 @@ import {
   useGetSingleProductQuery,
 } from "@/redux/features/products/ProductAPI";
 import Loading from "@/app/loading";
-// import ProductDescription from "@/pages/ProductDescription";
+import { useParams, useRouter } from "next/navigation";
 
 interface Product {
   title: string;
@@ -44,12 +45,10 @@ interface RelatedProduct {
 }
 
 const ProductDetailsPage: React.FC = () => {
-  const [selectedModel, setSelectedModel] = useState<string>("Fat");
-  const [selectedController, setSelectedController] = useState<number>(0);
-  const [selectedMemory, setSelectedMemory] = useState<string>("500 Gb");
-  const [selectedCondition, setSelectedCondition] = useState<string>("Fair");
-  const [tradeIn, setTradeIn] = useState<boolean | null>(null);
-  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [selectedModel, setSelectedModel] = useState<string>("");
+  const [selectedController, setSelectedController] = useState<number>();
+  const [selectedMemory, setSelectedMemory] = useState<string>("");
+  const [selectedCondition, setSelectedCondition] = useState<string>("");
   const [deviceValue, setDeviceValue] = useState(5.0);
   const [deviceModel, setDeviceModel] = useState("IpHOME 8 PLUS, 500gb");
   const [addTradeIn, setAddTradeIn] = useState(true);
@@ -59,7 +58,8 @@ const ProductDetailsPage: React.FC = () => {
     (state: RootState) => state?.showTradeInData?.isOpenTradeIn
   );
   const { t } = useTranslation();
-
+  const { slug } = useParams();
+  const router = useRouter();
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const {
@@ -67,7 +67,7 @@ const ProductDetailsPage: React.FC = () => {
     isLoading,
     isError,
   } = useGetSingleProductQuery({
-    slug: "nintendo-switch-pro-500gb-2-nintendo-nintendo-switch-pro-excellent",
+    slug: slug as string,
   });
 
   const {
@@ -75,6 +75,15 @@ const ProductDetailsPage: React.FC = () => {
     isLoading: productsLoading,
     isError: productsError,
   } = useGetAllProductsQuery({});
+
+  useEffect(() => {
+    console.log({ singleProduct });
+
+    setSelectedModel(singleProduct?.data?.product?.model);
+    setSelectedController(singleProduct?.data?.product?.controller);
+    setSelectedMemory(singleProduct?.data?.product?.memory);
+    setSelectedCondition(singleProduct?.data?.product?.condition);
+  }, [singleProduct]);
 
   if (isLoading || productsLoading)
     return (
@@ -86,103 +95,6 @@ const ProductDetailsPage: React.FC = () => {
 
   const product = singleProduct?.data;
 
-  console.log(products?.data?.products);
-
-  // const product: Product = {
-  //   title: "Xbox One",
-  //   price: "$1191",
-  //   image: "/productss/a1.png",
-  //   description:
-  //     "The phone will have heavy signs of wear, such as deeper scratches, dents, and other marks. The phone is unlocked, fully tested, and works like new.",
-  //   models: ["Fat", "Slim", "Pro"],
-  //   controllers: [0, 1, 2],
-  //   memories: ["500 Gb", "1 Tb"],
-  //   conditions: ["Fair", "Good", "Excellent"],
-  // };
-
-  // const products: RelatedProduct[] = [
-  //   {
-  //     title: "PlayStation 5",
-  //     condition: "Good",
-  //     price: "$299",
-  //     image: "/dynamic/p1.png",
-  //     brand: "PlayStation",
-  //     id: 1,
-  //   },
-  //   {
-  //     title: "Zeust Xbox One S",
-  //     condition: "Good",
-  //     price: "$299",
-  //     image: "/dynamic/p2.png",
-  //     brand: "Xbox",
-  //     id: 2,
-  //   },
-  //   {
-  //     title: "Xbox",
-  //     condition: "Good",
-  //     price: "$299",
-  //     image: "/dynamic/p3.png",
-  //     brand: "Xbox",
-  //     id: 3,
-  //   },
-  //   {
-  //     title: "Xbox",
-  //     condition: "Good",
-  //     price: "$299",
-  //     image: "/dynamic/p4.png",
-  //     brand: "Xbox",
-  //     id: 4,
-  //   },
-  //   {
-  //     title: "Xbox",
-  //     condition: "Good",
-  //     price: "$299",
-  //     image: "/dynamic/a5.png",
-  //     brand: "Xbox",
-  //     id: 5,
-  //   },
-  //   {
-  //     title: "Xbox",
-  //     condition: "Good",
-  //     price: "$299",
-  //     image: "/products/a6.png",
-  //     brand: "Xbox",
-  //     id: 6,
-  //   },
-  //   {
-  //     title: "Xbox",
-  //     condition: "Good",
-  //     price: "$299",
-  //     image: "/products/a7.png",
-  //     brand: "Xbox",
-  //     id: 7,
-  //   },
-  //   {
-  //     title: "Xbox",
-  //     condition: "Good",
-  //     price: "$299",
-  //     image: "/products/a8.png",
-  //     brand: "Xbox",
-  //     id: 8,
-  //   },
-  //   {
-  //     title: "Xbox",
-  //     condition: "Good",
-  //     price: "$299",
-  //     image: "/products/a9.png",
-  //     brand: "Xbox",
-  //     id: 9,
-  //   },
-  //   {
-  //     title: "Xbox",
-  //     condition: "Good",
-  //     price: "$299",
-  //     image: "/products/a10.png",
-  //     brand: "Xbox",
-  //     id: 10,
-  //   },
-  // ];
-
   const handleTrade = () => {
     dispatch(toggleModal());
     setAddTradeIn((prev) => !prev);
@@ -191,8 +103,14 @@ const ProductDetailsPage: React.FC = () => {
   const startOver = () => {
     dispatch(toggleModal());
     dispatch(showTradeInDescription());
-    // setAddTradeIn(true);
   };
+
+  console.log({
+    selectedModel,
+    selectedMemory,
+    selectedCondition,
+    selectedController,
+  });
 
   return (
     <div className="py-16 bg-[#F2F5F7]">
@@ -204,7 +122,7 @@ const ProductDetailsPage: React.FC = () => {
               alt="Console Locker"
               width={1400}
               height={900}
-              className="rounded-lg w-full"
+              className="rounded-lg w-full "
             />
           </div>
 
@@ -227,6 +145,7 @@ const ProductDetailsPage: React.FC = () => {
               </div>
             </div>
 
+            {/* reviews */}
             <div className="flex items-center gap-2.5 mb-6">
               <p className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((i) => (

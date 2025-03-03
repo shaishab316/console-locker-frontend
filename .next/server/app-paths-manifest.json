@@ -1,7 +1,7 @@
 {
-  "/temp/page": "app/temp/page.js",
-  "/page": "app/page.js",
-  "/buy/playstation/page": "app/buy/playstation/page.js",
-  "/cart/page": "app/cart/page.js",
-  "/buy/[slug]/page": "app/buy/[slug]/page.js"
+  "/buy/[slug]/page": "app/buy/[slug]/page.js",
+  "/sell/page": "app/sell/page.js",
+  "/sell/[slug]/page": "app/sell/[slug]/page.js",
+  "/sell/estimate-product/page": "app/sell/estimate-product/page.js",
+  "/buy/playstation/page": "app/buy/playstation/page.js"
 }

@@ -36,7 +36,7 @@ const ProductPage: React.FC = () => {
   const [filterView, setFilterView] = useState(false);
   const { t } = useTranslation();
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
 
   const [searchProduct, setSearchProduct] = useState<string>("");
   const [brandSearch, setBrandSearch] = useState<string>("");
@@ -66,12 +66,8 @@ const ProductPage: React.FC = () => {
     brand: brandSearch,
     price: priceRange.length ? priceRange : undefined,
     condition: condition,
-    // limit: 10,
+    limit: 100,
   } as any);
-
-  // useEffect(() => {
-  //   refetch();
-  // }, []);
 
   const URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -119,12 +115,6 @@ const ProductPage: React.FC = () => {
     }
   }, [maxPrice]);
 
-  // useEffect(() => {
-  //   if (products?.data?.products.length > 0) {
-  //     setPriceRange([minPrice, maxPrice]);
-  //   }
-  // }, []);
-
   if (isLoading) {
     return (
       <div>
@@ -142,8 +132,6 @@ const ProductPage: React.FC = () => {
 
   const handlePriceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-
-    console.log("price value: ", value);
 
     let min = null;
     let max = null;
@@ -168,11 +156,10 @@ const ProductPage: React.FC = () => {
         max = null;
     }
 
-    setPriceRange([min ?? 0, max ?? maxPrice]);
+    setPriceRange([min ?? 0, max ?? 9000000]);
   };
 
-  console.log("condition", condition);
-  // console.log(searchProduct, brandSearch, priceRange, condition);
+  console.log("products", products);
 
   return (
     <div className="relative bg-[#F2F5F7] flex flex-col lg:flex-row py-8">
