@@ -11,17 +11,23 @@
       "static/chunks/main-app.js",
       "static/chunks/app/loading.js"
     ],
-    "/buy/playstation/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/buy/playstation/page.css",
-      "static/chunks/app/buy/playstation/page.js"
-    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/page.css",
       "static/chunks/app/page.js"
+    ],
+    "/temp/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/temp/page.css",
+      "static/chunks/app/temp/page.js"
+    ],
+    "/buy/playstation/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/buy/playstation/page.css",
+      "static/chunks/app/buy/playstation/page.js"
     ],
     "/buy/[slug]/page": [
       "static/chunks/webpack.js",

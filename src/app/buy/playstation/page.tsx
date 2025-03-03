@@ -36,6 +36,8 @@ const ProductPage: React.FC = () => {
   const [filterView, setFilterView] = useState(false);
   const { t } = useTranslation();
 
+  const [data, setData] = useState([])
+
   const [searchProduct, setSearchProduct] = useState<string>("");
   const [brandSearch, setBrandSearch] = useState<string>("");
   const [priceRange, setPriceRange] = useState<[number, number]>([]);
@@ -323,9 +325,7 @@ const ProductPage: React.FC = () => {
                   onChange={handlePriceChange}
                   className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
                 >
-                  <option onChange={() => setPriceRange([0, 1500])} value="">
-                    {t("all")}
-                  </option>
+                  <option value="">{t("all")}</option>
 
                   <option value="below100">{t("below100")}</option>
                   <option value="100to300">{t("100to300")}</option>
@@ -518,7 +518,7 @@ const ProductPage: React.FC = () => {
                         <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
                           <div>
                             Condition: &nbsp;
-                            <span className="font-medium text-[#2B2B2B]">
+                            <span className="font-medium text-[#2B2B2B] capitalize">
                               {product?.condition}
                             </span>
                           </div>
@@ -565,7 +565,7 @@ const ProductPage: React.FC = () => {
                         <div className="text-[#2B2B2B] mb-2 flex items-center justify-between">
                           <div>
                             Condition:
-                            <span className="font-medium text-[#2B2B2B]">
+                            <span className="font-medium text-[#2B2B2B] capitalize">
                               {" "}
                               {product.condition}
                             </span>

@@ -489,18 +489,20 @@ const MobileProductDetails = () => {
                 </div>
 
                 <div className="flex-1">
-                  <h2 className="text-lg text-[#404040] font-medium">
-                    Nintendo Switch
-                  </h2>
-                  <p className="text-xs font-medium text-[#404040]">
-                    Lite | Turchese
-                  </p>
+                  <div className="">
+                    <h2 className="text-lg text-[#404040] font-medium">
+                      Nintendo Switch
+                    </h2>
+                    <p className="text-xs font-medium text-[#404040]">
+                      Lite | Turchese
+                    </p>
 
-                  <p className="text-xs font-medium text-[#404040]">
-                    Brand New Condition
-                  </p>
+                    <p className="text-xs font-medium text-[#404040]">
+                      Brand New Condition
+                    </p>
+                  </div>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between border-y border-y-[#B5B5B5] py-1.5">
                     <h3 className="text-lg font-medium text-[#404040]">
                       Price:
                     </h3>
@@ -509,7 +511,7 @@ const MobileProductDetails = () => {
                     </h3>
                   </div>
 
-                  <div className="flex justify-end">
+                  <div className="flex justify-end py-1">
                     <p>Remove</p>
                     <svg
                       width="25"
@@ -533,72 +535,233 @@ const MobileProductDetails = () => {
           </div>
         </div>
 
-        <div className="mx-5 mt-5 mb-3 bg-[#FDFDFD] flex items-center justify-between  rounded-lg p-4">
+        <div className="mx-5 mt-5 mb-5 bg-[#FDFDFD] flex items-center justify-between  rounded-lg p-4">
           <h3 className="text-2xl font-semibold text-[#404040]">Total</h3>
           <h2 className="text-[40px] font-semibold text-[#FD9A34]">$200</h2>
         </div>
 
         <div className="md:hidden w-full pb-9">
-          <div className="flex items-center justify-center py-8 space-x-4">
-            <h2 className="text-[#101010] text-xl font-semibold text-center pb-3 border-b-2 border-b-[#B8B8B8]">
+          <div className="mx-5 border-b-2 border-b-[#B8B8B8] space-x-4 pt-3 mb-6">
+            <h2 className="text-[#101010] text-xl font-semibold pb-3">
               You might also be interested in
             </h2>
           </div>
-          <div ref={ref} className="keen-slider">
-            <div className="keen-slider__slide">
-              <Image
-                src={"/home/slide.png"}
-                width={300}
-                height={600}
-                alt="slider"
-                className=""
-              />
-            </div>
-            <div className="keen-slider__slide">
-              <Image
-                src={"/home/slide.png"}
-                width={300}
-                height={600}
-                alt="slider"
-                className=""
-              />
-            </div>
-            <div className="keen-slider__slide">
-              <Image
-                src={"/home/slide.png"}
-                width={300}
-                height={600}
-                alt="slider"
-                className=""
-              />
-            </div>
-            <div className="keen-slider__slide">
-              <Image
-                src={"/home/slide.png"}
-                width={300}
-                height={600}
-                alt="slider"
-                className=""
-              />
-            </div>
-            <div className="keen-slider__slide">
-              <Image
-                src={"/home/slide.png"}
-                width={300}
-                height={600}
-                alt="slider"
-                className=""
-              />
-            </div>
-            <div className="keen-slider__slide">
-              <Image
-                src={"/home/slide.png"}
-                width={300}
-                height={600}
-                alt="slider"
-                className=""
-              />
-            </div>
+
+          <div className="mx-5 grid grid-cols-2 gap-x-2 gap-y-4">
+            {[1, 2, 3, 4, 5, 6].map(() => (
+              <div className="bg-[#FDFDFD] rounded-lg">
+                <div className="p-2">
+                  <Image
+                    src={"/buy/mobile.png"}
+                    className="w-full h-full"
+                    width={600}
+                    height={700}
+                    alt=""
+                  />
+                </div>
+
+                <div className="relative flex items-center justify-between border-b border-b-[#B5B5B5] p-2">
+                  {/* Add to cart */}
+                  <div className="absolute bg-[#FDFDFD] rounded-md -top-6 right-2 shadow-md">
+                    <button className="px-3 py-1 flex items-center gap-1">
+                      Add
+                      <svg
+                        width="19"
+                        height="17"
+                        viewBox="0 0 19 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5.5 14.5C5.77614 14.5 6 14.2761 6 14C6 13.7239 5.77614 13.5 5.5 13.5C5.22386 13.5 5 13.7239 5 14C5 14.2761 5.22386 14.5 5.5 14.5Z"
+                          stroke="#404040"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M12.5 14.5C12.7761 14.5 13 14.2761 13 14C13 13.7239 12.7761 13.5 12.5 13.5C12.2239 13.5 12 13.7239 12 14C12 14.2761 12.2239 14.5 12.5 14.5Z"
+                          stroke="#404040"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M1.5 3.5H3.5L5 12H13"
+                          stroke="#404040"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M5 10H12.795C12.8528 10 12.9089 9.98004 12.9536 9.9434C12.9983 9.90676 13.029 9.85576 13.0403 9.79906L13.9403 5.29906C13.9476 5.26278 13.9467 5.22533 13.9377 5.18943C13.9288 5.15352 13.9119 5.12006 13.8885 5.09145C13.865 5.06284 13.8355 5.03979 13.802 5.02398C13.7686 5.00816 13.732 4.99997 13.695 5H4"
+                          stroke="#404040"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <rect
+                          x="10"
+                          y="1"
+                          width="8"
+                          height="8"
+                          rx="4"
+                          fill="#FDFDFD"
+                        />
+                        <path
+                          d="M14 9C16.2 9 18 7.2 18 5C18 2.8 16.2 1 14 1C11.8 1 10 2.8 10 5C10 7.2 11.8 9 14 9Z"
+                          stroke="#FD9A34"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M12.667 5H15.3337"
+                          stroke="#FD9A34"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M14 6.33366V3.66699"
+                          stroke="#FD9A34"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      {/* <svg
+                        width="89"
+                        height="48"
+                        viewBox="0 0 89 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g filter="url(#filter0_d_2184_5756)">
+                          <rect
+                            x="8.5"
+                            y="6"
+                            width="72"
+                            height="32"
+                            rx="4"
+                            fill="#FDFDFD"
+                            shape-rendering="crispEdges"
+                          />
+                          <path
+                            d="M27.868 24.14H24.22L23.548 26H22.396L25.42 17.684H26.68L29.692 26H28.54L27.868 24.14ZM27.556 23.252L26.044 19.028L24.532 23.252H27.556ZM30.6019 22.688C30.6019 22.016 30.7379 21.428 31.0099 20.924C31.2819 20.412 31.6539 20.016 32.1259 19.736C32.6059 19.456 33.1419 19.316 33.7339 19.316C34.2459 19.316 34.7219 19.436 35.1619 19.676C35.6019 19.908 35.9379 20.216 36.1699 20.6V17.12H37.2739V26H36.1699V24.764C35.9539 25.156 35.6339 25.48 35.2099 25.736C34.7859 25.984 34.2899 26.108 33.7219 26.108C33.1379 26.108 32.6059 25.964 32.1259 25.676C31.6539 25.388 31.2819 24.984 31.0099 24.464C30.7379 23.944 30.6019 23.352 30.6019 22.688ZM36.1699 22.7C36.1699 22.204 36.0699 21.772 35.8699 21.404C35.6699 21.036 35.3979 20.756 35.0539 20.564C34.7179 20.364 34.3459 20.264 33.9379 20.264C33.5299 20.264 33.1579 20.36 32.8219 20.552C32.4859 20.744 32.2179 21.024 32.0179 21.392C31.8179 21.76 31.7179 22.192 31.7179 22.688C31.7179 23.192 31.8179 23.632 32.0179 24.008C32.2179 24.376 32.4859 24.66 32.8219 24.86C33.1579 25.052 33.5299 25.148 33.9379 25.148C34.3459 25.148 34.7179 25.052 35.0539 24.86C35.3979 24.66 35.6699 24.376 35.8699 24.008C36.0699 23.632 36.1699 23.196 36.1699 22.7ZM38.7113 22.688C38.7113 22.016 38.8473 21.428 39.1193 20.924C39.3913 20.412 39.7633 20.016 40.2353 19.736C40.7153 19.456 41.2513 19.316 41.8433 19.316C42.3553 19.316 42.8313 19.436 43.2713 19.676C43.7113 19.908 44.0473 20.216 44.2793 20.6V17.12H45.3833V26H44.2793V24.764C44.0633 25.156 43.7433 25.48 43.3193 25.736C42.8953 25.984 42.3993 26.108 41.8313 26.108C41.2473 26.108 40.7153 25.964 40.2353 25.676C39.7633 25.388 39.3913 24.984 39.1193 24.464C38.8473 23.944 38.7113 23.352 38.7113 22.688ZM44.2793 22.7C44.2793 22.204 44.1793 21.772 43.9793 21.404C43.7793 21.036 43.5073 20.756 43.1633 20.564C42.8273 20.364 42.4553 20.264 42.0473 20.264C41.6393 20.264 41.2673 20.36 40.9313 20.552C40.5953 20.744 40.3273 21.024 40.1273 21.392C39.9273 21.76 39.8273 22.192 39.8273 22.688C39.8273 23.192 39.9273 23.632 40.1273 24.008C40.3273 24.376 40.5953 24.66 40.9313 24.86C41.2673 25.052 41.6393 25.148 42.0473 25.148C42.4553 25.148 42.8273 25.052 43.1633 24.86C43.5073 24.66 43.7793 24.376 43.9793 24.008C44.1793 23.632 44.2793 23.196 44.2793 22.7Z"
+                            fill="#404040"
+                          />
+                          <path
+                            d="M56.5 27.5C56.7761 27.5 57 27.2761 57 27C57 26.7239 56.7761 26.5 56.5 26.5C56.2239 26.5 56 26.7239 56 27C56 27.2761 56.2239 27.5 56.5 27.5Z"
+                            stroke="#404040"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M63.5 27.5C63.7761 27.5 64 27.2761 64 27C64 26.7239 63.7761 26.5 63.5 26.5C63.2239 26.5 63 26.7239 63 27C63 27.2761 63.2239 27.5 63.5 27.5Z"
+                            stroke="#404040"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M52.5 16.5H54.5L56 25H64"
+                            stroke="#404040"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M56 23H63.795C63.8528 23 63.9089 22.98 63.9536 22.9434C63.9983 22.9068 64.029 22.8558 64.0403 22.7991L64.9403 18.2991C64.9476 18.2628 64.9467 18.2253 64.9377 18.1894C64.9288 18.1535 64.9119 18.1201 64.8885 18.0914C64.865 18.0628 64.8355 18.0398 64.802 18.024C64.7686 18.0082 64.732 18 64.695 18H55"
+                            stroke="#404040"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <rect
+                            x="61"
+                            y="14"
+                            width="8"
+                            height="8"
+                            rx="4"
+                            fill="#FDFDFD"
+                          />
+                          <path
+                            d="M65 22C67.2 22 69 20.2 69 18C69 15.8 67.2 14 65 14C62.8 14 61 15.8 61 18C61 20.2 62.8 22 65 22Z"
+                            stroke="#FD9A34"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M63.667 18H66.3337"
+                            stroke="#FD9A34"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M65 19.3337V16.667"
+                            stroke="#FD9A34"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </g>
+                        <defs>
+                          <filter
+                            id="filter0_d_2184_5756"
+                            x="0.5"
+                            y="0"
+                            width="88"
+                            height="48"
+                            filterUnits="userSpaceOnUse"
+                            color-interpolation-filters="sRGB"
+                          >
+                            <feFlood
+                              flood-opacity="0"
+                              result="BackgroundImageFix"
+                            />
+                            <feColorMatrix
+                              in="SourceAlpha"
+                              type="matrix"
+                              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                              result="hardAlpha"
+                            />
+                            <feOffset dy="2" />
+                            <feGaussianBlur stdDeviation="4" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix
+                              type="matrix"
+                              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                            />
+                            <feBlend
+                              mode="normal"
+                              in2="BackgroundImageFix"
+                              result="effect1_dropShadow_2184_5756"
+                            />
+                            <feBlend
+                              mode="normal"
+                              in="SourceGraphic"
+                              in2="effect1_dropShadow_2184_5756"
+                              result="shape"
+                            />
+                          </filter>
+                        </defs>
+                      </svg> */}
+                    </button>
+                  </div>
+
+                  <div>
+                    <h2 className="text-[#101010] font-medium">HP</h2>
+                    <p className="text-[#101010] text-[10px] ">
+                      Hyper X Cloud III
+                    </p>
+                  </div>
+
+                  <h2 className="text-base text-[#101010] ">$19</h2>
+                </div>
+
+                <div className="flex items-center justify-between gap-2.5 py-4 mx-4">
+                  <button className="bg-[#FD9A34] h-6 w-[32px] text-[#FDFDFD] rounded-md">
+                    -
+                  </button>
+                  <p className="h-6 w-6 text-xs text-[#000000] border border-[#B5B5B5] rounded-md flex items-center justify-center">
+                    10
+                  </p>
+                  <button className="bg-[#FD9A34] h-6 w-[32px] text-[#FDFDFD] rounded-md">
+                    +
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
