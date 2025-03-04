@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Menu, ShoppingCart, User } from "lucide-react";
 import Image from "next/image";
@@ -14,12 +14,37 @@ import {
 import { MobileMenu } from "./Mobile-Menu";
 import LanguageSelector from "../languageSelector/LanguageSelector";
 import { useTranslation } from "react-i18next";
+import { useGetAllProductsQuery } from "@/redux/features/products/ProductAPI";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [filterableProductType, setFilterableProductType] = useState<string[]>(
+    []
+  );
+
+  const isFirstRender = useRef(true);
+
+  const {
+    data: products,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetAllProductsQuery({ limit: 10000 });
+
+  useEffect(() => {
+    if (isFirstRender.current && products?.data?.products.length > 0) {
+      const filterableProducts = products.data.products.map(
+        (product: any) => product.product_type
+      );
+
+      isFirstRender.current = false;
+
+      setFilterableProductType([...new Set(filterableProducts)] as string[]);
+    }
+  }, [products]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,15 +60,11 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  console.log({ filterableProductType });
+  console.log({ products });
+
   return (
-    // <header className="top-0 z-50 md:pt-4 w-full  border-b bg-[#F2F5F7]">
     <header className="top-0 md:pt-4 w-full  border-b bg-[#F2F5F7]">
-      {/* <div
-        className={`fixed top-0 left-0 w-full  
-       h-14 lg:h-[96px] container mx-auto flex items-center justify-between px-4 transition-transform duration-300 ${
-         isVisible ? "translate-y-0" : "-translate-y-full"
-       }`}
-      > */}
       <div
         className="
        h-14 lg:h-[96px] container mx-auto flex items-center justify-between px-4"
@@ -84,7 +105,18 @@ export function Header() {
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
-              <DropdownMenuItem>
+              {filterableProductType.map((productType) => (
+                <DropdownMenuItem key={productType}>
+                  <Link
+                    href={`/buy/${productType}`}
+                    className="w-full px-5 capitalize"
+                  >
+                    {productType}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+
+              {/* <DropdownMenuItem>
                 <Link href="/buy/playstation" className="w-full px-5">
                   PlayStation
                 </Link>
@@ -98,7 +130,7 @@ export function Header() {
                 <Link href="/buy/nintendo" className="w-full px-5">
                   Nintendo
                 </Link>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
             </DropdownMenuContent>
           </DropdownMenu>
           <Link href="/sell" className="text-sm font-medium">

@@ -7,8 +7,6 @@ import Link from "next/link";
 import Container from "@/components/common/Container";
 import { useTranslation } from "react-i18next";
 import { useGetAllProductsQuery } from "@/redux/features/products/ProductAPI";
-import RangeSlider from "react-range-slider-input";
-import "react-range-slider-input/dist/style.css";
 import Loading from "@/app/loading";
 
 interface IProduct {
@@ -66,7 +64,8 @@ const ProductPage: React.FC = () => {
     brand: brandSearch,
     price: priceRange.length ? priceRange : undefined,
     condition: condition,
-    limit: 100,
+    sortBy: sortBy,
+    limit: 9,
   } as any);
 
   const URL = process.env.NEXT_PUBLIC_API_URL;
@@ -138,6 +137,7 @@ const ProductPage: React.FC = () => {
 
     switch (value) {
       case "below100":
+        min = 0;
         max = 100;
         break;
       case "100to300":
@@ -159,7 +159,7 @@ const ProductPage: React.FC = () => {
     setPriceRange([min ?? 0, max ?? 9000000]);
   };
 
-  console.log("products", products);
+  console.log("..........", products?.data?.products);
 
   return (
     <div className="relative bg-[#F2F5F7] flex flex-col lg:flex-row py-8">
@@ -275,15 +275,12 @@ const ProductPage: React.FC = () => {
                   onChange={(e) => setBrandSearch(e.target.value)}
                   className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
                 >
-                  <option onChange={() => setBrandSearch("")} value="">
-                    {t("all")}
-                  </option>
-
                   {filterableBrand?.map((brand, ind) => (
                     <option key={ind} value={brand as string}>
                       {brand as string}
                     </option>
                   ))}
+                  <option value="">{t("all")}</option>
                 </select>
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
@@ -347,10 +344,10 @@ const ProductPage: React.FC = () => {
                   onChange={(e) => setCondition(e.target.value)}
                   className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
                 >
-                  <option value="">{t("all")}</option>
                   {filterableCondition?.map((condition, ind) => (
                     <option key={ind}>{condition as string}</option>
                   ))}
+                  <option value="">{t("all")}</option>
                 </select>
 
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
@@ -448,8 +445,8 @@ const ProductPage: React.FC = () => {
                   >
                     {t("sortBy")}
                   </option>
-                  <option value="High to low">{t("highToLow")}</option>
-                  <option value="Low to high">{t("lowToHigh")}</option>
+                  <option value="max_price">{t("highToLow")}</option>
+                  <option value="min_price">{t("lowToHigh")}</option>
                 </select>
 
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">

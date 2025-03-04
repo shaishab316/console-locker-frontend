@@ -17,6 +17,7 @@ import { showTradeInDescription } from "@/redux/features/tradeIn/showTradeInSlic
 import { useTranslation } from "react-i18next";
 import { RootState } from "@/redux/store/store";
 import {
+  useFindSlugProductQuery,
   useGetAllProductsQuery,
   useGetSingleProductQuery,
 } from "@/redux/features/products/ProductAPI";
@@ -67,8 +68,31 @@ const ProductDetailsPage: React.FC = () => {
     isLoading,
     isError,
   } = useGetSingleProductQuery({
-    slug: slug as string,
+    slug: slug as string | undefined,
   });
+
+  const { data: slugRes } = useFindSlugProductQuery(
+    {
+      productName: singleProduct?.data?.product?.name,
+      condition: selectedCondition,
+      controller: selectedController,
+      memory: selectedMemory,
+      model: selectedModel,
+    },
+    {
+      skip:
+        !selectedCondition ||
+        !selectedController ||
+        !selectedMemory ||
+        !selectedModel,
+    }
+  );
+
+  useEffect(() => {
+    if (!singleProduct?.data?.product?.slug || !slugRes?.data?.slug) return;
+    if (singleProduct?.data?.product?.slug !== slugRes?.data?.slug)
+      router.replace(`/buy/${slugRes?.data?.slug}`);
+  }, [slugRes]);
 
   const {
     data: products,
@@ -150,6 +174,7 @@ const ProductDetailsPage: React.FC = () => {
               <p className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <svg
+                    key={i}
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -173,13 +198,14 @@ const ProductDetailsPage: React.FC = () => {
               <h4 className="text-2xl font-semibold text-[#101010] mb-2">
                 {t("model")}:
               </h4>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 {product?.meta?.models?.map((model: string) => (
                   <button
                     key={model}
+                    disabled={selectedModel === model}
                     className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
                       selectedModel === model
-                        ? "border-black bg-[#E7E7E7]"
+                        ? "border-black bg-[#E7E7E7] cursor-not-allowed"
                         : "border-gray-300"
                     }`}
                     onClick={() => setSelectedModel(model)}
@@ -192,7 +218,7 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="bg-[#daedf2] w-full p-6 rounded-lg border-l-4 border-black">
-              <div className="flex gap-2 mb-2">
+              <div className="flex flex-wrap gap-2 mb-2">
                 <p className="text-[#6B6B6B]">
                   <span className="text-base text-[#101010] font-normal">
                     {t("model")}:{" "}
@@ -212,13 +238,14 @@ const ProductDetailsPage: React.FC = () => {
               <h4 className="text-2xl font-semibold text-[#101010] mb-2">
                 {t("controller")}:
               </h4>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 {product?.meta?.controllers?.map((controller: number) => (
                   <button
                     key={controller}
+                    disabled={selectedController === controller}
                     className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
                       selectedController === controller
-                        ? "border-black bg-[#E7E7E7]"
+                        ? "border-black bg-[#E7E7E7] cursor-not-allowed"
                         : "border-gray-300"
                     }`}
                     onClick={() => setSelectedController(controller)}
@@ -235,13 +262,14 @@ const ProductDetailsPage: React.FC = () => {
               <h4 className="text-2xl font-semibold text-[#101010] mb-2">
                 {t("memory")}:
               </h4>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 {product?.meta?.memories?.map((memory: string) => (
                   <button
                     key={memory}
+                    disabled={selectedMemory === memory}
                     className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
                       selectedMemory === memory
-                        ? "border-black bg-[#E7E7E7]"
+                        ? "border-black bg-[#E7E7E7] cursor-not-allowed"
                         : "border-gray-300"
                     }`}
                     onClick={() => setSelectedMemory(memory)}
@@ -258,13 +286,14 @@ const ProductDetailsPage: React.FC = () => {
               <h4 className="text-2xl font-semibold text-[#101010] mb-2">
                 {t("conditions")}:
               </h4>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 {product?.meta?.conditions?.map((condition: string) => (
                   <button
                     key={condition}
+                    disabled={selectedCondition === condition}
                     className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
                       selectedCondition === condition
-                        ? "border-black bg-[#E7E7E7]"
+                        ? "border-black bg-[#E7E7E7] cursor-not-allowed"
                         : "border-gray-300"
                     }`}
                     onClick={() => setSelectedCondition(condition)}
