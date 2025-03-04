@@ -65,7 +65,7 @@ const ProductPage: React.FC = () => {
     price: priceRange.length ? priceRange : undefined,
     condition: condition,
     sortBy: sortBy,
-    limit: 9,
+    limit: 90,
   } as any);
 
   const URL = process.env.NEXT_PUBLIC_API_URL;

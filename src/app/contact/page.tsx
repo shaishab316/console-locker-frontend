@@ -4,6 +4,7 @@ import { useState } from "react";
 import Container from "@/components/common/Container";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import { useSendContactMutation } from "@/redux/features/contact/ContactAPI";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -11,25 +12,69 @@ export default function ContactPage() {
     "idle" | "success" | "error"
   >("idle");
   const { t } = useTranslation();
+  const [sendContact] = useSendContactMutation();
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    const form = event.currentTarget; // Use currentTarget for better type safety
+    const formData = new FormData(form);
+
+    // Extract values safely
+    const data = {
+      name: formData.get("fullName") as string,
+      email: formData.get("email") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
+    };
+
+    console.log(data); // Debugging
+
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    // const formData = new FormData(event.currentTarget);
-
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await sendContact(data).unwrap();
       setSubmitStatus("success");
-      event.currentTarget.reset();
+      form.reset();
     } catch (error) {
+      console.error("Error submitting contact form:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   }
+
+  // async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  //   event.preventDefault();
+
+  //   const form = event.target as HTMLFormElement;
+
+  //   const formData = {
+  //     name: form.fullName.value,
+  //     email: form.email.value,
+  //     subject: form.subject.value,
+  //     message: form.message.value,
+  //   };
+
+  //   console.log(formData);
+
+  //   setIsSubmitting(true);
+  //   setSubmitStatus("idle");
+
+  //   try {
+  //     await sendContact(formData).unwrap();
+  //     setSubmitStatus("success");
+  //     form.reset();
+  //   } catch (error) {
+  //     console.error("Error submitting contact form:", error);
+  //     setSubmitStatus("error");
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // }
+
+  console.log(submitStatus);
 
   return (
     <main className="min-h-screen bg-[#F2F5F7] py-12 sm:px-6 lg:px-8">

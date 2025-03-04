@@ -11,36 +11,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/loading.js"
     ],
-    "/page": [
+    "/contact/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
-    ],
-    "/buy/playstation/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/buy/playstation/page.js"
-    ],
-    "/buy/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/buy/[slug]/page.js"
-    ],
-    "/buy/xbox/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/buy/xbox/page.js"
-    ],
-    "/buy/nintendo/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/buy/nintendo/page.js"
+      "static/chunks/app/contact/page.js"
     ],
     "/sell/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/sell/page.js"
+    ],
+    "/sell/question/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/sell/question/page.js"
     ],
     "/sell/[slug]/page": [
       "static/chunks/webpack.js",
@@ -52,10 +36,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/sell/estimate-product/page.js"
     ],
-    "/_not-found/page": [
+    "/sell/personal-information/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/sell/personal-information/page.js"
+    ],
+    "/buy/playstation/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/buy/playstation/page.js"
     ]
   }
 }
