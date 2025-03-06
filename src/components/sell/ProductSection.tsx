@@ -20,7 +20,9 @@ const ProductSection = () => {
     data: products,
     isLoading,
     isError,
-  } = useSellProductQuery("someValidArgument");
+  } = useSellProductQuery({
+    limit: 100,
+  });
 
   if (isLoading)
     return (

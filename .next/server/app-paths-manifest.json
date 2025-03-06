@@ -1,8 +1,8 @@
 {
-  "/sell/page": "app/sell/page.js",
-  "/sell/question/page": "app/sell/question/page.js",
-  "/sell/[slug]/page": "app/sell/[slug]/page.js",
-  "/sell/estimate-product/page": "app/sell/estimate-product/page.js",
-  "/sell/personal-information/page": "app/sell/personal-information/page.js",
-  "/buy/playstation/page": "app/buy/playstation/page.js"
+  "/buy/playstation/page": "app/buy/playstation/page.js",
+  "/buy/[slug]/page": "app/buy/[slug]/page.js",
+  "/about/page": "app/about/page.js",
+  "/returns-and-refunds/page": "app/returns-and-refunds/page.js",
+  "/privacy-policy/page": "app/privacy-policy/page.js",
+  "/sell/estimate-product/page": "app/sell/estimate-product/page.js"
 }

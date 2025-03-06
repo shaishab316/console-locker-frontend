@@ -20,10 +20,10 @@ const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
           alt="Product"
           width={400}
           height={400}
-          className="object-contain p-10 max-h-max"
+          className="object-contain p-10 w-full h-[350px]"
         />
       </div>
-      <div className="flex justify-between items-center p-5">
+      <div className="flex justify-between items-center gap-2 p-5">
         <div>
           <h3 className="text-xl font-semibold text-[#101010] mb-2">
             {product.name}

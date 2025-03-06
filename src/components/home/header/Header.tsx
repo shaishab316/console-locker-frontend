@@ -60,9 +60,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  console.log({ filterableProductType });
-  console.log({ products });
-
   return (
     <header className="top-0 md:pt-4 w-full  border-b bg-[#F2F5F7]">
       <div
@@ -105,7 +102,7 @@ export function Header() {
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
-              {filterableProductType.map((productType) => (
+              {/* {filterableProductType.map((productType) => (
                 <DropdownMenuItem key={productType}>
                   <Link
                     href={`/buy/${productType}`}
@@ -114,9 +111,9 @@ export function Header() {
                     {productType}
                   </Link>
                 </DropdownMenuItem>
-              ))}
+              ))} */}
 
-              {/* <DropdownMenuItem>
+              <DropdownMenuItem>
                 <Link href="/buy/playstation" className="w-full px-5">
                   PlayStation
                 </Link>
@@ -130,7 +127,7 @@ export function Header() {
                 <Link href="/buy/nintendo" className="w-full px-5">
                   Nintendo
                 </Link>
-              </DropdownMenuItem> */}
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <Link href="/sell" className="text-sm font-medium">
