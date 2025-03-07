@@ -438,12 +438,13 @@ const ProductPage: React.FC = () => {
                   className="appearance-none w-40 md:w-56 px-2.5 py-2 border border-[#101010] rounded-md font-medium text-sm bg-transparent lg:bg-[#FDFDFD] text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer"
                 >
                   <option
-                    defaultValue={""}
+                    defaultValue={"Sort By"}
                     value={""}
                     className="text-[#101010]"
-                    disabled
+                    // disabled
                   >
                     {t("sortBy")}
+                    <span className="text-xs"> (Default)</span>
                   </option>
                   <option value="max_price">{t("highToLow")}</option>
                   <option value="min_price">{t("lowToHigh")}</option>

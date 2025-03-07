@@ -430,6 +430,8 @@ import {
 import Image from "next/image";
 import { showTradeInDescription } from "@/redux/features/tradeIn/showTradeInSlice";
 import { Check } from "lucide-react";
+import Loading from "@/app/loading";
+import { useGetEstimateProductPriceMutation } from "@/redux/features/products/ProductAPI";
 
 const ConsoleModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -437,11 +439,23 @@ const ConsoleModal: React.FC = () => {
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>
   >({});
+
+  // set current option
+  const [selectedOption, setSelectedOption] = useState<string>();
   const [selectedConsole, setSelectedConsole] = useState("");
 
-  const [productId, setProductId] = useState<string | null>(null);
   const modalState = useSelector((state: RootState) => state.modal.modal);
   const dispatch = useDispatch();
+  const [productId, setProductId] = useState<string | null>(null);
+  const [questionsOptionsId, setQuestionsOptionsId] = useState<
+    { quesId: string; optionId: string }[]
+  >([]);
+  const [estimatePrice, setEstimatePrice] = useState<number>(0);
+
+  const [
+    getEstimateProductPrice,
+    { data, isLoading: getPriceLoading, isError: getPriceError },
+  ] = useGetEstimateProductPriceMutation();
 
   console.log(selectedOptions);
 
@@ -468,24 +482,47 @@ const ConsoleModal: React.FC = () => {
     setSelectedConsole(e.target.value);
     setProductId(e.target.value);
     setCurrentStep(1);
+
+    console.log("inside handleChooseConsole .......", e.target.value);
   };
 
-  const handleOptionSelect = (questionName: string, option: string) => {
-    setSelectedOptions((prev) => ({ ...prev, [questionName]: option }));
-    setCurrentStep((prev) => prev + 1);
+  const handleOptionSelect = (
+    quesId: string,
+    optionId: string,
+    option: string
+  ) => {
+    console.log("handle Option Select ........", quesId, optionId, option);
+
+    const newQuestionOption = { quesId, optionId };
+    setQuestionsOptionsId((prev) => [...prev, newQuestionOption]);
+
+    // setSelectedOptions((prev) => ({ ...prev, [questionName]: option }));
+    setSelectedOption(option);
+
+    setTimeout(() => {
+      setCurrentStep((prev) => prev + 1);
+    }, 600);
   };
 
-  const addTradeIn = () => {
+  const addTradeIn = async () => {
+    const response = await getEstimateProductPrice({
+      id: productId as string,
+      body: { questions: questionsOptionsId },
+    });
+
+    setEstimatePrice(response?.data?.price);
+
     dispatch(toggleModal());
     dispatch(showTradeInDescription());
   };
 
   const questions = productData?.data?.questions || [];
 
-  console.log("questions.....", productData);
+  console.log("questionsOptionsId .....", questionsOptionsId);
+  // console.log("productData ...... ", productData?.data?.questions);
 
   const renderContent = () => {
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <Loading />;
 
     if (currentStep === 0) {
       return (
@@ -515,7 +552,9 @@ const ConsoleModal: React.FC = () => {
                 Choose your console
               </option>
               {consoleLists?.data?.products?.map((console: any) => (
-                <option value={console?._id}>{console?.name}</option>
+                <option key={console._id} value={console?._id}>
+                  {console?.name}
+                </option>
               ))}
             </select>
 
@@ -541,9 +580,9 @@ const ConsoleModal: React.FC = () => {
 
     if (currentStep <= questions.length) {
       const question = questions[currentStep - 1];
-
+      // console.log("question", question);
       return (
-        <div className="h-[500px]">
+        <div className="min-h-[500px]">
           <div className="mb-5">
             <h2 className="text-[40px] font-semibold text-[#101010] mt-8">
               Great! Let’s started.
@@ -558,12 +597,17 @@ const ConsoleModal: React.FC = () => {
           <h2 className="font-semibold text-[24px] mb-5">
             {question.description}
           </h2>
+
           <div className="flex flex-wrap gap-2">
             {question?.options?.map((option: any) => (
               <button
                 key={option._id}
-                onClick={() => handleOptionSelect(question.name, option.option)}
-                className="min-w-[177px] min-h-[111px] flex flex-col items-center justify-center gap-2 border rounded text-lg text-[#101010] font-medium"
+                onClick={() =>
+                  handleOptionSelect(question._id, option._id, option.option)
+                }
+                className={`min-w-[177px] min-h-[111px] ${
+                  selectedOption === option.option ? "bg-[#E7E7E7]" : ""
+                } flex flex-col items-center justify-center gap-2 border rounded text-lg text-[#101010] font-medium`}
               >
                 {option.option} (+${option.price})
                 <Check />
@@ -592,7 +636,7 @@ const ConsoleModal: React.FC = () => {
 
           <div className="bg-[#D1FCEE] my-6 p-6 rounded-lg">
             <h2 className="text-[#007B52] text-center text-5xl font-semibold leading-[]">
-              $5,00
+              ${estimatePrice}
             </h2>
 
             <p className="text-base text-center max-w-80 mx-auto text-[#007B52] leading-6 mt-4">

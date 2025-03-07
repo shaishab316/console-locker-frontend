@@ -17,15 +17,16 @@ export default function PlayStationOffer() {
   const { t } = useTranslation();
 
   const [priceEstimate, setPriceEstimate] = useState<any>(null);
-  const [
-    getEstimateProductPrice,
-    { isLoading: getPriceLoading, isError: getPriceError },
-  ] = useGetEstimateProductPriceMutation();
   const [productId, setProductId] = useState<string | null>(null);
 
   const userSelectedOptions = useSelector(
     (state: RootState) => state?.questionSlice?.questions
   );
+
+  const [
+    getEstimateProductPrice,
+    { isLoading: getPriceLoading, isError: getPriceError },
+  ] = useGetEstimateProductPriceMutation();
 
   const {
     data: product,
@@ -169,13 +170,13 @@ export default function PlayStationOffer() {
 
                 <div className="grid grid-cols-2 gap-y-3">
                   {userSelectedOptions?.map((option: any, index: number) => (
-                    <div>
-                      <div className="flex gap-2">
-                        <span className="text-gray-600">
-                          {option?.questionAnswer?.questionTitle} :
-                        </span>
-                        <span>{option?.questionAnswer?.questionAnswer}</span>
-                      </div>
+                    <div className="flex gap-2">
+                      <p className="text-[#2B2B2B] text-lg">
+                        {option?.questionAnswer?.questionTitle}:
+                      </p>
+                      <p className="text-[#2B2B2B] text-lg">
+                        {option?.questionAnswer?.questionAnswer}
+                      </p>
                     </div>
                   ))}
                 </div>

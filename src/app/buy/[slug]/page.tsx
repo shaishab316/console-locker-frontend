@@ -143,7 +143,7 @@ const ProductDetailsPage: React.FC = () => {
   //   selectedController,
   // });
 
-  console.log({ consoleLists });
+  // console.log({ consoleLists });
 
   return (
     <div className="py-16 bg-[#F2F5F7]">

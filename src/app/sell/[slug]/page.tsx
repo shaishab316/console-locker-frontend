@@ -70,7 +70,7 @@ export default function ScreenCondition() {
   } = useGetASingleProductQuery(params?.slug as string);
 
   if (isLoading) {
-    return (
+    return ( 
       <div>
         <Loading />
       </div>
