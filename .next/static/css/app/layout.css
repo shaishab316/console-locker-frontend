@@ -2211,13 +2211,6 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
-.bg-\[\] {
-  background-color: ;
-}
-.bg-\[\#ddd\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(221 221 221 / var(--tw-bg-opacity, 1));
-}
 .bg-\[url\(\'\/sell\/back_sell\.png\'\)\] {
   background-image: url('/sell/back_sell.png');
 }

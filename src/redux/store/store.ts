@@ -1,11 +1,10 @@
-
 import { configureStore } from "@reduxjs/toolkit";
 import baseAPI from "../api/baseAPI";
-import modalReducer from "@/redux/features/modal/modalSlice"
-import showTradeInReducer from '@/redux/features/tradeIn/showTradeInSlice'
-import sellProductSlice from '@/redux/features/sell/SellProductSlice'
-import questionReducer from '@/redux/features/questions/QuestionSlice'
-
+import modalReducer from "@/redux/features/modal/modalSlice";
+import showTradeInReducer from "@/redux/features/tradeIn/showTradeInSlice";
+import sellProductSlice from "@/redux/features/sell/SellProductSlice";
+import questionReducer from "@/redux/features/questions/QuestionSlice";
+import modalTradeInDataReducer from "@/redux/features/modalTradeInData/ModalTradeInData";
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +14,7 @@ export const store = configureStore({
     showTradeInData: showTradeInReducer,
     sellProduct: sellProductSlice,
     questionSlice: questionReducer,
+    modalTradeInDataSlice: modalTradeInDataReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(baseAPI.middleware),

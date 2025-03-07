@@ -59,6 +59,10 @@ const ProductDetailsPage: React.FC = () => {
   const isOpenTradeIn = useSelector(
     (state: RootState) => state?.showTradeInData?.isOpenTradeIn
   );
+  const modalTradeInData = useSelector(
+    (state: RootState) => state?.modalTradeInDataSlice?.modalTradeInData
+  );
+
   const { t } = useTranslation();
   const { slug } = useParams();
   const router = useRouter();
@@ -136,6 +140,12 @@ const ProductDetailsPage: React.FC = () => {
     dispatch(showTradeInDescription());
   };
 
+  const handleAddToCart = () => {
+    localStorage.setItem("modalTradeInData", JSON.stringify(modalTradeInData));
+
+    router.push("/cart");
+  };
+
   // console.log({
   //   selectedModel,
   //   selectedMemory,
@@ -143,7 +153,7 @@ const ProductDetailsPage: React.FC = () => {
   //   selectedController,
   // });
 
-  // console.log({ consoleLists });
+  console.log("modalTradeInData", modalTradeInData);
 
   return (
     <div className="py-16 bg-[#F2F5F7]">
@@ -488,12 +498,12 @@ const ProductDetailsPage: React.FC = () => {
                   Ready to be shipped.
                 </h2>
               </div>
-              <Link
-                href={"/cart"}
+              <button
+                onClick={handleAddToCart}
                 className="h-14 flex items-center justify-center bg-black text-white text-center px-6 py-3 rounded-md"
               >
                 {t("addToCart")}
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -513,7 +523,7 @@ const ProductDetailsPage: React.FC = () => {
                   <div className="bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-lg pb-2">
                     <Image
                       src={`${API_URL}${product.images[0]}`}
-                      alt={product.title}
+                      alt={product?.title}
                       width={300}
                       height={387}
                       className="object-center object-cover w-full h-[387px] rounded-t-lg"

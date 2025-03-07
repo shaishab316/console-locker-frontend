@@ -418,8 +418,8 @@
 
 // export default ConsoleModal;
 
-import React, { useState } from "react";
-import { Button, Modal } from "antd";
+import React, { useEffect, useState } from "react";
+import { Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
 import { toggleModal } from "@/redux/features/modal/modalSlice";
@@ -432,6 +432,7 @@ import { showTradeInDescription } from "@/redux/features/tradeIn/showTradeInSlic
 import { Check } from "lucide-react";
 import Loading from "@/app/loading";
 import { useGetEstimateProductPriceMutation } from "@/redux/features/products/ProductAPI";
+import { addModalTradeInData } from "@/redux/features/modalTradeInData/ModalTradeInData";
 
 const ConsoleModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -451,13 +452,16 @@ const ConsoleModal: React.FC = () => {
     { quesId: string; optionId: string }[]
   >([]);
   const [estimatePrice, setEstimatePrice] = useState<number>(0);
+  const [tradeIn, setTradeIn] = useState(null);
+
+  const modalTradeInData = useSelector(
+    (state: RootState) => state?.modalTradeInDataSlice?.modalTradeInData
+  );
 
   const [
     getEstimateProductPrice,
     { data, isLoading: getPriceLoading, isError: getPriceError },
   ] = useGetEstimateProductPriceMutation();
-
-  console.log(selectedOptions);
 
   // Fetch product details
   const { data: productData, isLoading } = useGetASingleProductQuery(
@@ -483,7 +487,7 @@ const ConsoleModal: React.FC = () => {
     setProductId(e.target.value);
     setCurrentStep(1);
 
-    console.log("inside handleChooseConsole .......", e.target.value);
+    // console.log("inside handleChooseConsole .......", e.target.value);
   };
 
   const handleOptionSelect = (
@@ -491,8 +495,6 @@ const ConsoleModal: React.FC = () => {
     optionId: string,
     option: string
   ) => {
-    console.log("handle Option Select ........", quesId, optionId, option);
-
     const newQuestionOption = { quesId, optionId };
     setQuestionsOptionsId((prev) => [...prev, newQuestionOption]);
 
@@ -501,24 +503,44 @@ const ConsoleModal: React.FC = () => {
 
     setTimeout(() => {
       setCurrentStep((prev) => prev + 1);
-    }, 600);
+    }, 300);
+  };
+
+  const getProductPrice = async () => {
+    try {
+      const response = await getEstimateProductPrice({
+        id: productId as string,
+        body: { questions: questionsOptionsId },
+      });
+      setEstimatePrice(response?.data?.data?.price || 0);
+    } catch (error) {
+      console.error("Error fetching estimated price:", error);
+    }
   };
 
   const addTradeIn = async () => {
-    const response = await getEstimateProductPrice({
+    const ableTradeIn = {
       id: productId as string,
-      body: { questions: questionsOptionsId },
-    });
+      tradeIn: { questions: questionsOptionsId },
+    };
 
-    setEstimatePrice(response?.data?.price);
+    dispatch(addModalTradeInData(ableTradeIn));
 
+    // console.log(ableTradeIn);
     dispatch(toggleModal());
     dispatch(showTradeInDescription());
   };
 
   const questions = productData?.data?.questions || [];
 
-  console.log("questionsOptionsId .....", questionsOptionsId);
+  useEffect(() => {
+    if (currentStep === questions.length) {
+      getProductPrice();
+    }
+  }, [currentStep, questionsOptionsId]);
+
+  console.log("modalTradeInData .....", modalTradeInData);
+
   // console.log("productData ...... ", productData?.data?.questions);
 
   const renderContent = () => {
@@ -607,7 +629,7 @@ const ConsoleModal: React.FC = () => {
                 }
                 className={`min-w-[177px] min-h-[111px] ${
                   selectedOption === option.option ? "bg-[#E7E7E7]" : ""
-                } flex flex-col items-center justify-center gap-2 border rounded text-lg text-[#101010] font-medium`}
+                } flex flex-col items-center justify-center gap-2 border rounded text-lg text-[#101010] font-medium p-5`}
               >
                 {option.option} (+${option.price})
                 <Check />
