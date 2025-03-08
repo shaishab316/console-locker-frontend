@@ -2,10 +2,12 @@
 
 import Container from "@/components/common/Container";
 import PaymentHeader from "@/components/payment/PaymentHeader";
+import { useGetProductsByIdsQuery } from "@/redux/features/products/GetProductByIds";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import Loading from "../loading";
 
 interface CartItem {
   id: string;
@@ -18,6 +20,26 @@ interface CartItem {
   quantity: number;
   available: boolean;
   alternativeAvailable?: boolean;
+}
+
+interface IProduct {
+  _id: string;
+  admin: string;
+  images: string[];
+  name: string;
+  description: string;
+  price: number;
+  offer_price: number;
+  brand: string;
+  model: string;
+  condition: string;
+  controller: string;
+  memory: string;
+  quantity: number;
+  isVariant: boolean;
+  product_type: string;
+  slug: string;
+  __v: number;
 }
 
 export default function CartPage() {
@@ -69,56 +91,111 @@ export default function CartPage() {
     },
   ]);
   const { t } = useTranslation();
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  const updateQuantity = (id: string, increment: boolean) => {
-    setItems(
-      items.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              quantity: increment
-                ? item.quantity + 1
-                : Math.max(0, item.quantity - 1),
-            }
-          : item
-      )
+  const getProductIds = () => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]"); // Retrieve cart data
+    const productIds: string[] = cart.map(
+      (item: { productId: string; tradeIn: any }) => item.productId
     );
+    return productIds.join(",");
+  };
+
+  const {
+    data: products,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetProductsByIdsQuery(getProductIds());
+
+  const getProductQuantity = (id: string) => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const product = cart.find(
+      (item: { productId: string }) => item.productId === id
+    );
+
+    return product ? product.quantity : 0;
   };
 
   const removeItem = (id: string) => {
-    setItems(items.filter((item) => item.id !== id));
+    refetch();
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const updatedCart = cart.filter(
+      (item: { productId: string }) => item.productId !== id
+    );
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  const subtotal = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  const subtotal = products?.data?.products.reduce(
+    (total: number, product: IProduct) => {
+      const quantity = getProductQuantity(product._id);
+
+      // Multiply the quantity by the offer price of the product
+      return total + quantity * product.offer_price;
+    },
     0
   );
+
   const shipping = 0;
   const total = subtotal + shipping;
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  const increaseQuantity = (id: string) => {
+    // Get the cart data from localStorage
+    refetch();
+    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    // Check if the product exists in the cart
+    const updatedCart = cartData.map((item: any) => {
+      if (item.productId === id) {
+        return { ...item, quantity: item.quantity + 1 }; // Increase quantity
+      }
+      return item;
+    });
+
+    // Store the updated cart back into localStorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const decreaseQuantity = (id: string) => {
+    refetch();
+    // Get the cart data from localStorage
+    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    // Check if the product exists in the cart
+    const updatedCart = cartData.map((item: any) => {
+      if (item.productId === id && item.quantity > 1) {
+        // Decrease quantity only if it's greater than 1
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+
+    // Store the updated cart back into localStorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
 
   return (
     <div className="min-h-screen bg-[#F2F5F7] pt-16 pb-20">
       <PaymentHeader />
       <Container>
-        {/* <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Cart</h1>
-        </div> */}
-
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Cart Items */}
           <div className="bg-[#FDFDFD] rounded-lg flex-grow space-y-4">
             <div className="pt-6 pl-6">
-              <h1 className="text-2xl font-bold text-[#101010]">
-                {t("checkout")}
-              </h1>
+              <h1 className="text-2xl font-bold text-[#101010]">{t("cart")}</h1>
             </div>
-            {items.map((item) => (
-              <div key={item.id} className="bg-[#FDFDFD] rounded-lg p-6">
+            {products?.data?.products.map((product: IProduct) => (
+              <div key={product?._id} className="bg-[#FDFDFD] rounded-lg p-6">
                 <div className="flex flex-wrap items-center justify-between space-x-4">
                   <div className="w-24 h-24 relative flex-shrink-0">
                     <Image
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.name}
+                      src={`${API_URL}/${product?.images[0]}`}
+                      alt={product?.name}
                       width={100}
                       height={120}
                       className="object-cover rounded-lg"
@@ -128,11 +205,11 @@ export default function CartPage() {
                   <div className="flex-1 flex flex-wrap gap-3">
                     <div className="flex-grow flex flex-col justify-between space-y-2.5 h-inherit">
                       <h3 className="text-xl font-semibold text-[#101010] mb-1">
-                        {item.name}
+                        {product.name}
                       </h3>
-                      <p className="text-xs md:text-base text-[#5F5F5F] mb-1">
-                        {t("warranty")}: {item.warranty} | {item.storage} |
-                        {t("condition")}: {item.condition}
+                      <p className="text-xs md:text-base text-[#5F5F5F] mb-1 capitalize">
+                        {t("brand")}: {product?.brand} | {product?.memory} |{" "}
+                        {t("condition")}: {product?.condition}
                       </p>
                       <p className="text-xs md:text-sm text-[#5F5F5F]">
                         {t("salesAndShipping")}:{" "}
@@ -142,27 +219,34 @@ export default function CartPage() {
 
                     <div className="text-right">
                       <p className="text-lg font-medium text-gray-900">
-                        {t("price")}: ${item.price}
+                        {t("price")}: $
+                        {(
+                          product?.offer_price *
+                          getProductQuantity(product?._id)
+                        ).toFixed(2)}
                       </p>
                       <div className="flex items-center space-x-2 mt-2">
                         <button
-                          onClick={() => updateQuantity(item.id, false)}
-                          className="w-7 h-7 bg-transparent flex items-center justify-center text-lg border border-[#E6E6E6] rounded-md px-1 py-1 text-[#101010] hover:text-gray-700"
+                          onClick={() => decreaseQuantity(product?._id)}
+                          className={`${
+                            getProductQuantity(product?._id) === 1 &&
+                            "cursor-not-allowed"
+                          } w-7 h-7 bg-transparent flex items-center justify-center text-lg border border-[#E6E6E6] rounded-md px-1 py-1 text-[#101010] hover:text-gray-700`}
                         >
                           -
                         </button>
                         <span className="text-gray-700 px-1">
-                          {item.quantity}
+                          {getProductQuantity(product?._id)}
                         </span>
                         <button
-                          onClick={() => updateQuantity(item.id, true)}
+                          onClick={() => increaseQuantity(product?._id)}
                           className="w-7 h-7 bg-transparent flex items-center justify-center text-lg border border-[#E6E6E6] rounded-md px-1 py-1 text-[#101010] hover:text-gray-700"
                         >
                           +
                         </button>
                       </div>
                       <button
-                        onClick={() => removeItem(item.id)}
+                        onClick={() => removeItem(product?._id)}
                         className="text-sm text-[#F04848] font-medium hover:text-[#ed3d3d] mt-2 underline"
                       >
                         {t("remove")}
@@ -171,7 +255,7 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                {!item.available && (
+                {!product.quantity && (
                   <>
                     <div className="bg-[#F5CECE] text-[#F04848] text-xs px-3 py-2 rounded-md my-4">
                       2/3 Not available
@@ -205,7 +289,9 @@ export default function CartPage() {
                 <div className="rounded-md bg-[#DAEDF2]">
                   <div className="p-4">
                     <div className="flex justify-between">
-                      <span className="text-[#101010] font-semibold">Xbox</span>
+                      <span className="text-[#101010] font-semibold">
+                        Total
+                      </span>
                       <span className="text-[#101010]">
                         ${subtotal.toFixed(2)}
                       </span>
@@ -256,7 +342,7 @@ export default function CartPage() {
                       />
                     </div>
                     <span className="text-[#101010]">
-                      {"12 Months Warranty"} 
+                      {"12 Months Warranty"}
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">

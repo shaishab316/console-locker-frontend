@@ -24,6 +24,7 @@ import {
 import Loading from "@/app/loading";
 import { useParams, useRouter } from "next/navigation";
 import { useSellProductQuery } from "@/redux/features/sell/SellProductAPI";
+import toast from "react-hot-toast";
 
 interface Product {
   title: string;
@@ -140,20 +141,67 @@ const ProductDetailsPage: React.FC = () => {
     dispatch(showTradeInDescription());
   };
 
+  // const handleAddToCart = () => {
+  //   if (!modalTradeInData) {
+  //     const data = {
+  //       productId: product?.product?._id,
+  //       tradeIn: modalTradeInData,
+  //     };
+  //   }
+
+  //   const data = {
+  //     productId: product?.product?._id,
+  //     tradeIn: modalTradeInData,
+  //   };
+
+  //   localStorage.setItem("cart", JSON.stringify([data]));
+
+  //   router.push("/cart");
+  // };
+
   const handleAddToCart = () => {
-    localStorage.setItem("modalTradeInData", JSON.stringify(modalTradeInData));
+    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    const newProduct = {
+      productId: product?.product?._id,
+      quantity: 1,
+      tradeIn: modalTradeInData || null,
+    };
+
+    // Check if the productId already exists to prevent duplicates
+    interface CartItem {
+      productId: string;
+      quantity: number;
+      tradeIn: any; // Replace 'any' with the appropriate type if known
+    }
+
+    const isDuplicate: boolean = existingCart.some(
+      (item: CartItem) => item.productId === newProduct.productId
+    );
+
+    if (isDuplicate) {
+      const updatedCart = existingCart.map((item: CartItem) => {
+        if (item.productId === newProduct.productId) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
+        return item;
+      });
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+
+    if (!isDuplicate) {
+      toast.success("Product added to cart successfully!");
+      existingCart.push(newProduct); // Add new product
+      localStorage.setItem("cart", JSON.stringify(existingCart)); // Save updated cart
+    }
 
     router.push("/cart");
   };
 
-  // console.log({
-  //   selectedModel,
-  //   selectedMemory,
-  //   selectedCondition,
-  //   selectedController,
-  // });
-
-  console.log("modalTradeInData", modalTradeInData);
+  console.log("product id...........", modalTradeInData);
 
   return (
     <div className="py-16 bg-[#F2F5F7]">

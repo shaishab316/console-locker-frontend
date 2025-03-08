@@ -29,7 +29,7 @@ const ProductAPI = baseAPI.injectEndpoints({
           queryParams.append("product_type", product_type);
         if (brand && brand !== "all") queryParams.append("brand", brand);
         if (condition && condition !== "all")
-          queryParams.append("condition", condition);
+          queryParams.append("condition", condition); 
         if (limit) queryParams.append("limit", limit.toString());
         if (sortBy) queryParams.append("sort", sortBy.toString());
 
