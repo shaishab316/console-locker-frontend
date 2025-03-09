@@ -45,6 +45,8 @@ export default function Checkout() {
     }
   };
 
+  const handlePayment = () => {};
+
   return (
     <div className="min-h-screen bg-[#F2F5F7] pt-8 pb-16">
       {/* Progress Steps */}
@@ -276,11 +278,14 @@ export default function Checkout() {
                 </div>
 
                 {/* Proceed Button */}
-                <Link href={"/empty"}>
-                  <button className="w-full bg-black text-white py-3 rounded mt-6 hover:bg-gray-800 transition-colors">
-                    {t("proceedToPurchase")}
-                  </button>
-                </Link>
+                {/* <Link href={"/empty"}> */}
+                <button
+                  onClick={handlePayment}
+                  className="w-full bg-black text-white py-3 rounded mt-6 hover:bg-gray-800 transition-colors"
+                >
+                  {t("proceedToPurchase")}
+                </button>
+                {/* </Link> */}
 
                 {/* Terms and Privacy */}
                 <p className="mt-4 text-lg text-[#2B2B2B]">

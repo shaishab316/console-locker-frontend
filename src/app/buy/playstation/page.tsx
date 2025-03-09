@@ -177,44 +177,80 @@ const ProductPage: React.FC = () => {
             {filterView && (
               <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white rounded-lg p-5">
                 <div className="mb-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <h4 className="font-semibold mb-2">Products</h4>
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="font-semibold mb-2">{t("products")}</h4>
                     <p>
                       <X onClick={() => setFilterView(false)} />
                     </p>
                   </div>
 
-                  <select className="w-full border-none outline-none">
+                  {/* <select className="w-full border-none outline-none">
                     <option>All</option>
                     <option>PlayStation</option>
                     <option>Xbox</option>
                     <option>Nintendo</option>
+                  </select> */}
+
+                  <select
+                    onChange={(e) => setSearchProduct(e.target.value)}
+                    className="w-[80%] text-[#6B6B6B] appearance-none border-none outline-none px-1.5"
+                  >
+                    {/* "All" option to reset search */}
+                    <option value="">{t("all")}</option>
+
+                    {/* Dynamically rendered options */}
+                    {filterableProduct?.map((product, ind) => (
+                      <option key={ind} value={product as string}>
+                        {product as string}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className="mb-4">
-                  <h4 className="font-semibold mb-2">Brand</h4>
-                  <select className="w-full border-none outline-none">
-                    <option>All</option>
-                    <option>PlayStation</option>
-                    <option>Xbox</option>
-                    <option>Nintendo</option>
+                  <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                    {t("brand")}
+                  </h4>
+
+                  <select
+                    onChange={(e) => setBrandSearch(e.target.value)}
+                    className="w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5"
+                  >
+                    {filterableBrand?.map((brand, ind) => (
+                      <option key={ind} value={brand as string}>
+                        {brand as string}
+                      </option>
+                    ))}
+                    <option value="">{t("all")}</option>
                   </select>
                 </div>
                 <div className="mb-4">
-                  <h4 className="font-semibold mb-2">Price Range</h4>
-                  <select className="w-full border-none outline-none">
-                    <option>All</option>
-                    <option>$100 - $300</option>
-                    <option>$300 - $500</option>
-                    <option>$500+</option>
+                  <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                    {t("priceRange")}
+                  </h4>
+                  <select
+                    onChange={handlePriceChange}
+                    className="w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5"
+                  >
+                    <option value="">{t("all")}</option>
+
+                    <option value="below100">{t("below100")}</option>
+                    <option value="100to300">{t("100to300")}</option>
+                    <option value="300to500">{t("300to500")}</option>
+                    <option value="up500">{t("upFiveHundread")}</option>
                   </select>
                 </div>
                 <div className="mb-4">
-                  <h4 className="font-semibold mb-2">Condition</h4>
-                  <select className="w-full border-none outline-none">
-                    <option>All</option>
-                    <option>Good</option>
-                    <option>New</option>
+                  <h4 className="text-[#101010] text-xl font-semibold mb-2">
+                    {t("condition")}
+                  </h4>
+                  <select
+                    onChange={(e) => setCondition(e.target.value)}
+                    className="w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5"
+                  >
+                    {filterableCondition?.map((condition, ind) => (
+                      <option key={ind}>{condition as string}</option>
+                    ))}
+                    <option value="">{t("all")}</option>
                   </select>
                 </div>
                 <button
@@ -432,7 +468,7 @@ const ProductPage: React.FC = () => {
               </div>
 
               {/* sorting */}
-              <div className="h-10 relative flex gap-2">
+              <div className="h-10 relative flex gap-3">
                 <select
                   onChange={(e) => setSortBy(e.target.value)}
                   className="appearance-none w-40 md:w-56 px-2.5 py-2 border border-[#101010] rounded-md font-medium text-sm bg-transparent lg:bg-[#FDFDFD] text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer"
@@ -450,7 +486,7 @@ const ProductPage: React.FC = () => {
                   <option value="min_price">{t("lowToHigh")}</option>
                 </select>
 
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <div className="absolute inset-y-0 -right-2 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
                   <svg
                     className="w-6 h-6 text-[#101010]"

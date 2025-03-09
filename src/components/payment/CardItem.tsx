@@ -39,6 +39,7 @@ export function CartItem({
             Alternative option available
           </span>
         )}
+
         <div className="flex flex-col gap-4">
           <div className="relative w-32 h-32 flex items-center justify-center mx-auto">
             <Image

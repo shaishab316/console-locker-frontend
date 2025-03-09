@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Loading from "../loading";
+import toast from "react-hot-toast";
 
 interface CartItem {
   id: string;
@@ -90,6 +91,7 @@ export default function CartPage() {
       available: true,
     },
   ]);
+  const [coupon, setCoupon] = useState<string>("");
   const { t } = useTranslation();
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -179,10 +181,20 @@ export default function CartPage() {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  const handleCoupon = () => {
+    if (coupon.length > 0) {
+      toast.error("Coupon isn't available at the moment!");
+      setCoupon("");
+    }
+  };
+
+  console.log("variants.............", products?.data?.variants);
+
   return (
     <div className="min-h-screen bg-[#F2F5F7] pt-16 pb-20">
-      <PaymentHeader />
+      <PaymentHeader variants={products?.data?.variants} />
       <Container>
+        {/* only for desktop */}
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Cart Items */}
           <div className="bg-[#FDFDFD] rounded-lg flex-grow space-y-4">
@@ -323,10 +335,16 @@ export default function CartPage() {
                 <div className="flex items-center gap-5 py-3">
                   <input
                     type="text"
+                    name="coupon"
+                    value={coupon}
+                    onChange={(e) => setCoupon(e.target.value)}
                     placeholder="Enter your code"
                     className="w-full px-4 py-2.5 border rounded-lg"
                   />
-                  <button className=" bg-gray-800 text-white px-4 py-2.5 rounded-lg hover:bg-gray-700">
+                  <button
+                    onClick={handleCoupon}
+                    className=" bg-gray-800 text-white px-4 py-2.5 rounded-lg hover:bg-gray-700"
+                  >
                     {t("apply")}
                   </button>
                 </div>
@@ -401,6 +419,8 @@ export default function CartPage() {
             </div>
           </div>
         </div>
+
+        {/* only for mobile */}
       </Container>
     </div>
   );

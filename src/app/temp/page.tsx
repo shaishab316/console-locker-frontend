@@ -78,7 +78,7 @@ const MobileProductDetails = () => {
   return (
     <div className="bg-[#EAE9EF]">
       {/* product details */}
-      <div className="hidden">
+      <div className="">
         <div className="w-full">
           <Image
             src={"/sell/product-detail.png"}
@@ -464,8 +464,7 @@ const MobileProductDetails = () => {
       </div>
 
       {/* cart page - design */}
-
-      <div className="bg-[#EAE9EF]">
+      <div className="hidden bg-[#EAE9EF]">
         <div className="mx-5">
           <h2 className="pt-3 mb-5 text-[32px] font-semibold text-[#101010] border-b-2 border-b-[#B8B8B8]">
             Your Cart

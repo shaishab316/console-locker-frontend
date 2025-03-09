@@ -6,6 +6,7 @@ import Container from "@/components/common/Container";
 import Link from "next/link";
 import PaymentHeader from "@/components/payment/PaymentHeader";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
 
 interface OrderItem {
   id: string;
@@ -33,6 +34,7 @@ export default function CheckoutPage() {
     sameAddress: false,
   });
   const { t } = useTranslation();
+  const router = useRouter();
 
   const [orderItem] = useState<OrderItem>({
     id: "1",
@@ -71,6 +73,8 @@ export default function CheckoutPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
+
+    router.push("/paymentprocess");
   };
 
   // const updateQuantity = (increment: boolean) => {
@@ -143,7 +147,7 @@ export default function CheckoutPage() {
                     href="#"
                     className="underline text-blue-400 font-medium"
                   >
-                   {t("checkout3")}
+                    {t("checkout3")}
                   </Link>{" "}
                   and our{" "}
                   <Link
@@ -184,6 +188,7 @@ export default function CheckoutPage() {
                             checked={formData.title === "Mr"}
                             onChange={handleInputChange}
                             className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
+                            required
                           />
                           {t("mr")}
                         </label>
@@ -195,6 +200,7 @@ export default function CheckoutPage() {
                             checked={formData.title === "Mrs"}
                             onChange={handleInputChange}
                             className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
+                            required
                           />
                           {t("mrs")}
                         </label>
@@ -206,6 +212,7 @@ export default function CheckoutPage() {
                             checked={formData.title === "Agency"}
                             onChange={handleInputChange}
                             className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
+                            required
                           />
                           {t("agency")}
                         </label>
@@ -417,14 +424,14 @@ export default function CheckoutPage() {
                       <span className="text-red-500 text-lg"> * </span>{" "}
                       {t("fieldsMarked")}
                     </p>
-                    <Link href={"/paymentprocess"}>
-                      <button
-                        type="submit"
-                        className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition-colors"
-                      >
-                        {t("continue")}
-                      </button>
-                    </Link>
+                    {/* <Link href={"/paymentprocess"}> */}
+                    <button
+                      type="submit"
+                      className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition-colors"
+                    >
+                      {t("continue")}
+                    </button>
+                    {/* </Link> */}
                   </div>
 
                   <div className="border p-5 rounded">

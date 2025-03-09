@@ -11,31 +11,32 @@
       "static/chunks/main-app.js",
       "static/chunks/app/loading.js"
     ],
-    "/page": [
+    "/buy/[slug]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
+      "static/chunks/app/buy/[slug]/page.js"
     ],
     "/buy/playstation/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/buy/playstation/page.js"
     ],
-    "/buy/[slug]/page": [
+    "/sell/[slug]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/buy/[slug]/page.js"
+      "static/chunks/app/sell/[slug]/page.js"
     ],
-    "/cart/page": [
+    "/temp/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/cart/page.js"
+      "static/css/app/temp/page.css",
+      "static/chunks/app/temp/page.js"
     ],
-    "/checkout/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/checkout/page.js"
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
     ]
   }
 }
