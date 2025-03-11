@@ -1,12 +1,7 @@
 "use client";
 
 import { Carousel } from "antd";
-import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  StarFilled,
-  StarOutlined,
-} from "@ant-design/icons";
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { useRef } from "react";
 import ReviewCard from "./ReviewCard";
 import Container from "@/components/common/Container";

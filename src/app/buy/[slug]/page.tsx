@@ -49,7 +49,7 @@ interface RelatedProduct {
 const ProductDetailsPage: React.FC = () => {
   const [selectedModel, setSelectedModel] = useState<string>("");
   const [selectedController, setSelectedController] = useState<
-    string | number
+    string | number | undefined
   >();
   const [selectedMemory, setSelectedMemory] = useState<string>("");
   const [selectedCondition, setSelectedCondition] = useState<string>("");
@@ -185,7 +185,7 @@ const ProductDetailsPage: React.FC = () => {
   };
 
   console.log(
-    "singleProduct ...........",
+    "addition info ...........",
     singleProduct?.data?.product?.product_type
   );
 
@@ -695,7 +695,10 @@ const ProductDetailsPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <button className="bg-[#FDFDFD] flex items-center gap-1 h-10 px-5 rounded-lg">
+                  <button
+                    onClick={handleAddToCart}
+                    className="bg-[#FDFDFD] flex items-center gap-1 h-10 px-5 rounded-lg"
+                  >
                     <span>Add</span>
                     <svg
                       width="24"
@@ -766,7 +769,9 @@ const ProductDetailsPage: React.FC = () => {
                   <h2 className="text-2xl font-semibold text-[#FDFDFD]">
                     {product?.product?.name}
                   </h2>
-                  <h3 className="text-lg text-[#FDFDFD]">Model X | 1TB</h3>
+                  <h3 className="text-lg text-[#FDFDFD]">
+                    {selectedModel} | {selectedMemory} | {selectedCondition}
+                  </h3>
                 </div>
 
                 <h2 className="text-[40px] font-semibold text-[#FDFDFD]">

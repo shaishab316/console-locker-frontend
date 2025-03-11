@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import HowToSellYourItem from "@/components/sell/HowToSellYourItem";
 import { useTranslation } from "react-i18next";
@@ -23,6 +23,7 @@ interface IOption {
 
 interface IQuestion {
   _id: string;
+  name: string;
   option: string;
   description: string;
   price: number;
@@ -64,6 +65,13 @@ export default function ScreenCondition() {
     if (lang) setSelectedLang(lang);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem(
+      "userSelectedOptions",
+      JSON.stringify(userSelectedOptions)
+    );
+  }, [userSelectedOptions]);
+
   const {
     data: question,
     isLoading,
@@ -71,11 +79,7 @@ export default function ScreenCondition() {
   } = useGetASingleProductQuery(params?.slug as string);
 
   if (isLoading) {
-    return (
-      <div>
-        <Loading />
-      </div>
-    );
+    return <Loading />;
   }
 
   if (isError) return <div>Error Occured!</div>;
@@ -84,6 +88,17 @@ export default function ScreenCondition() {
 
   const handleContinue = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const data = {
+      quesId: question?.data?.questions[questionIndex]?._id,
+      optionId: selectedOptionId,
+      questionAnswer: {
+        questionTitle: answer?.questionTitle,
+        questionAnswer: answer?.questionAnswer,
+      },
+    };
+
+    console.log("data........", data);
 
     if (questionLength === questionIndex) {
       if (selectedOptionId) {
@@ -103,13 +118,6 @@ export default function ScreenCondition() {
         "getEstimateProductId",
         JSON.stringify(params?.slug)
       );
-
-      const response = await getEstimateProductPrice({
-        id: params?.slug as string,
-        body: { questions: userSelectedOptions },
-      });
-
-      console.log(response);
 
       router.push("/sell/estimate-product");
     } else {
@@ -134,13 +142,13 @@ export default function ScreenCondition() {
     setSelectedCondition(option._id);
     setSelectedOptionId(option._id);
 
+    console.log("handleChange", option);
+
     setAnswer({
-      questionTitle: option?.option,
-      questionAnswer: option?.description,
+      questionTitle: question?.data?.questions[questionIndex]?.name,
+      questionAnswer: option?.option,
     });
   };
-
-  console.log("answer... ", userSelectedOptions);
 
   return (
     <div>
@@ -183,11 +191,11 @@ export default function ScreenCondition() {
                       <p className="text-xl font-semibold text-[#101010]">
                         {selectedLang === "en" ? opt?.option : opt?.option}
                       </p>
-                      <p className="text-[#6B6B6B] text-lg mt-1">
+                      {/* <p className="text-[#6B6B6B] text-lg mt-1">
                         {selectedLang === "en"
                           ? opt?.description
                           : opt?.description}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </label>

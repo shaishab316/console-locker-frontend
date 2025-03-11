@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/common/Container";
@@ -18,10 +18,11 @@ export default function PlayStationOffer() {
 
   const [priceEstimate, setPriceEstimate] = useState<any>(null);
   const [productId, setProductId] = useState<string | null>(null);
+  const [userSelectedOptions, setUserSelectedOptions] = useState([]);
 
-  const userSelectedOptions = useSelector(
-    (state: RootState) => state?.questionSlice?.questions
-  );
+  // const userSelectedOptions = useSelector(
+  //   (state: RootState) => state?.questionSlice?.questions
+  // );
 
   const [
     getEstimateProductPrice,
@@ -33,6 +34,13 @@ export default function PlayStationOffer() {
     isLoading,
     isError,
   } = useGetASingleProductQuery(productId as string);
+
+  useEffect(() => {
+    const data = JSON.parse(
+      localStorage.getItem("userSelectedOptions") || "null"
+    );
+    setUserSelectedOptions(data);
+  }, [window.location.reload]);
 
   useEffect(() => {
     const productId = localStorage.getItem("getEstimateProductId");
@@ -74,7 +82,7 @@ export default function PlayStationOffer() {
     window.location.reload,
   ]);
 
-  console.log("user Selected Options ......", userSelectedOptions);
+  // console.log("userSelectedOptions", userSelectedOptions);
 
   return (
     <>
@@ -168,10 +176,10 @@ export default function PlayStationOffer() {
                   {product?.data?.name}
                 </h2>
 
-                <div className="grid grid-cols-2 gap-y-3">
+                <div className="grid grid-cols-2 gap-6">
                   {userSelectedOptions?.map((option: any, index: number) => (
                     <div className="flex gap-2">
-                      <p className="text-[#2B2B2B] text-lg">
+                      <p className="text-[#2B2B2B] text-lg capitalize">
                         {option?.questionAnswer?.questionTitle}:
                       </p>
                       <p className="text-[#2B2B2B] text-lg">

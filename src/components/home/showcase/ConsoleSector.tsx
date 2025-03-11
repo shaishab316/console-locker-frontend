@@ -341,6 +341,7 @@ export default function ConsoleSelector() {
     refetch,
   } = useGetAllProductsQuery({
     product_type: activeTab,
+    limit: 6,
   } as any);
 
   console.log(products);
@@ -405,17 +406,17 @@ export default function ConsoleSelector() {
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {products?.data?.products?.map((console: IConsole) => (
                         <Link
-                          href={`/buy/${console?._id}`}
+                          href={`/sell/${console?._id}`}
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative h-[387px]">
+                          <div className="relative w-full h-[153px]">
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
-                              width={355}
+                              width={500}
                               height={500}
-                              className="object-cover w-full h-full"
+                              className="w-full h-full"
                             />
                           </div>
                           <div className="p-2.5 md:p-4">
@@ -490,17 +491,17 @@ export default function ConsoleSelector() {
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {products?.data?.products?.map((console: IConsole) => (
                         <Link
-                          href={`/buy/${console?._id}`}
+                          href={`/sell/${console?._id}`}
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative h-[387px]">
+                          <div className="relative w-full h-[153px]">
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
-                              width={355}
+                              width={500}
                               height={500}
-                              className="object-cover w-full h-full"
+                              className="w-full h-full"
                             />
                           </div>
                           <div className="p-1 md:p-4">
@@ -573,17 +574,17 @@ export default function ConsoleSelector() {
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {products?.data?.products?.map((console: IConsole) => (
                         <Link
-                          href={`/buy/${console?._id}`}
+                          href={`/sell/${console?._id}`}
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative h-[387px]">
+                          <div className="relative w-full h-[153px]">
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
-                              width={355}
+                              width={500}
                               height={500}
-                              className="object-cover w-full h-full"
+                              className="w-full h-full"
                             />
                           </div>
                           <div className="p-1 md:p-4">

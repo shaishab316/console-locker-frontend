@@ -1,21 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/common/Container";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import PaymentInMobile from "@/components/paymentInMobile/PaymentInMobile";
+import {
+  useGetASingleProductQuery,
+  useSellUltimateProductMutation,
+} from "@/redux/features/sell/SellProductAPI";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store/store";
+import Loading from "@/app/loading";
 
 interface FormData {
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
-  postcode: string;
-  town: string;
-  streetName: string;
+  zipCode: string;
+  city: string;
+  address: string;
   apartment: string;
   country: string;
   paymentMethod: "bank" | "paypal";
@@ -23,23 +30,47 @@ interface FormData {
   acceptTerms: boolean;
 }
 
+interface UserSelectedOption {
+  quesId: string;
+  optionId: string;
+}
+
 export default function CheckoutForm() {
   const [paymentMethod, setPaymentMethod] = useState("");
+  const [priceEstimate, setPriceEstimate] = useState<number>(0);
+  const [productId, setProductId] = useState<string | null>(null);
+  const [customerEmailOnLocalStorage, setCustomerEmailOnLocalStorage] =
+    useState<string | null>(null);
+  const [customerIdOnLocalStorage, setCustomerIdOnLocalStorage] = useState<
+    string | null
+  >(null);
+
+  const [userSelectedOptions, setUserSelectedOptions] = useState<
+    UserSelectedOption[]
+  >([]);
+
+  const [sellProduct] = useSellUltimateProductMutation();
 
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
-    postcode: "",
-    town: "",
-    streetName: "",
+    zipCode: "",
+    city: "",
+    address: "",
     apartment: "",
-    country: "",
+    country: "Italy",
     paymentMethod: "bank",
     iban: "",
     acceptTerms: false,
   });
+
+  // const userSelectedOptions = useSelector(
+  //   (state: RootState) => state?.questionSlice?.questions
+  // );
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -51,31 +82,176 @@ export default function CheckoutForm() {
 
   const { t } = useTranslation();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const transformedData = userSelectedOptions.map((item) => ({
+    quesId: item.quesId,
+    optionId: item.optionId,
+  }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // console.log("Form submitted:", formData);
+
     toast.success("Submitted successfully!");
+
+    if (!customerIdOnLocalStorage || !productId) {
+      toast.error("Customer or product information is missing.");
+      return;
+    }
+
+    const data = {
+      customer: customerIdOnLocalStorage,
+      product: productId,
+      questions: transformedData,
+      payment: {
+        paypal: "payol37324828@example.com",
+      },
+    };
+
+    const stringifiedData = JSON.stringify(data);
+
+    console.log(stringifiedData);
+
+    if (customerEmailOnLocalStorage) {
+      const res = await sellProduct(data);
+      console.log(res);
+      return;
+    }
+
     setFormData({
       firstName: "",
       lastName: "",
       email: "",
       phone: "",
-      postcode: "",
-      town: "",
-      streetName: "",
+      zipCode: "",
+      city: "",
+      address: "",
       apartment: "",
-      country: "",
+      country: "Italy",
       paymentMethod: "bank",
       iban: "",
       acceptTerms: false,
     });
+
+    console.log("formData in submit", formData);
   };
+
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   toast.success("Submitted successfully!");
+
+  //   const data = {
+  //     customer: customerIdOnLocalStorage,
+  //     product: productId,
+  //     questions: transformedData,
+  //     payment: {
+  //       paypal: "payol37324828@example.com",
+  //     },
+  //   };
+
+  //   const stringifiedData = JSON.stringify(data);
+
+  //   console.log({ stringifiedData });
+
+  //   // if (customerEmailOnLocalStorage) {
+  //   //   const res = sellProduct(stringifiedData);
+  //   //   console.log({ res });
+
+  //   //   return;
+  //   // }
+
+  //   // setFormData({
+  //   //   firstName: "",
+  //   //   lastName: "",
+  //   //   email: "",
+  //   //   phone: "",
+  //   //   zipCode: "",
+  //   //   city: "",
+  //   //   address: "",
+  //   //   apartment: "",
+  //   //   country: "",
+  //   //   paymentMethod: "bank",
+  //   //   iban: "",
+  //   //   acceptTerms: false,
+  //   // });
+
+  //   // console.log("formData in submit", formData);
+  // };
+
+  // get customer data from localstorage
+  useEffect(() => {
+    const customerData = JSON.parse(localStorage.getItem("customer") || "null");
+
+    if (customerData) {
+      setFormData((prev) => ({
+        ...prev,
+        firstName: customerData.name.split(" ")[0],
+        lastName: customerData.name.split(" ")[1] || "",
+        address: customerData.address.address,
+        zipCode: customerData.address.zip_code,
+        city: customerData.address.city,
+        country: customerData.address.country,
+        email: customerData.email,
+        phone: customerData.phone,
+      }));
+
+      setCustomerEmailOnLocalStorage(customerData.email);
+      setCustomerIdOnLocalStorage(customerData._id);
+    }
+  }, []);
+
+  // get product id from localstorage
+  useEffect(() => {
+    const storedProductId = localStorage.getItem("getEstimateProductId");
+    if (storedProductId) {
+      try {
+        setProductId(JSON.parse(storedProductId));
+      } catch {
+        setProductId(null);
+      }
+    }
+  }, []);
+
+  // get product price from localstorage
+  useEffect(() => {
+    const storedPrice = localStorage.getItem("getEstimatePrice");
+    if (storedPrice) {
+      try {
+        setPriceEstimate(JSON.parse(storedPrice));
+      } catch {
+        setPriceEstimate(0);
+      }
+    }
+  }, []);
+
+  // get user selected options from localstorage
+  useEffect(() => {
+    const storedUserSelectedOptions = localStorage.getItem(
+      "userSelectedOptions"
+    );
+    if (storedUserSelectedOptions) {
+      try {
+        setUserSelectedOptions(JSON.parse(storedUserSelectedOptions));
+      } catch {
+        setUserSelectedOptions([]);
+      }
+    }
+  }, []);
 
   const handlePayment = (method: string) => {
     setPaymentMethod(method);
   };
 
-  console.log(formData);
+  const {
+    data: product,
+    isLoading,
+    isError,
+  } = useGetASingleProductQuery(productId as string);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  console.log({ transformedData });
 
   return (
     <>
@@ -192,7 +368,7 @@ export default function CheckoutForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label
-                      htmlFor="postcode"
+                      htmlFor="zipCode"
                       className="block text-lg font-medium text-[#101010] mb-1"
                     >
                       Postcode{" "}
@@ -200,17 +376,17 @@ export default function CheckoutForm() {
                     </label>
                     <input
                       type="text"
-                      id="postcode"
-                      name="postcode"
+                      id="zipCode"
+                      name="zipCode"
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      value={formData.postcode}
+                      value={formData.zipCode}
                       onChange={handleInputChange}
                     />
                   </div>
                   <div>
                     <label
-                      htmlFor="town"
+                      htmlFor="city"
                       className="block text-lg font-medium text-[#101010] mb-1"
                     >
                       {t("townCity")}
@@ -218,11 +394,11 @@ export default function CheckoutForm() {
                     </label>
                     <input
                       type="text"
-                      id="town"
-                      name="town"
+                      id="city"
+                      name="city"
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      value={formData.town}
+                      value={formData.city}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -230,7 +406,8 @@ export default function CheckoutForm() {
 
                 <div className="mb-4">
                   <label
-                    htmlFor="streetName"
+                    htmlFor="address
+"
                     className="block text-lg font-medium text-[#101010] mb-1"
                   >
                     {t("streetName")}{" "}
@@ -238,11 +415,11 @@ export default function CheckoutForm() {
                   </label>
                   <input
                     type="text"
-                    id="streetName"
-                    name="streetName"
+                    id="address"
+                    name="address"
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    value={formData.streetName}
+                    value={formData.address}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -286,10 +463,10 @@ export default function CheckoutForm() {
                     }
                   >
                     <option value="">Select a country</option>
-                    <option value="IT">Italy</option>
-                    <option value="DE">Germany</option>
-                    <option value="FR">France</option>
-                    <option value="GB">United Kingdom</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                    <option value="United Kingdom">United Kingdom</option>
                   </select>
                 </div>
               </div>
@@ -447,21 +624,25 @@ export default function CheckoutForm() {
                 <div className="flex items-start space-x-4">
                   <div className="w-20 h-20 relative flex-shrink-0">
                     <Image
-                      src="/sell/sell-checkout-product.png"
+                      src={`${API_URL}${
+                        product?.data?.image ? product?.data?.image : ""
+                      }`}
+                      // src={''}
                       alt="Playstation 4"
-                      fill
-                      className="object-contain"
+                      width={300}
+                      height={300}
+                      className="w-[127px] h-[120px] object-contain"
                     />
                   </div>
                   <div>
-                    <h3 className="text-xl text-[#101010] font-medium">
-                      Playstation 4
+                    <h3 className="text-xl text-[#101010] font-medium mb-6">
+                      {product?.data?.name}
                     </h3>
                     <p className="text-lg text-[#2B2B2B]">
                       {t("yourPriceEstimate")}
                     </p>
                     <p className="text-2xl text-[#101010] font-semibold">
-                      $5.00
+                      ${priceEstimate}
                     </p>
                   </div>
                 </div>

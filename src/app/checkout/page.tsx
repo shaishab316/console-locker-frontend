@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Container from "@/components/common/Container";
 import Link from "next/link";
 import PaymentHeader from "@/components/payment/PaymentHeader";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
+import { useCreateCustomerMutation } from "@/redux/features/customer/CustomerAPI";
+import toast from "react-hot-toast";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useGetProductsByIdsQuery } from "@/redux/features/products/GetProductByIds";
 
 interface OrderItem {
   id: string;
@@ -19,22 +23,45 @@ interface OrderItem {
   quantity: number;
 }
 
+interface IProduct {
+  _id: string;
+  admin: string;
+  images: string[];
+  name: string;
+  description: string;
+  price: number;
+  offer_price: number;
+  brand: string;
+  model: string;
+  condition: string;
+  controller: string;
+  memory: string;
+  quantity: number;
+  isVariant: boolean;
+  product_type: string;
+  slug: string;
+  __v: number;
+}
+
 export default function CheckoutPage() {
   const [formData, setFormData] = useState({
-    title: "",
+    title: "Mr",
     firstName: "",
     surname: "",
     address: "",
     zipCode: "",
     city: "",
-    nation: "",
+    country: "",
     email: "",
     phone: "",
-    phoneCode: "+32",
+    phoneCode: "+39",
     sameAddress: false,
   });
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const { t } = useTranslation();
   const router = useRouter();
+  const [orderIndex, setOrderIndex] = useState(0);
+  const [createCustomer] = useCreateCustomerMutation();
 
   const [orderItem] = useState<OrderItem>({
     id: "1",
@@ -46,6 +73,39 @@ export default function CheckoutPage() {
     delivery: "Jan 20 - Jan 22",
     quantity: 1,
   });
+
+  const getProductIds = () => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const productIds: string[] = cart.map(
+      (item: { productId: string; tradeIn: any }) => item.productId
+    );
+    return productIds.join(",");
+  };
+
+  useEffect(() => {
+    const customerData = JSON.parse(localStorage.getItem("customer") || "null");
+
+    if (customerData) {
+      setFormData((prev) => ({
+        ...prev,
+        firstName: customerData.name.split(" ")[0],
+        surname: customerData.name.split(" ")[1] || "",
+        address: customerData.address.address,
+        zipCode: customerData.address.zip_code,
+        city: customerData.address.city,
+        country: customerData.address.country,
+        email: customerData.email,
+        phone: customerData.phone,
+      }));
+    }
+  }, []);
+
+  const {
+    data: products,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetProductsByIdsQuery(getProductIds());
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -62,27 +122,139 @@ export default function CheckoutPage() {
     }));
   };
 
-  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value, type, checked } = e.target;
-  //   setFormData((prev) => ({
-  //     ...prev,
-  //     [name]: type === "checkbox" ? checked : value,
-  //   }));
-  // };
+  const getProductQuantity = (id: string) => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const product = cart.find(
+      (item: { productId: string }) => item.productId === id
+    );
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-
-    router.push("/paymentprocess");
+    return product ? product.quantity : 0;
   };
 
-  // const updateQuantity = (increment: boolean) => {
-  //   // const newQuantity = increment
-  //   //   ? orderItem.quantity + 1
-  //   //   : Math.max(1, orderItem.quantity - 1);
-  //   // Update quantity logic here
-  // };
+  const subtotal = products?.data?.products.reduce(
+    (total: number, product: IProduct) => {
+      const quantity = getProductQuantity(product?._id);
+
+      // Multiply the quantity by the offer price of the product
+      return total + quantity * product.offer_price;
+    },
+    0
+  );
+
+  const increaseQuantity = (id: string) => {
+    // Get the cart data from localStorage
+    refetch();
+    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    const itemExists = cartData.some((item: any) => item.productId === id);
+
+    if (!itemExists) {
+      toast.error("Please, add the product first!");
+      return;
+    }
+
+    // Check if the product exists in the cart
+    const updatedCart = cartData.map((item: any) => {
+      if (item.productId === id) {
+        return { ...item, quantity: item.quantity + 1 }; // Increase quantity
+      }
+
+      return item;
+    });
+
+    // Store the updated cart back into localStorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const decreaseQuantity = (id: string) => {
+    refetch();
+    // Get the cart data from localStorage
+    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    const itemExists = cartData.some((item: any) => item.productId === id);
+
+    if (!itemExists) {
+      toast.error("Please, add the product first!");
+      return;
+    }
+
+    // Check if the product exists in the cart
+    const updatedCart = cartData.map((item: any) => {
+      if (item.productId === id && item.quantity > 1) {
+        // Decrease quantity only if it's greater than 1
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+
+    // Store the updated cart back into localStorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // check existing customer
+    const existingCustomer = JSON.parse(
+      localStorage.getItem("customer") || "null"
+    );
+
+    if (existingCustomer && existingCustomer.email === formData.email) {
+      router.push("/paymentprocess");
+    }
+    // Handle form submission
+    const customer = {
+      name: formData.firstName + " " + formData.surname,
+      email: formData.email,
+      address: {
+        address: formData.address,
+        zip_code: formData.zipCode,
+        city: formData.city,
+        country: formData.country,
+      },
+      phone: formData.phone,
+    };
+
+    const response = await createCustomer(customer);
+
+    if (response?.error) {
+      console.log(response?.error);
+      return;
+    }
+
+    localStorage.setItem("customer", JSON.stringify(response?.data?.data));
+
+    console.log("customer created ...... ", response?.data?.data);
+  };
+
+  const removeItem = (id: string) => {
+    refetch();
+    setOrderIndex(0);
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const updatedCart = cart.filter(
+      (item: { productId: string }) => item.productId !== id
+    );
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const handlePrevious = () => {
+    if (orderIndex === products?.data?.products.length - 1) {
+      setOrderIndex(0);
+      return;
+    }
+    setOrderIndex((prev) => prev + 1);
+  };
+
+  const handleNext = () => {
+    if (orderIndex === products?.data?.products.length - 1) {
+      setOrderIndex(0);
+      return;
+    }
+    setOrderIndex((prev) => prev + 1);
+  };
+
+  // console.log("subtotal", subtotal);
 
   return (
     <div className="min-h-screen bg-[#F2F5F7] py-10">
@@ -188,7 +360,6 @@ export default function CheckoutPage() {
                             checked={formData.title === "Mr"}
                             onChange={handleInputChange}
                             className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
-                            required
                           />
                           {t("mr")}
                         </label>
@@ -200,7 +371,6 @@ export default function CheckoutPage() {
                             checked={formData.title === "Mrs"}
                             onChange={handleInputChange}
                             className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
-                            required
                           />
                           {t("mrs")}
                         </label>
@@ -212,7 +382,6 @@ export default function CheckoutPage() {
                             checked={formData.title === "Agency"}
                             onChange={handleInputChange}
                             className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
-                            required
                           />
                           {t("agency")}
                         </label>
@@ -315,16 +484,16 @@ export default function CheckoutPage() {
                             <span className="text-red-500">*</span>
                           </label>
                           <select
-                            name="nation"
-                            value={formData.nation}
+                            name="country"
+                            value={formData.country}
                             onChange={(e) => handleInputChange(e as any)}
                             required
                             className="w-full px-3 py-2 border rounded-md"
                           >
                             <option value="">Select country</option>
-                            <option value="DE">Germany</option>
-                            <option value="FR">France</option>
-                            <option value="IT">Italy</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Germany">Germany</option>
+                            <option value="France">France</option>
                           </select>
                         </div>
                         <div>
@@ -445,29 +614,53 @@ export default function CheckoutPage() {
           {/* Right Column - Order Summary */}
           <div className="col-span-1">
             <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-semibold text-[#101010] mb-4">
-                {t("yourOrder")}
-              </h2>
+              {/* Your Order */}
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-semibold text-[#101010] mb-4">
+                  {t("yourOrder")} ({products?.data?.products.length})
+                </h2>
+                <div className="flex gap-4">
+                  <button
+                    onClick={handlePrevious}
+                    className="w-8 h-8 border flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
+                    aria-label="Previous review"
+                  >
+                    <ChevronLeft className="text-black" />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="w-8 h-8 border flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
+                    aria-label="Next review"
+                  >
+                    <ChevronRight className="text-black" />
+                  </button>
+                </div>
+              </div>
 
+              {/* ordered product carousel */}
               <div className="border-b pb-4 mb-4">
                 <div className="flex gap-4">
                   <div className="relative w-[120px] h-[120px]">
                     <Image
-                      src="/buy/p1.png"
+                      src={`${API_URL}/${products?.data?.products[orderIndex].images[0]}`}
                       alt={orderItem.name}
                       width={120}
                       height={120}
-                      className="object-cover"
+                      className="w-[120px] h-[120px] object-cover"
                     />
                   </div>
                   <div className="flex-grow space-y-1">
-                    <h3 className="font-medium">{orderItem.name}</h3>
+                    <h3 className="font-medium">
+                      {products?.data?.products[orderIndex].name}
+                    </h3>
                     <p className="text-sm text-gray-600">
-                      {t("warranty")}: {orderItem.warranty} |{" "}
-                      {orderItem.storage}
+                      {t("warranty")}:{" "}
+                      {products?.data?.products[orderIndex]?.model} |{" "}
+                      {products?.data?.products[orderIndex]?.memory}
                     </p>
                     <p className="text-sm text-gray-600">
-                      {t("condition")}: {orderItem.condition}
+                      {t("condition")}:{" "}
+                      {products?.data?.products[orderIndex]?.controller}
                     </p>
                     <p className="text-sm text-green-600">
                       {t("delivery")}: {orderItem.delivery}
@@ -478,23 +671,48 @@ export default function CheckoutPage() {
                   </div>
 
                   <div className="text-right">
-                    <p className="font-medium">${orderItem.price}</p>
+                    <p className="font-medium">
+                      $
+                      {(
+                        products?.data?.products[orderIndex]?.offer_price *
+                        getProductQuantity(
+                          products?.data?.products[orderIndex]?._id
+                        )
+                      ).toFixed(2)}
+                    </p>
                     <div className="flex items-center gap-2 mt-2">
                       <button
-                        // onClick={() => updateQuantity(false)}
+                        onClick={() =>
+                          decreaseQuantity(
+                            products?.data?.products[orderIndex]?._id
+                          )
+                        }
                         className="w-6 h-6 flex items-center justify-center border rounded"
                       >
                         -
                       </button>
-                      <span>{orderItem.quantity}</span>
+                      <span>
+                        {getProductQuantity(
+                          products?.data?.products[orderIndex]?._id
+                        )}
+                      </span>
                       <button
-                        // onClick={() => updateQuantity(true)}
+                        onClick={() =>
+                          increaseQuantity(
+                            products?.data?.products[orderIndex]?._id
+                          )
+                        }
                         className="w-6 h-6 flex items-center justify-center border rounded"
                       >
                         +
                       </button>
                     </div>
-                    <button className="text-sm text-red-600 mt-2">
+                    <button
+                      onClick={() =>
+                        removeItem(products?.data?.products[orderIndex]?._id)
+                      }
+                      className="text-sm text-red-600 mt-2"
+                    >
                       Remove
                     </button>
                   </div>
@@ -503,8 +721,8 @@ export default function CheckoutPage() {
 
               <div className="space-y-2 mb-6">
                 <div className="flex justify-between">
-                  <span className="text-gray-600 font-semibold">Xbox One</span>
-                  <span>${orderItem.price.toFixed(2)}</span>
+                  <span className="text-gray-600 font-semibold">Total</span>
+                  <span>${subtotal}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">{t("shipping")}</span>
@@ -512,15 +730,12 @@ export default function CheckoutPage() {
                 </div>
                 <div className="flex justify-between font-medium pt-2 border-t">
                   <span>{t("grandTotal")}</span>
-                  <span>
-                    ${(orderItem.price * orderItem.quantity).toFixed(2)}
-                  </span>
+                  <span>${subtotal}</span>
                 </div>
                 <p className="text-sm text-gray-600">
                   {t("thePriceIncludesVAT")}
                 </p>
               </div>
-
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
                   <Image
@@ -556,7 +771,6 @@ export default function CheckoutPage() {
                   </span>
                 </div>
               </div>
-
               <div className="flex justify-center space-x-4 my-5">
                 <div className="w-[70px] h-[48px] bg-[#F4B6C7] rounded flex items-center justify-center">
                   <span className="text-[#17120F] font-medium">Klarna</span>
@@ -571,7 +785,6 @@ export default function CheckoutPage() {
                   />
                 </div>
               </div>
-
               <p className="text-sm text-gray-600 mt-4">
                 {t("applicableTaxLaw")}
               </p>

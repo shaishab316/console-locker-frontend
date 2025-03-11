@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/common/Container";
 import { useTranslation } from "react-i18next";
+import toast from "react-hot-toast";
+import { useGetProductsByIdsQuery } from "@/redux/features/products/GetProductByIds";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface OrderItem {
   id: string;
@@ -14,14 +17,36 @@ interface OrderItem {
   image: string;
 }
 
+interface IProduct {
+  _id: string;
+  admin: string;
+  images: string[];
+  name: string;
+  description: string;
+  price: number;
+  offer_price: number;
+  brand: string;
+  model: string;
+  condition: string;
+  controller: string;
+  memory: string;
+  quantity: number;
+  isVariant: boolean;
+  product_type: string;
+  slug: string;
+  __v: number;
+}
+
 export default function Checkout() {
   const [activeStep, setActiveStep] = useState(3);
   // const [selectedPayment, setSelectedPayment] = useState<
   //   "credit" | "paypal" | "klarna-installment" | "paypal-installment"
   // >("credit");
   const [quantity, setQuantity] = useState(1);
+  const [orderIndex, setOrderIndex] = useState(0);
   const [selectedPayment, setSelectedPayment] = useState("credit");
   const { t } = useTranslation();
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const steps = [
     { id: 1, name: "Accessories" },
@@ -43,6 +68,153 @@ export default function Checkout() {
     } else if (action === "decrease" && quantity > 1) {
       setQuantity((prev) => prev - 1);
     }
+  };
+
+  const getProductIds = () => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const productIds: string[] = cart.map(
+      (item: { productId: string; tradeIn: any }) => item.productId
+    );
+    return productIds.join(",");
+  };
+
+  const {
+    data: products,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetProductsByIdsQuery(getProductIds());
+
+  const getProductQuantity = (id: string) => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const product = cart.find(
+      (item: { productId: string }) => item.productId === id
+    );
+
+    return product ? product.quantity : 0;
+  };
+
+  const subtotal = products?.data?.products.reduce(
+    (total: number, product: IProduct) => {
+      const quantity = getProductQuantity(product?._id);
+
+      // Multiply the quantity by the offer price of the product
+      return total + quantity * product.offer_price;
+    },
+    0
+  );
+
+  const increaseQuantity = (id: string) => {
+    // Get the cart data from localStorage
+    refetch();
+    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    const itemExists = cartData.some((item: any) => item.productId === id);
+
+    if (!itemExists) {
+      toast.error("Please, add the product first!");
+      return;
+    }
+
+    // Check if the product exists in the cart
+    const updatedCart = cartData.map((item: any) => {
+      if (item.productId === id) {
+        return { ...item, quantity: item.quantity + 1 }; // Increase quantity
+      }
+
+      return item;
+    });
+
+    // Store the updated cart back into localStorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const decreaseQuantity = (id: string) => {
+    refetch();
+    // Get the cart data from localStorage
+    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    const itemExists = cartData.some((item: any) => item.productId === id);
+
+    if (!itemExists) {
+      toast.error("Please, add the product first!");
+      return;
+    }
+
+    // Check if the product exists in the cart
+    const updatedCart = cartData.map((item: any) => {
+      if (item.productId === id && item.quantity > 1) {
+        // Decrease quantity only if it's greater than 1
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+
+    // Store the updated cart back into localStorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   // check existing customer
+  //   const existingCustomer = JSON.parse(
+  //     localStorage.getItem("customer") || "null"
+  //   );
+
+  //   if (existingCustomer && existingCustomer.email === formData.email) {
+  //     router.push("/paymentprocess");
+  //   }
+  //   // Handle form submission
+  //   const customer = {
+  //     name: formData.firstName + " " + formData.surname,
+  //     email: formData.email,
+  //     address: {
+  //       address: formData.address,
+  //       zip_code: formData.zipCode,
+  //       city: formData.city,
+  //       country: formData.country,
+  //     },
+  //     phone: formData.phone,
+  //   };
+
+  //   const response = await createCustomer(customer);
+
+  //   if (response?.error) {
+  //     console.log(response?.error);
+  //     return;
+  //   }
+
+  //   localStorage.setItem("customer", JSON.stringify(response?.data?.data));
+
+  //   console.log(response?.data?.data);
+  // };
+
+  const removeItem = (id: string) => {
+    refetch();
+    setOrderIndex(0);
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const updatedCart = cart.filter(
+      (item: { productId: string }) => item.productId !== id
+    );
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const handlePrevious = () => {
+    if (orderIndex === products?.data?.products.length - 1) {
+      setOrderIndex(0);
+      return;
+    }
+    setOrderIndex((prev) => prev + 1);
+  };
+
+  const handleNext = () => {
+    if (orderIndex === products?.data?.products.length - 1) {
+      setOrderIndex(0);
+      return;
+    }
+    setOrderIndex((prev) => prev + 1);
   };
 
   const handlePayment = () => {};
@@ -83,14 +255,14 @@ export default function Checkout() {
             {/* Payment Section */}
             <div className="bg-transparent rounded-lg shadow-sm">
               <div className="border p-5 rounded-lg shadow-sm">
-                <h2 className="text-2xl font-semibold text-[#101010]">
+                <h2 className="text-2xl font-semibold text-[#101010] capitalize">
                   2. {"pay"}
                 </h2>
               </div>
 
               <div className="lg:p-7 pt-6">
                 <div className="space-y-6">
-                  <h3 className="font-semibold text-2xl text-[#404040]">
+                  <h3 className="font-semibold text-2xl text-[#404040] capitalize">
                     {t("payNow")}:
                   </h3>
 
@@ -305,12 +477,34 @@ export default function Checkout() {
 
           {/* Right Column - Order Summary */}
           <div className="bg-[#FDFDFD] p-6 rounded-lg shadow-sm">
-            <h2 className="text-2xl font-semibold text-[#101010] mb-6">
+            {/* <h2 className="text-2xl font-semibold text-[#101010] mb-6">
               {t("yourOrder")}
-            </h2>
+            </h2> */}
+
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-semibold text-[#101010] mb-4">
+                {t("yourOrder")} ({products?.data?.products.length})
+              </h2>
+              <div className="flex gap-4">
+                <button
+                  onClick={handlePrevious}
+                  className="w-8 h-8 border flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
+                  aria-label="Previous review"
+                >
+                  <ChevronLeft className="text-black" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="w-8 h-8 border flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
+                  aria-label="Next review"
+                >
+                  <ChevronRight className="text-black" />
+                </button>
+              </div>
+            </div>
 
             {/* Product Details */}
-            <div className="flex items-start space-x-4 mb-6">
+            {/* <div className="flex items-start space-x-4 mb-6">
               <Image
                 src={orderItem.image || "/placeholder.svg"}
                 alt={orderItem.name}
@@ -355,6 +549,86 @@ export default function Checkout() {
                 <button className="text-[#F04848] text-sm font-medium hover:underline">
                   Remove
                 </button>
+              </div>
+            </div> */}
+            <div className="border-b pb-4 mb-4">
+              <div className="flex gap-4">
+                <div className="relative w-[120px] h-[120px]">
+                  <Image
+                    src={`${API_URL}/${products?.data?.products[orderIndex].images[0]}`}
+                    alt={orderItem.name}
+                    width={120}
+                    height={120}
+                    className="w-[120px] h-[120px] object-cover"
+                  />
+                </div>
+                <div className="flex-grow space-y-1">
+                  <h3 className="font-medium">
+                    {products?.data?.products[orderIndex].name}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    {t("warranty")}:{" "}
+                    {products?.data?.products[orderIndex]?.model} |{" "}
+                    {products?.data?.products[orderIndex]?.memory}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    {t("condition")}:{" "}
+                    {products?.data?.products[orderIndex]?.controller}
+                  </p>
+                  <p className="text-sm text-green-600">
+                    {t("delivery")}: {orderItem.delivery}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    {t("salesAndShipping")}: Console & you
+                  </p>
+                </div>
+
+                <div className="text-right">
+                  <p className="font-medium">
+                    $
+                    {(
+                      products?.data?.products[orderIndex]?.offer_price *
+                      getProductQuantity(
+                        products?.data?.products[orderIndex]?._id
+                      )
+                    ).toFixed(2)}
+                  </p>
+                  <div className="flex items-center gap-2 mt-2">
+                    <button
+                      onClick={() =>
+                        decreaseQuantity(
+                          products?.data?.products[orderIndex]?._id
+                        )
+                      }
+                      className="w-6 h-6 flex items-center justify-center border rounded"
+                    >
+                      -
+                    </button>
+                    <span>
+                      {getProductQuantity(
+                        products?.data?.products[orderIndex]?._id
+                      )}
+                    </span>
+                    <button
+                      onClick={() =>
+                        increaseQuantity(
+                          products?.data?.products[orderIndex]?._id
+                        )
+                      }
+                      className="w-6 h-6 flex items-center justify-center border rounded"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    onClick={() =>
+                      removeItem(products?.data?.products[orderIndex]?._id)
+                    }
+                    className="text-sm text-red-600 mt-2"
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -410,7 +684,7 @@ export default function Checkout() {
             <div className="bg-[#DAEDF2] mb-6 p-4 rounded-lg space-y-2">
               <div className="flex justify-between">
                 <span className="text-gray-600 font-semibold">Xbox One</span>
-                <span>${orderItem.price * quantity}</span>
+                <span>${subtotal}</span>
               </div>
               <div className="flex justify-between">
                 <span>{t("shipping")}</span>
@@ -418,7 +692,7 @@ export default function Checkout() {
               </div>
               <div className="flex justify-between font-medium pt-2 border-t">
                 <span>{t("grandTotal")}</span>
-                <span>${orderItem.price * quantity}</span>
+                <span>${subtotal}</span>
               </div>
               <p className="text-xs text-gray-500">
                 {t("thePriceIncludesVAT")}

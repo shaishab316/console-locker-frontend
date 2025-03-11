@@ -98,7 +98,7 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
     }
   };
 
-  console.log("variants[0]._id", variants[0]._id);
+  // console.log("variants[0]._id", variants[0]._id);
 
   return (
     <div className="bg-[#F2F5F7]">
