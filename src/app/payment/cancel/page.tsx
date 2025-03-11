@@ -118,6 +118,7 @@ export default function PaymentCancel() {
               A network or connection issue may have interrupted your payment
               process.
             </p>
+            
           </div>
 
           <div className="bg-white p-4 rounded-lg shadow text-left">
