@@ -1,0 +1,115 @@
+import { Check, ChevronRight, Download } from "lucide-react";
+import Link from "next/link";
+
+export default function PaymentSuccess() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-green-500 p-6 flex justify-center">
+          <div className="rounded-full bg-white p-2">
+            <Check className="h-10 w-10 text-green-500" />
+          </div>
+        </div>
+
+        <div className="p-6 space-y-6">
+          <div className="text-center space-y-2">
+            <h1 className="text-2xl font-bold text-gray-800">
+              Payment Successful!
+            </h1>
+            <p className="text-gray-600">
+              Your order has been processed successfully.
+            </p>
+          </div>
+
+          <div className="border-t border-b border-gray-200 py-4 space-y-3">
+            <div className="flex justify-between">
+              <span className="text-gray-600">Order Number</span>
+              <span className="font-medium text-gray-800">#ORD-2023-1234</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Date</span>
+              <span className="font-medium text-gray-800">
+                {new Date().toLocaleDateString()}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Total Amount</span>
+              <span className="font-medium text-gray-800">$149.99</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Payment Method</span>
+              <span className="font-medium text-gray-800">
+                Credit Card (****1234)
+              </span>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <button className="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-md transition-colors">
+              <Download className="h-5 w-5" />
+              Download Receipt
+            </button>
+
+            <Link
+              href="/orders"
+              className="w-full flex items-center justify-center gap-2 border border-gray-300 hover:bg-gray-50 text-gray-700 py-3 px-4 rounded-md transition-colors"
+            >
+              View Order Details
+            </Link>
+
+            <Link
+              href="/"
+              className="w-full flex items-center justify-center gap-2 text-green-600 hover:text-green-700 py-2 transition-colors"
+            >
+              Continue Shopping
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="bg-gray-50 p-4 text-center">
+          <p className="text-sm text-gray-600">
+            A confirmation email has been sent to your email address.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-8 text-center">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">
+          What happens next?
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl">
+          <div className="bg-white p-4 rounded-lg shadow">
+            <div className="rounded-full bg-green-100 w-12 h-12 flex items-center justify-center mx-auto mb-3">
+              <span className="text-green-600 font-bold">1</span>
+            </div>
+            <h3 className="font-medium text-gray-800 mb-2">Order Processing</h3>
+            <p className="text-gray-600 text-sm">
+              Your order is now being processed by our team.
+            </p>
+          </div>
+
+          <div className="bg-white p-4 rounded-lg shadow">
+            <div className="rounded-full bg-green-100 w-12 h-12 flex items-center justify-center mx-auto mb-3">
+              <span className="text-green-600 font-bold">2</span>
+            </div>
+            <h3 className="font-medium text-gray-800 mb-2">Shipping</h3>
+            <p className="text-gray-600 text-sm">
+              Your items will be shipped within 1-2 business days.
+            </p>
+          </div>
+
+          <div className="bg-white p-4 rounded-lg shadow">
+            <div className="rounded-full bg-green-100 w-12 h-12 flex items-center justify-center mx-auto mb-3">
+              <span className="text-green-600 font-bold">3</span>
+            </div>
+            <h3 className="font-medium text-gray-800 mb-2">Delivery</h3>
+            <p className="text-gray-600 text-sm">
+              Estimated delivery time is 3-5 business days.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

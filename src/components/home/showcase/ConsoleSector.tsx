@@ -344,7 +344,7 @@ export default function ConsoleSelector() {
     limit: 6,
   } as any);
 
-  console.log(products);
+  // console.log(products);
 
   return (
     <div className="min-h-screen bg-[#F2F5F7]">

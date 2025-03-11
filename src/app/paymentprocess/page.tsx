@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/common/Container";
@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import { useGetProductsByIdsQuery } from "@/redux/features/products/GetProductByIds";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCreateOrderMutation } from "@/redux/features/order/OrderAPI";
 
 interface OrderItem {
   id: string;
@@ -45,8 +46,15 @@ export default function Checkout() {
   const [quantity, setQuantity] = useState(1);
   const [orderIndex, setOrderIndex] = useState(0);
   const [selectedPayment, setSelectedPayment] = useState("credit");
+  const [cartData, setCartData] = useState([]);
+  const [customerIdOnLocalStorage, setCustomerIdOnLocalStorage] = useState<
+    string | number
+  >("");
+  const [secondaryPhone, setSecondaryPhone] = useState<string | number>("");
+
   const { t } = useTranslation();
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const [createOrder] = useCreateOrderMutation();
 
   const steps = [
     { id: 1, name: "Accessories" },
@@ -84,6 +92,45 @@ export default function Checkout() {
     isError,
     refetch,
   } = useGetProductsByIdsQuery(getProductIds());
+
+  // get the cart data from localStorage
+  useEffect(() => {
+    const cart = localStorage.getItem("cart");
+
+    if (cart) {
+      try {
+        setCartData(JSON.parse(cart));
+      } catch {
+        setCartData([]);
+      }
+    }
+  }, []);
+
+  // get the secondary phone from localStorage
+  useEffect(() => {
+    const phone = localStorage.getItem("secondary_phone");
+
+    if (phone) {
+      try {
+        setSecondaryPhone(JSON.parse(phone));
+      } catch {
+        setSecondaryPhone("");
+      }
+    }
+  }, []);
+
+  // get the customer id from localStorage
+  useEffect(() => {
+    const customer = JSON.parse(localStorage.getItem("customer") || "null");
+
+    if (customer) {
+      try {
+        setCustomerIdOnLocalStorage(customer?._id);
+      } catch {
+        setCustomerIdOnLocalStorage("");
+      }
+    }
+  }, []);
 
   const getProductQuantity = (id: string) => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -217,7 +264,34 @@ export default function Checkout() {
     setOrderIndex((prev) => prev + 1);
   };
 
-  const handlePayment = () => {};
+  const formattedCartData = cartData.map((item: any) => ({
+    product: item.productId,
+    quantity: item.quantity,
+  }));
+
+  const handlePayment = async () => {
+    const orderInformation = {
+      productDetails: formattedCartData,
+      customer: customerIdOnLocalStorage,
+      secondary_phone: secondaryPhone,
+    };
+
+    const response = await createOrder(orderInformation).unwrap();
+
+    if (response?.success) {
+      toast.success(response?.message);
+
+ 
+
+      window.location.href = response?.data?.checkout_url;
+
+      // do empty cart after payment success
+      // localStorage.removeItem("cart");
+    } else if (response?.error) {
+      toast.error(response?.error);
+      return;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#F2F5F7] pt-8 pb-16">
@@ -576,7 +650,7 @@ export default function Checkout() {
                     {products?.data?.products[orderIndex]?.controller}
                   </p>
                   <p className="text-sm text-green-600">
-                    {t("delivery")}: {orderItem.delivery}
+                    {t("delivery")}: {orderItem?.delivery}
                   </p>
                   <p className="text-sm text-gray-600">
                     {t("salesAndShipping")}: Console & you

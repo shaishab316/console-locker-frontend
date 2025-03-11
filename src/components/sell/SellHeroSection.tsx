@@ -62,7 +62,7 @@ export default function SellHeroSection() {
       )?.selectedConsole || ""
   );
 
-  console.log({ selectedConsoled });
+  // console.log({ selectedConsoled });
 
   return (
     <main className="bg-[url(/sell/sell-hero.png)] bg-cover bg-no-repeat min-h-[calc(100vh-180px)] bg-left-bottom">

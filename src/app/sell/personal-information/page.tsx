@@ -14,6 +14,8 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store/store";
 import Loading from "@/app/loading";
+import { useCreateCustomerMutation } from "@/redux/features/customer/CustomerAPI";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   firstName: string;
@@ -26,6 +28,7 @@ interface FormData {
   apartment: string;
   country: string;
   paymentMethod: "bank" | "paypal";
+  paypalEmail: string;
   iban: string;
   acceptTerms: boolean;
 }
@@ -36,7 +39,7 @@ interface UserSelectedOption {
 }
 
 export default function CheckoutForm() {
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("paypal");
   const [priceEstimate, setPriceEstimate] = useState<number>(0);
   const [productId, setProductId] = useState<string | null>(null);
   const [customerEmailOnLocalStorage, setCustomerEmailOnLocalStorage] =
@@ -48,8 +51,10 @@ export default function CheckoutForm() {
   const [userSelectedOptions, setUserSelectedOptions] = useState<
     UserSelectedOption[]
   >([]);
+  const router = useRouter();
 
   const [sellProduct] = useSellUltimateProductMutation();
+  const [createCustomer] = useCreateCustomerMutation();
 
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -61,7 +66,8 @@ export default function CheckoutForm() {
     address: "",
     apartment: "",
     country: "Italy",
-    paymentMethod: "bank",
+    paymentMethod: "paypal",
+    paypalEmail: "",
     iban: "",
     acceptTerms: false,
   });
@@ -90,11 +96,27 @@ export default function CheckoutForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    toast.success("Submitted successfully!");
+    const newUser = {
+      name: formData.firstName + " " + formData.lastName,
+      email: formData.email,
+      address: {
+        address: formData.address,
+        zip_code: formData.zipCode,
+        city: formData.city,
+        country: formData.country,
+      },
+      phone: formData.phone,
+    };
 
+    // if has nota customer, create a new customer first
     if (!customerIdOnLocalStorage || !productId) {
-      toast.error("Customer or product information is missing.");
-      return;
+      const response = await createCustomer(newUser).unwrap();
+
+      console.log("new user created........", response?.data);
+
+      if (response?.success) {
+        localStorage.setItem("customer", JSON.stringify(response?.data));
+      }
     }
 
     const data = {
@@ -102,18 +124,22 @@ export default function CheckoutForm() {
       product: productId,
       questions: transformedData,
       payment: {
-        paypal: "payol37324828@example.com",
+        paypal: formData.paypalEmail,
       },
     };
 
-    const stringifiedData = JSON.stringify(data);
+    if (
+      (customerEmailOnLocalStorage && formData.paypalEmail) ||
+      formData.iban
+    ) {
+      const res = await sellProduct(data).unwrap();
+      console.log("customer order data ......... ", res);
 
-    console.log(stringifiedData);
-
-    if (customerEmailOnLocalStorage) {
-      const res = await sellProduct(data);
-      console.log(res);
-      return;
+      if (res?.success) {
+        toast.success(res?.message);
+      } else {
+        toast.error(res?.message);
+      }
     }
 
     setFormData({
@@ -125,13 +151,18 @@ export default function CheckoutForm() {
       city: "",
       address: "",
       apartment: "",
-      country: "Italy",
-      paymentMethod: "bank",
+      country: "",
+      paymentMethod: "paypal",
+      paypalEmail: "",
       iban: "",
       acceptTerms: false,
     });
 
-    console.log("formData in submit", formData);
+    setTimeout(() => {
+      router.push("/sell");
+    }, 400);
+
+    // console.log("formData in submit", formData);
   };
 
   // const handleSubmit = (e: React.FormEvent) => {
@@ -250,8 +281,6 @@ export default function CheckoutForm() {
   if (isLoading) {
     return <Loading />;
   }
-
-  console.log({ transformedData });
 
   return (
     <>
@@ -492,7 +521,7 @@ export default function CheckoutForm() {
                         Bank transfer (IBAN)
                       </span>
                     </div>
-                    <span className="font-medium">$5.00</span>
+                    <span className="font-medium">${priceEstimate}</span>
                   </label>
 
                   {/* {formData.paymentMethod === "paypal" && ( */}
@@ -539,7 +568,7 @@ export default function CheckoutForm() {
                           PayPal: $5,00 minus $0,10 fees
                         </span>
                       </div>
-                      <span className="font-medium">$5.00</span>
+                      <span className="font-medium">${priceEstimate}</span>
                     </label>
 
                     {/* {formData.paymentMethod === "paypal" && ( */}
@@ -549,7 +578,7 @@ export default function CheckoutForm() {
                           htmlFor="iban"
                           className="block text-lg font-medium text-[#101010] mb-1"
                         >
-                          Bank details, IBAN{" "}
+                          Email
                           <span className="text-red-500 font-semibold">*</span>
                         </label>
                         <input
@@ -558,7 +587,7 @@ export default function CheckoutForm() {
                           name="iban"
                           required
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                          placeholder="Example: FI14 1009 3000 1234 58"
+                          placeholder="Enter your paypal email"
                           value={formData.iban}
                           onChange={handleInputChange}
                         />

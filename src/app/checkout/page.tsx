@@ -11,6 +11,7 @@ import { useCreateCustomerMutation } from "@/redux/features/customer/CustomerAPI
 import toast from "react-hot-toast";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useGetProductsByIdsQuery } from "@/redux/features/products/GetProductByIds";
+import { useCreateOrderMutation } from "@/redux/features/order/OrderAPI";
 
 interface OrderItem {
   id: string;
@@ -55,12 +56,19 @@ export default function CheckoutPage() {
     email: "",
     phone: "",
     phoneCode: "+39",
+    furtherContactInformation: "",
     sameAddress: false,
   });
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const { t } = useTranslation();
   const router = useRouter();
   const [orderIndex, setOrderIndex] = useState(0);
+  const [customerEmailOnLocalStorage, setCustomerEmailOnLocalStorage] =
+    useState<string | null>(null);
+  const [customerIdOnLocalStorage, setCustomerIdOnLocalStorage] = useState<
+    string | null
+  >(null);
+
   const [createCustomer] = useCreateCustomerMutation();
 
   const [orderItem] = useState<OrderItem>({
@@ -82,6 +90,7 @@ export default function CheckoutPage() {
     return productIds.join(",");
   };
 
+  // If have customer data, Get the customer data from localStorage
   useEffect(() => {
     const customerData = JSON.parse(localStorage.getItem("customer") || "null");
 
@@ -97,6 +106,9 @@ export default function CheckoutPage() {
         email: customerData.email,
         phone: customerData.phone,
       }));
+
+      setCustomerEmailOnLocalStorage(customerData.email);
+      setCustomerIdOnLocalStorage(customerData._id);
     }
   }, []);
 
@@ -194,14 +206,6 @@ export default function CheckoutPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // check existing customer
-    const existingCustomer = JSON.parse(
-      localStorage.getItem("customer") || "null"
-    );
-
-    if (existingCustomer && existingCustomer.email === formData.email) {
-      router.push("/paymentprocess");
-    }
     // Handle form submission
     const customer = {
       name: formData.firstName + " " + formData.surname,
@@ -215,16 +219,29 @@ export default function CheckoutPage() {
       phone: formData.phone,
     };
 
-    const response = await createCustomer(customer);
+    localStorage.setItem(
+      "secondary_phone",
+      JSON.stringify(formData.furtherContactInformation)
+    );
 
-    if (response?.error) {
-      console.log(response?.error);
-      return;
+    if (customerEmailOnLocalStorage !== formData.email) {
+      const response = await createCustomer(customer).unwrap();
+
+      console.log("createCustomer............", response);
+
+      if (response?.success) {
+        toast.success(response?.success);
+      } else if (response?.error) {
+        toast.error(response?.error);
+        return;
+      }
+
+      localStorage.setItem("customer", JSON.stringify(response?.data));
+
+      router.push("/paymentprocess");
     }
 
-    localStorage.setItem("customer", JSON.stringify(response?.data?.data));
-
-    console.log("customer created ...... ", response?.data?.data);
+    router.push("/paymentprocess");
   };
 
   const removeItem = (id: string) => {
@@ -253,8 +270,6 @@ export default function CheckoutPage() {
     }
     setOrderIndex((prev) => prev + 1);
   };
-
-  // console.log("subtotal", subtotal);
 
   return (
     <div className="min-h-screen bg-[#F2F5F7] py-10">
@@ -503,7 +518,11 @@ export default function CheckoutPage() {
                           <input
                             type="text"
                             className="w-full px-3 py-2 border rounded-md"
-                            placeholder="47012345"
+                            placeholder="+39456647012345"
+                            name="furtherContactInformation"
+                            required
+                            value={formData.furtherContactInformation}
+                            onChange={handleInputChange}
                           />
                         </div>
                       </div>

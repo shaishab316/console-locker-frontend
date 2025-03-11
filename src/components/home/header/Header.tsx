@@ -24,6 +24,7 @@ export function Header() {
   const [filterableProductType, setFilterableProductType] = useState<string[]>(
     []
   );
+  const [cartLength, setCartLength] = useState(0);
 
   const isFirstRender = useRef(true);
 
@@ -59,6 +60,20 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+
+    if (storedCart) {
+      try {
+        const parsedCart = JSON.parse(storedCart);
+        setCartLength(parsedCart.length);
+      } catch (error) {
+        console.error("Error parsing cart data:", error);
+        setCartLength(0);
+      }
+    }
+  }, []);
 
   return (
     <header className="top-0 md:pt-4 w-full  border-b bg-[#F2F5F7]">
@@ -152,8 +167,11 @@ export function Header() {
           {/* <Link href="/account" className="p-2">
             <User className="h-5 w-5" />
           </Link> */}
-          <Link href="/cart" className="p-2">
+          <Link href="/cart" className="p-2 relative">
             <ShoppingCart className="h-5 w-5" />
+            <span className="absolute px-2 py-[2px] bg-green-500 text-black rounded-full text-xs -top-1 -right-1">
+              {cartLength}
+            </span>
           </Link>
 
           <div className="hidden sm:flex items-center space-x-1 text-sm font-medium cursor-pointer">
