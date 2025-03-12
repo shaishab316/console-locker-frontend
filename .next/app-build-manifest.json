@@ -17,30 +17,10 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
-    "/sell/page": [
+    "/reviews/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/sell/page.js"
-    ],
-    "/sell/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/sell/[slug]/page.js"
-    ],
-    "/sell/estimate-product/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/sell/estimate-product/page.js"
-    ],
-    "/sell/personal-information/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/sell/personal-information/page.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/reviews/page.js"
     ]
   }
 }

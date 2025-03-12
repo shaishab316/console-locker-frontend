@@ -13,7 +13,7 @@ interface Review {
   author: {
     name: string;
     title: string;
-    image: string;
+    image: string; 
   };
   createdAt: string;
 }
