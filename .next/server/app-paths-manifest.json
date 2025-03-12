@@ -1,4 +1,6 @@
 {
+  "/page": "app/page.js",
   "/reviews/page": "app/reviews/page.js",
-  "/page": "app/page.js"
+  "/buy/playstation/page": "app/buy/playstation/page.js",
+  "/buy/nintendo/page": "app/buy/nintendo/page.js"
 }

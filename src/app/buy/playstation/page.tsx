@@ -167,7 +167,7 @@ const ProductPage: React.FC = () => {
         {/* Sidebar */}
         <div className="flex">
           <div
-            className={`w-0 h-[1680px] lg:w-1/4 bg-white rounded-md lg:mb-5`}
+            className={`w-0 h-screen lg:w-1/4 bg-white rounded-md lg:mb-5`}
           >
             <h3 className="hidden lg:flex text-[32px] text-[#101010] px-5 pt-4 pb-3 border-b font-semibold mb-4">
               {t("filter")}
