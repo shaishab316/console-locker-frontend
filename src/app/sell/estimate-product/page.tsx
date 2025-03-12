@@ -20,9 +20,7 @@ export default function PlayStationOffer() {
   const [productId, setProductId] = useState<string | null>(null);
   const [userSelectedOptions, setUserSelectedOptions] = useState([]);
 
-  // const userSelectedOptions = useSelector(
-  //   (state: RootState) => state?.questionSlice?.questions
-  // );
+ 
 
   const [
     getEstimateProductPrice,

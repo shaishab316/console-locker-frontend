@@ -150,7 +150,7 @@ const SelectedProduct = () => {
             </div>
           )}
         </div>
-      </div>
+      </div> 
 
       {/* Direct Payment */}
 

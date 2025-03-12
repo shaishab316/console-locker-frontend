@@ -30,9 +30,6 @@ const PaymentInMobile = () => {
 
   return (
     <div className="z-20 min-h-screen relative bg-[url('/sell/back_sell.png')] bg-cover bg-center overflow-hidden">
-      {/* Diagonal lines background */}
-      {/* <div className="absolute inset-0 opacity-10" /> */}
-
       <form onSubmit={handleSubmit}>
         {/* Personal Information */}
 

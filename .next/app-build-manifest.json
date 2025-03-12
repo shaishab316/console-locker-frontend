@@ -11,36 +11,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/loading.js"
     ],
-    "/sell/personal-information/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/sell/personal-information/page.js"
-    ],
-    "/cart/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/cart/page.js"
-    ],
-    "/checkout/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/checkout/page.js"
-    ],
-    "/sell/estimate-product/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/sell/estimate-product/page.js"
-    ],
-    "/buy/playstation/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/buy/playstation/page.js"
-    ],
-    "/buy/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/buy/[slug]/page.js"
-    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -57,25 +27,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/sell/[slug]/page.js"
     ],
-    "/sell/next1/page": [
+    "/sell/estimate-product/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/sell/next1/page.js"
+      "static/chunks/app/sell/estimate-product/page.js"
     ],
-    "/paymentprocess/page": [
+    "/sell/personal-information/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/paymentprocess/page.js"
+      "static/chunks/app/sell/personal-information/page.js"
     ],
-    "/payment/success/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/payment/success/page.js"
-    ],
-    "/payment/cancel/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/payment/cancel/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

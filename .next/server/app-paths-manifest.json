@@ -1,6 +1,7 @@
 {
-  "/paymentprocess/page": "app/paymentprocess/page.js",
-  "/payment/success/page": "app/payment/success/page.js",
-  "/buy/playstation/page": "app/buy/playstation/page.js",
-  "/payment/cancel/page": "app/payment/cancel/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/sell/page": "app/sell/page.js",
+  "/sell/[slug]/page": "app/sell/[slug]/page.js",
+  "/sell/personal-information/page": "app/sell/personal-information/page.js",
+  "/sell/estimate-product/page": "app/sell/estimate-product/page.js"
 }
