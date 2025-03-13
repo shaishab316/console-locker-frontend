@@ -9,6 +9,8 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Loading from "../loading";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { modifiedCart } from "@/redux/features/cart/TrackCartItem";
 
 interface CartItem {
   id: string;
@@ -94,6 +96,7 @@ export default function CartPage() {
   const [coupon, setCoupon] = useState<string>("");
   const { t } = useTranslation();
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const dispatch = useDispatch();
 
   const getProductIds = () => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]"); // Retrieve cart data
@@ -121,6 +124,8 @@ export default function CartPage() {
 
   const removeItem = (id: string) => {
     refetch();
+    dispatch(modifiedCart({}));
+
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     const updatedCart = cart.filter(
       (item: { productId: string }) => item.productId !== id
@@ -148,6 +153,8 @@ export default function CartPage() {
 
   const handleAddToCart = (id: string) => {
     refetch();
+    dispatch(modifiedCart({}));
+
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const newProduct = {
@@ -496,7 +503,10 @@ export default function CartPage() {
 
           <div className="flex flex-col gap-4">
             {products?.data?.products?.map((product: IProduct) => (
-              <div key={product?._id} className="bg-[#FDFDFD] flex gap-3 rounded-lg p-3">
+              <div
+                key={product?._id}
+                className="bg-[#FDFDFD] flex gap-3 rounded-lg p-3"
+              >
                 <div className="w-[123px] h-[137px]">
                   <Image
                     src={`${API_URL}/${product?.images[0]}`}

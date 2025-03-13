@@ -15,6 +15,7 @@ import { MobileMenu } from "./Mobile-Menu";
 import LanguageSelector from "../languageSelector/LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { useGetAllProductsQuery } from "@/redux/features/products/ProductAPI";
+import { useSelector } from "react-redux";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,6 +35,8 @@ export function Header() {
     isError,
     refetch,
   } = useGetAllProductsQuery({ limit: 10000 });
+
+  const isAggreed = useSelector((state: any) => state.trackCartSlice.isAggreed);
 
   useEffect(() => {
     if (isFirstRender.current && products?.data?.products.length > 0) {
@@ -73,7 +76,7 @@ export function Header() {
         setCartLength(0);
       }
     }
-  }, []);
+  }, [isAggreed]);
 
   return (
     <header className="top-0 md:pt-4 w-full  border-b bg-[#F2F5F7]">

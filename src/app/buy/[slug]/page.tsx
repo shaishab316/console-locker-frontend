@@ -24,6 +24,7 @@ import Loading from "@/app/loading";
 import { useParams, useRouter } from "next/navigation";
 import { useSellProductQuery } from "@/redux/features/sell/SellProductAPI";
 import toast from "react-hot-toast";
+import { modifiedCart } from "@/redux/features/cart/TrackCartItem";
 
 interface Product {
   title: string;
@@ -143,6 +144,8 @@ const ProductDetailsPage: React.FC = () => {
   };
 
   const handleAddToCart = () => {
+    dispatch(modifiedCart({}));
+
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const newProduct = {

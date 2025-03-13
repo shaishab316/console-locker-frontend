@@ -5,6 +5,7 @@ import showTradeInReducer from "@/redux/features/tradeIn/showTradeInSlice";
 import sellProductSlice from "@/redux/features/sell/SellProductSlice";
 import questionReducer from "@/redux/features/questions/QuestionSlice";
 import modalTradeInDataReducer from "@/redux/features/modalTradeInData/ModalTradeInData";
+import trackCartSlice from "@/redux/features/cart/TrackCartItem";
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     sellProduct: sellProductSlice,
     questionSlice: questionReducer,
     modalTradeInDataSlice: modalTradeInDataReducer,
+    trackCartSlice: trackCartSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(baseAPI.middleware),
