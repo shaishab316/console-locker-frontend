@@ -74,7 +74,9 @@ const ReviewsPage = () => {
   return (
     <div className="bg-[#F2F5F7] pt-10 pb-20">
       <Container>
-        <h2 className="text-[#101010] text-[24px] font-semibold mb-10 text-center md:text-[40px]">Reviews</h2>
+        <h2 className="text-[#101010] text-[24px] font-semibold mb-10 text-center md:text-[40px]">
+          Reviews
+        </h2>
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews?.data?.reviews?.map((review: any) => (
             <div

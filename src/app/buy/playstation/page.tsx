@@ -47,6 +47,7 @@ const ProductPage: React.FC = () => {
   const [filterableBrand, setFilterableBrand] = useState<string[]>([]);
   const [filterablePrice, setFilterablePrice] = useState<string[]>([]);
   const [filterableCondition, setFilterableCondition] = useState<string[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [sortBy, setSortBy] = useState<string>("");
 
@@ -65,7 +66,8 @@ const ProductPage: React.FC = () => {
     price: priceRange.length ? priceRange : undefined,
     condition: condition,
     sortBy: sortBy,
-    limit: 90,
+    limit: 9,
+    page: currentPage,
   } as any);
 
   const URL = process.env.NEXT_PUBLIC_API_URL;
@@ -159,16 +161,14 @@ const ProductPage: React.FC = () => {
     setPriceRange([min ?? 0, max ?? 9000000]);
   };
 
-  console.log("..........", products?.data?.products);
+  console.log("currentPage..........", currentPage);
 
   return (
     <div className="relative bg-[#F2F5F7] flex flex-col lg:flex-row py-8">
       <Container>
         {/* Sidebar */}
         <div className="flex">
-          <div
-            className={`w-0 h-screen lg:w-1/4 bg-white rounded-md lg:mb-5`}
-          >
+          <div className={`w-0 h-screen lg:w-1/4 bg-white rounded-md lg:mb-5`}>
             <h3 className="hidden lg:flex text-[32px] text-[#101010] px-5 pt-4 pb-3 border-b font-semibold mb-4">
               {t("filter")}
             </h3>
@@ -613,7 +613,7 @@ const ProductPage: React.FC = () => {
             ) : null}
 
             {/* Pagination */}
-            {products?.data?.products.length > 9 && (
+            {products?.data?.products.length >= 9 && (
               <div className="flex justify-center items-center gap-3 my-12">
                 <button
                   onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
@@ -621,10 +621,29 @@ const ProductPage: React.FC = () => {
                 >
                   <ChevronLeft />
                 </button>
-                {[1, 2, 3].map((pageNumber) => (
+                {/* {Array.fill(products?.data?.meta?.pagination?.total_pages).map(
+                  (pageNumber) => (
+                    <button
+                      key={pageNumber}
+                      onClick={() => setPage(pageNumber)}
+                      className={`w-10 h-10 flex items-center justify-center rounded-md ${
+                        page === pageNumber
+                          ? "bg-black text-white"
+                          : "bg-transparent border-2 border-[#101010]"
+                      }`}
+                    >
+                      {pageNumber}
+                    </button>
+                  )
+                )} */}
+
+                {Array.from(
+                  { length: products?.data?.meta?.pagination?.total_pages },
+                  (_, index) => index + 1
+                ).map((pageNumber) => (
                   <button
                     key={pageNumber}
-                    onClick={() => setPage(pageNumber)}
+                    onClick={() => setCurrentPage(pageNumber)}
                     className={`w-10 h-10 flex items-center justify-center rounded-md ${
                       page === pageNumber
                         ? "bg-black text-white"
@@ -634,6 +653,7 @@ const ProductPage: React.FC = () => {
                     {pageNumber}
                   </button>
                 ))}
+
                 <button
                   onClick={() =>
                     setPage((prev) =>

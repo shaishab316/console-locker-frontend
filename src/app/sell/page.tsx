@@ -16,7 +16,7 @@ const SellPage = () => {
         <HowDelivery />
         <ProductSection />
         <ReviewCarousel />
-      </div>
+      </div> 
 
       {/* show only for mobile ddevice */}
       <div className="md:hidden">

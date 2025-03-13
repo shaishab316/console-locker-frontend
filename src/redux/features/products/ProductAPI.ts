@@ -16,12 +16,21 @@ const ProductAPI = baseAPI.injectEndpoints({
         brand?: string;
         condition?: string;
         limit?: number;
+        page?: number;
         price?: [number, number];
         sortBy?: string;
       }
     >({
-      query: ({ product_type, brand, condition, limit, sortBy, price }) => {
-        console.log("price range: ", price);
+      query: ({
+        product_type,
+        brand,
+        condition,
+        limit,
+        page,
+        sortBy,
+        price,
+      }) => {
+        // console.log("price range: ", price);
 
         let queryParams = new URLSearchParams();
 
@@ -29,8 +38,9 @@ const ProductAPI = baseAPI.injectEndpoints({
           queryParams.append("product_type", product_type);
         if (brand && brand !== "all") queryParams.append("brand", brand);
         if (condition && condition !== "all")
-          queryParams.append("condition", condition); 
+          queryParams.append("condition", condition);
         if (limit) queryParams.append("limit", limit.toString());
+        if (page) queryParams.append("page", page.toString());
         if (sortBy) queryParams.append("sort", sortBy.toString());
 
         // if(price && price.length === 2) {

@@ -1,6 +1,8 @@
 {
-  "/page": "app/page.js",
-  "/reviews/page": "app/reviews/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/sell/page": "app/sell/page.js",
+  "/sell/question/page": "app/sell/question/page.js",
+  "/sell/[slug]/page": "app/sell/[slug]/page.js",
   "/buy/playstation/page": "app/buy/playstation/page.js",
-  "/buy/nintendo/page": "app/buy/nintendo/page.js"
+  "/sell/estimate-product/page": "app/sell/estimate-product/page.js"
 }

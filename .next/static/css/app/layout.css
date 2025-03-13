@@ -1195,9 +1195,6 @@ video {
 .h-\[137px\] {
   height: 137px;
 }
-.h-\[153px\] {
-  height: 153px;
-}
 .h-\[1680px\] {
   height: 1680px;
 }
@@ -1266,6 +1263,9 @@ video {
 }
 .max-h-\[330px\] {
   max-height: 330px;
+}
+.max-h-60 {
+  max-height: 15rem;
 }
 .min-h-64 {
   min-height: 16rem;
@@ -1609,9 +1609,6 @@ video {
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
 .flex-col {
   flex-direction: column;
 }
@@ -1782,6 +1779,9 @@ video {
 }
 .overflow-x-auto {
   overflow-x: auto;
+}
+.overflow-y-auto {
+  overflow-y: auto;
 }
 .whitespace-nowrap {
   white-space: nowrap;
@@ -2261,9 +2261,6 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
-.bg-\[\] {
-  background-color: ;
-}
 .bg-\[url\(\'\/sell\/back_sell\.png\'\)\] {
   background-image: url('/sell/back_sell.png');
 }
@@ -2644,9 +2641,6 @@ video {
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.text-\[4px\] {
-  font-size: 4px;
-}
 .font-bold {
   font-weight: 700;
 }
@@ -2911,9 +2905,6 @@ video {
 .text-yellow-400 {
   --tw-text-opacity: 1;
   color: rgb(250 204 21 / var(--tw-text-opacity, 1));
-}
-.text-\[\] {
-  color: ;
 }
 .underline {
   text-decoration-line: underline;
@@ -3940,10 +3931,6 @@ body {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .md\:text-\[48px\] {
-    font-size: 48px;
   }
 
   .md\:leading-\[84px\] {

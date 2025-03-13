@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store/store";
 import { addSelectedSellProduct } from "@/redux/features/sell/SellProductSlice";
+import { useSellProductQuery } from "@/redux/features/sell/SellProductAPI";
 
 const options = [
   { id: 12345, value: "PlayStation 5", label: "PlayStation 5" },
@@ -22,12 +23,21 @@ const options = [
 
 export default function SellHeroSection() {
   const [selectedConsole, setSelectedConsole] = useState<string>("");
+  const [selectedId, setSelectedId] = useState<string | number>();
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
+  const {
+    data: products,
+    isLoading: isLoadingProducts,
+    isError,
+  } = useSellProductQuery({
+    limit: 100,
+  });
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -48,9 +58,10 @@ export default function SellHeroSection() {
     router.push("/sell/question");
   };
 
-  const handleSelect = (id: number, value: string) => {
-    setSelectedConsole(value);
-    dispatch(addSelectedSellProduct({ id, selectedConsole: value }));
+  const handleSelect = (id: string | number, name: string) => {
+    setSelectedConsole(name);
+    setSelectedId(id);
+    // dispatch(addSelectedSellProduct({ id, selectedConsole: value }));
     setIsOpen(false);
   };
 
@@ -62,7 +73,7 @@ export default function SellHeroSection() {
       )?.selectedConsole || ""
   );
 
-  // console.log({ selectedConsoled });
+  console.log(selectedId, selectedConsole);
 
   return (
     <main className="bg-[url(/sell/sell-hero.png)] bg-cover bg-no-repeat min-h-[calc(100vh-180px)] bg-left-bottom">
@@ -151,12 +162,13 @@ export default function SellHeroSection() {
                     onClick={() => setIsOpen(!isOpen)}
                   >
                     <span className="text-[#FDFDFD] md:text-gray-700">
-                      {selectedConsole ? (
+                      {/* {selectedConsole ? (
                         options.find((opt) => opt.value === selectedConsole)
                           ?.label
                       ) : (
                         <>{t("selectAConsole")}</>
-                      )}
+                      )} */}
+                      {selectedConsole ? selectedConsole : t("selectAConsole")}
                     </span>
                     <ChevronDown
                       className={`w-5 h-5 text-[#FDFDFD] md:text-gray-500 transition-transform ${
@@ -167,25 +179,25 @@ export default function SellHeroSection() {
 
                   {/* Dropdown Menu */}
                   {isOpen && (
-                    <div className="absolute left-0 w-full bg-white border border-gray-200 rounded-md shadow-lg mt-1 z-10">
-                      {options.map((option) => (
-                        <div
-                          key={option.value}
-                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                          onClick={() => {
-                            handleSelect(option?.id, option?.value);
-                            // setSelectedConsole(option.value);
-                            // setIsOpen(false);
-                          }}
-                        >
-                          {option.label}
-                        </div>
-                      ))}
+                    <div className="z-50 absolute left-0 w-full bg-white border border-gray-200 rounded-md shadow-lg mt-1 max-h-60 overflow-y-auto">
+                      {products?.data?.products?.map(
+                        (option: { _id: string; name: string }) => (
+                          <div
+                            key={option?.name}
+                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer capitalize"
+                            onClick={() =>
+                              handleSelect(option?._id, option?.name)
+                            }
+                          >
+                            {option?.name}
+                          </div>
+                        )
+                      )}
                     </div>
                   )}
                 </div>
 
-                <Link href={"/sell/question"}>
+                <Link href={`/sell/${selectedId}`}>
                   <button
                     onClick={getEstimate}
                     disabled={!selectedConsole || isLoading}
