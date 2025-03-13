@@ -36,7 +36,7 @@ const ProductPage: React.FC = () => {
 
   const [data, setData] = useState([]);
 
-  const [searchProduct, setSearchProduct] = useState<string>("");
+  const [searchProduct, setSearchProduct] = useState<string>("xbox");
   const [brandSearch, setBrandSearch] = useState<string>("");
   const [priceRange, setPriceRange] = useState<[number, number]>([]);
   const [condition, setCondition] = useState<string>("");

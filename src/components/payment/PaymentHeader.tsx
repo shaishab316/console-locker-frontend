@@ -43,6 +43,7 @@ interface IProduct {
   brand: string;
   condition: string;
   quantity: number;
+  memory: string;
   isVariant: boolean;
   product_type: string;
   slug: string;
@@ -98,7 +99,7 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
     }
   };
 
-  // console.log("variants[0]._id", variants[0]._id);
+  console.log("variants", variants.length);
 
   return (
     <div className="bg-[#F2F5F7]">
@@ -164,9 +165,9 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
                           <div className="space-y-1 text-sm text-gray-600 mt-2">
                             <p>Storage: {product?.memory}</p>
                             <p>Condition: {product?.condition}</p>
-                            <p className="text-[#00B67A] text-sm font-medium">
+                            {/* <p className="text-[#00B67A] text-sm font-medium">
                               Delivery: {product?.delivery}
-                            </p>
+                            </p> */}
                             <p>Sales & Shipping: Console & you</p>
 
                             <div className="flex items-center justify-between">
@@ -245,15 +246,16 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
                     </div>
                   </>
                 ))}
-                <div>....................</div>
               </div>
             </div>
 
-            <div className="hidden lg:col-span-1 lg:flex items-center justify-center">
-              <button className="text-white bg-[#101010] py-3 px-9 rounded-md">
-                {t("addToCart")}
-              </button>
-            </div>
+            {variants.length > 0 && (
+              <div className="hidden lg:col-span-1 lg:flex items-center justify-center">
+                <button className="text-white bg-[#101010] py-3 px-9 rounded-md">
+                  {t("addToCart")}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </Container>
