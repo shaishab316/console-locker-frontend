@@ -1,8 +1,0 @@
-{
-  "/buy/playstation/page": "app/buy/playstation/page.js",
-  "/buy/[slug]/page": "app/buy/[slug]/page.js",
-  "/cart/page": "app/cart/page.js",
-  "/buy/xbox/page": "app/buy/xbox/page.js",
-  "/buy/nintendo/page": "app/buy/nintendo/page.js",
-  "/sell/page": "app/sell/page.js"
-}
