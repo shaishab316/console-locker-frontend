@@ -2,8 +2,12 @@ import baseAPI from "@/redux/api/baseAPI";
 
 interface GetEstimateProductPriceRequest {
   questions: {
-    quesId: string;
-    optionId: string;
+    quesId?: string;
+    optionId?: string;
+    questionAnswer?: {
+      questionName?: string;
+      questionTitle?: string;
+    };
   }[];
 }
 

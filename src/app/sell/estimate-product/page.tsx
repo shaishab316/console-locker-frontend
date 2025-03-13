@@ -20,8 +20,6 @@ export default function PlayStationOffer() {
   const [productId, setProductId] = useState<string | null>(null);
   const [userSelectedOptions, setUserSelectedOptions] = useState([]);
 
- 
-
   const [
     getEstimateProductPrice,
     { isLoading: getPriceLoading, isError: getPriceError },
@@ -35,18 +33,18 @@ export default function PlayStationOffer() {
 
   useEffect(() => {
     const data = JSON.parse(
-      localStorage.getItem("userSelectedOptions") || "null"
+      localStorage?.getItem("userSelectedOptions") || "null"
     );
     setUserSelectedOptions(data);
   }, [window.location.reload]);
 
   useEffect(() => {
-    const productId = localStorage.getItem("getEstimateProductId");
+    const productId = localStorage?.getItem("getEstimateProductId");
     setProductId(JSON.parse(productId as string));
   }, [window.location.reload]);
 
   useEffect(() => {
-    const productPrice = localStorage.getItem("getEstimatePrice");
+    const productPrice = localStorage?.getItem("getEstimatePrice");
     setPriceEstimate(JSON.parse(productPrice as string));
   }, [window.location.reload]);
 
@@ -58,7 +56,7 @@ export default function PlayStationOffer() {
           body: { questions: userSelectedOptions },
         }).unwrap();
 
-        localStorage.setItem(
+        localStorage?.setItem(
           "getEstimatePrice",
           JSON.stringify(response?.data?.price)
         );

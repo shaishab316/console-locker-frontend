@@ -49,9 +49,9 @@ interface RelatedProduct {
 
 const ProductDetailsPage: React.FC = () => {
   const [selectedModel, setSelectedModel] = useState<string>("");
-  const [selectedController, setSelectedController] = useState<
-    string | number | undefined
-  >();
+  const [selectedController, setSelectedController] = useState<string | number>(
+    0
+  );
   const [selectedMemory, setSelectedMemory] = useState<string>("");
   const [selectedCondition, setSelectedCondition] = useState<string>("");
   const [deviceValue, setDeviceValue] = useState(5.0);
@@ -83,7 +83,8 @@ const ProductDetailsPage: React.FC = () => {
     {
       productName: singleProduct?.data?.product?.name,
       condition: selectedCondition,
-      controller: selectedController,
+      controller:
+        typeof selectedController === "number" ? selectedController : undefined,
       memory: selectedMemory,
       model: selectedModel,
     },
@@ -146,7 +147,7 @@ const ProductDetailsPage: React.FC = () => {
   const handleAddToCart = () => {
     dispatch(modifiedCart({}));
 
-    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const existingCart = JSON.parse(localStorage?.getItem("cart") || "[]");
 
     const newProduct = {
       productId: product?.product?._id,
@@ -175,13 +176,13 @@ const ProductDetailsPage: React.FC = () => {
         }
         return item;
       });
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      localStorage?.setItem("cart", JSON.stringify(updatedCart));
     }
 
     if (!isDuplicate) {
       toast.success("Product added to cart successfully!");
       existingCart.push(newProduct); // Add new product
-      localStorage.setItem("cart", JSON.stringify(existingCart)); // Save updated cart
+      localStorage?.setItem("cart", JSON.stringify(existingCart)); // Save updated cart
     }
 
     router.push("/cart");
@@ -567,7 +568,7 @@ const ProductDetailsPage: React.FC = () => {
                       <div className="bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-lg pb-2">
                         <Image
                           src={`${API_URL}${product.images[0]}`}
-                          alt={product?.title}
+                          alt={product?.name}
                           width={300}
                           height={387}
                           className="object-center object-cover w-full h-[387px] rounded-t-lg"

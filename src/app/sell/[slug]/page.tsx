@@ -15,14 +15,6 @@ import MobileProductDetails from "@/components/sell/mobile/MobileProductDetails"
 import Link from "next/link";
 import Image from "next/image";
 
-interface IOption {
-  _id: string;
-  name: string;
-  options: [IQuestion];
-  description: string;
-  price: number;
-}
-
 interface IQuestion {
   _id: string;
   name: string;
@@ -72,12 +64,12 @@ export default function ScreenCondition() {
   const params = useParams();
 
   useEffect(() => {
-    const lang = localStorage.getItem("i18nextLng");
+    const lang = localStorage?.getItem("i18nextLng");
     if (lang) setSelectedLang(lang);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(
+    localStorage?.setItem(
       "userSelectedOptions",
       JSON.stringify(userSelectedOptions)
     );
@@ -114,7 +106,7 @@ export default function ScreenCondition() {
         );
       }
 
-      localStorage.setItem(
+      localStorage?.setItem(
         "getEstimateProductId",
         JSON.stringify(params?.slug)
       );
@@ -181,12 +173,12 @@ export default function ScreenCondition() {
   };
 
   const submitMobileForm = () => {
-    localStorage.setItem(
+    localStorage?.setItem(
       "userSelectedOptions",
       JSON.stringify(userSelectedOptions)
     );
 
-    localStorage.setItem("getEstimateProductId", JSON.stringify(params?.slug));
+    localStorage?.setItem("getEstimateProductId", JSON.stringify(params?.slug));
 
     router.push("/sell/estimate-product-mobile");
   };

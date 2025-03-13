@@ -38,7 +38,9 @@ const ProductPage: React.FC = () => {
 
   const [searchProduct, setSearchProduct] = useState<string>("playstation");
   const [brandSearch, setBrandSearch] = useState<string>("");
-  const [priceRange, setPriceRange] = useState<[number, number]>([]);
+  const [priceRange, setPriceRange] = useState<
+    [number | string, number | string]
+  >(["", ""]);
   const [condition, setCondition] = useState<string>("");
 
   const [maxPriceForFilter, setMaxPriceForFilter] = useState<number>();

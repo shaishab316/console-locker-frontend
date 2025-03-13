@@ -406,7 +406,7 @@ export default function ConsoleSelector() {
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {products?.data?.products?.map((console: IConsole) => (
                         <Link
-                          href={`/sell/${console?._id}`}
+                          href={`/buy/${console?._id}`}
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
@@ -491,7 +491,7 @@ export default function ConsoleSelector() {
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {products?.data?.products?.map((console: IConsole) => (
                         <Link
-                          href={`/sell/${console?._id}`}
+                          href={`/buy/${console?._id}`}
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
@@ -574,7 +574,7 @@ export default function ConsoleSelector() {
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
                       {products?.data?.products?.map((console: IConsole) => (
                         <Link
-                          href={`/sell/${console?._id}`}
+                          href={`/buy/${console?._id}`}
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >

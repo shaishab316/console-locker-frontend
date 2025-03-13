@@ -99,7 +99,7 @@ export default function CartPage() {
   const dispatch = useDispatch();
 
   const getProductIds = () => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]"); // Retrieve cart data
+    const cart = JSON.parse(localStorage?.getItem("cart") || "[]"); // Retrieve cart data
     const productIds: string[] = cart?.map(
       (item: { productId: string; tradeIn: any }) => item.productId
     );
@@ -114,7 +114,7 @@ export default function CartPage() {
   } = useGetProductsByIdsQuery(getProductIds());
 
   const getProductQuantity = (id: string) => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const cart = JSON.parse(localStorage?.getItem("cart") || "[]");
     const product = cart.find(
       (item: { productId: string }) => item.productId === id
     );
@@ -126,12 +126,12 @@ export default function CartPage() {
     refetch();
     dispatch(modifiedCart({}));
 
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const cart = JSON.parse(localStorage?.getItem("cart") || "[]");
     const updatedCart = cart.filter(
       (item: { productId: string }) => item.productId !== id
     );
 
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    localStorage?.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const subtotal = products?.data?.products.reduce(
@@ -155,7 +155,7 @@ export default function CartPage() {
     refetch();
     dispatch(modifiedCart({}));
 
-    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const existingCart = JSON.parse(localStorage?.getItem("cart") || "[]");
 
     const newProduct = {
       productId: id,
@@ -182,22 +182,22 @@ export default function CartPage() {
         }
         return item;
       });
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      localStorage?.setItem("cart", JSON.stringify(updatedCart));
     }
 
     if (!isDuplicate) {
       toast.success("Product added to cart successfully!");
       existingCart.push(newProduct); // Add new product
-      localStorage.setItem("cart", JSON.stringify(existingCart)); // Save updated cart
+      localStorage?.setItem("cart", JSON.stringify(existingCart)); // Save updated cart
     }
 
     // router.push("/cart");
   };
 
   const increaseQuantity = (id: string) => {
-    // Get the cart data from localStorage
+    // Get the cart data from localStorage?
     refetch();
-    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+    const cartData = JSON.parse(localStorage?.getItem("cart") || "[]");
 
     const itemExists = cartData.some((item: any) => item.productId === id);
 
@@ -215,14 +215,14 @@ export default function CartPage() {
       return item;
     });
 
-    // Store the updated cart back into localStorage
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    // Store the updated cart back into localStorage?
+    localStorage?.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const decreaseQuantity = (id: string) => {
     refetch();
-    // Get the cart data from localStorage
-    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+    // Get the cart data from localStorage?
+    const cartData = JSON.parse(localStorage?.getItem("cart") || "[]");
 
     const itemExists = cartData.some((item: any) => item.productId === id);
 
@@ -240,8 +240,8 @@ export default function CartPage() {
       return item;
     });
 
-    // Store the updated cart back into localStorage
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    // Store the updated cart back into localStorage?
+    localStorage?.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const handleCoupon = () => {

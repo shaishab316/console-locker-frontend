@@ -42,9 +42,9 @@ export default function CheckoutForm() {
   const [paymentMethod, setPaymentMethod] = useState("paypal");
   const [priceEstimate, setPriceEstimate] = useState<number>(0);
   const [productId, setProductId] = useState<string | null>(null);
-  const [customerEmailOnLocalStorage, setCustomerEmailOnLocalStorage] =
+  const [customerEmailOnlocalStorage, setCustomerEmailOnlocalStorage] =
     useState<string | null>(null);
-  const [customerIdOnLocalStorage, setCustomerIdOnLocalStorage] = useState<
+  const [customerIdOnlocalStorage, setCustomerIdOnlocalStorage] = useState<
     string | null
   >(null);
 
@@ -109,18 +109,18 @@ export default function CheckoutForm() {
     };
 
     // if has nota customer, create a new customer first
-    if (!customerIdOnLocalStorage || !productId) {
+    if (!customerIdOnlocalStorage || !productId) {
       const response = await createCustomer(newUser).unwrap();
 
       console.log("new user created........", response?.data);
 
       if (response?.success) {
-        localStorage.setItem("customer", JSON.stringify(response?.data));
+        localStorage?.setItem("customer", JSON.stringify(response?.data));
       }
     }
 
     const data = {
-      customer: customerIdOnLocalStorage,
+      customer: customerIdOnlocalStorage,
       product: productId,
       questions: transformedData,
       payment: {
@@ -129,7 +129,7 @@ export default function CheckoutForm() {
     };
 
     if (
-      (customerEmailOnLocalStorage && formData.paypalEmail) ||
+      (customerEmailOnlocalStorage && formData.paypalEmail) ||
       formData.iban
     ) {
       const res = await sellProduct(data).unwrap();
@@ -171,7 +171,7 @@ export default function CheckoutForm() {
   //   toast.success("Submitted successfully!");
 
   //   const data = {
-  //     customer: customerIdOnLocalStorage,
+  //     customer: customerIdOnlocalStorage?,
   //     product: productId,
   //     questions: transformedData,
   //     payment: {
@@ -183,7 +183,7 @@ export default function CheckoutForm() {
 
   //   console.log({ stringifiedData });
 
-  //   // if (customerEmailOnLocalStorage) {
+  //   // if (customerEmailOnlocalStorage?) {
   //   //   const res = sellProduct(stringifiedData);
   //   //   console.log({ res });
 
@@ -208,9 +208,11 @@ export default function CheckoutForm() {
   //   // console.log("formData in submit", formData);
   // };
 
-  // get customer data from localstorage
+  // get customer data from localStorage?
   useEffect(() => {
-    const customerData = JSON.parse(localStorage.getItem("customer") || "null");
+    const customerData = JSON.parse(
+      localStorage?.getItem("customer") || "null"
+    );
 
     if (customerData) {
       setFormData((prev) => ({
@@ -225,14 +227,14 @@ export default function CheckoutForm() {
         phone: customerData.phone,
       }));
 
-      setCustomerEmailOnLocalStorage(customerData.email);
-      setCustomerIdOnLocalStorage(customerData._id);
+      setCustomerEmailOnlocalStorage(customerData.email);
+      setCustomerIdOnlocalStorage(customerData._id);
     }
   }, []);
 
-  // get product id from localstorage
+  // get product id from localStorage?
   useEffect(() => {
-    const storedProductId = localStorage.getItem("getEstimateProductId");
+    const storedProductId = localStorage?.getItem("getEstimateProductId");
     if (storedProductId) {
       try {
         setProductId(JSON.parse(storedProductId));
@@ -242,9 +244,9 @@ export default function CheckoutForm() {
     }
   }, []);
 
-  // get product price from localstorage
+  // get product price from localStorage?
   useEffect(() => {
-    const storedPrice = localStorage.getItem("getEstimatePrice");
+    const storedPrice = localStorage?.getItem("getEstimatePrice");
     if (storedPrice) {
       try {
         setPriceEstimate(JSON.parse(storedPrice));
@@ -254,9 +256,9 @@ export default function CheckoutForm() {
     }
   }, []);
 
-  // get user selected options from localstorage
+  // get user selected options from localStorage?
   useEffect(() => {
-    const storedUserSelectedOptions = localStorage.getItem(
+    const storedUserSelectedOptions = localStorage?.getItem(
       "userSelectedOptions"
     );
     if (storedUserSelectedOptions) {

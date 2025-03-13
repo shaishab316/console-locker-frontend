@@ -4,6 +4,11 @@ interface Question {
   quesId: string;
   optionId: string;
   description?: string;
+  questionAnswer: {
+    questionName?: string;
+    questionTitle?: string;
+    questionAnswer?: string;
+  };
 }
 
 const initialState: { questions: Question[] } = {

@@ -30,11 +30,11 @@ export default function ReviewCard({
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
-    const lang = localStorage.getItem("i18nextLng");
+    const lang = localStorage?.getItem("i18nextLng");
     setSelectedLang(lang || "");
   }, []);
 
-// console.log(comment);
+  // console.log(comment);
 
   return (
     <div className="bg-white p-6 rounded-lg h-full flex flex-col">

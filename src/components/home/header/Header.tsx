@@ -65,7 +65,7 @@ export function Header() {
   }, [lastScrollY]);
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
+    const storedCart = localStorage?.getItem("cart");
 
     if (storedCart) {
       try {

@@ -48,6 +48,7 @@ interface IProduct {
   product_type: string;
   slug: string;
   __v: number;
+  [key: string]: any;
 }
 
 interface PaymentHeaderProps {
@@ -61,7 +62,7 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
 
   const handleAddToCart = (id: string) => {
     console.log(id);
-    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const existingCart = JSON.parse(localStorage?.getItem("cart") || "[]");
 
     const newProduct = {
       productId: id,
@@ -89,13 +90,13 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
         }
         return item;
       });
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      localStorage?.setItem("cart", JSON.stringify(updatedCart));
     }
 
     if (!isDuplicate) {
       toast.success("Product added to cart successfully!");
       existingCart.push(newProduct); // Add new product
-      localStorage.setItem("cart", JSON.stringify(existingCart)); // Save updated cart
+      localStorage?.setItem("cart", JSON.stringify(existingCart)); // Save updated cart
     }
   };
 

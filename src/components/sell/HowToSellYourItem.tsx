@@ -39,7 +39,7 @@ const HowToSellYourItem = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    const lang = localStorage.getItem("i18nextLng");
+    const lang = localStorage?.getItem("i18nextLng");
     setSelectedLang(lang || "");
   }, []);
 

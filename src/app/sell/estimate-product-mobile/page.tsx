@@ -28,7 +28,7 @@ const SelectedProduct = () => {
 
   // get product id from locaStorage
   useEffect(() => {
-    const productId = localStorage.getItem("getEstimateProductId");
+    const productId = localStorage?.getItem("getEstimateProductId");
     setProductId(JSON.parse(productId as string));
   }, []);
 
@@ -50,14 +50,14 @@ const SelectedProduct = () => {
   // get User Selected Options from locaStorage
   useEffect(() => {
     const data = JSON.parse(
-      localStorage.getItem("userSelectedOptions") || "null"
+      localStorage?.getItem("userSelectedOptions") || "null"
     );
     setUserSelectedOptions(data);
   }, []);
 
   // get product price from locaStorage
   useEffect(() => {
-    const productPrice = localStorage.getItem("getEstimatePrice");
+    const productPrice = localStorage?.getItem("getEstimatePrice");
     setPriceEstimate(JSON.parse(productPrice as string));
   }, []);
 
@@ -70,7 +70,7 @@ const SelectedProduct = () => {
           body: { questions: userSelectedOptions },
         }).unwrap();
 
-        localStorage.setItem(
+        localStorage?.setItem(
           "getEstimatePrice",
           JSON.stringify(response?.data?.price)
         );

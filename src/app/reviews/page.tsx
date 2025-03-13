@@ -54,7 +54,6 @@
 
 "use client";
 
-import ReviewsSection from "@/components/share/review-pagination/ReviewSection";
 import { useGetReviewsQuery } from "@/redux/features/review/ReviewAPI";
 import Loading from "../loading";
 import Image from "next/image";

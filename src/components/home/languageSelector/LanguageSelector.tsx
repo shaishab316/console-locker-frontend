@@ -20,7 +20,7 @@ const LanguageSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { i18n } = useTranslation(); // Use i18n directly from useTranslation hook
-  const [selectedLanguageOnLocalStorage, setSelectedLanguageOnLocalStorage] =
+  const [selectedLanguageOnlocalStorage, setSelectedLanguageOnlocalStorage] =
     useState<string | null>("");
 
   const handleSelectLanguage = (lang: LanguageType) => {
@@ -57,8 +57,8 @@ const LanguageSelector = () => {
   }, []);
 
   useEffect(() => {
-    const i18nextLng = localStorage.getItem("i18nextLng");
-    setSelectedLanguageOnLocalStorage(i18nextLng);
+    const i18nextLng = localStorage?.getItem("i18nextLng");
+    setSelectedLanguageOnlocalStorage(i18nextLng);
     console.log(typeof i18nextLng);
   }, [selectedLang]);
 
@@ -71,7 +71,7 @@ const LanguageSelector = () => {
       >
         <Image
           src={
-            selectedLanguageOnLocalStorage === "en"
+            selectedLanguageOnlocalStorage === "en"
               ? languages[0].flag
               : languages[1].flag
           }
@@ -80,7 +80,7 @@ const LanguageSelector = () => {
           alt={selectedLang.name}
         />
         <span className="text-sm">
-          {selectedLanguageOnLocalStorage === "en"
+          {selectedLanguageOnlocalStorage === "en"
             ? languages[0].name
             : languages[1].name}
         </span>

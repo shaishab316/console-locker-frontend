@@ -421,7 +421,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/lib/store";
+import { RootState } from "@/redux/store/store";
 import { toggleModal } from "@/redux/features/modal/modalSlice";
 import {
   useGetASingleProductQuery,
