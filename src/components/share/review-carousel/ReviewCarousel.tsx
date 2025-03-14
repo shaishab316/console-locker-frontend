@@ -2,13 +2,14 @@
 
 import { Carousel } from "antd";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import Container from "@/components/common/Container";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import Loading from "@/app/loading";
 import { useGetReviewsQuery } from "@/redux/features/review/ReviewAPI";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Sample review data
 // const reviews = [
@@ -64,11 +65,20 @@ interface IReview {
   _id: string;
 }
 
-export default function ReviewCarousel() {
+export default function ReviewCarousel({
+  productName,
+}: {
+  productName: string;
+}) {
   const carouselRef = useRef<any>(null);
   const { t } = useTranslation();
+  const [page, setPage] = useState<number>(1);
 
-  const { data: reviews, isLoading, isError } = useGetReviewsQuery({});
+  const {
+    data: reviews,
+    isLoading,
+    isError,
+  } = useGetReviewsQuery({ productName, page, limit: 3 });
 
   if (isLoading) return <Loading />;
   if (isError) return <p className="text-red-500">Failed to load reviews.</p>;
@@ -111,6 +121,9 @@ export default function ReviewCarousel() {
         <Carousel
           ref={carouselRef}
           dots={false}
+          beforeChange={(_, to) => {
+            setPage(to + 1);
+          }}
           slidesToShow={3}
           slidesToScroll={1}
           className="space-x-4"

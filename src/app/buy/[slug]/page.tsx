@@ -602,7 +602,7 @@ const ProductDetailsPage: React.FC = () => {
         </Container>
 
         <div className="hidden md:block">
-          <ReviewCarousel />
+          <ReviewCarousel productName={product?.product?.name} />
           <BlogCarousel />
         </div>
       </div>

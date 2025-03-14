@@ -4,8 +4,8 @@ import { get } from "http";
 const ReviewAPI = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getReviews: builder.query({
-      query: ({ productName, page = 1 }) => ({
-        url: `/reviews?limit=9&page=${page}&productName=${productName}`,
+      query: ({ productName, limit = 9, page = 1 }) => ({
+        url: `/reviews?limit=${limit}&page=${page}&productName=${productName}`,
         method: "GET",
       }),
       providesTags: ["reviews"],
