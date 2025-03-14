@@ -235,7 +235,7 @@ const ProductDetailsPage: React.FC = () => {
                     )}
                   </p>
                   <h2 className="font-medium">{product?.product?.ratings}</h2>
-                  <Link href={`/reviews/${product?.product?.name}`}>
+                  <Link href={`/reviews?productName=${product?.product?.name}`}>
                     <p className="underline">
                       ({product?.product?.reviewCount} reviews)
                     </p>
