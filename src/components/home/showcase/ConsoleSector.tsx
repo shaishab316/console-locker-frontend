@@ -404,6 +404,9 @@ export default function ConsoleSelector() {
                       <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
+                      {products?.data?.products?.length < 1 && (
+                        <p className="text-lg text-white">No Xbox found!</p>
+                      )}
                       {products?.data?.products?.map((console: IConsole) => (
                         <Link
                           href={`/buy/${console?.slug}`}
@@ -489,6 +492,11 @@ export default function ConsoleSelector() {
                       <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
+                      {products?.data?.products?.length < 1 && (
+                        <p className="text-lg text-white">
+                          No Playstation found!
+                        </p>
+                      )}
                       {products?.data?.products?.map((console: IConsole) => (
                         <Link
                           href={`/buy/${console?.slug}`}
@@ -572,6 +580,9 @@ export default function ConsoleSelector() {
                       <hr className="flex-1 border-b-4 border-gray-100 -mt-4" />
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-8">
+                      {products?.data?.products?.length < 1 && (
+                        <p className="text-lg text-white">No Nintendo found!</p>
+                      )}
                       {products?.data?.products?.map((console: IConsole) => (
                         <Link
                           href={`/buy/${console?.slug}`}

@@ -501,7 +501,7 @@ const ProductPage: React.FC = () => {
 
             {products?.data?.products.length < 1 ? (
               <div className="flex items-center justify-center h-[calc(100vh-200px)] text-2xl font-medium">
-                No, data found!
+                No, Playstation found!
               </div>
             ) : null}
 

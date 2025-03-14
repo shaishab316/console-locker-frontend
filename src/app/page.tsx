@@ -13,7 +13,7 @@ export default function Home() {
       <HeroBanner />
       <ConsoleSelector />
       <ImageSlider />
-      <ReviewCarousel />
+      <ReviewCarousel productName="" />
       <GreenStory />
       {/* <NewBlogCarousel /> */}
       {/* <CustomSelect /> */}

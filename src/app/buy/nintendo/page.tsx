@@ -38,9 +38,9 @@ const ProductPage: React.FC = () => {
 
   const [searchProduct, setSearchProduct] = useState<string>("nintendo");
   const [brandSearch, setBrandSearch] = useState<string>("");
-   const [priceRange, setPriceRange] = useState<
-      [number | string, number | string]
-    >(["", ""]);
+  const [priceRange, setPriceRange] = useState<
+    [number | string, number | string]
+  >(["", ""]);
   const [condition, setCondition] = useState<string>("");
 
   const [maxPriceForFilter, setMaxPriceForFilter] = useState<number>();
@@ -510,7 +510,7 @@ const ProductPage: React.FC = () => {
 
             {products?.data?.products.length < 1 ? (
               <div className="flex items-center justify-center h-[calc(100vh-200px)] text-2xl font-medium">
-                No, data found!
+                No, Nintendo found!
               </div>
             ) : null}
 
