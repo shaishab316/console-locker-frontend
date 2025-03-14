@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { memo, use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import HowToSellYourItem from "@/components/sell/HowToSellYourItem";
 import { useTranslation } from "react-i18next";
@@ -37,25 +37,26 @@ export default function ScreenCondition() {
     questionTitle: "",
     questionAnswer: "",
   });
-  const [storage, setStorage] = useState("");
-  const [modal, setModal] = useState("");
-  const [condition, setCondition] = useState("");
-  const [functional, setFunctional] = useState("");
-  const [controller, setController] = useState("");
-  const [accessory, setAccessory] = useState("");
 
-  const [selectedOption, setSelectedOption] = useState([]);
+  // track selected item
+  const [modal, setModal] = useState("");
+  const [brand, setBrand] = useState("");
+  const [condition, setCondition] = useState("");
+  const [controller, setController] = useState("");
+  const [memory, setMemory] = useState("");
 
   const userSelectedOptions = useSelector(
     (state: RootState) => state?.questionSlice?.questions
   );
 
-  const [
-    getEstimateProductPrice,
-    { data, isLoading: getPriceLoading, isError: getPriceError },
-  ] = useGetEstimateProductPriceMutation();
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  const [questionId, setQuestionId] = useState("");
+  // const [
+  //   getEstimateProductPrice,
+  //   { data, isLoading: getPriceLoading, isError: getPriceError },
+  // ] = useGetEstimateProductPriceMutation();
+
+  // const [questionId, setQuestionId] = useState("");
 
   const router = useRouter();
   const [selectedLang, setSelectedLang] = useState("");
@@ -80,6 +81,27 @@ export default function ScreenCondition() {
     isLoading,
     isError,
   } = useGetASingleProductQuery(params?.slug as string);
+
+  useEffect(() => {
+    if (question?.data?.questions) {
+      const questions = question?.data?.questions;
+
+      // Helper function to get the first option value for a given question name
+      const getFirstOption = (name: string) => {
+        return (
+          questions.find((q: any) => q.name === name)?.options?.[0]?.option ||
+          ""
+        );
+      };
+
+      // Setting the first option of each question into the state
+      setModal(getFirstOption("model"));
+      setBrand(getFirstOption("brand"));
+      setCondition(getFirstOption("condition"));
+      setController(getFirstOption("controller"));
+      setMemory(getFirstOption("memory"));
+    }
+  }, [question?.data?.questions]);
 
   if (isLoading) {
     return <Loading />;
@@ -147,6 +169,28 @@ export default function ScreenCondition() {
     name: string,
     option: { _id: string; option: string; price: number; description: string }
   ) => {
+    console.log("........", id, name, option);
+    switch (name.toLowerCase()) {
+      case "model":
+        setModal(option.option);
+        break;
+      case "brand":
+        setBrand(option.option);
+        break;
+      case "condition":
+        setCondition(option.option);
+        break;
+      case "controller":
+        setController(option.option);
+        break;
+      case "memory": // Assuming "memory" corresponds to "storage"
+        setStorage(option.option);
+        break;
+      default:
+        console.warn(`Unknown question name: ${name}`);
+        break;
+    }
+
     const data = {
       quesId: id,
       optionId: option?._id,
@@ -185,7 +229,8 @@ export default function ScreenCondition() {
 
   const questionsLength = question?.data?.questions.length;
 
-  console.log("question .........", question);
+  // console.log({ modal, brand, condition, controller, storage });
+  console.log(question?.data?.questions);
 
   return (
     <div>
@@ -265,15 +310,15 @@ export default function ScreenCondition() {
         {/* <MobileProductDetails /> */}
 
         <div>
-          {/* <div className="w-full">
+          <div className="w-full">
             <Image
-              src={"/sell/product-detail.png"}
+              src={`${API_URL}${question?.data?.image}`}
               className="w-full"
               width={700}
               height={800}
               alt="xbox"
             />
-          </div> */}
+          </div>
 
           {/* Select the Xbox One model */}
           {questionsLength > 0 && (
@@ -356,7 +401,7 @@ export default function ScreenCondition() {
                         )
                       }
                       className={`${
-                        storg?.option === storage
+                        storg?.option === brand
                           ? "bg-[#64B95E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[98px] h-[106px] text-center flex items-center justify-center rounded-md p-1.5`}
@@ -471,7 +516,7 @@ export default function ScreenCondition() {
                         )
                       }
                       className={`${
-                        cond.option === condition
+                        cond.option === controller
                           ? "bg-[#64B95E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
@@ -517,7 +562,7 @@ export default function ScreenCondition() {
                         )
                       }
                       className={`${
-                        cond.option === condition
+                        cond.option === memory
                           ? "bg-[#64B95E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}

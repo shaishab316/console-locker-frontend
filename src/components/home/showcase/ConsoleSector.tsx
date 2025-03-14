@@ -413,11 +413,11 @@ export default function ConsoleSelector() {
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative w-full h-[387px]">
+                          <div className="relative w-full h-[153px]">
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
-                              width={500}
+                              width={700}
                               height={500}
                               className="w-full h-full"
                             />
@@ -503,11 +503,11 @@ export default function ConsoleSelector() {
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative w-full h-[387px]">
+                          <div className="relative w-full h-[153px]">
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
-                              width={500}
+                              width={700}
                               height={500}
                               className="w-full h-full"
                             />
@@ -589,11 +589,11 @@ export default function ConsoleSelector() {
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative w-full h-[387px]">
+                          <div className="relative w-full h-[153px]">
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
-                              width={500}
+                              width={700}
                               height={500}
                               className="w-full h-full"
                             />

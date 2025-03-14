@@ -15,8 +15,8 @@ const SellPage = () => {
         <SellHeroSection />
         <HowDelivery />
         <ProductSection />
-        <ReviewCarousel />
-      </div> 
+        <ReviewCarousel productName="" />
+      </div>
 
       {/* show only for mobile ddevice */}
       <div className="md:hidden">
@@ -24,7 +24,7 @@ const SellPage = () => {
         <FindOutConsole />
 
         <ConsoleSelector />
-        <ReviewCarousel />
+        <ReviewCarousel productName="" />
         <BlogCarousel />
       </div>
     </>

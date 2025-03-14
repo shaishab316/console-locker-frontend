@@ -153,7 +153,7 @@ const ProductDetailsPage: React.FC = () => {
     interface CartItem {
       productId: string;
       quantity: number;
-      tradeIn: any; // Replace 'any' with the appropriate type if known
+      tradeIn: any;
     }
 
     const isDuplicate: boolean = existingCart.some(

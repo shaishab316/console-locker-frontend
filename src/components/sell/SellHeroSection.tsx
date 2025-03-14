@@ -61,6 +61,7 @@ export default function SellHeroSection() {
   const handleSelect = (id: string | number, name: string) => {
     setSelectedConsole(name);
     setSelectedId(id);
+    
     // dispatch(addSelectedSellProduct({ id, selectedConsole: value }));
     setIsOpen(false);
   };
@@ -73,7 +74,7 @@ export default function SellHeroSection() {
       )?.selectedConsole || ""
   );
 
-  console.log(selectedId, selectedConsole);
+  // console.log(selectedId, selectedConsole);
 
   return (
     <main className="bg-[url(/sell/sell-hero.png)] bg-cover bg-no-repeat min-h-[calc(100vh-180px)] bg-left-bottom">

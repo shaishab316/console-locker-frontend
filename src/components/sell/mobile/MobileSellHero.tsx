@@ -5,9 +5,12 @@ import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { Trans, useTranslation } from "react-i18next";
 import Link from "next/link";
+import { useSellProductQuery } from "@/redux/features/sell/SellProductAPI";
 
 export default function MobileSellHero() {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | number>();
+
   const consoles = [
     "PlayStation 5",
     "PlayStation 4",
@@ -15,11 +18,27 @@ export default function MobileSellHero() {
     "Xbox One",
     "Nintendo Switch",
   ];
+
+  const {
+    data: products,
+    isLoading: isLoadingProducts,
+    isError,
+  } = useSellProductQuery({
+    limit: 100,
+  });
   const [selectedConsole, setSelectedConsole] = useState("");
   const { t } = useTranslation();
 
   const handleNext = () => {
     console.log("first");
+  };
+
+  const handleSelect = (id: string | number, name: string) => {
+    setSelectedConsole(name);
+    setSelectedId(id);
+
+    // dispatch(addSelectedSellProduct({ id, selectedConsole: value }));
+    setIsOpen(false);
   };
 
   return (
@@ -64,26 +83,25 @@ export default function MobileSellHero() {
           </button>
 
           {isOpen && (
-            <div className="absolute max-w-[92%] mt-2 bg-white rounded-lg shadow-lg z-10">
-              {consoles.map((console) => (
-                <button
-                  key={console}
-                  className="w-full text-left px-4 py-2 hover:bg-orange-50 text-gray-700"
-                  onClick={() => {
-                    setSelectedConsole(console);
-                    setIsOpen(false);
-                  }}
-                >
-                  {console}
-                </button>
-              ))}
+            <div className="absolute w-[90%] mt-2 bg-white rounded-lg shadow-lg z-10">
+              {products?.data?.products?.map(
+                (console: { _id: string; name: string }) => (
+                  <button
+                    key={console?.name}
+                    className="w-full text-left px-4 py-2 hover:bg-orange-50 text-gray-700"
+                    onClick={() => handleSelect(console?._id, console?.name)}
+                  >
+                    {console?.name}
+                  </button>
+                )
+              )}
             </div>
           )}
         </div>
 
         {/* Estimate button */}
         <div className="w-full h-14 px-5 relative">
-          <Link href={"/sell/next6"}>
+          <Link href={`/sell/${selectedId}`}>
             <button
               onClick={handleNext}
               className="w-full h-14 bg-white text-[#E95D00] py-3 px-4 rounded-lg font-medium"

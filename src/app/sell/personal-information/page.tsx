@@ -318,7 +318,7 @@ export default function CheckoutForm() {
                     <label
                       htmlFor="lastName"
                       className="block text-lg font-medium text-[#101010] mb-1"
-                    >
+                    > 
                       {t("lastName")}
                       <span className="text-red-500 font-semibold">*</span>
                     </label>
