@@ -177,13 +177,6 @@ const ProductPage: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* <select className="w-full border-none outline-none">
-                    <option>All</option>
-                    <option>PlayStation</option>
-                    <option>Xbox</option>
-                    <option>Nintendo</option>
-                  </select> */}
-
                   <select
                     onChange={(e) => setSearchProduct(e.target.value)}
                     className="w-[80%] text-[#6B6B6B] appearance-none border-none outline-none px-1.5"
@@ -192,11 +185,13 @@ const ProductPage: React.FC = () => {
                     <option value="">{t("all")}</option>
 
                     {/* Dynamically rendered options */}
-                    {filterableProduct?.map((product, ind) => (
-                      <option key={ind} value={product as string}>
-                        {product as string}
-                      </option>
-                    ))}
+                    {products?.data?.meta?.product_meta?.product_types?.map(
+                      (product: string, ind: number) => (
+                        <option key={ind} value={product as string}>
+                          {product as string}
+                        </option>
+                      )
+                    )}
                   </select>
                 </div>
                 <div className="mb-4">
@@ -208,11 +203,13 @@ const ProductPage: React.FC = () => {
                     onChange={(e) => setBrandSearch(e.target.value)}
                     className="w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5"
                   >
-                    {filterableBrand?.map((brand, ind) => (
-                      <option key={ind} value={brand as string}>
-                        {brand as string}
-                      </option>
-                    ))}
+                    {products?.data?.meta?.product_meta?.brands?.map(
+                      (brand: string, ind: number) => (
+                        <option key={ind} value={brand as string}>
+                          {brand as string}
+                        </option>
+                      )
+                    )}
                     <option value="">{t("all")}</option>
                   </select>
                 </div>
@@ -240,9 +237,11 @@ const ProductPage: React.FC = () => {
                     onChange={(e) => setCondition(e.target.value)}
                     className="w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5"
                   >
-                    {filterableCondition?.map((condition, ind) => (
-                      <option key={ind}>{condition as string}</option>
-                    ))}
+                    {products?.data?.meta?.product_meta?.conditions?.map(
+                      (condition: string, ind: string) => (
+                        <option key={ind}>{condition as string}</option>
+                      )
+                    )}
                     <option value="">{t("all")}</option>
                   </select>
                 </div>
@@ -270,11 +269,13 @@ const ProductPage: React.FC = () => {
                   <option value="">{t("all")}</option>
 
                   {/* Dynamically rendered options */}
-                  {filterableProduct?.map((product, ind) => (
-                    <option key={ind} value={product as string}>
-                      {product as string}
-                    </option>
-                  ))}
+                  {products?.data?.meta?.product_meta?.product_type?.map(
+                    (productType: string, ind: number) => (
+                      <option key={ind} value={productType as string}>
+                        {productType as string}
+                      </option>
+                    )
+                  )}
                 </select>
 
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
@@ -304,11 +305,13 @@ const ProductPage: React.FC = () => {
                   onChange={(e) => setBrandSearch(e.target.value)}
                   className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
                 >
-                  {filterableBrand?.map((brand, ind) => (
-                    <option key={ind} value={brand as string}>
-                      {brand as string}
-                    </option>
-                  ))}
+                  {products?.data?.meta?.product_meta?.brands?.map(
+                    (brand: string, ind: number) => (
+                      <option key={ind} value={brand as string}>
+                        {brand as string}
+                      </option>
+                    )
+                  )}
                   <option value="">{t("all")}</option>
                 </select>
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
@@ -373,9 +376,11 @@ const ProductPage: React.FC = () => {
                   onChange={(e) => setCondition(e.target.value)}
                   className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
                 >
-                  {filterableCondition?.map((condition, ind) => (
-                    <option key={ind}>{condition as string}</option>
-                  ))}
+                  {products?.data?.meta?.product_meta?.conditions?.map(
+                    (condition: string, ind: number) => (
+                      <option key={ind}>{condition as string}</option>
+                    )
+                  )}
                   <option value="">{t("all")}</option>
                 </select>
 

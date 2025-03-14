@@ -60,8 +60,14 @@ const ProductDetailsPage: React.FC = () => {
   const isOpenTradeIn = useSelector(
     (state: RootState) => state?.showTradeInData?.isOpenTradeIn
   );
-  const modalTradeInData = useSelector(
-    (state: RootState) => state?.modalTradeInDataSlice?.modalTradeInData
+  interface ModalTradeInData {
+    productName: string;
+    productPrice: number;
+  }
+
+  const modalTradeInData: ModalTradeInData | null = useSelector(
+    (state: RootState) =>
+      state?.modalTradeInDataSlice?.modalTradeInData as ModalTradeInData | null
   );
 
   const { t } = useTranslation();
@@ -175,6 +181,8 @@ const ProductDetailsPage: React.FC = () => {
 
     router.push("/cart");
   };
+
+  console.log(modalTradeInData);
 
   return (
     <div>
@@ -396,6 +404,7 @@ const ProductDetailsPage: React.FC = () => {
                         <h2 className="text-xl font-semibold text-gray-900">
                           Trade-in
                         </h2>
+
                         <button
                           onClick={() => startOver()}
                           className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
@@ -438,8 +447,8 @@ const ProductDetailsPage: React.FC = () => {
                             </svg>
                           </button>
                           <p className="text-center text-gray-600">
-                            yOUR {deviceModel} IS VALUED AT $
-                            {deviceValue.toFixed(2)}
+                            yOUR {modalTradeInData?.productName} IS VALUED AT $
+                            {modalTradeInData?.productPrice}
                           </p>
                         </div>
                       </div>
