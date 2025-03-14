@@ -42,7 +42,7 @@ export default function PaymentSuccess() {
             </div>
           </div>
 
-          <div className="space-y-3">
+          {/* <div className="space-y-3">
             <button className="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-md transition-colors">
               <Download className="h-5 w-5" />
               Download Receipt
@@ -62,14 +62,14 @@ export default function PaymentSuccess() {
               Continue Shopping
               <ChevronRight className="h-4 w-4" />
             </Link>
-          </div>
+          </div> */}
         </div>
 
-        <div className="bg-gray-50 p-4 text-center">
+        {/* <div className="bg-gray-50 p-4 text-center">
           <p className="text-sm text-gray-600">
             A confirmation email has been sent to your email address.
           </p>
-        </div>
+        </div> */}
       </div>
 
       <div className="mt-8 text-center">

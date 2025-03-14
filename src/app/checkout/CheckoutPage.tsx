@@ -516,6 +516,8 @@ export default function CheckoutPage() {
                         <div>
                           <label className="block text-lg text-[#101010] font-medium mb-1.5">
                             {t("furtherContactInformation")}
+
+                            <span className="text-red-500">*</span>
                           </label>
                           <input
                             type="text"

@@ -42,20 +42,20 @@ export default function BlogDetail() {
   if (isError) return <div>Error Occured! {isError.valueOf()}</div>;
 
   const BASE_API_URL = process.env.NEXT_PUBLIC_API_URL;
-  console.log(blog && blog?.data);
+  console.log(blog?.data?.relatedBlogs);
 
   return (
     <div className="min-h-screen pb-12">
       <Container className="max-w-4xl mx-auto">
         {/* Title */}
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 my-6">
-          {blog?.data?.title}
+          {blog?.data?.blog?.title}
         </h1>
 
         {/* Hero Section */}
         <div className="w-full h-[300px] sm:h-[400px] lg:h-[500px] relative">
           <Image
-            src={`${BASE_API_URL}${blog?.data?.image}`}
+            src={`${BASE_API_URL}${blog?.data?.blog?.image}`}
             alt="Gaming Console"
             fill
             className="w-1/2 mx-auto object-cover"
@@ -69,14 +69,19 @@ export default function BlogDetail() {
             {/* Meta Information */}
             <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
               <div className="flex items-center gap-2">
-                <Image
-                  src={"/clients/client1.png"}
+                <img
+                  src={
+                    new URL(
+                      blog?.data?.blog?.admin?.avatar,
+                      process.env.NEXT_PUBLIC_API_URL
+                    ).href
+                  }
                   width={30}
                   height={30}
                   className="w-8 h-8 bg-gray-200 rounded-full"
                   alt="admin"
                 />
-                <span>Admin</span>
+                <span>{blog?.data?.blog?.admin?.name}</span>
               </div>
               <span>
                 <svg
@@ -103,7 +108,7 @@ export default function BlogDetail() {
                   <path d="M16 18h.01" />
                 </svg>
               </span>
-              <time>{blog?.data?.createdAt?.split("T")[0]}</time>
+              <time>{blog?.data?.blog?.updatedAt?.split("T")[0]}</time>
             </div>
 
             {/* Share buttons */}
@@ -143,43 +148,48 @@ export default function BlogDetail() {
 
             {/* Content */}
             <div className="prose prose-lg max-w-none whitespace-pre-line">
-              {blog?.data?.description}
+              {blog?.data?.blog?.description}
             </div>
           </article>
 
           {/* Related Posts */}
-          <section>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Related Posts
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
-                <Link href="#" key={i} className="group">
-                  <div className="bg-[#FDFDFD] rounded-lg shadow-md overflow-hidden">
-                    <div className="relative h-48">
-                      <Image
-                        src="/blogs/blog4.png"
-                        alt="Related post thumbnail"
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                        Why It's Smarter To Buy A Refurbished iPhone Rather Than
-                        A Brand New One
-                      </h3>
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <span>Admin</span>
-                        <span>•</span>
-                        <time>19 Jun 2024</time>
+          {blog?.data?.relatedBlogs?.length > 0 && (
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Related Posts
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {blog?.data?.relatedBlogs.map((blog: any) => (
+                  <Link
+                    href={`/blog/${blog.slug}`}
+                    key={blog._id}
+                    className="group"
+                  >
+                    <div className="bg-[#FDFDFD] h-full rounded-lg shadow-md overflow-hidden">
+                      <div className="relative h-48">
+                        <Image
+                          src={process.env.NEXT_PUBLIC_API_URL + blog.image}
+                          alt="Related post thumbnail"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                          {blog?.title}
+                        </h3>
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <span>{blog?.admin?.name}</span>
+                          <span>•</span>
+                          <time>{blog?.updatedAt?.split("T")[0]}</time>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
         </main>
       </Container>
     </div>

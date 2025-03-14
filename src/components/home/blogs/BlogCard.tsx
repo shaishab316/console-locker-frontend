@@ -51,7 +51,7 @@ export function BlogCard({
           </div>
           <div className="flex items-center gap-2">
             <Image src="/calendar.png" width={12} height={12} alt="Calendar" />
-            <p className="text-[#101010] text-sm">{createdAt.split("T")[0]}</p>
+            {/* <p className="text-[#101010] text-sm">{createdAt.split("T")[0]}</p> */}
           </div>
         </div>
         <h2 className="text-[#101010] text-xl font-semibold mb-2.5">{title}</h2>
