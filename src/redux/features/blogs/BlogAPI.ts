@@ -1,10 +1,9 @@
 import baseAPI from "@/redux/api/baseAPI";
 
-
 const BlogAPI = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getBlogs: builder.query({
-      query: () => "/blogs",
+      query: ({ page = 1, limit = 5 }) => `/blogs?limit=${limit}&page=${page}`,
     }),
 
     getBlog: builder.query({
@@ -13,7 +12,4 @@ const BlogAPI = baseAPI.injectEndpoints({
   }),
 });
 
-export const {
-  useGetBlogsQuery,
-  useGetBlogQuery,
-} = BlogAPI;
+export const { useGetBlogsQuery, useGetBlogQuery } = BlogAPI;

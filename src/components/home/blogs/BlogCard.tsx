@@ -5,12 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface BlogCardProps {
-  _id: string;
-  image: string;
-  title: string;
-  description: string;
-  slug: string;
-  createdAt: string;
+  _id?: string;
+  image?: string;
+  title?: string;
+  description?: string;
+  slug?: string;
+  createdAt?: string;
 }
 
 export function BlogCard({
@@ -23,13 +23,15 @@ export function BlogCard({
 }: BlogCardProps) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+  if (!_id) return null;
+
   return (
     <Link href={`/blog/${slug}`}>
       <Card
         // hoverable
         cover={
           <Image
-            alt={title}
+            alt={title || ""}
             src={`${API_URL}${image}`}
             className="w-full h-[200px] object-cover"
             width={300}
