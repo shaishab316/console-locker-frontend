@@ -228,11 +228,11 @@ export default function ScreenCondition() {
                       <p className="text-xl font-semibold text-[#101010]">
                         {selectedLang === "en" ? opt?.option : opt?.option}
                       </p>
-                      {/* <p className="text-[#6B6B6B] text-lg mt-1">
+                      <p className="text-[#6B6B6B] text-lg mt-1">
                         {selectedLang === "en"
                           ? opt?.description
                           : opt?.description}
-                      </p> */}
+                      </p>
                     </div>
                   </div>
                 </label>

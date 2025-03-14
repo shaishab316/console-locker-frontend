@@ -40,7 +40,7 @@ export default function ReviewCard({
     <div className="bg-white p-6 rounded-lg h-full flex flex-col">
       {" "}
       {/* Full height */}
-      <p className="text-[#000000] leading-7 text-lg mb-6 flex-grow overflow-hidden">
+      <p className="text-[#000000] leading-7 text-lg mb-6 flex-grow overflow-y-auto">
         {comment}
       </p>
       <div className="flex items-center justify-between mt-auto">

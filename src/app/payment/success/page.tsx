@@ -38,9 +38,7 @@ export default function PaymentSuccess() {
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Payment Method</span>
-              <span className="font-medium text-gray-800">
-                Credit Card (****1234)
-              </span>
+              <span className="font-medium text-gray-800">Paypal</span>
             </div>
           </div>
 

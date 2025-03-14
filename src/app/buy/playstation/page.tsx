@@ -126,13 +126,6 @@ const ProductPage: React.FC = () => {
     );
   }
 
-  // const paginatedProducts = products.slice(
-  //   (page - 1) * itemsPerPage,
-  //   page * itemsPerPage
-  // );
-
-  const paginatedProducts = 10;
-
   const handlePriceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
 
@@ -162,8 +155,6 @@ const ProductPage: React.FC = () => {
 
     setPriceRange([min ?? 0, max ?? 9000000]);
   };
-
-  console.log("currentPage..........", currentPage);
 
   return (
     <div className="relative bg-[#F2F5F7] flex flex-col lg:flex-row py-8">

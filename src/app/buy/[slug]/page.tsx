@@ -49,9 +49,7 @@ interface RelatedProduct {
 
 const ProductDetailsPage: React.FC = () => {
   const [selectedModel, setSelectedModel] = useState<string>("");
-  const [selectedController, setSelectedController] = useState<string | number>(
-    0
-  );
+  const [selectedController, setSelectedController] = useState<string>("");
   const [selectedMemory, setSelectedMemory] = useState<string>("");
   const [selectedCondition, setSelectedCondition] = useState<string>("");
   const [deviceValue, setDeviceValue] = useState(5.0);
@@ -79,23 +77,13 @@ const ProductDetailsPage: React.FC = () => {
     slug: slug as string | undefined,
   });
 
-  const { data: slugRes } = useFindSlugProductQuery(
-    {
-      productName: singleProduct?.data?.product?.name,
-      condition: selectedCondition,
-      controller:
-        typeof selectedController === "number" ? selectedController : undefined,
-      memory: selectedMemory,
-      model: selectedModel,
-    },
-    {
-      skip:
-        !selectedCondition ||
-        !selectedController ||
-        !selectedMemory ||
-        !selectedModel,
-    }
-  );
+  const { data: slugRes } = useFindSlugProductQuery({
+    productName: singleProduct?.data?.product?.name,
+    condition: selectedCondition,
+    controller: selectedController,
+    memory: selectedMemory,
+    model: selectedModel,
+  });
 
   useEffect(() => {
     if (!singleProduct?.data?.product?.slug || !slugRes?.data?.slug) return;
@@ -188,10 +176,7 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log(
-    "addition info ...........",
-    singleProduct?.data?.product?.product_type
-  );
+  
 
   return (
     <div>
@@ -250,9 +235,11 @@ const ProductDetailsPage: React.FC = () => {
                     ))}
                   </p>
                   <h2 className="font-medium">{product?.product?.ratings}</h2>
-                  <p className="underline">
-                    ({product?.product?.reviewCount} reviews)
-                  </p>
+                  <Link href={`/reviews/${product?.product?.name}`}>
+                    <p className="underline">
+                      ({product?.product?.reviewCount} reviews)
+                    </p>
+                  </Link>
                 </div>
 
                 {/* Model */}
@@ -301,7 +288,7 @@ const ProductDetailsPage: React.FC = () => {
                     {t("controller")}:
                   </h4>
                   <div className="flex flex-wrap gap-4">
-                    {product?.meta?.controllers?.map((controller: number) => (
+                    {product?.meta?.controllers?.map((controller: string) => (
                       <button
                         key={controller}
                         disabled={selectedController === controller}
@@ -938,21 +925,19 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="p-5 flex items-center gap-4">
-              {product?.meta?.controllers?.map(
-                (controller: string | number) => (
-                  <div
-                    key={controller}
-                    onClick={() => setSelectedController(controller)}
-                    className={`${
-                      controller === selectedController
-                        ? "bg-[#FDFDFD] text-[#64B95E]"
-                        : "bg-transparent"
-                    } text-xl text-[#101010] border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
-                  >
-                    {controller}
-                  </div>
-                )
-              )}
+              {product?.meta?.controllers?.map((controller: string) => (
+                <div
+                  key={controller}
+                  onClick={() => setSelectedController(controller)}
+                  className={`${
+                    controller === selectedController
+                      ? "bg-[#FDFDFD] text-[#64B95E]"
+                      : "bg-transparent"
+                  } text-xl text-[#101010] border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
+                >
+                  {controller}
+                </div>
+              ))}
             </div>
           </div>
 

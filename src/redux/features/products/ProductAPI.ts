@@ -70,7 +70,7 @@ const ProductAPI = baseAPI.injectEndpoints({
         productName?: string;
         model?: string;
         condition?: string;
-        controller?: number;
+        controller?: string;
         memory?: string;
       }
     >({

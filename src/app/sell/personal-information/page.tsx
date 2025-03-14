@@ -161,8 +161,6 @@ export default function CheckoutForm() {
     setTimeout(() => {
       router.push("/sell");
     }, 400);
-
-    // console.log("formData in submit", formData);
   };
 
   // const handleSubmit = (e: React.FormEvent) => {
@@ -283,6 +281,7 @@ export default function CheckoutForm() {
   if (isLoading) {
     return <Loading />;
   }
+  console.log(formData.paypalEmail);
 
   return (
     <>
@@ -590,8 +589,13 @@ export default function CheckoutForm() {
                           required
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
                           placeholder="Enter your paypal email"
-                          value={formData.iban}
-                          onChange={handleInputChange}
+                          value={formData.paypalEmail}
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              paypalEmail: e.target.value,
+                            }))
+                          }
                         />
                       </div>
                     )}
