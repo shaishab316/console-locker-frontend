@@ -33,7 +33,12 @@ export default function BlogDetail() {
 
   const { data: blog, isLoading, isError } = useGetBlogQuery(slug as string);
 
-  if (isLoading) return <div><Loading /></div>;
+  if (isLoading)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   if (isError) return <div>Error Occured! {isError.valueOf()}</div>;
 
   const BASE_API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -103,18 +108,30 @@ export default function BlogDetail() {
 
             {/* Share buttons */}
             <div className="flex items-center gap-4 mb-8 flex-wrap">
-              <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+                target="_blank"
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+              >
                 <FacebookIcon size={18} />
                 <span className="hidden sm:inline">Share</span>
-              </button>
-              <button className="flex items-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition-colors">
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${window.location.href}`}
+                target="_blank"
+                className="flex items-center gap-2 px-4 py-2 bg-sky-500 text-white rounded-full hover:bg-sky-600 transition-colors"
+              >
                 <TwitterIcon size={18} />
                 <span className="hidden sm:inline">Tweet</span>
-              </button>
-              <button className="flex items-center gap-2 px-4 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition-colors">
+              </a>
+              <a
+                href={`https://www.linkedin.com/shareArticle?url=${window.location.href}`}
+                target="_blank"
+                className="flex items-center gap-2 px-4 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition-colors"
+              >
                 <LinkedinIcon size={18} />
                 <span className="hidden sm:inline">Share</span>
-              </button>
+              </a>
               <button
                 onClick={copyToClipboard}
                 className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors ml-auto"
@@ -125,60 +142,10 @@ export default function BlogDetail() {
             </div>
 
             {/* Content */}
-            <div className="prose prose-lg max-w-none">
-              <p>{blog?.data?.description}</p>
-
-              <p>
-                In today's fast-paced technological world, staying up-to-date
-                with the latest iPhone models can be an expensive endeavor.
-                However, there's a smarter alternative that's gaining popularity
-                among savvy consumers: buying refurbished iPhones.
-              </p>
-
-              <h2>What Makes Refurbished iPhones a Smart Choice?</h2>
-
-              <p>
-                Refurbished iPhones undergo rigorous testing and restoration
-                processes to ensure they meet quality standards. These devices
-                often come with warranties and offer significant cost savings
-                compared to new models, while providing similar functionality
-                and features.
-              </p>
-
-              <h3>Key Benefits of Choosing Refurbished:</h3>
-
-              <ul>
-                <li>Cost savings of up to 40-70% compared to new models</li>
-                <li>Environmentally friendly choice that reduces e-waste</li>
-                <li>Quality assurance through professional refurbishment</li>
-                <li>Warranty coverage for peace of mind</li>
-              </ul>
-
-              <p>
-                Whether you're budget-conscious or environmentally minded,
-                choosing a refurbished iPhone makes perfect sense in today's
-                market.
-              </p>
+            <div className="prose prose-lg max-w-none whitespace-pre-line">
+              {blog?.data?.description}
             </div>
           </article>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-between mb-12">
-            <Link
-              href="#"
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              <ChevronLeft size={20} />
-              <span>Previous Post</span>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              <span>Next Post</span>
-              <ChevronRight size={20} />
-            </Link>
-          </div>
 
           {/* Related Posts */}
           <section>
