@@ -37,7 +37,7 @@ const HeroBanner = () => {
           <div className="w-full lg:max-w-[85%] flex items-center justify-between gap-4 mb-3">
             <div className="w-full lg:w-auto flex gap-5">
               <Link
-                href={"buy/playstation"}
+                href={"/buy"}
                 className="w-1/2 md:w-auto flex items-center justify-center bg-[#FDFDFD] text-[#E95F00] font-medium px-2.5 sm:px-8 py-3 md:px-10 md:py-4 text-center border rounded-md"
               >
                 {t("buyNow")}

@@ -36,7 +36,7 @@ const ProductPage: React.FC = () => {
 
   const [data, setData] = useState([]);
 
-  const [searchProduct, setSearchProduct] = useState<string>("xbox");
+  const [searchProduct, setSearchProduct] = useState<string>("");
   const [brandSearch, setBrandSearch] = useState<string>("");
   const [priceRange, setPriceRange] = useState<
     [number | string, number | string]
@@ -125,13 +125,6 @@ const ProductPage: React.FC = () => {
       </div>
     );
   }
-
-  // const paginatedProducts = products.slice(
-  //   (page - 1) * itemsPerPage,
-  //   page * itemsPerPage
-  // );
-
-  const paginatedProducts = 10;
 
   const handlePriceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
@@ -245,7 +238,7 @@ const ProductPage: React.FC = () => {
                     className="w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5"
                   >
                     {products?.data?.meta?.product_meta?.conditions?.map(
-                      (condition: string, ind: number) => (
+                      (condition: string, ind: string) => (
                         <option key={ind}>{condition as string}</option>
                       )
                     )}
@@ -277,9 +270,9 @@ const ProductPage: React.FC = () => {
 
                   {/* Dynamically rendered options */}
                   {products?.data?.meta?.product_meta?.product_types?.map(
-                    (productType: string, ind: number) => (
-                      <option key={ind} value={productType as string}>
-                        {productType as string}
+                    (product_type: string, idx: number) => (
+                      <option key={idx} value={product_type}>
+                        {product_type}
                       </option>
                     )
                   )}
@@ -513,7 +506,7 @@ const ProductPage: React.FC = () => {
 
             {products?.data?.products.length < 1 ? (
               <div className="flex items-center justify-center h-[calc(100vh-200px)] text-2xl font-medium">
-                No, Xbox found!
+                No, Playstation found!
               </div>
             ) : null}
 

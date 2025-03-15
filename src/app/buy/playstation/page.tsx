@@ -269,7 +269,7 @@ const ProductPage: React.FC = () => {
                   <option value="">{t("all")}</option>
 
                   {/* Dynamically rendered options */}
-                  {products?.data?.meta?.product_meta?.product_type?.map(
+                  {products?.data?.meta?.product_meta?.product_types?.map(
                     (productType: string, ind: number) => (
                       <option key={ind} value={productType as string}>
                         {productType as string}

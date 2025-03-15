@@ -413,13 +413,13 @@ export default function ConsoleSelector() {
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative w-full h-[153px]">
+                          <div className="relative w-full h-[153px] lg:h-[387px]">
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
                               width={700}
                               height={500}
-                              className="w-full h-full"
+                              className="min-w-full max-w-full h-full"
                             />
                           </div>
                           <div className="p-2.5 md:p-4">
@@ -503,7 +503,7 @@ export default function ConsoleSelector() {
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative w-full h-[153px]">
+                          <div className="relative w-full h-[153px] lg:h-[387px]">
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
@@ -589,7 +589,7 @@ export default function ConsoleSelector() {
                           key={console._id}
                           className="bg-white rounded-lg overflow-hidden shadow-sm"
                         >
-                          <div className="relative w-full h-[153px]">
+                          <div className="relative w-full h-[153px] lg:h-[387px]">
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}

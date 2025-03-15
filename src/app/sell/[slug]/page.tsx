@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import HowToSellYourItem from "@/components/sell/HowToSellYourItem";
 import { useTranslation } from "react-i18next";
@@ -183,8 +183,8 @@ export default function ScreenCondition() {
       case "controller":
         setController(option.option);
         break;
-      case "memory": // Assuming "memory" corresponds to "storage"
-        setStorage(option.option);
+      case "memory":
+        setMemory(option.option);
         break;
       default:
         console.warn(`Unknown question name: ${name}`);
@@ -230,7 +230,7 @@ export default function ScreenCondition() {
   const questionsLength = question?.data?.questions.length;
 
   // console.log({ modal, brand, condition, controller, storage });
-  console.log(question?.data?.questions);
+  console.log("sell/[.....]", question);
 
   return (
     <div>
@@ -356,7 +356,7 @@ export default function ScreenCondition() {
                       }
                       className={`h-16 rounded-md flex items-center justify-center ${
                         option?.option === modal
-                          ? "bg-[#64B95E] text-[#FDFDFD]"
+                          ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } border border-[#919191] text-center text-2xl font-semibold leading-[36px]`}
                     >

@@ -182,7 +182,7 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log(modalTradeInData);
+  console.log(products?.data?.products);
 
   return (
     <div>
@@ -498,10 +498,9 @@ const ProductDetailsPage: React.FC = () => {
                       {/* {consoleLists?.data?.products?.map((console: any) => (
                     
                   ))} */}
-                      <option value="PlayStation 4 Pro">PlayStation 5</option>
-                      {/* <option value="Nintendo Switch">Nintendo Switch</option>
-                  <option value="OLED Steam Deck">OLED Steam Deck</option>
-                  <option value="PlayStation 4 Pro">PlayStation 4 Pro</option> */}
+                      {products?.data?.products?.map((console: any) => (
+                        <option key={console?._id} value="PlayStation 4 Pro">{console?.name}</option>
+                      ))}
                     </select>
 
                     <div className="absolute inset-y-0 right-0 flex items-center px-3">
@@ -1012,22 +1011,21 @@ const ProductDetailsPage: React.FC = () => {
         {/* submit button */}
 
         <div className="p-5 bg-[#FDFDFD]">
-          <Link href={"/sell/summary"}>
-            <button
-              className={`${
-                singleProduct?.data?.product?.product_type === "xbox" &&
-                "bg-[#49A947]"
-              } ${
-                singleProduct?.data?.product?.product_type === "playstation" &&
-                "bg-[#1861C0]"
-              } ${
-                singleProduct?.data?.product?.product_type === "nintendo" &&
-                "bg-[#D61D1E]"
-              } w-full text-[#FDFDFD] font-semibold h-14 rounded-lg`}
-            >
-              ADD TO CART
-            </button>
-          </Link>
+          <button
+            onClick={handleAddToCart}
+            className={`${
+              singleProduct?.data?.product?.product_type === "xbox" &&
+              "bg-[#49A947]"
+            } ${
+              singleProduct?.data?.product?.product_type === "playstation" &&
+              "bg-[#1861C0]"
+            } ${
+              singleProduct?.data?.product?.product_type === "nintendo" &&
+              "bg-[#D61D1E]"
+            } w-full text-[#FDFDFD] font-semibold h-14 rounded-lg`}
+          >
+            ADD TO CART
+          </button>
         </div>
       </div>
     </div>

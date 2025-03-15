@@ -33,7 +33,7 @@ const ProductSection = () => {
   if (isError) return <div>Error...</div>;
 
   return (
-    <div className="bg-[#F2F5F7] pt-20 pb=12">
+    <div className="bg-[#F2F5F7] pt-20 pb-12">
       <Container>
         <h2 className="text-center text-[#101010] text-[40px] font-semibold">
           {t("selectyourItems")}
