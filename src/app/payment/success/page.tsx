@@ -1,14 +1,30 @@
 "use client";
 
+import { modifiedCart } from "@/redux/features/cart/TrackCartItem";
 import { useGetOrderQuery } from "@/redux/features/order/OrderAPI";
 import { Check, ChevronRight, Download } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 export default function PaymentSuccess() {
+  const dispatch = useDispatch();
   const query = useSearchParams();
   const { data: order } = useGetOrderQuery({ orderId: query.get("orderId") });
 
-  console.log(order?.data);
+  useEffect(() => {
+    dispatch(modifiedCart({}));
+
+    const cart = JSON.parse(localStorage?.getItem("cart") || "[]");
+
+    if (cart.length > 0) {
+      localStorage?.removeItem("cart");
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    }
+  }, [order, dispatch]);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">

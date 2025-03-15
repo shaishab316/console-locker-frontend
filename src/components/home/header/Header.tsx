@@ -48,7 +48,7 @@ export function Header() {
 
       setFilterableProductType([...new Set(filterableProducts)] as string[]);
     }
-  }, [products]);
+  }, [products]) ;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -120,17 +120,6 @@ export function Header() {
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
-              {/* {filterableProductType.map((productType) => (
-                <DropdownMenuItem key={productType}>
-                  <Link
-                    href={`/buy/${productType}`}
-                    className="w-full px-5 capitalize"
-                  >
-                    {productType}
-                  </Link>
-                </DropdownMenuItem>
-              ))} */}
-
               <DropdownMenuItem>
                 <Link href="/buy/playstation" className="w-full px-5">
                   PlayStation
@@ -167,9 +156,6 @@ export function Header() {
 
         {/* hide in mobile menu */}
         <div className="hidden lg:flex items-center space-x-4">
-          {/* <Link href="/account" className="p-2">
-            <User className="h-5 w-5" />
-          </Link> */}
           <Link href="/cart" className="p-2 relative">
             <ShoppingCart className="h-5 w-5" />
             <span className="absolute px-2 py-[2px] bg-green-500 text-black rounded-full text-xs -top-1 -right-1">
