@@ -10,10 +10,10 @@ const OrderAPI = baseAPI.injectEndpoints({
     }),
 
     createOrder: builder.mutation({
-      query: (data) => ({
-        url: "/order/checkout",
+      query: ({ productDetails, customer, secondary_phone, method }) => ({
+        url: `/order/checkout?method=${method}`,
         method: "POST",
-        body: data,
+        body: { productDetails, customer, secondary_phone },
       }),
     }),
   }),

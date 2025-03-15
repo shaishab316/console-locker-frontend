@@ -39,12 +39,11 @@ interface IProduct {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = useState(3);
-  // const [selectedPayment, setSelectedPayment] = useState<
-  //   "credit" | "paypal" | "klarna-installment" | "paypal-installment"
-  // >("credit");
   const [quantity, setQuantity] = useState(1);
   const [orderIndex, setOrderIndex] = useState(0);
-  const [selectedPayment, setSelectedPayment] = useState("credit");
+  const [selectedPayment, setSelectedPayment] = useState<
+    "card" | "paypal" | "klarna"
+  >("card");
   const [cartData, setCartData] = useState([]);
   const [customerIdOnlocalStorage, setCustomerIdOnlocalStorage] = useState<
     string | number
@@ -273,6 +272,7 @@ export default function Checkout() {
       productDetails: formattedCartData,
       customer: customerIdOnlocalStorage,
       secondary_phone: secondaryPhone,
+      method: selectedPayment
     };
 
     const response = await createOrder(orderInformation).unwrap();
@@ -342,22 +342,22 @@ export default function Checkout() {
                     {/* Credit Card Option */}
                     <div
                       className={`flex items-center justify-between space-x-4 p-2.5 lg:p-5 border rounded-md ${
-                        selectedPayment === "credit"
+                        selectedPayment === "card"
                           ? "border-emerald-950"
                           : "border-[#FDFDFD]"
                       }`}
                     >
                       <input
                         type="radio"
-                        id="credit"
+                        id="card"
                         name="payment"
-                        checked={selectedPayment === "credit"}
-                        onChange={() => setSelectedPayment("credit")}
+                        checked={selectedPayment === "card"}
+                        onChange={() => setSelectedPayment("card")}
                         // className="h-4 w-4 text-blue-600"
                         className="mr-2 scale-150 accent-black text-lg text-[#101010] font-medium"
                       />
                       <label
-                        htmlFor="credit"
+                        htmlFor="card"
                         className="flex items-center space-x-2 cursor-pointer"
                       >
                         <p className="flex flex-col mr-3">
@@ -427,8 +427,7 @@ export default function Checkout() {
                   </h3>
                   {/* PayPal Installments */}
                   <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
-                    {/* Credit Card Option */}
-                    <div
+                    {/* <div
                       className={`flex items-center space-x-4 p-5 border rounded-md ${
                         selectedPayment === "paypal2"
                           ? "border-emerald-950"
@@ -466,9 +465,8 @@ export default function Checkout() {
                           />
                         </div>
                       </label>
-                    </div>
+                    </div> */}
 
-                    {/* PayPal Option */}
                     <div
                       className={`flex items-center space-x-4 p-5 border rounded-md ${
                         selectedPayment === "klarna"
