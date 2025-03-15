@@ -402,7 +402,7 @@ export default function ScreenCondition() {
                       }
                       className={`${
                         storg?.option === brand
-                          ? "bg-[#64B95E] text-[#FDFDFD]"
+                          ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[98px] h-[106px] text-center flex items-center justify-center rounded-md p-1.5`}
                     >
@@ -449,7 +449,7 @@ export default function ScreenCondition() {
                       }
                       className={`${
                         cond.option === condition
-                          ? "bg-[#64B95E] text-[#FDFDFD]"
+                          ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
                     >
@@ -563,7 +563,7 @@ export default function ScreenCondition() {
                       }
                       className={`${
                         cond.option === memory
-                          ? "bg-[#64B95E] text-[#FDFDFD]"
+                          ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
                     >
@@ -609,7 +609,7 @@ export default function ScreenCondition() {
                       }
                       className={`${
                         cond.option === condition
-                          ? "bg-[#64B95E] text-[#FDFDFD]"
+                          ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
                     >
@@ -655,7 +655,7 @@ export default function ScreenCondition() {
                       }
                       className={`${
                         cond.option === condition
-                          ? "bg-[#64B95E] text-[#FDFDFD]"
+                          ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
                     >
@@ -701,7 +701,7 @@ export default function ScreenCondition() {
                       }
                       className={`${
                         cond.option === condition
-                          ? "bg-[#64B95E] text-[#FDFDFD]"
+                          ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
                     >
@@ -747,7 +747,7 @@ export default function ScreenCondition() {
                       }
                       className={`${
                         cond.option === condition
-                          ? "bg-[#64B95E] text-[#FDFDFD]"
+                          ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
                     >
@@ -793,7 +793,7 @@ export default function ScreenCondition() {
                       }
                       className={`${
                         cond.option === condition
-                          ? "bg-[#64B95E] text-[#FDFDFD]"
+                          ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
                     >

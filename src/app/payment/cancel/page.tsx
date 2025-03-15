@@ -1,7 +1,15 @@
+"use client";
+
+import { useGetOrderQuery } from "@/redux/features/order/OrderAPI";
 import { X, ArrowLeft, HelpCircle } from "lucide-react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function PaymentCancel() {
+  const router = useRouter();
+  const query = useSearchParams();
+  const { data: order } = useGetOrderQuery({ orderId: query.get("orderId") });
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden">
@@ -13,9 +21,7 @@ export default function PaymentCancel() {
 
         <div className="p-6 space-y-6">
           <div className="text-center space-y-2">
-            <h1 className="text-2xl font-bold text-gray-800">
-              Payment Canceled
-            </h1>
+            <h1 className="text-2xl font-bold text-gray-800">Payment Failed</h1>
             <p className="text-gray-600">
               Your payment was not completed and no charges were made.
             </p>
@@ -23,28 +29,38 @@ export default function PaymentCancel() {
 
           <div className="border-t border-b border-gray-200 py-4 space-y-3">
             <div className="flex justify-between">
-              <span className="text-gray-600">Reference ID</span>
-              <span className="font-medium text-gray-800">#REF-2023-5678</span>
+              <span className="text-gray-600">Order Number</span>
+              <span className="font-medium text-gray-800">
+                #{order?.data._id}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Date</span>
               <span className="font-medium text-gray-800">
-                {new Date().toLocaleDateString()}
+                {order?.data?.updatedAt?.split("T")[0]}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Total Amount</span>
+              <span className="font-medium text-gray-800">
+                ${order?.data?.amount}
               </span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Status</span>
-              <span className="font-medium text-red-600">Canceled</span>
+              <span className="font-medium text-red-600">
+                {order?.data?.state}
+              </span>
             </div>
           </div>
 
           <div className="space-y-3">
-            <Link
-              href="/checkout"
+            <button
+              onClick={router.back}
               className="w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white py-3 px-4 rounded-md transition-colors"
             >
               Try Payment Again
-            </Link>
+            </button>
 
             <Link
               href="/cart"
@@ -54,7 +70,7 @@ export default function PaymentCancel() {
             </Link>
 
             <Link
-              href="/"
+              href="/buy"
               className="w-full flex items-center justify-center gap-2 text-gray-600 hover:text-gray-700 py-2 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
@@ -118,7 +134,6 @@ export default function PaymentCancel() {
               A network or connection issue may have interrupted your payment
               process.
             </p>
-            
           </div>
 
           <div className="bg-white p-4 rounded-lg shadow text-left">

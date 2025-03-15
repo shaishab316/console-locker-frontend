@@ -1,7 +1,15 @@
+"use client";
+
+import { useGetOrderQuery } from "@/redux/features/order/OrderAPI";
 import { Check, ChevronRight, Download } from "lucide-react";
-import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function PaymentSuccess() {
+  const query = useSearchParams();
+  const { data: order } = useGetOrderQuery({ orderId: query.get("orderId") });
+
+  console.log(order?.data);
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden">
@@ -24,21 +32,27 @@ export default function PaymentSuccess() {
           <div className="border-t border-b border-gray-200 py-4 space-y-3">
             <div className="flex justify-between">
               <span className="text-gray-600">Order Number</span>
-              <span className="font-medium text-gray-800">#ORD-2023-1234</span>
+              <span className="font-medium text-gray-800">
+                #{order?.data._id}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Date</span>
               <span className="font-medium text-gray-800">
-                {new Date().toLocaleDateString()}
+                {order?.data?.updatedAt?.split("T")[0]}
               </span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Total Amount</span>
-              <span className="font-medium text-gray-800">$149.99</span>
+              <span className="font-medium text-gray-800">
+                ${order?.data?.amount}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Payment Method</span>
-              <span className="font-medium text-gray-800">Paypal</span>
+              <span className="font-medium text-gray-800">
+                {order?.data?.payment_method}
+              </span>
             </div>
           </div>
 

@@ -3,10 +3,16 @@ import baseAPI from "@/redux/api/baseAPI";
 const OrderAPI = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getOrder: builder.query({
-      query: () => ({
-        url: "/order?",
-        method: "GET",
-      }),
+      query: ({ orderId }) => {
+        const customer = JSON.parse(
+          localStorage?.getItem("customer") || "{}"
+        )?._id;
+
+        return {
+          url: `/order?customer=${customer}&orderId=${orderId}`,
+          method: "GET",
+        };
+      },
     }),
 
     createOrder: builder.mutation({
@@ -19,4 +25,4 @@ const OrderAPI = baseAPI.injectEndpoints({
   }),
 });
 
-export const { useCreateOrderMutation } = OrderAPI;
+export const { useCreateOrderMutation, useGetOrderQuery } = OrderAPI;
