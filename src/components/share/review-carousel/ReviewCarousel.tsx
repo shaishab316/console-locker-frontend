@@ -23,10 +23,8 @@ interface IReview {
 
 export default function ReviewCarousel({
   productName,
-  productType,
 }: {
   productName: string;
-  productType: string;
 }) {
   const carouselRef = useRef<any>(null);
   const { t } = useTranslation();
@@ -49,12 +47,8 @@ export default function ReviewCarousel({
     carouselRef.current?.prev();
   };
 
-  console.log("productType blog", productType);
-
   return (
-    <div
-      className={`py-24 bg-transparent`}
-    >
+    <div className={`py-24 bg-transparent`}>
       <Container>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl md:text-3xl font-bold text-gray-900">

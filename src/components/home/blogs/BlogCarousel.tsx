@@ -58,7 +58,7 @@ interface IBlog {
   createdAt: string;
 }
 
-export function BlogCarousel({ productType }: { productType: string }) {
+export function BlogCarousel() {
   const carouselRef = useRef<any>(null);
   const { t } = useTranslation();
 

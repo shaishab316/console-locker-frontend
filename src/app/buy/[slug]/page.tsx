@@ -169,8 +169,6 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log(product?.product?.product_type);
-
   return (
     <div>
       {/* only for desktop */}
@@ -638,11 +636,8 @@ const ProductDetailsPage: React.FC = () => {
         </Container>
 
         <div className="hidden md:block">
-          <ReviewCarousel
-            productName={product?.product?.name}
-            productType={product?.product?.product_type}
-          />
-          <BlogCarousel productType={product?.product?.product_type} />
+          <ReviewCarousel productName={product?.product?.name} />
+          <BlogCarousel />
         </div>
       </div>
 
@@ -958,8 +953,6 @@ const ProductDetailsPage: React.FC = () => {
               )}
             </div>
           </div>
-
-          
 
           {/* How many controllers will you send us? */}
           <div>
