@@ -203,6 +203,8 @@ const ProductPage: React.FC = () => {
                     onChange={(e) => setBrandSearch(e.target.value)}
                     className="w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5"
                   >
+                    <option value="">{t("all")}</option>
+
                     {products?.data?.meta?.product_meta?.brands?.map(
                       (brand: string, ind: number) => (
                         <option key={ind} value={brand as string}>
@@ -210,7 +212,6 @@ const ProductPage: React.FC = () => {
                         </option>
                       )
                     )}
-                    <option value="">{t("all")}</option>
                   </select>
                 </div>
                 <div className="mb-4">
@@ -237,12 +238,13 @@ const ProductPage: React.FC = () => {
                     onChange={(e) => setCondition(e.target.value)}
                     className="w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5"
                   >
+                    <option value="">{t("all")}</option>
+
                     {products?.data?.meta?.product_meta?.conditions?.map(
                       (condition: string, ind: string) => (
                         <option key={ind}>{condition as string}</option>
                       )
                     )}
-                    <option value="">{t("all")}</option>
                   </select>
                 </div>
                 <button
@@ -305,6 +307,8 @@ const ProductPage: React.FC = () => {
                   onChange={(e) => setBrandSearch(e.target.value)}
                   className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
                 >
+                  <option value="">{t("all")}</option>
+
                   {products?.data?.meta?.product_meta?.brands?.map(
                     (brand: string, ind: number) => (
                       <option key={ind} value={brand as string}>
@@ -312,7 +316,6 @@ const ProductPage: React.FC = () => {
                       </option>
                     )
                   )}
-                  <option value="">{t("all")}</option>
                 </select>
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
                   {/* <!-- Large Chevron Icon --> */}
@@ -376,12 +379,13 @@ const ProductPage: React.FC = () => {
                   onChange={(e) => setCondition(e.target.value)}
                   className="w-full text-[#6B6B6B] appearance-none border-none outline-none p-4"
                 >
+                  <option value="">{t("all")}</option>
+
                   {products?.data?.meta?.product_meta?.conditions?.map(
                     (condition: string, ind: number) => (
                       <option key={ind}>{condition as string}</option>
                     )
                   )}
-                  <option value="">{t("all")}</option>
                 </select>
 
                 <div className="absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none">
