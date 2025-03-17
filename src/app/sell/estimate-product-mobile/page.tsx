@@ -91,15 +91,10 @@ const SelectedProduct = () => {
     setIsOpen((prev) => !prev);
   };
 
-  console.log(
-    "userSelectedOptions",
-    userSelectedOptions[0]?.questionAnswer?.questionTitle
-  );
+  console.log("userSelectedOptions", userSelectedOptions);
 
   return (
     <div className="z-20 min-h-screen relative bg-[url('/sell/back_sell.png')] bg-cover bg-center overflow-hidden">
-      
-
       {/* product with togglable detail */}
       <div className="p-5">
         <div className="bg-[#FDFDFD] p-4 rounded-lg">
@@ -162,124 +157,23 @@ const SelectedProduct = () => {
           {isOpen && (
             <div className="">
               <div className="flex flex-wrap gap-x-2 gap-y-6 mb-6">
-                {userSelectedOptions.length > 0 && (
-                  <div className="flex-1 max-w-max flex flex-col items-center justify-center gap-3">
+                {userSelectedOptions?.map((option, index) => (
+                  <div
+                    key={index}
+                    className="flex-1 max-w-max flex flex-col items-center justify-center gap-3"
+                  >
                     <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                      {userSelectedOptions[0]?.questionAnswer?.questionName}
+                      {userSelectedOptions[index]?.questionAnswer?.questionName}
                     </h2>
 
                     <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                      {userSelectedOptions[0]?.questionAnswer?.questionTitle}
+                      {
+                        userSelectedOptions[index]?.questionAnswer
+                          ?.questionTitle
+                      }
                     </div>
                   </div>
-                )}
-
-                {userSelectedOptions.length > 1 && (
-                  <div className="flex-1 max-w-max flex flex-col items-center justify-center gap-3">
-                    <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                      {userSelectedOptions[1]?.questionAnswer?.questionName}
-                    </h2>
-
-                    <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                      {userSelectedOptions[1]?.questionAnswer?.questionTitle}
-                    </div>
-                  </div>
-                )}
-
-                {userSelectedOptions.length > 2 && (
-                  <div className="flex-1 max-w-max flex flex-col items-center justify-center gap-3">
-                    <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                      {userSelectedOptions[2]?.questionAnswer?.questionName}
-                    </h2>
-
-                    <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                      {userSelectedOptions[2]?.questionAnswer?.questionTitle}
-                    </div>
-                  </div>
-                )}
-
-                {userSelectedOptions.length > 3 && (
-                  <div className="flex-1 max-w-max flex flex-col items-center justify-center gap-3">
-                    <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                      {userSelectedOptions[3]?.questionAnswer?.questionName}
-                    </h2>
-
-                    <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                      {userSelectedOptions[3]?.questionAnswer?.questionTitle}
-                    </div>
-                  </div>
-                )}
-
-                {userSelectedOptions.length > 4 && (
-                  <div className="flex-1 max-w-max flex flex-col items-center justify-center gap-3">
-                    <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                      {userSelectedOptions[4]?.questionAnswer?.questionName}
-                    </h2>
-
-                    <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                      {userSelectedOptions[4]?.questionAnswer?.questionTitle}
-                    </div>
-                  </div>
-                )}
-
-                {userSelectedOptions.length > 5 && (
-                  <div className="flex-1 max-w-max flex flex-col items-center justify-center gap-3">
-                    <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                      {userSelectedOptions[5]?.questionAnswer?.questionName}
-                    </h2>
-
-                    <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                      {userSelectedOptions[5]?.questionAnswer?.questionTitle}
-                    </div>
-                  </div>
-                )}
-
-                {userSelectedOptions.length > 6 && (
-                  <div className="flex-1 max-w-max flex flex-col items-center justify-center gap-3">
-                    <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                      {userSelectedOptions[6]?.questionAnswer?.questionName}
-                    </h2>
-
-                    <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                      {userSelectedOptions[6]?.questionAnswer?.questionTitle}
-                    </div>
-                  </div>
-                )}
-
-                {userSelectedOptions.length > 7 && (
-                  <div className="flex-1 max-w-max flex flex-col items-center justify-center gap-3">
-                    <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                      {userSelectedOptions[7]?.questionAnswer?.questionName}
-                    </h2>
-
-                    <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                      {userSelectedOptions[7]?.questionAnswer?.questionTitle}
-                    </div>
-                  </div>
-                )}
-
-                {userSelectedOptions.length > 8 && (
-                  <div className="flex-1 max-w-max flex flex-col items-center justify-center gap-3">
-                    <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                      {userSelectedOptions[8]?.questionAnswer?.questionName}
-                    </h2>
-
-                    <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                      {userSelectedOptions[8]?.questionAnswer?.questionTitle}
-                    </div>
-                  </div>
-                )}
-                {userSelectedOptions.length > 9 && (
-                  <div className="flex-1 max-w-max flex flex-col items-center justify-center gap-3">
-                    <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                      {userSelectedOptions[9]?.questionAnswer?.questionName}
-                    </h2>
-
-                    <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                      {userSelectedOptions[9]?.questionAnswer?.questionTitle}
-                    </div>
-                  </div>
-                )}
+                ))}
               </div>
 
               {/* Note */}

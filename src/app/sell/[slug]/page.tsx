@@ -226,7 +226,7 @@ export default function ScreenCondition() {
 
     localStorage?.setItem("getEstimateProductId", JSON.stringify(params?.slug));
 
-    router.push("/sell/estimate-product-mobile");
+    router.push("/sell/estimate-product");
   };
 
   const questionsLength = question?.data?.questions.length;
