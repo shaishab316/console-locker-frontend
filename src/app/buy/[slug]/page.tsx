@@ -257,7 +257,7 @@ const ProductDetailsPage: React.FC = () => {
                           disabled={selectedModel === model}
                           className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedModel === model
-                              ? "text-[#3BAE3B] bg-[#FDFDFD] cursor-not-allowed"
+                              ? "text-[#3BAE3B] bg-[#FDFDFD] cursor-not-allowed border-transparent"
                               : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedModel(model)}
@@ -305,7 +305,7 @@ const ProductDetailsPage: React.FC = () => {
                           disabled={selectedController === controller}
                           className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedController === controller
-                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed"
+                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed border-transparent"
                               : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedController(controller)}
@@ -337,7 +337,7 @@ const ProductDetailsPage: React.FC = () => {
                           disabled={selectedMemory === memory}
                           className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedMemory === memory
-                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed"
+                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed border-transparent"
                               : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedMemory(memory)}
@@ -369,7 +369,7 @@ const ProductDetailsPage: React.FC = () => {
                           disabled={selectedCondition === condition}
                           className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedCondition === condition
-                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed"
+                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed border-transparent"
                               : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedCondition(condition)}
@@ -398,7 +398,7 @@ const ProductDetailsPage: React.FC = () => {
                       <button
                         className={`w-[120px] text-[#FDFDFD] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border-4 rounded-md ${
                           modalState
-                            ? "border-black bg-[#E7E7E7]"
+                            ? "border-black bg-[#E7E7E7] border-transparent"
                             : "border-gray-300"
                         }`}
                         onClick={() => {
