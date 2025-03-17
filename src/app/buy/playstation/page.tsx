@@ -34,8 +34,6 @@ const ProductPage: React.FC = () => {
   const [filterView, setFilterView] = useState(false);
   const { t } = useTranslation();
 
-  const [data, setData] = useState([]);
-
   const [searchProduct, setSearchProduct] = useState<string>("playstation");
   const [brandSearch, setBrandSearch] = useState<string>("");
   const [priceRange, setPriceRange] = useState<
@@ -49,6 +47,7 @@ const ProductPage: React.FC = () => {
   const [filterableBrand, setFilterableBrand] = useState<string[]>([]);
   const [filterablePrice, setFilterablePrice] = useState<string[]>([]);
   const [filterableCondition, setFilterableCondition] = useState<string[]>([]);
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const [sortBy, setSortBy] = useState<string>("");

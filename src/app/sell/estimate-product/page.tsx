@@ -21,6 +21,7 @@ export default function PlayStationOffer() {
       questionAnswer: {
         questionName: string;
         questionTitle: string;
+        questionAnswer: string;
       };
     }[]
   >([]);
@@ -188,10 +189,10 @@ export default function PlayStationOffer() {
                   {userSelectedOptions?.map((option: any, index: number) => (
                     <div key={index} className="flex gap-2">
                       <p className="text-[#2B2B2B] text-lg capitalize">
-                        {option?.questionAnswer?.questionName}:
+                        {option?.questionAnswer?.questionTitle}:
                       </p>
                       <p className="text-[#2B2B2B] text-lg">
-                        {option?.questionAnswer?.questionTitle}
+                        {option?.questionAnswer?.questionAnswer}
                       </p>
                     </div>
                   ))}
@@ -201,11 +202,6 @@ export default function PlayStationOffer() {
           </div>
         </Container>
       </div>
-
-      {/* only for mobile */}
-      {/* <div className="md:hidden">
-        <SelectedProduct />
-      </div> */}
 
       {/* only for mobile */}
       <div className="md:hidden">
@@ -279,17 +275,21 @@ export default function PlayStationOffer() {
                         className="flex-1 max-w-max flex flex-col items-center justify-center gap-3"
                       >
                         <h2 className="text-sm font-bold text-[#101010] text-center capitalize">
-                          {
+                          {/* {
                             userSelectedOptions[index]?.questionAnswer
                               ?.questionName
-                          }
+                          } */}
+
+                          {option?.questionAnswer?.questionTitle}
                         </h2>
 
                         <div className="min-w-[98px] h-[106px] bg-[#64B95E] text-[#FDFDFD] leading-[30px] text-xl font-semibold rounded-md text-center flex items-center justify-center p-2">
-                          {
+                          {/* {
                             userSelectedOptions[index]?.questionAnswer
                               ?.questionTitle
-                          }
+                          } */}
+
+                          {option?.questionAnswer?.questionAnswer}
                         </div>
                       </div>
                     ))}

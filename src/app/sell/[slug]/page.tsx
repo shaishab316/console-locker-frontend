@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import HowToSellYourItem from "@/components/sell/HowToSellYourItem";
 import { useTranslation } from "react-i18next";
@@ -9,10 +9,7 @@ import Loading from "@/app/loading";
 import { useDispatch, useSelector } from "react-redux";
 import { addSelectedQuestions } from "@/redux/features/questions/QuestionSlice";
 import { RootState } from "@/redux/store/store";
-import { useGetEstimateProductPriceMutation } from "@/redux/features/products/ProductAPI";
 import { useParams } from "next/navigation";
-import MobileProductDetails from "@/components/sell/mobile/MobileProductDetails";
-import Link from "next/link";
 import Image from "next/image";
 
 interface IQuestion {
@@ -30,13 +27,24 @@ interface IQuestion {
 }
 
 const productColors: Record<string, string> = {
-  xbox: "#047857",
-  playstation: "#2563EB",
-  nintendo: "#DC2626",
+  xbox: "#64B95E",
+  playstation: "#1861C0",
+  nintendo: "#F44041",
 };
 
+export type TQuesData = {
+  quesId: string;
+  optionId: string;
+  questionAnswer: {
+    questionAnswer: string;
+    questionTitle: string;
+  };
+}[];
+
 export default function ScreenCondition() {
+  const [update, setUpdated] = useState(false);
   const [temOption, setTemOption] = useState<any>([]);
+  const [quesData, setQuesData] = useState<TQuesData>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedCondition, setSelectedCondition] = useState("");
   const [selectedOptionId, setSelectedOptionId] = useState("");
@@ -44,13 +52,6 @@ export default function ScreenCondition() {
     questionTitle: "",
     questionAnswer: "",
   });
-
-  // track selected item
-  const [modal, setModal] = useState("");
-  const [brand, setBrand] = useState("");
-  const [condition, setCondition] = useState("");
-  const [controller, setController] = useState("");
-  const [memory, setMemory] = useState("");
 
   const userSelectedOptions = useSelector(
     (state: RootState) => state?.questionSlice?.questions
@@ -76,8 +77,6 @@ export default function ScreenCondition() {
     );
   }, [userSelectedOptions, userSelectedOptions.length]);
 
-  // console.log("params", params?.slug);
-
   const {
     data: question,
     isLoading,
@@ -95,13 +94,6 @@ export default function ScreenCondition() {
           ""
         );
       };
-
-      // Setting the first option of each question into the state
-      setModal(getFirstOption("model"));
-      setBrand(getFirstOption("brand"));
-      setCondition(getFirstOption("condition"));
-      setController(getFirstOption("controller"));
-      setMemory(getFirstOption("memory"));
     }
   }, [question?.data?.questions]);
 
@@ -166,70 +158,15 @@ export default function ScreenCondition() {
     });
   };
 
-  const handleClick = (
-    id: string,
-    name: string,
-    option: { _id: string; option: string; price: number; description: string }
-  ) => {
-    console.log("........", id, name, option);
-    switch (name.toLowerCase()) {
-      case "model":
-        setModal(option.option);
-        break;
-      case "brand":
-        setBrand(option.option);
-        break;
-      case "condition":
-        setCondition(option.option);
-        break;
-      case "controller":
-        setController(option.option);
-        break;
-      case "memory":
-        setMemory(option.option);
-        break;
-      default:
-        console.warn(`Unknown question name: ${name}`);
-        break;
-    }
-
-    const data = {
-      quesId: id,
-      optionId: option?._id,
-      questionAnswer: {
-        questionName: name,
-        questionTitle: option?.option,
-        questionAnswer: option?.description,
-      },
-    };
-
-    console.log("handle click....", data);
-
-    dispatch(
-      addSelectedQuestions({
-        quesId: id,
-        optionId: option?._id,
-        questionAnswer: {
-          questionName: name,
-          questionTitle: option?.option,
-          questionAnswer: option?.description,
-        },
-      })
-    );
-  };
-
   const submitMobileForm = () => {
-    localStorage?.setItem(
-      "userSelectedOptions",
-      JSON.stringify(userSelectedOptions)
-    );
+    localStorage?.setItem("userSelectedOptions", JSON.stringify(quesData));
 
     localStorage?.setItem("getEstimateProductId", JSON.stringify(params?.slug));
 
     router.push("/sell/estimate-product");
   };
 
-  const questionsLength = question?.data?.questions.length;
+  console.log(quesData);
 
   return (
     <div>
@@ -318,59 +255,81 @@ export default function ScreenCondition() {
           </div>
 
           {/* Select the Xbox One model */}
-          {questionsLength > 0 && (
-            <div>
-              {/* Select the Xbox One model */}
 
-              {question?.data?.questions.map((ques: any) => (
-                <div>
-                  <div className="flex items-center justify-center pt-14 space-x-2.5">
-                    <hr className="flex-1 border-b-2 border-gray-300" />
-                    <h2
-                      className={
-                        "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-xl font-semibold text-center whitespace-nowrap"
-                      }
-                    >
-                      {ques.description}
-                    </h2>
-                    <hr className="flex-1 border-b-2 border-gray-300" />
-                  </div>
-                  <div className="flex flex-col gap-4 px-5 py-5">
-                    {ques?.options.map(
-                      (option: {
-                        _id: string;
-                        option: string;
-                        price: number;
-                        description: string;
-                      }) => (
-                        <div
-                          key={option?._id}
-                          onClick={() => {
-                            handleClick(ques?._id, ques?.name, option);
-
-                            setTemOption(
-                              (opt: any) => ((opt[ques.name] = option._id), opt)
-                            );
-                          }}
-                          className="h-16 text-white rounded-md flex items-center justify-center border border-[#919191] text-center text-2xl font-semibold leading-[36px]"
-                          style={{
-                            backgroundColor:
-                              temOption[ques.name] === option._id
-                                ? productColors[
-                                    question?.data?.product_type ?? "#DDDEE3"
-                                  ]
-                                : "#DDDEE3",
-                          }}
-                        >
-                          {option?.option}
-                        </div>
-                      )
-                    )}
-                  </div>
+          <div>
+            {question?.data?.questions.map((ques: any) => (
+              <div key={ques._id}>
+                <div className="flex items-center justify-center pt-14 space-x-2.5">
+                  <hr className="flex-1 border-b-2 border-gray-300" />
+                  <h2
+                    className={
+                      "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-xl font-semibold text-center whitespace-nowrap"
+                    }
+                  >
+                    {ques.description}
+                  </h2>
+                  <hr className="flex-1 border-b-2 border-gray-300" />
                 </div>
-              ))}
-            </div>
-          )}
+                <div className="flex flex-col gap-4 px-5 py-5">
+                  {ques?.options.map(
+                    (option: {
+                      _id: string;
+                      option: string;
+                      price: number;
+                      description: string;
+                    }) => (
+                      <div
+                        key={option?._id}
+                        onClick={() => {
+                          setQuesData((data) => {
+                            const idx = data.findIndex(
+                              (item) => item.quesId === ques._id
+                            );
+
+                            if (idx !== -1) {
+                              data[idx].optionId = option._id;
+                              data[idx].questionAnswer = {
+                                questionAnswer: option?.option,
+                                questionTitle: ques?.name,
+                              };
+                            } else {
+                              data.push({
+                                quesId: ques._id,
+                                optionId: option._id,
+                                questionAnswer: {
+                                  questionAnswer: option?.option,
+                                  questionTitle: ques?.name,
+                                },
+                              });
+                            }
+
+                            return data;
+                          });
+
+                          setTemOption((opt: any) => {
+                            opt[ques.name] = option._id;
+
+                            return opt;
+                          });
+
+                          setUpdated(!update);
+                        }}
+                        className="h-16 text-white rounded-md flex items-center justify-center border border-[#919191] text-center text-2xl font-semibold leading-[36px]"
+                        style={{
+                          backgroundColor:
+                            temOption[ques.name] === option._id
+                              ? productColors[question?.data?.product_type]
+                              : "#DDDEE3",
+                        }}
+                      >
+                        {option?.option}
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
 
           {/* submit button */}
           <div className="p-5 bg-[#FDFDFD]">
