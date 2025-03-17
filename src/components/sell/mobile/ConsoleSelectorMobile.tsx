@@ -44,6 +44,7 @@ export default function ConsoleSelectorMobile() {
     isLoading,
     isError,
   } = useSellProductQuery({
+    product_type: activeTab,
     limit: 6,
   });
 

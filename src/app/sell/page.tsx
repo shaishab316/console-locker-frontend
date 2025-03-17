@@ -1,3 +1,5 @@
+"use client";
+
 import { BlogCarousel } from "@/components/home/blogs/BlogCarousel";
 import HowDelivery from "@/components/sell/HowDelivery";
 import ConsoleSelectorMobile from "@/components/sell/mobile/ConsoleSelectorMobile";
@@ -6,15 +8,24 @@ import MobileSellHero from "@/components/sell/mobile/MobileSellHero";
 import ProductSection from "@/components/sell/ProductSection";
 import SellHeroSection from "@/components/sell/SellHeroSection";
 import ReviewCarousel from "@/components/share/review-carousel/ReviewCarousel";
+import { useState } from "react";
 
 const SellPage = () => {
+  const [product_type, setProduct_type] = useState<string>("");
+
   return (
     <>
       {/* show only for desktop ddevice */}
       <div className="hidden md:block">
-        <SellHeroSection />
+        <SellHeroSection
+          product_type={product_type}
+          setProduct_type={setProduct_type}
+        />
         <HowDelivery />
-        <ProductSection />
+        <ProductSection
+          setProduct_type={setProduct_type}
+          product_type={product_type}
+        />
         <ReviewCarousel productName="" />
       </div>
 

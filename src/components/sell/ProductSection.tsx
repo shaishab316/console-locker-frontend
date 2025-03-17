@@ -13,7 +13,7 @@ interface IProduct {
   base_price: number;
 }
 
-const ProductSection = () => {
+const ProductSection = ({ product_type = "", setProduct_type }: any) => {
   const { t } = useTranslation();
 
   const {
@@ -22,6 +22,7 @@ const ProductSection = () => {
     isError,
   } = useSellProductQuery({
     limit: 100,
+    product_type,
   });
 
   if (isLoading)
@@ -33,11 +34,25 @@ const ProductSection = () => {
   if (isError) return <div>Error...</div>;
 
   return (
-    <div className="bg-[#F2F5F7] pt-20 pb-12">
+    <div id="products" className="bg-[#F2F5F7] pt-20 pb-12">
       <Container>
         <h2 className="text-center text-[#101010] text-[40px] font-semibold">
           {t("selectyourItems")}
         </h2>
+        {products?.data?.products.length < 1 && (
+          <h2 className="text-center text-[#101010] my-10">
+            No product found!
+            <select
+              defaultValue={product_type}
+              onChange={(e) => setProduct_type(e.target.value)}
+              className="mx-2"
+            >
+              {["xbox", "playstation", "nintendo"].map((option) => (
+                <option value={option}>{option}</option>
+              ))}
+            </select>
+          </h2>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
           {products?.data?.products?.map((product: IProduct) => (
             <ProductCard key={product._id} product={product} />

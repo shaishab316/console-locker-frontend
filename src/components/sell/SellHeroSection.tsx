@@ -3,41 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Container from "../common/Container";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store/store";
-import { addSelectedSellProduct } from "@/redux/features/sell/SellProductSlice";
-import { useSellProductQuery } from "@/redux/features/sell/SellProductAPI";
 
-const options = [
-  { id: 12345, value: "PlayStation 5", label: "PlayStation 5" },
-  { id: 12346, value: "PlayStation 4", label: "PlayStation 4" },
-  { id: 12347, value: "PlayStation 4 Pro", label: "PlayStation 4 Pro" },
-  { id: 12348, value: "Xbox Series X", label: "Xbox Series X" },
-  { id: 12349, value: "Xbox Series S", label: "Xbox Series S" },
-  { id: 12341, value: "Nintendo Switch", label: "Nintendo Switch" },
-];
-
-export default function SellHeroSection() {
-  const [selectedConsole, setSelectedConsole] = useState<string>("");
-  const [selectedId, setSelectedId] = useState<string | number>();
-  const [isLoading, setIsLoading] = useState(false);
+export default function SellHeroSection({
+  product_type,
+  setProduct_type,
+}: any) {
   const [isOpen, setIsOpen] = useState(false);
-  const selectRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
+  const selectRef = useRef<HTMLDivElement | null>(null);
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-
-  const {
-    data: products,
-    isLoading: isLoadingProducts,
-    isError,
-  } = useSellProductQuery({
-    limit: 100,
-  });
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -53,28 +29,6 @@ export default function SellHeroSection() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-  const getEstimate = () => {
-    router.push("/sell/question");
-  };
-
-  const handleSelect = (id: string | number, name: string) => {
-    setSelectedConsole(name);
-    setSelectedId(id);
-    
-    // dispatch(addSelectedSellProduct({ id, selectedConsole: value }));
-    setIsOpen(false);
-  };
-
-  // Get selected console from Redux store
-  const selectedConsoled = useSelector(
-    (state: RootState) =>
-      state?.sellProduct?.products.find(
-        (p: { id: number; selectedConsole: string }) => p.id === 1
-      )?.selectedConsole || ""
-  );
-
-  // console.log(selectedId, selectedConsole);
 
   return (
     <main className="bg-[url(/sell/sell-hero.png)] bg-cover bg-no-repeat min-h-[calc(100vh-180px)] bg-left-bottom">
@@ -169,7 +123,7 @@ export default function SellHeroSection() {
                       ) : (
                         <>{t("selectAConsole")}</>
                       )} */}
-                      {selectedConsole ? selectedConsole : t("selectAConsole")}
+                      {product_type ? product_type : t("selectAConsole")}
                     </span>
                     <ChevronDown
                       className={`w-5 h-5 text-[#FDFDFD] md:text-gray-500 transition-transform ${
@@ -181,29 +135,26 @@ export default function SellHeroSection() {
                   {/* Dropdown Menu */}
                   {isOpen && (
                     <div className="z-50 absolute left-0 w-full bg-white border border-gray-200 rounded-md shadow-lg mt-1 max-h-60 overflow-y-auto">
-                      {products?.data?.products?.map(
-                        (option: { _id: string; name: string }) => (
-                          <div
-                            key={option?.name}
-                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer capitalize"
-                            onClick={() =>
-                              handleSelect(option?._id, option?.name)
-                            }
-                          >
-                            {option?.name}
-                          </div>
-                        )
-                      )}
+                      {["xbox", "playstation", "nintendo"].map((option) => (
+                        <div
+                          key={option}
+                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer capitalize"
+                          onClick={() => {
+                            setIsOpen(false);
+                            setProduct_type(option);
+                          }}
+                        >
+                          {option}
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>
 
-                <Link href={`/sell/${selectedId}`}>
+                <Link href={`#products`}>
                   <button
-                    onClick={getEstimate}
-                    disabled={!selectedConsole || isLoading}
                     className={`w-full sm:w-1/2 md:w-9/12 h-16 text-white rounded-sm ${
-                      !selectedConsole || isLoading
+                      !product_type
                         ? "bg-[#101010] cursor-not-allowed"
                         : "bg-gray-700 hover:bg-gray-800"
                     }`}

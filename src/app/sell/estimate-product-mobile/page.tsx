@@ -98,16 +98,7 @@ const SelectedProduct = () => {
 
   return (
     <div className="z-20 min-h-screen relative bg-[url('/sell/back_sell.png')] bg-cover bg-center overflow-hidden">
-      {/* Diagonal lines background */}
-
-      {/* <div className="p-5">
-        <div className="bg-[#FDFDFD] h-[100px] flex items-center justify-between text-center rounded-lg p-5">
-          <h3 className="text-[#101010] text-lg font-semibold">
-            La Nostra Offerta
-          </h3>
-          <h3 className="text-[#101010] text-lg font-semibold">$200,50</h3>
-        </div>
-      </div> */}
+      
 
       {/* product with togglable detail */}
       <div className="p-5">
