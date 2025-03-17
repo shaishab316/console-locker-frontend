@@ -98,27 +98,14 @@ const ProductDetailsPage: React.FC = () => {
       router.replace(`/buy/${slugRes?.data?.slug}`);
   }, [slugRes]);
 
-  const {
-    data: products,
-    isLoading: productsLoading,
-    isError: productsError,
-  } = useGetAllProductsQuery({});
-
-  // Choose your console
-  const { data: consoleLists } = useSellProductQuery({
-    limit: 10,
-  });
-
   useEffect(() => {
-    console.log({ singleProduct });
-
     setSelectedModel(singleProduct?.data?.product?.model);
     setSelectedController(singleProduct?.data?.product?.controller);
     setSelectedMemory(singleProduct?.data?.product?.memory);
     setSelectedCondition(singleProduct?.data?.product?.condition);
   }, [singleProduct]);
 
-  if (isLoading || productsLoading)
+  if (isLoading)
     return (
       <div>
         <Loading />
@@ -182,7 +169,7 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log(products?.data?.products);
+  console.log(product);
 
   return (
     <div>
@@ -214,7 +201,8 @@ const ProductDetailsPage: React.FC = () => {
                   </div>
                   <div className="flex flex-col gap-3 items-end">
                     <h2 className="text-2xl lg:text-5xl font-semibold text-[#101010]">
-                      ${product?.product?.offer_price}
+                      $
+                      {product?.product?.offer_price ?? product?.product?.price}
                     </h2>
                     <p className="text-lg text-[#6B6B6B]">incl. tax</p>
                   </div>
@@ -224,7 +212,7 @@ const ProductDetailsPage: React.FC = () => {
                 <div className="flex items-center gap-2.5 mb-6">
                   <p className="flex items-center gap-1">
                     {[...Array(Math.round(product?.product?.ratings))].map(
-                      (i) => (
+                      (_, i) => (
                         <svg
                           key={i}
                           width="24"
@@ -256,21 +244,29 @@ const ProductDetailsPage: React.FC = () => {
                     {t("model")}:
                   </h4>
                   <div className="flex flex-wrap gap-4">
-                    {product?.meta?.models?.map((model: string) => (
-                      <button
-                        key={model}
-                        disabled={selectedModel === model}
-                        className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
-                          selectedModel === model
-                            ? "border-black bg-[#E7E7E7] cursor-not-allowed"
-                            : "border-gray-300"
-                        }`}
-                        onClick={() => setSelectedModel(model)}
-                      >
-                        {model}
-                        <Check />
-                      </button>
-                    ))}
+                    {product?.meta?.models?.map(
+                      ({ model, price }: Record<string, any>) => (
+                        <button
+                          key={model}
+                          disabled={selectedModel === model}
+                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border rounded-md ${
+                            selectedModel === model
+                              ? "border-black bg-[#E7E7E7] cursor-not-allowed"
+                              : "border-gray-300"
+                          }`}
+                          onClick={() => setSelectedModel(model)}
+                        >
+                          <span className="text-2xl font-semibold">
+                            {model}
+                          </span>
+                          {selectedModel === model ? (
+                            <Check />
+                          ) : (
+                            <span>{price}</span>
+                          )}
+                        </button>
+                      )
+                    )}
                   </div>
                 </div>
 
@@ -296,21 +292,29 @@ const ProductDetailsPage: React.FC = () => {
                     {t("controller")}:
                   </h4>
                   <div className="flex flex-wrap gap-4">
-                    {product?.meta?.controllers?.map((controller: string) => (
-                      <button
-                        key={controller}
-                        disabled={selectedController === controller}
-                        className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10 py-5 border rounded-md ${
-                          selectedController === controller
-                            ? "border-black bg-[#E7E7E7] cursor-not-allowed"
-                            : "border-gray-300"
-                        }`}
-                        onClick={() => setSelectedController(controller)}
-                      >
-                        {controller}
-                        <Check />
-                      </button>
-                    ))}
+                    {product?.meta?.controllers?.map(
+                      ({ controller, price }: Record<string, any>) => (
+                        <button
+                          key={controller}
+                          disabled={selectedController === controller}
+                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border rounded-md ${
+                            selectedModel === controller
+                              ? "border-black bg-[#E7E7E7] cursor-not-allowed"
+                              : "border-gray-300"
+                          }`}
+                          onClick={() => setSelectedController(controller)}
+                        >
+                          <span className="text-2xl font-semibold">
+                            {controller}
+                          </span>
+                          {selectedController === controller ? (
+                            <Check />
+                          ) : (
+                            <span>{price}</span>
+                          )}
+                        </button>
+                      )
+                    )}
                   </div>
                 </div>
 
@@ -320,21 +324,29 @@ const ProductDetailsPage: React.FC = () => {
                     {t("memory")}:
                   </h4>
                   <div className="flex flex-wrap gap-4">
-                    {product?.meta?.memories?.map((memory: string) => (
-                      <button
-                        key={memory}
-                        disabled={selectedMemory === memory}
-                        className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
-                          selectedMemory === memory
-                            ? "border-black bg-[#E7E7E7] cursor-not-allowed"
-                            : "border-gray-300"
-                        }`}
-                        onClick={() => setSelectedMemory(memory)}
-                      >
-                        {memory}
-                        <Check />
-                      </button>
-                    ))}
+                    {product?.meta?.memorys?.map(
+                      ({ memory, price }: Record<string, any>) => (
+                        <button
+                          key={memory}
+                          disabled={selectedMemory === memory}
+                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border rounded-md ${
+                            selectedMemory === memory
+                              ? "border-black bg-[#E7E7E7] cursor-not-allowed"
+                              : "border-gray-300"
+                          }`}
+                          onClick={() => setSelectedMemory(memory)}
+                        >
+                          <span className="text-2xl font-semibold">
+                            {memory}
+                          </span>
+                          {selectedMemory === memory ? (
+                            <Check />
+                          ) : (
+                            <span>{price}</span>
+                          )}
+                        </button>
+                      )
+                    )}
                   </div>
                 </div>
 
@@ -344,21 +356,29 @@ const ProductDetailsPage: React.FC = () => {
                     {t("conditions")}:
                   </h4>
                   <div className="flex flex-wrap gap-4">
-                    {product?.meta?.conditions?.map((condition: string) => (
-                      <button
-                        key={condition}
-                        disabled={selectedCondition === condition}
-                        className={`w-[110px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-5 border rounded-md ${
-                          selectedCondition === condition
-                            ? "border-black bg-[#E7E7E7] cursor-not-allowed"
-                            : "border-gray-300"
-                        }`}
-                        onClick={() => setSelectedCondition(condition)}
-                      >
-                        {condition}
-                        <Check />
-                      </button>
-                    ))}
+                    {product?.meta?.conditions?.map(
+                      ({ condition, price }: Record<string, any>) => (
+                        <button
+                          key={condition}
+                          disabled={selectedCondition === condition}
+                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border rounded-md ${
+                            selectedCondition === condition
+                              ? "border-black bg-[#E7E7E7] cursor-not-allowed"
+                              : "border-gray-300"
+                          }`}
+                          onClick={() => setSelectedCondition(condition)}
+                        >
+                          <span className="text-2xl font-semibold">
+                            {condition}
+                          </span>
+                          {selectedCondition === condition ? (
+                            <Check />
+                          ) : (
+                            <span>{price}</span>
+                          )}
+                        </button>
+                      )
+                    )}
                   </div>
                 </div>
 
@@ -474,7 +494,7 @@ const ProductDetailsPage: React.FC = () => {
                   </p>
                   <div>
                     <h2 className="text-2xl font-semibold text-gray-800">
-                      {product.price}
+                      {product?.product?.offer_price ?? product?.product?.price}
                     </h2>
                     <span className="text-sm text-gray-500">incl. tax</span>
                   </div>
@@ -498,9 +518,9 @@ const ProductDetailsPage: React.FC = () => {
                       {/* {consoleLists?.data?.products?.map((console: any) => (
                     
                   ))} */}
-                      {products?.data?.products?.map((console: any) => (
-                        <option key={console?._id} value="PlayStation 4 Pro">{console?.name}</option>
-                      ))}
+                      <option>Xbox</option>
+                      <option>Playstation</option>
+                      <option>Nintendo</option>
                     </select>
 
                     <div className="absolute inset-y-0 right-0 flex items-center px-3">
@@ -630,7 +650,7 @@ const ProductDetailsPage: React.FC = () => {
         <div
           className={`${
             singleProduct?.data?.product?.product_type === "xbox" &&
-            "bg-[#49A947]"
+            "bg-[#3BAE3B]"
           } ${
             singleProduct?.data?.product?.product_type === "playstation" &&
             "bg-[#1861C0]"
@@ -799,19 +819,22 @@ const ProductDetailsPage: React.FC = () => {
             {/* Select the Xbox One model */}
 
             <div className="flex flex-col gap-4 px-5 py-5">
-              {product?.meta?.models?.map((model: string) => (
-                <div
-                  key={model}
-                  onClick={() => setSelectedModel(model)}
-                  className={`h-16 rounded-md flex items-center justify-center border-4 border-[#FDFDFD] ${
-                    model === selectedModel
-                      ? "bg-[#FDFDFD] text-[#64B95E]"
-                      : "bg-transparent"
-                  } border border-[#919191] text-center text-2xl font-semibold leading-[36px]`}
-                >
-                  {model}
-                </div>
-              ))}
+              {product?.meta?.models?.map(
+                ({ model, price }: Record<string, any>) => (
+                  <div
+                    key={model}
+                    onClick={() => setSelectedModel(model)}
+                    className={`h-16 rounded-md text-[#FDFDFD] flex items-center justify-center border-4 border-[#FDFDFD] ${
+                      model === selectedModel
+                        ? "bg-[#FDFDFD] text-[#63B95D]"
+                        : "bg-transparent"
+                    } border border-[#919191] text-center text-2xl font-semibold leading-[36px]`}
+                  >
+                    {model}
+                    {price}
+                  </div>
+                )
+              )}
             </div>
           </div>
 
@@ -830,19 +853,21 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="p-5 flex items-center gap-4">
-              {product?.meta?.memories?.map((memory: string) => (
-                <div
-                  key={memory}
-                  onClick={() => setSelectedMemory(memory)}
-                  className={`${
-                    memory === selectedMemory
-                      ? "bg-[#FDFDFD] text-[#64B95E]"
-                      : "bg-transparent"
-                  } text-xl text-[#101010] border-4 border-[#FDFDFD] font-semibold w-[98px] h-[106px] text-center flex items-center justify-center rounded-md`}
-                >
-                  {memory}
-                </div>
-              ))}
+              {product?.meta?.memories?.map(
+                ({ memory, price }: Record<string, any>) => (
+                  <div
+                    key={memory}
+                    onClick={() => setSelectedMemory(memory)}
+                    className={`${
+                      memory === selectedMemory
+                        ? "bg-[#FDFDFD] text-[#63B95D]"
+                        : "bg-transparent"
+                    } text-xl text-[#FDFDFD] border-4 border-[#FDFDFD] font-semibold w-[98px] h-[106px] text-center flex items-center justify-center rounded-md`}
+                  >
+                    {memory} {price}
+                  </div>
+                )
+              )}
             </div>
           </div>
 
@@ -861,19 +886,21 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="p-5 flex items-center gap-4">
-              {product?.meta?.conditions?.map((condition: string) => (
-                <div
-                  key={condition}
-                  onClick={() => setSelectedCondition(condition)}
-                  className={`${
-                    condition === selectedCondition
-                      ? "bg-[#FDFDFD] text-[#64B95E]"
-                      : "bg-transparent"
-                  } text-xl text-[#101010] capitalize border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
-                >
-                  {condition}
-                </div>
-              ))}
+              {product?.meta?.conditions?.map(
+                ({ condition, price }: Record<string, any>) => (
+                  <div
+                    key={condition}
+                    onClick={() => setSelectedCondition(condition)}
+                    className={`${
+                      condition === selectedCondition
+                        ? "bg-[#FDFDFD] text-[#63B95D]"
+                        : "bg-transparent"
+                    } text-xl text-[#FDFDFD] capitalize border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
+                  >
+                    {condition} {price}
+                  </div>
+                )
+              )}
             </div>
           </div>
 
@@ -935,19 +962,21 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="p-5 flex items-center gap-4">
-              {product?.meta?.controllers?.map((controller: string) => (
-                <div
-                  key={controller}
-                  onClick={() => setSelectedController(controller)}
-                  className={`${
-                    controller === selectedController
-                      ? "bg-[#FDFDFD] text-[#64B95E]"
-                      : "bg-transparent"
-                  } text-xl text-[#101010] border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
-                >
-                  {controller}
-                </div>
-              ))}
+              {product?.meta?.controllers?.map(
+                ({ controller, price }: Record<string, any>) => (
+                  <div
+                    key={controller}
+                    onClick={() => setSelectedController(controller)}
+                    className={`${
+                      controller === selectedController
+                        ? "bg-[#FDFDFD] text-[#63B95D]"
+                        : "bg-transparent"
+                    } text-xl text-[#FDFDFD] border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
+                  >
+                    {controller} {price}
+                  </div>
+                )
+              )}
             </div>
           </div>
 
