@@ -58,7 +58,7 @@ interface IBlog {
   createdAt: string;
 }
 
-export function BlogCarousel() {
+export function BlogCarousel({ productType }: { productType: string }) {
   const carouselRef = useRef<any>(null);
   const { t } = useTranslation();
 
@@ -82,7 +82,11 @@ export function BlogCarousel() {
   if (isError) return <div>Error Occured! {isError.valueOf()}</div>;
 
   return (
-    <section className="bg-[#F2F5F7] pt-8 pb-20 md:pb-28">
+    <section
+      className={`bg-transparent
+    
+    pt-8 pb-20 md:pb-28`}
+    >
       <Container>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">

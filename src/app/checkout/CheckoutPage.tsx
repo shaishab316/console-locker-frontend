@@ -114,6 +114,19 @@ export default function CheckoutPage() {
     }
   }, []);
 
+  useEffect(() => {
+    const secondary_phone = JSON.parse(
+      localStorage?.getItem("secondary_phone") || ""
+    );
+
+    if (secondary_phone) {
+      setFormData((prev) => ({
+        ...prev,
+        furtherContactInformation: secondary_phone,
+      }));
+    }
+  }, []);
+
   const {
     data: products,
     isLoading,

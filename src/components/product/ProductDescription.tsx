@@ -16,7 +16,7 @@ export default function ProductDescription() {
   ];
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 rounded-lg">
       <div>
         <div className="bg-[#FDFDFD] rounded-2xl p-6">
           {/* <Container> */}
@@ -69,7 +69,7 @@ export default function ProductDescription() {
         </div>
       </div>
 
-      <div className="bg-[#FDFDFD] p-6">
+      <div className="bg-[#FDFDFD] p-6 rounded-lg">
         <h3 className="text-2xl text-[#101010] font-semibold mb-4">
           Description
         </h3>

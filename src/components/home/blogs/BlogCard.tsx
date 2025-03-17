@@ -26,7 +26,7 @@ export function BlogCard({
   if (!_id) return null;
 
   return (
-    <Link href={`/blog/${slug}`}>
+    <Link href={`/blog/${slug}`}> 
       <Card
         // hoverable
         cover={

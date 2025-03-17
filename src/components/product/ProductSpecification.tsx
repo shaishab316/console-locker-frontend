@@ -38,9 +38,9 @@ export default function ProductSpecification() {
   const tabs: Tab[] = ["Specification", "Description", "Warranty"];
 
   return (
-    <div className="bg-[#F2F5F7] mt-20 mb-8">
+    <div className="bg-[#F2F5F7] mt-20 mb-8 rounded-lg">
       {/* Tabs */}
-      <div className="flex flex-wrap gap-6 mb-6">
+      <div className="flex flex-wrap gap-6 mb-6 py-6 pl-4">
         {tabs.map((tab) => (
           <button
             key={tab}

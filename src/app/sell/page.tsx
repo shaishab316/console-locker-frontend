@@ -1,6 +1,6 @@
 import { BlogCarousel } from "@/components/home/blogs/BlogCarousel";
-import ConsoleSelector from "@/components/home/showcase/ConsoleSector";
 import HowDelivery from "@/components/sell/HowDelivery";
+import ConsoleSelectorMobile from "@/components/sell/mobile/ConsoleSelectorMobile";
 import FindOutConsole from "@/components/sell/mobile/FindOutConsole";
 import MobileSellHero from "@/components/sell/mobile/MobileSellHero";
 import ProductSection from "@/components/sell/ProductSection";
@@ -23,7 +23,7 @@ const SellPage = () => {
         <MobileSellHero />
         <FindOutConsole />
 
-        <ConsoleSelector />
+        <ConsoleSelectorMobile />
         <ReviewCarousel productName="" />
         <BlogCarousel />
       </div>

@@ -251,12 +251,13 @@ export default function CartPage() {
     }
   };
 
-  console.log("products.............", products?.data?.variants);
+  // console.log("products.............", products?.data?.variants);
 
   return (
     <div>
       <div className="hidden md:block min-h-screen bg-[#F2F5F7] pt-16 pb-20">
         <PaymentHeader variants={products?.data?.variants} />
+
         <Container>
           {/* only for desktop view */}
           <div className="flex flex-col lg:flex-row gap-12">

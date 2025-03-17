@@ -51,13 +51,6 @@ export default function ScreenCondition() {
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  // const [
-  //   getEstimateProductPrice,
-  //   { data, isLoading: getPriceLoading, isError: getPriceError },
-  // ] = useGetEstimateProductPriceMutation();
-
-  // const [questionId, setQuestionId] = useState("");
-
   const router = useRouter();
   const [selectedLang, setSelectedLang] = useState("");
   const { t } = useTranslation();
@@ -75,6 +68,8 @@ export default function ScreenCondition() {
       JSON.stringify(userSelectedOptions)
     );
   }, [userSelectedOptions, userSelectedOptions.length]);
+
+  // console.log("params", params?.slug);
 
   const {
     data: question,
@@ -229,8 +224,8 @@ export default function ScreenCondition() {
 
   const questionsLength = question?.data?.questions.length;
 
-  // console.log({ modal, brand, condition, controller, storage });
-  console.log("sell/[.....]", question);
+  // console.log({ modal, brand, condition, controller, memory });
+  console.log("sell/[.....]", question?.data?.product_type);
 
   return (
     <div>
@@ -378,13 +373,13 @@ export default function ScreenCondition() {
                     "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
                   }
                 >
-                  {question?.data?.questions[1]?.description}
+                  {question?.data?.questions[1]?.description} vcbcvbcvb
                 </h2>
                 <hr className="flex-1 border-b-2 border-gray-300" />
               </div>
 
               <div className="p-5 flex items-center gap-4">
-                {question?.data?.questions[0]?.options?.map(
+                {question?.data?.questions[1]?.options?.map(
                   (storg: {
                     _id: string;
                     option: string;
@@ -404,7 +399,7 @@ export default function ScreenCondition() {
                         storg?.option === brand
                           ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
-                      } text-xl text-[#101010] font-semibold w-[98px] h-[106px] text-center flex items-center justify-center rounded-md p-1.5`}
+                      } text-xl text-[#101010] font-semibold min-w-[98px] h-[106px] text-center flex items-center justify-center rounded-md p-1.5`}
                     >
                       {storg?.option}
                     </div>
@@ -517,7 +512,7 @@ export default function ScreenCondition() {
                       }
                       className={`${
                         cond.option === controller
-                          ? "bg-[#64B95E] text-[#FDFDFD]"
+                          ? "bg-[#D61D1E] text-[#FDFDFD]"
                           : "bg-[#DDDEE3]"
                       } text-xl text-[#101010] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
                     >
@@ -811,7 +806,7 @@ export default function ScreenCondition() {
             {/* <Link href={"/sell/summary"}> */}
             <button
               onClick={submitMobileForm}
-              className="w-full text-[#FDFDFD] font-semibold bg-[#64B95E] h-14 rounded-lg"
+              className="w-full text-[#FDFDFD] font-semibold bg-[#D61D1E] h-14 rounded-lg"
             >
               SUBMIT FORM
             </button>

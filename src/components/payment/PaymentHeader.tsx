@@ -59,6 +59,7 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
   const [items] = useState(INITIAL_ITEMS);
   const [cartItems, setCartItems] = useState<string[]>([]);
   const { t } = useTranslation();
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const handleAddToCart = (id: string) => {
     console.log(id);
@@ -100,7 +101,7 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
     }
   };
 
-  console.log("variants", variants.length);
+  console.log("variants......", variants[0]?.images[0]);
 
   return (
     <div className="bg-[#F2F5F7]">
@@ -146,7 +147,8 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
                       <div className="flex flex-col gap-4">
                         <div className="relative w-32 h-32 flex items-center justify-center mx-auto">
                           <Image
-                            src="/buy/p3.png"
+                            // src="/buy/p3.png"
+                            src={`${API_URL}${product?.images[0]}`}
                             alt={product?.name}
                             fill
                             className="object-contain"
@@ -202,7 +204,8 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
                         {/* Image Section */}
                         <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 mx-auto md:mx-0">
                           <Image
-                            src="/buy/p3.png"
+                            
+                            src={`${API_URL}${product?.images[0]}`}
                             alt={product?.name}
                             fill
                             className="object-contain rounded-md"

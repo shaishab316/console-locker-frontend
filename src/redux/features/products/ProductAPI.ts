@@ -105,7 +105,7 @@ export const {
   useGetSingleProductQuery,
   useCreateProductMutation,
   useGetEstimateProductPriceMutation,
-  useFindSlugProductQuery,
+  useFindSlugProductQuery, 
 } = ProductAPI;
 
 export default ProductAPI;

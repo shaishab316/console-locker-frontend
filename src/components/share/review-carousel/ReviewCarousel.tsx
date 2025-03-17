@@ -11,50 +11,6 @@ import Loading from "@/app/loading";
 import { useGetReviewsQuery } from "@/redux/features/review/ReviewAPI";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Sample review data
-// const reviews = [
-//   {
-//     id: 1,
-//     text: "I bought a refurbished PlayStation 5, and it looks and works like new! The delivery was super fast, and the customer support team answered all my questions. Highly recommended!",
-//     text2:
-//       "Ho comprato una PlayStation 5 ristrutturata e sembra e funziona come nuova! La consegna è stata super veloce e il team di supporto clienti ha risposto a tutte le mie domande. Altamente raccomandato!",
-//     author: "Wade Warren",
-//     position: "President of Sales",
-//     rating: 4,
-//     avatar: "/clients/client1.png",
-//   },
-//   {
-//     id: 2,
-//     text: "Amazing service! The refurbished iPhone I bought was practically new. Customer service was prompt and friendly. Will shop again.",
-//     text2:
-//       "Servizio fantastico! L'iPhone ristrutturato che ho acquistato era praticamente nuovo. Il servizio clienti è stato rapido e cordiale. Acquisterò di nuovo.",
-//     author: "Jane Cooper",
-//     position: "CEO of Marketing",
-//     rating: 5,
-//     avatar: "/clients/client1.png",
-//   },
-//   {
-//     id: 3,
-//     text: "Fast delivery, great product quality, and very helpful customer service. Thank you for an awesome experience!",
-//     text2:
-//       "Consegna veloce, ottima qualità del prodotto e servizio clienti molto utile. Grazie per un'esperienza fantastica!",
-//     author: "Robert Fox",
-//     position: "Tech Enthusiast",
-//     rating: 5,
-//     avatar: "/clients/client1.png",
-//   },
-//   {
-//     id: 4,
-//     text: "Product arrived earlier than expected, and I’m very happy with the quality. Will recommend it to friends!",
-//     text2:
-//       "Il prodotto è arrivato prima del previsto e sono molto soddisfatto della qualità. Lo consiglierò agli amici!",
-//     author: "Kristin Watson",
-//     position: "Software Engineer",
-//     rating: 4,
-//     avatar: "/clients/client1.png",
-//   },
-// ];
-
 interface IReview {
   comment: string;
   createdAt: string;
@@ -67,8 +23,10 @@ interface IReview {
 
 export default function ReviewCarousel({
   productName,
+  productType,
 }: {
   productName: string;
+  productType: string;
 }) {
   const carouselRef = useRef<any>(null);
   const { t } = useTranslation();
@@ -91,10 +49,12 @@ export default function ReviewCarousel({
     carouselRef.current?.prev();
   };
 
-  // console.log(reviews?.data?.reviews[0]);
+  console.log("productType blog", productType);
 
   return (
-    <div className="py-24 bg-[#F2F5F7]">
+    <div
+      className={`py-24 bg-transparent`}
+    >
       <Container>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl md:text-3xl font-bold text-gray-900">

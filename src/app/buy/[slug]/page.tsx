@@ -169,12 +169,18 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log(product);
+  console.log(product?.product?.product_type);
 
   return (
     <div>
       {/* only for desktop */}
-      <div className="hidden lg:block py-16 bg-[#F2F5F7]">
+      <div
+        className={`hidden lg:block py-16 
+        ${product?.product?.product_type === "xbox" && "bg-[#3BAE3B]"}  
+        ${product?.product?.product_type === "playstation" && "bg-[#1861C0]"}
+        ${product?.product?.product_type === "nintendo" && "bg-[#D61D1E]"}
+        `}
+      >
         <Container>
           <div className="hidden lg:block">
             <div className="flex flex-col lg:flex-row gap-8">
@@ -191,20 +197,20 @@ const ProductDetailsPage: React.FC = () => {
               <div className="xl:w-1/2">
                 <div className="flex justify-between items-center mb-2.5">
                   <div className="flex flex-col gap-3">
-                    <h1 className="text-3xl lg:text-[40px] text-[#101010] font-semibold">
+                    <h1 className="text-3xl lg:text-[40px] text-[#FDFDFD] font-semibold">
                       {product?.product?.name}
                     </h1>
-                    <p className="text-[#2B2B2B] text-lg mb-2 flex items-center justify-between">
+                    <p className="text-[#FDFDFD] text-lg mb-2 flex items-center justify-between">
                       {" "}
                       {selectedModel} | {selectedMemory} | Black{" "}
                     </p>
                   </div>
                   <div className="flex flex-col gap-3 items-end">
-                    <h2 className="text-2xl lg:text-5xl font-semibold text-[#101010]">
+                    <h2 className="text-2xl lg:text-5xl font-semibold text-[#FDFDFD]">
                       $
                       {product?.product?.offer_price ?? product?.product?.price}
                     </h2>
-                    <p className="text-lg text-[#6B6B6B]">incl. tax</p>
+                    <p className="text-lg text-[#FDFDFD]">incl. tax</p>
                   </div>
                 </div>
 
@@ -214,7 +220,7 @@ const ProductDetailsPage: React.FC = () => {
                     {[...Array(Math.round(product?.product?.ratings))].map(
                       (_, i) => (
                         <svg
-                          key={i}
+                          key={_}
                           width="24"
                           height="24"
                           viewBox="0 0 24 24"
@@ -230,9 +236,11 @@ const ProductDetailsPage: React.FC = () => {
                       )
                     )}
                   </p>
-                  <h2 className="font-medium">{product?.product?.ratings}</h2>
+                  <h2 className="font-medium text-[#FDFDFD]">
+                    {product?.product?.ratings}
+                  </h2>
                   <Link href={`/reviews?productName=${product?.product?.name}`}>
-                    <p className="underline">
+                    <p className="underline text-[#FDFDFD]">
                       ({product?.product?.reviewCount} reviews)
                     </p>
                   </Link>
@@ -240,7 +248,7 @@ const ProductDetailsPage: React.FC = () => {
 
                 {/* Model */}
                 <div className="mb-6">
-                  <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                  <h4 className="text-2xl font-semibold text-[#FDFDFD] mb-2">
                     {t("model")}:
                   </h4>
                   <div className="flex flex-wrap gap-4">
@@ -249,10 +257,10 @@ const ProductDetailsPage: React.FC = () => {
                         <button
                           key={model}
                           disabled={selectedModel === model}
-                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border rounded-md ${
+                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedModel === model
-                              ? "border-black bg-[#E7E7E7] cursor-not-allowed"
-                              : "border-gray-300"
+                              ? "text-[#3BAE3B] bg-[#FDFDFD] cursor-not-allowed"
+                              : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedModel(model)}
                         >
@@ -288,7 +296,7 @@ const ProductDetailsPage: React.FC = () => {
 
                 {/* Controller */}
                 <div className="mb-6 mt-3">
-                  <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                  <h4 className="text-2xl font-semibold text-[#FDFDFD] mb-2">
                     {t("controller")}:
                   </h4>
                   <div className="flex flex-wrap gap-4">
@@ -297,10 +305,10 @@ const ProductDetailsPage: React.FC = () => {
                         <button
                           key={controller}
                           disabled={selectedController === controller}
-                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border rounded-md ${
-                            selectedModel === controller
-                              ? "border-black bg-[#E7E7E7] cursor-not-allowed"
-                              : "border-gray-300"
+                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
+                            selectedController === controller
+                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed"
+                              : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedController(controller)}
                         >
@@ -320,7 +328,7 @@ const ProductDetailsPage: React.FC = () => {
 
                 {/* Memory */}
                 <div className="mb-6">
-                  <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                  <h4 className="text-2xl font-semibold text-[#FDFDFD] mb-2">
                     {t("memory")}:
                   </h4>
                   <div className="flex flex-wrap gap-4">
@@ -329,10 +337,10 @@ const ProductDetailsPage: React.FC = () => {
                         <button
                           key={memory}
                           disabled={selectedMemory === memory}
-                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border rounded-md ${
+                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedMemory === memory
-                              ? "border-black bg-[#E7E7E7] cursor-not-allowed"
-                              : "border-gray-300"
+                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed"
+                              : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedMemory(memory)}
                         >
@@ -352,7 +360,7 @@ const ProductDetailsPage: React.FC = () => {
 
                 {/* Conditions */}
                 <div className="mb-6">
-                  <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                  <h4 className="text-2xl font-semibold text-[#FDFDFD] mb-2">
                     {t("conditions")}:
                   </h4>
                   <div className="flex flex-wrap gap-4">
@@ -361,10 +369,10 @@ const ProductDetailsPage: React.FC = () => {
                         <button
                           key={condition}
                           disabled={selectedCondition === condition}
-                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border rounded-md ${
+                          className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedCondition === condition
-                              ? "border-black bg-[#E7E7E7] cursor-not-allowed"
-                              : "border-gray-300"
+                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed"
+                              : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedCondition(condition)}
                         >
@@ -386,11 +394,11 @@ const ProductDetailsPage: React.FC = () => {
                 <div className="mb-6">
                   {!isOpenTradeIn ? (
                     <>
-                      <h4 className="text-2xl font-semibold text-[#101010] mb-2">
+                      <h4 className="text-2xl font-semibold text-[#FDFDFD] mb-2">
                         {t("tradeIn")}:
                       </h4>
                       <button
-                        className={`w-[120px] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border rounded-md ${
+                        className={`w-[120px] text-[#FDFDFD] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border-4 rounded-md ${
                           modalState
                             ? "border-black bg-[#E7E7E7]"
                             : "border-gray-300"
@@ -421,13 +429,13 @@ const ProductDetailsPage: React.FC = () => {
 
                       {/* Trade-in Header */}
                       <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-xl font-semibold text-gray-900">
+                        <h2 className="text-xl font-semibold text-[#FDFDFD]">
                           Trade-in
                         </h2>
 
                         <button
                           onClick={() => startOver()}
-                          className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                          className="flex items-center text-[#FDFDFD] transition-colors"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -474,7 +482,7 @@ const ProductDetailsPage: React.FC = () => {
                       </div>
 
                       {/* Additional Information */}
-                      <div className="text-gray-600 border-l-4 border-black rounded-s-lg">
+                      <div className="text-gray-200 border-l-4 border-black rounded-s-lg">
                         <p className="p-3">
                           After trade-in price estimate. We will ship the free
                           trade-in kit to your home address and refund the
@@ -489,19 +497,19 @@ const ProductDetailsPage: React.FC = () => {
                 </div>
 
                 <div className="flex justify-between items-center mb-6">
-                  <p className="text-black text-[18px] font-medium flex items-center justify-between">
+                  <p className="text-[#FDFDFD] text-[18px] font-medium flex items-center justify-between">
                     {selectedModel} | {selectedMemory} | Black
                   </p>
                   <div>
-                    <h2 className="text-2xl font-semibold text-gray-800">
+                    <h2 className="text-2xl font-semibold text-[#FDFDFD]">
                       {product?.product?.offer_price ?? product?.product?.price}
                     </h2>
-                    <span className="text-sm text-gray-500">incl. tax</span>
+                    <span className="text-sm text-[#FDFDFD]">incl. tax</span>
                   </div>
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-normal mb-2">
+                  <h4 className="font-normal mb-2 text-[#FDFDFD]">
                     {t("pleaseSelectYourConsole")}
                   </h4>
 
@@ -510,7 +518,7 @@ const ProductDetailsPage: React.FC = () => {
                       name="phoneCode"
                       // value={formData.phoneCode}
                       // onChange={(e) => handleInputChange(e as any)}
-                      className="px-4 py-3 border rounded-3xl bg-white text-sm sm:text-base appearance-none w-full"
+                      className="px-4 py-3 border rounded-3xl  bg-white text-sm sm:text-base appearance-none w-full"
                     >
                       <option value="" defaultValue={"Choose a console"}>
                         {t("chooseAConsole")}
@@ -551,13 +559,13 @@ const ProductDetailsPage: React.FC = () => {
                         alt="usb"
                       />
                     </div>
-                    <h2 className="text-base font-medium text-[#101010]">
+                    <h2 className="text-base font-medium text-[#FDFDFD]">
                       Ready to be shipped.
                     </h2>
                   </div>
                   <button
                     onClick={handleAddToCart}
-                    className="h-14 flex items-center justify-center bg-black text-white text-center px-6 py-3 rounded-md"
+                    className={`h-14 flex items-center justify-center bg-black text-white text-center px-6 py-3 rounded-md`}
                   >
                     {t("addToCart")}
                   </button>
@@ -567,7 +575,7 @@ const ProductDetailsPage: React.FC = () => {
 
             {/* related products */}
             <div className="mt-16">
-              <h3 className="text-[32px] font-semibold mb-4">
+              <h3 className="text-[32px] font-semibold mb-10 text-[#FDFDFD]">
                 You may also like
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -630,8 +638,11 @@ const ProductDetailsPage: React.FC = () => {
         </Container>
 
         <div className="hidden md:block">
-          <ReviewCarousel productName={product?.product?.name} />
-          <BlogCarousel />
+          <ReviewCarousel
+            productName={product?.product?.name}
+            productType={product?.product?.product_type}
+          />
+          <BlogCarousel productType={product?.product?.product_type} />
         </div>
       </div>
 
@@ -824,10 +835,10 @@ const ProductDetailsPage: React.FC = () => {
                   <div
                     key={model}
                     onClick={() => setSelectedModel(model)}
-                    className={`h-16 rounded-md text-[#FDFDFD] flex items-center justify-center border-4 border-[#FDFDFD] ${
+                    className={`h-16 rounded-md flex items-center justify-center border-4 border-[#FDFDFD] ${
                       model === selectedModel
-                        ? "bg-[#FDFDFD] text-[#63B95D]"
-                        : "bg-transparent"
+                        ? "bg-[#FDFDFD] text-[#3BAE3B]"
+                        : "bg-transparent text-[#FDFDFD]"
                     } border border-[#919191] text-center text-2xl font-semibold leading-[36px]`}
                   >
                     {model}
@@ -853,16 +864,16 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="p-5 flex items-center gap-4">
-              {product?.meta?.memories?.map(
+              {product?.meta?.memorys?.map(
                 ({ memory, price }: Record<string, any>) => (
                   <div
                     key={memory}
                     onClick={() => setSelectedMemory(memory)}
                     className={`${
                       memory === selectedMemory
-                        ? "bg-[#FDFDFD] text-[#63B95D]"
-                        : "bg-transparent"
-                    } text-xl text-[#FDFDFD] border-4 border-[#FDFDFD] font-semibold w-[98px] h-[106px] text-center flex items-center justify-center rounded-md`}
+                        ? "bg-[#FDFDFD] text-[#3BAE3B]"
+                        : "bg-transparent text-[#FDFDFD]"
+                    } text-xl border-4 border-[#FDFDFD] font-semibold min-w-[106px] h-[106px] text-center flex items-center justify-center rounded-md p-1`}
                   >
                     {memory} {price}
                   </div>
@@ -893,9 +904,9 @@ const ProductDetailsPage: React.FC = () => {
                     onClick={() => setSelectedCondition(condition)}
                     className={`${
                       condition === selectedCondition
-                        ? "bg-[#FDFDFD] text-[#63B95D]"
-                        : "bg-transparent"
-                    } text-xl text-[#FDFDFD] capitalize border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
+                        ? "bg-[#FDFDFD] text-[#3BAE3B]"
+                        : "bg-transparent text-[#FDFDFD]"
+                    } text-xl capitalize border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
                   >
                     {condition} {price}
                   </div>
@@ -916,38 +927,6 @@ const ProductDetailsPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Is the console fully functional and free of technical defects? */}
-          <div>
-            <div className="flex items-center justify-center pt-14 space-x-2.5">
-              <hr className="flex-1 border-b-2 border-[#B5B5B5]" />
-              <h2
-                className={
-                  "bg-[#FDFDFD] py-4 px-[14px] rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
-                }
-              >
-                {t("consoleFullyFunctional")}
-              </h2>
-              <hr className="flex-1 border-b-2 border-[#B5B5B5]" />
-            </div>
-
-            {/* <div className="p-5 flex items-center gap-4">
-                {functionals?.map((func: { id: number; title: string }) => (
-                  <div
-                    key={func.id}
-                    onClick={() => setFunctional(func.title)}
-                    className={`${
-                      func.title === functional
-                        ? "bg-[#FDFDFD] text-[#64B95E]"
-                        : "bg-transparent"
-                    } text-xl text-[#101010] border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
-                  >
-                    {func.title}
-                  </div>
-                ))}
-              </div> */}
-          </div>
-
-          {/* How many controllers will you send us? */}
           <div>
             <div className="flex items-center justify-center pt-14 space-x-2.5">
               <hr className="flex-1 border-b-2 border-[#B5B5B5]" />
@@ -969,9 +948,9 @@ const ProductDetailsPage: React.FC = () => {
                     onClick={() => setSelectedController(controller)}
                     className={`${
                       controller === selectedController
-                        ? "bg-[#FDFDFD] text-[#63B95D]"
-                        : "bg-transparent"
-                    } text-xl text-[#FDFDFD] border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
+                        ? "bg-[#FDFDFD] text-[#3BAE3B]"
+                        : "bg-transparent text-[#FDFDFD]"
+                    } text-xl border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
                   >
                     {controller} {price}
                   </div>
@@ -980,36 +959,7 @@ const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* How many controllers will you send us? */}
-          <div>
-            <div className="flex items-center justify-center pt-14 space-x-2.5">
-              <hr className="flex-1 border-b-2 border-[#B5B5B5]" />
-              <h2
-                className={
-                  "bg-[#FDFDFD] py-4 px-[14px] rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
-                }
-              >
-                {t("originalAccessories")}
-              </h2>
-              <hr className="flex-1 border-b-2 border-[#B5B5B5]" />
-            </div>
-
-            {/* <div className="p-5 flex items-center gap-4">
-                {accessories?.map((access: { id: number; title: string }) => (
-                  <div
-                    key={access.id}
-                    onClick={() => setAccessory(access.title)}
-                    className={`${
-                      access.title === accessory
-                        ? "bg-[#FDFDFD] text-[#64B95E]"
-                        : "bg-transparent"
-                    } text-xl text-[#101010] border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
-                  >
-                    {access.title}
-                  </div>
-                ))}
-              </div> */}
-          </div>
+          
 
           {/* How many controllers will you send us? */}
           <div>

@@ -14,13 +14,13 @@ const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
 
   return (
     <div className="flex flex-col gap-4 bg-[#FDFDFD] rounded-lg hover:shadow">
-      <div className="bg-[#D0DDD0] flex items-center justify-center h-[350px] relative rounded-t-lg">
+      <div className="bg-[#D0DDD0] w-full  h-[300px] relative rounded-t-lg">
         <Image
           src={`${API_URL}${product?.image}`}
           alt="Product"
           width={400}
           height={400}
-          className="object-contain w-full h-[350px]"
+          className="object-contain w-full h-[300px]"
         />
       </div>
       <div className="flex justify-between items-center gap-2 p-5">
