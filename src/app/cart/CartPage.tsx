@@ -258,13 +258,10 @@ export default function CartPage() {
       toast.error("Please, add the product first!");
 
       router.push("/buy");
-
     } else {
       router.push("/checkout");
     }
   };
-
-  // console.log("products.............", products?.data?.variants);
 
   return (
     <div>
@@ -525,9 +522,12 @@ export default function CartPage() {
                   </div>
 
                   {/* <Link href={"/checkout"}> */}
-                    <button onClick={handleCheckout} className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 mt-6">
-                      {t("goAhead")}
-                    </button>
+                  <button
+                    onClick={handleCheckout}
+                    className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 mt-6"
+                  >
+                    {t("goAhead")}
+                  </button>
                   {/* </Link> */}
                 </div>
               </div>

@@ -4,14 +4,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Container from "@/components/common/Container";
 import Link from "next/link";
-import PaymentHeader from "@/components/payment/PaymentHeader";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
 import { useCreateCustomerMutation } from "@/redux/features/customer/CustomerAPI";
 import toast from "react-hot-toast";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useGetProductsByIdsQuery } from "@/redux/features/products/GetProductByIds";
-import { useCreateOrderMutation } from "@/redux/features/order/OrderAPI";
 
 interface OrderItem {
   id: string;
@@ -322,7 +320,7 @@ export default function CheckoutPage() {
     }
   };
 
-  console.log(products?.data?.products?.length);
+  // console.log(products?.data?.products?.length);
 
   return (
     <div className="min-h-screen bg-[#F2F5F7] py-10">
@@ -605,26 +603,6 @@ export default function CheckoutPage() {
                           <label className="block text-lg text-[#101010] font-medium mb-1.5">
                             {t("phone")}
                           </label>
-                          {/* <div className="flex">
-                            <select
-                              name="phoneCode"
-                              value={formData.phoneCode}
-                              onChange={(e) => handleInputChange(e as any)}
-                              className="px-3 py-2 border rounded-l-md"
-                            >
-                              <option value="+32">+32</option>
-                              <option value="+33">+33</option>
-                              <option value="+34">+34</option>
-                            </select>
-                            <input
-                              type="tel"
-                              name="phone"
-                              value={formData.phone}
-                              onChange={handleInputChange}
-                              className="max-w-[75%] lg:max-w-full flex-1 px-3 py-2 border-y border-r rounded-r-md"
-                              placeholder="470123456"
-                            />
-                          </div> */}
 
                           <div className="flex w-full">
                             <select

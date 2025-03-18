@@ -158,7 +158,7 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log(productAttr?.productAttr?.data?.model);
+  console.log("modalTradeInData", modalTradeInData);
 
   return (
     <div>
@@ -496,7 +496,7 @@ const ProductDetailsPage: React.FC = () => {
                           </button>
                           <p className="text-center text-gray-600">
                             yOUR {modalTradeInData?.productName} IS VALUED AT $
-                            {modalTradeInData?.productPrice}
+                            {modalTradeInData?.productPrice ?? 0}
                           </p>
                         </div>
                       </div>

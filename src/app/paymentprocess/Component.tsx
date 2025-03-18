@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { useGetProductsByIdsQuery } from "@/redux/features/products/GetProductByIds";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCreateOrderMutation } from "@/redux/features/order/OrderAPI";
+import { useRouter } from "next/navigation";
 
 interface OrderItem {
   id: string;
@@ -53,6 +54,7 @@ export default function Checkout() {
   const { t } = useTranslation();
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const [createOrder] = useCreateOrderMutation();
+  const router = useRouter();
 
   const steps = [
     { id: 1, name: "Accessories" },
@@ -66,14 +68,6 @@ export default function Checkout() {
     price: 119,
     quantity: quantity,
     image: "/products/sorif.png",
-  };
-
-  const handleQuantityChange = (action: "increase" | "decrease") => {
-    if (action === "increase") {
-      setQuantity((prev) => prev + 1);
-    } else if (action === "decrease" && quantity > 1) {
-      setQuantity((prev) => prev - 1);
-    }
   };
 
   const getProductIds = () => {
@@ -199,42 +193,6 @@ export default function Checkout() {
     localStorage?.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   // check existing customer
-  //   const existingCustomer = JSON.parse(
-  //     localStorage?.getItem("customer") || "null"
-  //   );
-
-  //   if (existingCustomer && existingCustomer.email === formData.email) {
-  //     router.push("/paymentprocess");
-  //   }
-  //   // Handle form submission
-  //   const customer = {
-  //     name: formData.firstName + " " + formData.surname,
-  //     email: formData.email,
-  //     address: {
-  //       address: formData.address,
-  //       zip_code: formData.zipCode,
-  //       city: formData.city,
-  //       country: formData.country,
-  //     },
-  //     phone: formData.phone,
-  //   };
-
-  //   const response = await createCustomer(customer);
-
-  //   if (response?.error) {
-  //     console.log(response?.error);
-  //     return;
-  //   }
-
-  //   localStorage?.setItem("customer", JSON.stringify(response?.data?.data));
-
-  //   console.log(response?.data?.data);
-  // };
-
   const removeItem = (id: string) => {
     refetch();
     setOrderIndex(0);
@@ -244,6 +202,12 @@ export default function Checkout() {
     );
 
     localStorage?.setItem("cart", JSON.stringify(updatedCart));
+
+    if (products?.data?.products?.length === 0) {
+      toast.error("Please, add the product first!");
+
+      router.push("/buy");
+    }
   };
 
   const handlePrevious = () => {
@@ -274,6 +238,13 @@ export default function Checkout() {
       secondary_phone: secondaryPhone,
       method: selectedPayment,
     };
+
+    if (products?.data?.products?.length === 0) {
+      toast.error("Please, add the product first!");
+
+      router.push("/buy");
+      return
+    }
 
     const response = await createOrder(orderInformation).unwrap();
 
@@ -572,185 +543,91 @@ export default function Checkout() {
               </div>
             </div>
 
-            {/* Product Details */}
-            {/* <div className="flex items-start space-x-4 mb-6">
-              <Image
-                src={orderItem.image || "/placeholder.svg"}
-                alt={orderItem.name}
-                width={120}
-                height={120}
-                className="rounded-lg"
-              />
-              <div className="flex-1 space-y-1.5">
-                <h3 className="font-semibold text-xl text-[#101010]">
-                  {orderItem.name}
-                </h3>
-                <p className="text-xs text-[#2B2B2B]">
-                  {t("warranty")}: 12 months | 128Gb
-                </p>
-                <p className="text-xs text-[#2B2B2B]">{t("condition")}: Good</p>
-                <p className="text-xs text-[#00B67A]">
-                  {t("delivery")}: Jan 20 - Jan 22
-                </p>
-                <p className="text-xs text-[#2B2B2B]">
-                  {t("salesAndShipping")}: Console & you
-                </p>
-              </div>
-              <div className="text-right space-y-4">
-                <p className="font-semibold text-2xl text-[#404040]">
-                  ${orderItem.price}
-                </p>
-                <div className="flex items-center space-x-4 mt-2">
-                  <button
-                    onClick={() => handleQuantityChange("decrease")}
-                    className="w-6 h-6 flex items-center justify-center border rounded"
-                  >
-                    -
-                  </button>
-                  <span>{quantity}</span>
-                  <button
-                    onClick={() => handleQuantityChange("increase")}
-                    className="w-6 h-6 flex items-center justify-center border rounded"
-                  >
-                    +
-                  </button>
-                </div>
-                <button className="text-[#F04848] text-sm font-medium hover:underline">
-                  Remove
-                </button>
-              </div>
-            </div> */}
             <div className="border-b pb-4 mb-4">
-              <div className="flex gap-4">
-                <div className="relative w-[120px] h-[120px]">
-                  <Image
-                    src={
-                      products?.data?.products?.[orderIndex]?.images?.[0]
-                        ? `${API_URL}/${products.data.products[orderIndex].images[0]}`
-                        : ""
-                    }
-                    alt={orderItem.name}
-                    width={120}
-                    height={120}
-                    className="w-[120px] h-[120px] object-cover"
-                  />
-                </div>
-                <div className="flex-grow space-y-1">
-                  <h3 className="font-medium">
-                    {products?.data?.products[orderIndex].name}
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    {t("warranty")}:{" "}
-                    {products?.data?.products[orderIndex]?.model} |{" "}
-                    {products?.data?.products[orderIndex]?.memory}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {t("condition")}:{" "}
-                    {products?.data?.products[orderIndex]?.controller}
-                  </p>
-                  {/*
-                   */}
-                  <p className="text-sm text-gray-600">
-                    {t("salesAndShipping")}: Console & you
-                  </p>
-                </div>
+              {products?.data?.products?.length > 0 && (
+                <div className="flex gap-4">
+                  <div className="relative w-[120px] h-[120px]">
+                    <Image
+                      src={
+                        products?.data?.products?.[orderIndex]?.images?.[0]
+                          ? `${API_URL}/${products.data.products[orderIndex].images[0]}`
+                          : ""
+                      }
+                      alt={orderItem.name}
+                      width={120}
+                      height={120}
+                      className="w-[120px] h-[120px] object-cover"
+                    />
+                  </div>
+                  <div className="flex-grow space-y-1">
+                    <h3 className="font-medium">
+                      {products?.data?.products[orderIndex].name}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {t("warranty")}:{" "}
+                      {products?.data?.products[orderIndex]?.model} |{" "}
+                      {products?.data?.products[orderIndex]?.memory}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      {t("condition")}:{" "}
+                      {products?.data?.products[orderIndex]?.controller}
+                    </p>
+                    {/*
+                     */}
+                    <p className="text-sm text-gray-600">
+                      {t("salesAndShipping")}: Console & you
+                    </p>
+                  </div>
 
-                <div className="text-right">
-                  <p className="font-medium">
-                    $
-                    {(
-                      products?.data?.products[orderIndex]?.offer_price *
-                      getProductQuantity(
-                        products?.data?.products[orderIndex]?._id
-                      )
-                    ).toFixed(2)}
-                  </p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <button
-                      onClick={() =>
-                        decreaseQuantity(
+                  <div className="text-right">
+                    <p className="font-medium">
+                      $
+                      {(
+                        products?.data?.products[orderIndex]?.offer_price *
+                        getProductQuantity(
                           products?.data?.products[orderIndex]?._id
                         )
-                      }
-                      className="w-6 h-6 flex items-center justify-center border rounded"
-                    >
-                      -
-                    </button>
-                    <span>
-                      {getProductQuantity(
-                        products?.data?.products[orderIndex]?._id
-                      )}
-                    </span>
+                      ).toFixed(2)}
+                    </p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <button
+                        onClick={() =>
+                          decreaseQuantity(
+                            products?.data?.products[orderIndex]?._id
+                          )
+                        }
+                        className="w-6 h-6 flex items-center justify-center border rounded"
+                      >
+                        -
+                      </button>
+                      <span>
+                        {getProductQuantity(
+                          products?.data?.products[orderIndex]?._id
+                        )}
+                      </span>
+                      <button
+                        onClick={() =>
+                          increaseQuantity(
+                            products?.data?.products[orderIndex]?._id
+                          )
+                        }
+                        className="w-6 h-6 flex items-center justify-center border rounded"
+                      >
+                        +
+                      </button>
+                    </div>
                     <button
                       onClick={() =>
-                        increaseQuantity(
-                          products?.data?.products[orderIndex]?._id
-                        )
+                        removeItem(products?.data?.products[orderIndex]?._id)
                       }
-                      className="w-6 h-6 flex items-center justify-center border rounded"
+                      className="text-sm text-red-600 mt-2"
                     >
-                      +
+                      Remove
                     </button>
                   </div>
-                  <button
-                    onClick={() =>
-                      removeItem(products?.data?.products[orderIndex]?._id)
-                    }
-                    className="text-sm text-red-600 mt-2"
-                  >
-                    Remove
-                  </button>
                 </div>
-              </div>
+              )}
             </div>
-
-            {/* <div className="border-b pb-4 mb-4">
-              <div className="flex gap-4">
-                <div className="relative w-20 h-20">
-                  <Image
-                    src="/buy/p1.png"
-                    alt={orderItem.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="flex-grow">
-                  <h3 className="font-medium">{orderItem.name}</h3>
-                  <p className="text-sm text-gray-600">
-                    Warranty: {orderItem.warranty} | {orderItem.storage}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Condition: {orderItem.condition}
-                  </p>
-                  <p className="text-sm text-green-600">
-                    Delivery: {orderItem.delivery}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Sales & Shipping: Console & you
-                  </p>
-                </div>
-
-                <div className="text-right">
-                  <p className="font-medium">${orderItem.price}</p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <button
-                      // onClick={() => updateQuantity(false)}
-                      className="w-6 h-6 flex items-center justify-center border rounded"
-                    >
-                      -
-                    </button>
-                    <span>{orderItem.quantity}</span>
-                    <button
-                      // onClick={() => updateQuantity(true)}
-                      className="w-6 h-6 flex items-center justify-center border rounded"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <button className="text-sm text-red-600 mt-2">Remove</button>
-                </div>
-              </div>
-            </div> */}
 
             {/* Price Summary */}
             <div className="bg-[#DAEDF2] mb-6 p-4 rounded-lg space-y-2">

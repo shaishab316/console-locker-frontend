@@ -28,16 +28,12 @@ const ConsoleModal: React.FC = () => {
   const [estimatePrice, setEstimatePrice] = useState<number>(0);
 
   const modalState = useSelector((state: RootState) => state.modal.modal);
+
   const dispatch = useDispatch();
   const [productId, setProductId] = useState<string | null>(null);
   const [questionsOptionsId, setQuestionsOptionsId] = useState<
     { quesId: string; optionId: string }[]
   >([]);
-  const [tradeIn, setTradeIn] = useState(null);
-
-  const modalTradeInData = useSelector(
-    (state: RootState) => state?.modalTradeInDataSlice?.modalTradeInData
-  );
 
   const [
     getEstimateProductPrice,
@@ -84,7 +80,7 @@ const ConsoleModal: React.FC = () => {
 
     setTimeout(() => {
       setCurrentStep((prev) => prev + 1);
-    }, 300);
+    }, 250);
   };
 
   const getProductPrice = async () => {
