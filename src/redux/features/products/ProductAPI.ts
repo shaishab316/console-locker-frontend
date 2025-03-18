@@ -97,6 +97,10 @@ const ProductAPI = baseAPI.injectEndpoints({
         body: body,
       }),
     }),
+
+    getProductAttr: builder.query<any, any>({
+      query: () => `/config-attr`,
+    }),
   }),
 });
 
@@ -105,7 +109,8 @@ export const {
   useGetSingleProductQuery,
   useCreateProductMutation,
   useGetEstimateProductPriceMutation,
-  useFindSlugProductQuery, 
+  useFindSlugProductQuery,
+  useGetProductAttrQuery,
 } = ProductAPI;
 
 export default ProductAPI;

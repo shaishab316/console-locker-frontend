@@ -126,13 +126,6 @@ const ProductPage: React.FC = () => {
     );
   }
 
-  // const paginatedProducts = products.slice(
-  //   (page - 1) * itemsPerPage,
-  //   page * itemsPerPage
-  // );
-
-  const paginatedProducts = 10;
-
   const handlePriceChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
 

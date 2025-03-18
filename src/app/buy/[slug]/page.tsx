@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Check } from "lucide-react";
 import ReviewCarousel from "@/components/share/review-carousel/ReviewCarousel";
@@ -17,25 +17,13 @@ import { useTranslation } from "react-i18next";
 import { RootState } from "@/redux/store/store";
 import {
   useFindSlugProductQuery,
-  useGetAllProductsQuery,
   useGetSingleProductQuery,
 } from "@/redux/features/products/ProductAPI";
 import Loading from "@/app/loading";
 import { useParams, useRouter } from "next/navigation";
-import { useSellProductQuery } from "@/redux/features/sell/SellProductAPI";
 import toast from "react-hot-toast";
 import { modifiedCart } from "@/redux/features/cart/TrackCartItem";
-
-interface Product {
-  title: string;
-  price: string;
-  image: string;
-  description: string;
-  models: string[];
-  controllers: number[];
-  memories: string[];
-  conditions: string[];
-}
+import useGetProductAttr from "@/hooks/getProductAttr";
 
 interface RelatedProduct {
   _id: string;
@@ -47,23 +35,24 @@ interface RelatedProduct {
   slug: string;
 }
 
+interface ModalTradeInData {
+  productName: string;
+  productPrice: number;
+}
+
 const ProductDetailsPage: React.FC = () => {
   const [selectedModel, setSelectedModel] = useState<string>("");
   const [selectedController, setSelectedController] = useState<string>("");
   const [selectedMemory, setSelectedMemory] = useState<string>("");
   const [selectedCondition, setSelectedCondition] = useState<string>("");
-  const [deviceValue, setDeviceValue] = useState(5.0);
-  const [deviceModel, setDeviceModel] = useState("IpHOME 8 PLUS, 500gb");
   const [addTradeIn, setAddTradeIn] = useState(true);
   const dispatch = useDispatch();
   const modalState = useSelector((state: RootState) => state?.modal?.modal);
   const isOpenTradeIn = useSelector(
     (state: RootState) => state?.showTradeInData?.isOpenTradeIn
   );
-  interface ModalTradeInData {
-    productName: string;
-    productPrice: number;
-  }
+
+  const productAttr = useGetProductAttr();
 
   const modalTradeInData: ModalTradeInData | null = useSelector(
     (state: RootState) =>
@@ -168,6 +157,8 @@ const ProductDetailsPage: React.FC = () => {
 
     router.push("/cart");
   };
+
+  console.log(productAttr?.productAttr?.data?.model);
 
   return (
     <div>
@@ -282,14 +273,12 @@ const ProductDetailsPage: React.FC = () => {
                       <span className="text-base text-[#101010] font-normal">
                         {t("model")}:{" "}
                       </span>
-                      The phone will have heavy signs of wear, such as deeper
-                      scratches, dents and other marks. The phone is unlocked,
-                      fully tested and works like new.
+                      {productAttr?.productAttr?.data?.model}
                     </p>
                   </div>
-                  <p className="text-[#2E7EF6] text-base font-medium underline cursor-pointer">
+                  {/* <p className="text-[#2E7EF6] text-base font-medium underline cursor-pointer">
                     Learn more
-                  </p>
+                  </p> */}
                 </div>
 
                 {/* Controller */}
@@ -321,6 +310,17 @@ const ProductDetailsPage: React.FC = () => {
                         </button>
                       )
                     )}
+                  </div>
+                </div>
+
+                <div className="bg-[#daedf2] w-full p-6 rounded-lg border-l-4 border-black mb-6">
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    <p className="text-[#6B6B6B]">
+                      <span className="text-base text-[#101010] font-normal">
+                        {t("controller")}:{" "}
+                      </span>
+                      {productAttr?.productAttr?.data?.controller}
+                    </p>
                   </div>
                 </div>
 
@@ -356,6 +356,17 @@ const ProductDetailsPage: React.FC = () => {
                   </div>
                 </div>
 
+                <div className="bg-[#daedf2] w-full p-6 rounded-lg border-l-4 border-black mb-6">
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    <p className="text-[#6B6B6B]">
+                      <span className="text-base text-[#101010] font-normal">
+                        {t("memory")}:{" "}
+                      </span>
+                      {productAttr?.productAttr?.data?.memory}
+                    </p>
+                  </div>
+                </div>
+
                 {/* Conditions */}
                 <div className="mb-6">
                   <h4 className="text-2xl font-semibold text-[#FDFDFD] mb-2">
@@ -385,6 +396,17 @@ const ProductDetailsPage: React.FC = () => {
                         </button>
                       )
                     )}
+                  </div>
+                </div>
+
+                <div className="bg-[#daedf2] w-full p-6 rounded-lg border-l-4 border-black mb-6">
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    <p className="text-[#6B6B6B]">
+                      <span className="text-base text-[#101010] font-normal">
+                        {t("condition")}:{" "}
+                      </span>
+                      {productAttr?.productAttr?.data?.condition}
+                    </p>
                   </div>
                 </div>
 
