@@ -6,10 +6,9 @@ import { useRef, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import Container from "@/components/common/Container";
 import { useTranslation } from "react-i18next";
-import Image from "next/image";
 import Loading from "@/app/loading";
 import { useGetReviewsQuery } from "@/redux/features/review/ReviewAPI";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 interface IReview {
   comment: string;
@@ -29,6 +28,8 @@ export default function ReviewCarousel({
   const carouselRef = useRef<any>(null);
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(1);
+
+  const pathname = usePathname();
 
   const {
     data: reviews,
@@ -51,7 +52,11 @@ export default function ReviewCarousel({
     <div className={`py-24 bg-transparent`}>
       <Container>
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-xl md:text-3xl font-bold text-gray-900">
+          <h2
+            className={`text-xl md:text-3xl font-bold  ${
+              pathname.startsWith("/buy") ? "text-[#FDFDFD]" : "text-[#101010]"
+            }`}
+          >
             {t("reviewTitle")}
           </h2>
           <div className="hidden md:flex gap-4">

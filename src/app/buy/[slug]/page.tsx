@@ -173,14 +173,14 @@ const ProductDetailsPage: React.FC = () => {
     <div>
       {/* only for desktop */}
       <div
-        className={`hidden lg:block py-16 
+        className={`hidden md:block py-16 
         ${product?.product?.product_type === "xbox" && "bg-[#3BAE3B]"}  
         ${product?.product?.product_type === "playstation" && "bg-[#1861C0]"}
         ${product?.product?.product_type === "nintendo" && "bg-[#D61D1E]"}
         `}
       >
         <Container>
-          <div className="hidden lg:block">
+          <div className="hidden md:block">
             <div className="flex flex-col lg:flex-row gap-8">
               <div className="xl:w-1/2">
                 <Image

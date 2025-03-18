@@ -13,6 +13,7 @@ import Container from "@/components/common/Container";
 import { useTranslation } from "react-i18next";
 import { useGetBlogsQuery } from "@/redux/features/blogs/BlogAPI";
 import Loading from "@/app/loading";
+import { usePathname } from "next/navigation";
 
 const blogs = [
   {
@@ -67,6 +68,8 @@ export function BlogCarousel() {
   const next = () => carouselRef.current?.next();
   const previous = () => carouselRef.current?.prev();
 
+  const pathname = usePathname();
+
   const {
     data: blogs,
     isLoading,
@@ -89,7 +92,11 @@ export function BlogCarousel() {
     >
       <Container>
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
+          <h2
+            className={`text-xl sm:text-2xl md:text-3xl font-bold ${
+              pathname.startsWith("/buy") ? "text-[#FDFDFD]" : "text-[#101010]"
+            }`}
+          >
             {t("ourRecentBlogs")}
           </h2>
 
