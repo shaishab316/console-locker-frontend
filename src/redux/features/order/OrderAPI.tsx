@@ -3,10 +3,12 @@ import baseAPI from "@/redux/api/baseAPI";
 const OrderAPI = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     getOrder: builder.query({
-      query: ({ orderId }) => {
-        const customer = JSON.parse(
-          localStorage?.getItem("customer") || "{}"
-        )?._id;
+      query: ({ orderId, customer }) => {
+        // const customer = JSON.parse(
+        //   localStorage?.getItem("customer") || "{}"
+        // )?._id;
+
+        // console.log({customer})
 
         return {
           url: `/order?customer=${customer}&orderId=${orderId}`,

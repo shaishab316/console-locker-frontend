@@ -272,7 +272,7 @@ export default function Checkout() {
       productDetails: formattedCartData,
       customer: customerIdOnlocalStorage,
       secondary_phone: secondaryPhone,
-      method: selectedPayment
+      method: selectedPayment,
     };
 
     const response = await createOrder(orderInformation).unwrap();
@@ -624,7 +624,11 @@ export default function Checkout() {
               <div className="flex gap-4">
                 <div className="relative w-[120px] h-[120px]">
                   <Image
-                    src={`${API_URL}/${products?.data?.products[orderIndex].images[0]}`}
+                    src={
+                      products?.data?.products?.[orderIndex]?.images?.[0]
+                        ? `${API_URL}/${products.data.products[orderIndex].images[0]}`
+                        : ""
+                    }
                     alt={orderItem.name}
                     width={120}
                     height={120}

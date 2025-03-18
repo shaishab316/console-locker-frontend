@@ -115,9 +115,15 @@ export default function CheckoutPage() {
   }, []);
 
   useEffect(() => {
-    const secondary_phone = JSON.parse(
-      localStorage?.getItem("secondary_phone") || ""
-    );
+    const storedPhone = localStorage?.getItem("secondary_phone");
+
+    let secondary_phone;
+    try {
+      secondary_phone = storedPhone ? JSON.parse(storedPhone) : null;
+    } catch (error) {
+      console.error("Error parsing secondary_phone from localStorage:", error);
+      secondary_phone = null;
+    }
 
     if (secondary_phone) {
       setFormData((prev) => ({
