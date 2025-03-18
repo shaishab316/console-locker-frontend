@@ -227,6 +227,11 @@ export default function CheckoutPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (products?.data?.products?.length === 0) {
+      toast.error("Please, add the product first!");
+
+      router.push("/buy");
+    }
     // Handle form submission
     const customer = {
       name: formData.firstName + " " + formData.surname,
@@ -248,8 +253,6 @@ export default function CheckoutPage() {
     if (customerEmailOnlocalStorage !== formData.email) {
       const response = await createCustomer(customer).unwrap();
 
-      console.log("createCustomer............", response);
-
       if (response?.success) {
         toast.success(response?.success);
       } else if (response?.error) {
@@ -269,12 +272,29 @@ export default function CheckoutPage() {
     refetch();
     setOrderIndex(0);
     const cart = JSON.parse(localStorage?.getItem("cart") || "[]");
+
     const updatedCart = cart.filter(
       (item: { productId: string }) => item.productId !== id
     );
 
+    console.log("checkout", cart);
+
     localStorage?.setItem("cart", JSON.stringify(updatedCart));
+
+    if (products?.data?.products?.length === 0) {
+      toast.error("Please, add the product first!");
+
+      router.push("/buy");
+    }
   };
+
+  useEffect(() => {
+    if (products?.data?.products?.length === 0) {
+      toast.error("Please, add the product first!");
+
+      router.push("/buy");
+    }
+  }, [products]);
 
   const handlePrevious = () => {
     if (orderIndex === products?.data?.products.length - 1) {
@@ -291,6 +311,18 @@ export default function CheckoutPage() {
     }
     setOrderIndex((prev) => prev + 1);
   };
+
+  const handleCheckout = () => {
+    if (products?.data?.products?.length === 0) {
+      toast.error("Please, add the product first!");
+
+      router.push("/buy");
+    } else {
+      router.push("/checkout");
+    }
+  };
+
+  console.log(products?.data?.products?.length);
 
   return (
     <div className="min-h-screen bg-[#F2F5F7] py-10">
@@ -681,84 +713,86 @@ export default function CheckoutPage() {
 
               {/* ordered product carousel */}
               <div className="border-b pb-4 mb-4">
-                <div className="flex gap-4">
-                  <div className="relative w-[120px] h-[120px]">
-                    <Image
-                      src={`${API_URL}/${products?.data?.products[orderIndex].images[0]}`}
-                      alt={orderItem.name}
-                      width={120}
-                      height={120}
-                      className="w-[120px] h-[120px] object-cover"
-                    />
-                  </div>
-                  <div className="flex-grow space-y-1">
-                    <h3 className="font-medium">
-                      {products?.data?.products[orderIndex].name}
-                    </h3>
-                    <p className="text-sm text-gray-600">
-                      {t("warranty")}:{" "}
-                      {products?.data?.products[orderIndex]?.model} |{" "}
-                      {products?.data?.products[orderIndex]?.memory}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      {t("condition")}:{" "}
-                      {products?.data?.products[orderIndex]?.controller}
-                    </p>
-                    <p className="text-sm text-green-600">
-                      {t("delivery")}: {orderItem.delivery}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      {t("salesAndShipping")}: Console & you
-                    </p>
-                  </div>
+                {products?.data?.products?.length > 0 && (
+                  <div className="flex gap-4">
+                    <div className="relative w-[120px] h-[120px]">
+                      <Image
+                        src={`${API_URL}/${products?.data?.products[orderIndex].images[0]}`}
+                        alt={orderItem.name}
+                        width={120}
+                        height={120}
+                        className="w-[120px] h-[120px] object-cover"
+                      />
+                    </div>
+                    <div className="flex-grow space-y-1">
+                      <h3 className="font-medium">
+                        {products?.data?.products[orderIndex].name}
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        {t("warranty")}:{" "}
+                        {products?.data?.products[orderIndex]?.model} |{" "}
+                        {products?.data?.products[orderIndex]?.memory}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        {t("condition")}:{" "}
+                        {products?.data?.products[orderIndex]?.controller}
+                      </p>
+                      <p className="text-sm text-green-600">
+                        {t("delivery")}: {orderItem.delivery}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        {t("salesAndShipping")}: Console & you
+                      </p>
+                    </div>
 
-                  <div className="text-right">
-                    <p className="font-medium">
-                      $
-                      {(
-                        products?.data?.products[orderIndex]?.offer_price *
-                        getProductQuantity(
-                          products?.data?.products[orderIndex]?._id
-                        )
-                      ).toFixed(2)}
-                    </p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <button
-                        onClick={() =>
-                          decreaseQuantity(
+                    <div className="text-right">
+                      <p className="font-medium">
+                        $
+                        {(
+                          products?.data?.products[orderIndex]?.offer_price *
+                          getProductQuantity(
                             products?.data?.products[orderIndex]?._id
                           )
-                        }
-                        className="w-6 h-6 flex items-center justify-center border rounded"
-                      >
-                        -
-                      </button>
-                      <span>
-                        {getProductQuantity(
-                          products?.data?.products[orderIndex]?._id
-                        )}
-                      </span>
+                        ).toFixed(2)}
+                      </p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <button
+                          onClick={() =>
+                            decreaseQuantity(
+                              products?.data?.products[orderIndex]?._id
+                            )
+                          }
+                          className="w-6 h-6 flex items-center justify-center border rounded"
+                        >
+                          -
+                        </button>
+                        <span>
+                          {getProductQuantity(
+                            products?.data?.products[orderIndex]?._id
+                          )}
+                        </span>
+                        <button
+                          onClick={() =>
+                            increaseQuantity(
+                              products?.data?.products[orderIndex]?._id
+                            )
+                          }
+                          className="w-6 h-6 flex items-center justify-center border rounded"
+                        >
+                          +
+                        </button>
+                      </div>
                       <button
                         onClick={() =>
-                          increaseQuantity(
-                            products?.data?.products[orderIndex]?._id
-                          )
+                          removeItem(products?.data?.products[orderIndex]?._id)
                         }
-                        className="w-6 h-6 flex items-center justify-center border rounded"
+                        className="text-sm text-red-600 mt-2"
                       >
-                        +
+                        Remove
                       </button>
                     </div>
-                    <button
-                      onClick={() =>
-                        removeItem(products?.data?.products[orderIndex]?._id)
-                      }
-                      className="text-sm text-red-600 mt-2"
-                    >
-                      Remove
-                    </button>
                   </div>
-                </div>
+                )}
               </div>
 
               <div className="space-y-2 mb-6">
