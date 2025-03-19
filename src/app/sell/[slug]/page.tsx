@@ -166,7 +166,7 @@ export default function ScreenCondition() {
     router.push("/sell/estimate-product");
   };
 
-  console.log(quesData);
+  console.log(question?.data?.product_type);
 
   return (
     <div>
@@ -336,7 +336,20 @@ export default function ScreenCondition() {
             {/* <Link href={"/sell/summary"}> */}
             <button
               onClick={submitMobileForm}
-              className="w-full text-[#FDFDFD] font-semibold bg-[#D61D1E] h-14 rounded-lg"
+              className={`w-full text-[#FDFDFD] font-semibold ${
+                question?.data?.product_type === "xbox" ? "bg-[#64B95E]" : ""
+              }
+              ${
+                question?.data?.product_type === "playstation"
+                  ? "bg-[#1861C0]"
+                  : ""
+              }
+              ${
+                question?.data?.product_type === "nintendo"
+                  ? "bg-[#D61D1E]"
+                  : ""
+              }
+              h-14 rounded-lg`}
             >
               SUBMIT FORM
             </button>

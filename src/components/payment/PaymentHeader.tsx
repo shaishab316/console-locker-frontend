@@ -101,7 +101,7 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
     }
   };
 
-  console.log("variants......", variants[0]?.images[0]);
+  // console.log("variants......", variants[0]?.images[0]);
 
   return (
     <div className="bg-[#F2F5F7]">
@@ -190,21 +190,10 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
                     {/* // previous code:::::::::::::::::::::::: */}
 
                     <div className="hidden lg:block bg-white p-6 rounded-lg shadow-sm">
-                      {!product?.isAvailable && (
-                        <span className="inline-block px-3 py-1 text-sm bg-red-100 text-red-600 rounded-md mb-4">
-                          Not available
-                        </span>
-                      )}
-                      {product?.hasAlternative && (
-                        <span className="inline-block px-3 py-1 text-sm bg-pink-100 text-pink-600 rounded-md mb-4">
-                          Alternative option available
-                        </span>
-                      )}
                       <div className="flex flex-col md:flex-row gap-4">
                         {/* Image Section */}
                         <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 mx-auto md:mx-0">
                           <Image
-                            
                             src={`${API_URL}${product?.images[0]}`}
                             alt={product?.name}
                             fill

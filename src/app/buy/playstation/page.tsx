@@ -622,21 +622,6 @@ const ProductPage: React.FC = () => {
                 >
                   <ChevronLeft />
                 </button>
-                {/* {Array.fill(products?.data?.meta?.pagination?.total_pages).map(
-                  (pageNumber) => (
-                    <button
-                      key={pageNumber}
-                      onClick={() => setPage(pageNumber)}
-                      className={`w-10 h-10 flex items-center justify-center rounded-md ${
-                        page === pageNumber
-                          ? "bg-black text-white"
-                          : "bg-transparent border-2 border-[#101010]"
-                      }`}
-                    >
-                      {pageNumber}
-                    </button>
-                  )
-                )} */}
 
                 {Array.from(
                   { length: products?.data?.meta?.pagination?.total_pages },

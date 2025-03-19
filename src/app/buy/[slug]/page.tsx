@@ -103,6 +103,7 @@ const ProductDetailsPage: React.FC = () => {
   if (isError) return <div>Error Occur!</div>;
 
   const product = singleProduct?.data;
+  const productType = singleProduct?.data?.product?.product_type as string;
 
   const handleTrade = () => {
     dispatch(toggleModal());
@@ -158,7 +159,7 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log("modalTradeInData", modalTradeInData);
+  console.log("singleProduct", singleProduct?.data?.product?.product_type);
 
   return (
     <div>
@@ -179,7 +180,7 @@ const ProductDetailsPage: React.FC = () => {
                   alt="Console Locker"
                   width={1400}
                   height={900}
-                  className="rounded-lg w-full "
+                  className="rounded-lg w-full"
                 />
               </div>
 
@@ -248,7 +249,21 @@ const ProductDetailsPage: React.FC = () => {
                           disabled={selectedModel === model}
                           className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedModel === model
-                              ? "text-[#3BAE3B] bg-[#FDFDFD] cursor-not-allowed border-transparent"
+                              ? `${
+                                  productType === "xbox" ? "text-[#3BAE3B]" : ""
+                                }
+                              ${
+                                productType === "playstation"
+                                  ? "text-[#1861C0]"
+                                  : ""
+                              }
+                              ${
+                                productType === "nintendo"
+                                  ? "text-[#D61D1E]"
+                                  : ""
+                              }
+                              
+                              bg-[#FDFDFD] cursor-not-allowed border-transparent`
                               : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedModel(model)}
@@ -294,7 +309,21 @@ const ProductDetailsPage: React.FC = () => {
                           disabled={selectedController === controller}
                           className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedController === controller
-                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed border-transparent"
+                              ? `${
+                                  productType === "xbox" ? "text-[#3BAE3B]" : ""
+                                }
+                              ${
+                                productType === "playstation"
+                                  ? "text-[#1861C0]"
+                                  : ""
+                              }
+                              ${
+                                productType === "nintendo"
+                                  ? "text-[#D61D1E]"
+                                  : ""
+                              }
+                              
+                              bg-[#FDFDFD] cursor-not-allowed border-transparent`
                               : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedController(controller)}
@@ -337,7 +366,21 @@ const ProductDetailsPage: React.FC = () => {
                           disabled={selectedMemory === memory}
                           className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedMemory === memory
-                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed border-transparent"
+                              ? `${
+                                  productType === "xbox" ? "text-[#3BAE3B]" : ""
+                                }
+                              ${
+                                productType === "playstation"
+                                  ? "text-[#1861C0]"
+                                  : ""
+                              }
+                              ${
+                                productType === "nintendo"
+                                  ? "text-[#D61D1E]"
+                                  : ""
+                              }
+                              
+                              bg-[#FDFDFD] cursor-not-allowed border-transparent`
                               : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedMemory(memory)}
@@ -380,7 +423,21 @@ const ProductDetailsPage: React.FC = () => {
                           disabled={selectedCondition === condition}
                           className={`w-[110px] gap-3 md:w-[200px] 2xl:w-[256px] lg:flex-none flex flex-col items-center justify-center lg:px-4 py-5 border-4 rounded-md ${
                             selectedCondition === condition
-                              ? "text-[#3BAE3B] bg-[#E7E7E7] cursor-not-allowed border-transparent"
+                              ? `${
+                                  productType === "xbox" ? "text-[#3BAE3B]" : ""
+                                }
+                              ${
+                                productType === "playstation"
+                                  ? "text-[#1861C0]"
+                                  : ""
+                              }
+                              ${
+                                productType === "nintendo"
+                                  ? "text-[#D61D1E]"
+                                  : ""
+                              }
+                              
+                              bg-[#FDFDFD] cursor-not-allowed border-transparent`
                               : "text-[#FDFDFD]"
                           }`}
                           onClick={() => setSelectedCondition(condition)}
