@@ -103,6 +103,10 @@ const ConsoleModal: React.FC = () => {
 
     dispatch(addModalTradeInData(data));
 
+    const tradeInData = { product: productId, questions: questionsOptionsId };
+
+    localStorage.setItem("tradeInData", JSON.stringify(tradeInData));
+
     // console.log(ableTradeIn);
     dispatch(toggleModal());
     dispatch(showTradeInDescription());
@@ -115,6 +119,9 @@ const ConsoleModal: React.FC = () => {
       getProductPrice();
     }
   }, [currentStep, questionsOptionsId]);
+
+  // TODO: Test COde
+  console.log(productId, questionsOptionsId);
 
   const renderContent = () => {
     if (isLoading) return <Loading />;

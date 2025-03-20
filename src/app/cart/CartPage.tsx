@@ -154,7 +154,7 @@ export default function CartPage() {
   }
 
   const handleAddToCart = (id: string) => {
-    refetch();
+    // refetch();
     dispatch(modifiedCart({}));
 
     const existingCart = JSON.parse(localStorage?.getItem("cart") || "[]");

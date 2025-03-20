@@ -159,7 +159,7 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log("singleProduct", singleProduct?.data?.product?.product_type);
+  console.log("modalTradeInData", modalTradeInData);
 
   return (
     <div>
@@ -558,7 +558,7 @@ const ProductDetailsPage: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Additional Information */}
+                      {/* Additional Information */} 
                       <div className="text-gray-200 border-l-4 border-black rounded-s-lg">
                         <p className="p-3">
                           After trade-in price estimate. We will ship the free
@@ -1084,3 +1084,6 @@ const ProductDetailsPage: React.FC = () => {
 };
 
 export default ProductDetailsPage;
+
+
+

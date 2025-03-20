@@ -112,8 +112,6 @@ export default function CheckoutForm() {
     if (!customerIdOnlocalStorage || !productId) {
       const response = await createCustomer(newUser).unwrap();
 
-      console.log("new user created........", response?.data);
-
       if (response?.success) {
         localStorage?.setItem("customer", JSON.stringify(response?.data));
       }
@@ -133,7 +131,6 @@ export default function CheckoutForm() {
       formData.iban
     ) {
       const res = await sellProduct(data).unwrap();
-      console.log("customer order data ......... ", res);
 
       if (res?.success) {
         toast.success(res?.message);
@@ -141,6 +138,10 @@ export default function CheckoutForm() {
         toast.error(res?.message);
       }
     }
+
+    // set bank and paypal in localStrorage
+    localStorage?.setItem("bank", JSON.stringify(formData.iban));
+    localStorage?.setItem("paypal", JSON.stringify(formData.paypalEmail));
 
     setFormData({
       firstName: "",
@@ -281,7 +282,9 @@ export default function CheckoutForm() {
   if (isLoading) {
     return <Loading />;
   }
+
   console.log(formData.paypalEmail);
+  console.log(formData.iban);
 
   return (
     <>
@@ -318,7 +321,7 @@ export default function CheckoutForm() {
                     <label
                       htmlFor="lastName"
                       className="block text-lg font-medium text-[#101010] mb-1"
-                    > 
+                    >
                       {t("lastName")}
                       <span className="text-red-500 font-semibold">*</span>
                     </label>

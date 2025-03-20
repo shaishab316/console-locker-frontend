@@ -55,9 +55,13 @@ interface PaymentHeaderProps {
   variants: IProduct[];
 }
 
+interface CartItem {
+  productId: string;
+  quantity: number;
+  tradeIn: any;
+}
+
 export default function PaymentHeader({ variants }: PaymentHeaderProps) {
-  const [items] = useState(INITIAL_ITEMS);
-  const [cartItems, setCartItems] = useState<string[]>([]);
   const { t } = useTranslation();
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -70,12 +74,6 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
       quantity: 1,
       tradeIn: null,
     };
-
-    interface CartItem {
-      productId: string;
-      quantity: number;
-      tradeIn: any;
-    }
 
     const isDuplicate: boolean = existingCart.some(
       (item: CartItem) => item.productId === newProduct.productId
@@ -92,12 +90,13 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
         return item;
       });
       localStorage?.setItem("cart", JSON.stringify(updatedCart));
+      toast.success("Product added to cart successfully!");
     }
 
     if (!isDuplicate) {
       toast.success("Product added to cart successfully!");
-      existingCart.push(newProduct); // Add new product
-      localStorage?.setItem("cart", JSON.stringify(existingCart)); // Save updated cart
+      existingCart.push(newProduct);
+      localStorage?.setItem("cart", JSON.stringify(existingCart));
     }
   };
 
@@ -124,12 +123,6 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
             <div className="lg:col-span-2">
               <div className="flex flex-col lg:flex-row gap-8">
                 {variants.map((product: IProduct) => (
-                  // <CartItem
-                  //   key={item.id}
-                  //   {...item}
-                  //   onAddToCart={handleAddToCart}
-                  // />
-
                   <>
                     {/* for mobile */}
                     <div className="lg:hidden bg-white p-6 rounded-lg shadow-sm">
@@ -187,8 +180,6 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
                       </div>
                     </div>
 
-                    {/* // previous code:::::::::::::::::::::::: */}
-
                     <div className="hidden lg:block bg-white p-6 rounded-lg shadow-sm">
                       <div className="flex flex-col md:flex-row gap-4">
                         {/* Image Section */}
@@ -229,7 +220,7 @@ export default function PaymentHeader({ variants }: PaymentHeaderProps) {
                             ${product?.offer_price}
                           </span>
                           <button
-                            // onClick={() => onAddToCart(product._id)}
+                            onClick={() => handleAddToCart(product._id)}
                             className="text-sm font-medium text-[#222C9B]"
                           >
                             Add to Cart
