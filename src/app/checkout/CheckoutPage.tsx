@@ -252,7 +252,7 @@ export default function CheckoutPage() {
       const response = await createCustomer(customer).unwrap();
 
       if (response?.success) {
-        toast.success(response?.success);
+        toast.success(response?.message);
       } else if (response?.error) {
         toast.error(response?.error);
         return;

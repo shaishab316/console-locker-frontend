@@ -20,15 +20,24 @@ export default function PaymentSuccess() {
     return null;
   }
 
-  const customerDetails = JSON.parse(localStorage?.getItem("customer") || "{}");
   const tradeInData = JSON.parse(localStorage?.getItem("tradeInData") || "{}");
   const customer = JSON.parse(localStorage?.getItem("customer") || "{}")?._id;
+  const bank = JSON.parse(localStorage?.getItem("bank") || "{}")?._id;
+  const paypal = JSON.parse(localStorage?.getItem("paypal") || "{}")?._id;
+
+  let payment;
+
+  if (bank) {
+    payment = bank;
+  } else if (paypal) {
+    payment = paypal;
+  }
 
   const postTradeInData = {
     customer,
     ...tradeInData,
     payment: {
-      paypal: "",
+      paypal: payment || "",
     },
   };
 
