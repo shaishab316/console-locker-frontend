@@ -154,7 +154,7 @@ export default function CartPage() {
   }
 
   const handleAddToCart = (id: string) => {
-    // refetch();
+    refetch();
     dispatch(modifiedCart({}));
 
     const existingCart = JSON.parse(localStorage?.getItem("cart") || "[]");
@@ -266,7 +266,144 @@ export default function CartPage() {
   return (
     <div>
       <div className="hidden md:block min-h-screen bg-[#F2F5F7] pt-16 pb-20">
-        <PaymentHeader variants={products?.data?.variants} />
+        {/* <PaymentHeader variants={products?.data?.variants} /> */}
+
+        {/* accessories */}
+        <div className="bg-[#F2F5F7]">
+          <Container>
+            <div className="px-2 sm:px-6">
+              <h1 className="text-2xl font-bold text-center mb-8">
+                {t("cart")}
+              </h1>
+              <div className="w-full flex justify-between gap-5 mb-8">
+                <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
+                  {t("accessories")}
+                </h3>
+                <h3 className="flex-1 text-lg text-[#101010] font-medium mb-4 pb-2 border-t-2 border-t-[#101010]">
+                  {t("cart")}
+                </h3>
+                <h3 className="flex-1 text-lg text-[#a8a8a8] font-medium mb-4 pb-2 border-t-2 border-t-[#a8a8a8]">
+                  {t("checkout")}
+                </h3>
+              </div>
+
+              <div className="grid lg:grid-cols-3 gap-8 mb-14">
+                <div className="lg:col-span-2">
+                  <div className="flex flex-col lg:flex-row gap-8">
+                    {products?.data?.variants?.map((product: IProduct) => (
+                      <>
+                        {/* for mobile */}
+                        <div className="lg:hidden bg-white p-6 rounded-lg shadow-sm">
+                          <div className="flex flex-col gap-4">
+                            <div className="relative w-32 h-32 flex items-center justify-center mx-auto">
+                              <Image
+                                // src="/buy/p3.png"
+                                src={`${API_URL}${product?.images[0]}`}
+                                alt={product?.name}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                            <div className="flex-grow">
+                              <div className="flex items-center justify-between">
+                                <h3 className="text-lg font-medium">
+                                  {product?.name}
+                                </h3>
+                                <h2>{product?._id}</h2>
+                                <p className="text-lg font-medium">
+                                  ${product?.price}
+                                </p>
+                              </div>
+
+                              <div className="space-y-1 text-sm text-gray-600 mt-2">
+                                <p>Storage: {product?.memory} bvbc</p>
+                                <p>Condition: {product?.condition}</p>
+                                <p className="text-[#00B67A] text-sm font-medium">
+                                  Controller: {product?.controller}
+                                </p>
+                                <p>Sales & Shipping: Console & you</p>
+
+                                <div className="flex items-center justify-between">
+                                  {/* <p>Warranty: {product?.warranty}</p> */}
+                                  <button
+                                    onClick={() =>
+                                      handleAddToCart(product?._id)
+                                    }
+                                    className="text-sm font-medium text-[#222C9B]"
+                                  >
+                                    Add to Cart
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* for desktop */}
+                        <div className="hidden lg:block bg-white p-6 rounded-lg shadow-sm">
+                          <div className="flex flex-col md:flex-row gap-4">
+                            {/* Image Section */}
+                            <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 mx-auto md:mx-0">
+                              <Image
+                                src={`${API_URL}${product?.images[0]}`}
+                                alt={product?.name}
+                                fill
+                                className="object-contain rounded-md"
+                              />
+                            </div>
+
+                            <div className="flex-grow">
+                              <h3 className="text-xl font-semibold text-center md:text-left">
+                                {product?.name}
+                              </h3>
+                              <div className="space-y-1 text-sm text-gray-600 mt-2 text-center md:text-left">
+                                <p className="text-xs  text-[#101010]">
+                                  Brand: {product?.brand}
+                                </p>
+                                <p className="text-xs text-[#2B2B2B]">
+                                  Memory: {product?.memory}
+                                </p>
+                                <p className="text-[#00B67A] font-medium text-sm">
+                                  Condition: {product?.condition}
+                                </p>
+                                <p className="text-xs text-[#101010]">
+                                  Controller: {product?.controller}
+                                </p>
+                                <p className="text-xs text-[#101010]">
+                                  Sales & Shipping: Console & you
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="flex flex-col items-center md:items-end justify-between space-y-4 md:space-y-0">
+                              <span className="text-lg font-medium">
+                                ${product?.offer_price}
+                              </span>
+                              <button
+                                onClick={() => handleAddToCart(product._id)}
+                                className="text-sm font-medium text-[#222C9B]"
+                              >
+                                Add to Cart
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    ))}
+                  </div>
+                </div>
+
+                {products?.data?.variants.length > 0 && (
+                  <div className="hidden lg:col-span-1 lg:flex items-center justify-center">
+                    <button className="text-white bg-[#101010] py-3 px-9 rounded-md">
+                      {t("addToCart")}
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </Container>
+        </div>
 
         <Container>
           {/* only for desktop view */}
@@ -341,7 +478,7 @@ export default function CartPage() {
                       </div>
 
                       <div className="text-right">
-                        <p className="text-lg font-medium text-gray-900">
+                        <p className="text-lg font-medium text-[#FD9A34]">
                           {t("price")}: $
                           {(
                             product?.offer_price *
@@ -393,7 +530,7 @@ export default function CartPage() {
                   {/*  */}
                   <div className="flex items-center justify-center py-8 space-x-3">
                     <hr className="flex-1 border-b border-[#D6D6D6]" />
-                    <h2 className="text-[#222C9B] text-base font-semibold text-center whitespace-nowrap">
+                    <h2 className="text-[#FD9A34] text-base font-semibold text-center whitespace-nowrap">
                       + {t("discoverTheAccessories")}
                     </h2>
                     <hr className="flex-1 border-b border-[#D6D6D6]" />
@@ -415,7 +552,7 @@ export default function CartPage() {
                         <span className="text-[#101010] font-semibold">
                           Total
                         </span>
-                        <span className="text-[#101010]">
+                        <span className="text-[#FD9A34]">
                           ${subtotal.toFixed(2)}
                         </span>
                       </div>
@@ -433,7 +570,7 @@ export default function CartPage() {
                         <span className="font-semibold text-xl text-[#101010]">
                           {t("grandTotal")}
                         </span>
-                        <span className="font-semibold text-xl text-[#101010]">
+                        <span className="font-semibold text-xl text-[#FD9A34]">
                           ${total.toFixed(2)}
                         </span>
                       </div>
@@ -454,7 +591,7 @@ export default function CartPage() {
                     />
                     <button
                       onClick={handleCoupon}
-                      className=" bg-gray-800 text-white px-4 py-2.5 rounded-lg hover:bg-gray-700"
+                      className="bg-[#FD9A34] text-white px-4 py-2.5 rounded-lg hover:bg-gray-700"
                     >
                       {t("apply")}
                     </button>

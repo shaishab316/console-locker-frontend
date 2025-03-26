@@ -167,7 +167,7 @@ const ProductDetailsPage: React.FC = () => {
       <div
         className={`hidden md:block py-16 
         ${product?.product?.product_type === "xbox" && "bg-[#3BAE3B]"}  
-        ${product?.product?.product_type === "playstation" && "bg-[#1861C0]"}
+        ${product?.product?.product_type === "playstation" && "bg-[#004BAF]"}
         ${product?.product?.product_type === "nintendo" && "bg-[#D61D1E]"}
         `}
       >
@@ -558,7 +558,7 @@ const ProductDetailsPage: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Additional Information */} 
+                      {/* Additional Information */}
                       <div className="text-gray-200 border-l-4 border-black rounded-s-lg">
                         <p className="p-3">
                           After trade-in price estimate. We will ship the free
@@ -738,7 +738,7 @@ const ProductDetailsPage: React.FC = () => {
             "bg-[#3BAE3B]"
           } ${
             singleProduct?.data?.product?.product_type === "playstation" &&
-            "bg-[#1861C0]"
+            "bg-[#0250B7]"
           } ${
             singleProduct?.data?.product?.product_type === "nintendo" &&
             "bg-[#D61D1E]"
@@ -1084,6 +1084,3 @@ const ProductDetailsPage: React.FC = () => {
 };
 
 export default ProductDetailsPage;
-
-
-
