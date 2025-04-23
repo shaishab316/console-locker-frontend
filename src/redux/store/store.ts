@@ -11,7 +11,7 @@ export const store = configureStore({
   reducer: {
     [baseAPI.reducerPath]: baseAPI.reducer,
 
-    modal: modalReducer,
+    modal: modalReducer, 
     showTradeInData: showTradeInReducer,
     sellProduct: sellProductSlice,
     questionSlice: questionReducer,

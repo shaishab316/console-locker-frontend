@@ -16,7 +16,7 @@ const modalSlice = createSlice({
       state.modal = !state.modal;  
     },
   },
-});
+}); 
  
 export const { toggleModal } = modalSlice.actions;
 
