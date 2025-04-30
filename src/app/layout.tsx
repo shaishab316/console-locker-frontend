@@ -28,9 +28,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`antialiased ${poppins.className}`}>
-        <Toaster position="top-center" />
+    <html lang='en'>
+      <body
+        className={`antialiased ${poppins.className}`}
+        upword-verified='true'
+        data-new-gr-c-s-check-loaded='14.1233.0'
+        data-gr-ext-installed=''
+        cz-shortcut-listen='true'
+      >
+        <Toaster position='top-center' />
         <Providers>
           <AntdRegistry>
             <Header />

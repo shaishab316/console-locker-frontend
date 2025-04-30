@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -208,9 +209,9 @@ const ProductDetailsPage: React.FC = () => {
                 <div className='flex items-center gap-2.5 mb-6'>
                   <p className='flex items-center gap-1'>
                     {[...Array(Math.round(product?.product?.ratings))].map(
-                      (_, i) => (
+                      (v) => (
                         <svg
-                          key={_}
+                          key={v}
                           width='24'
                           height='24'
                           viewBox='0 0 24 24'
@@ -436,7 +437,6 @@ const ProductDetailsPage: React.FC = () => {
                                   ? "text-[#D61D1E]"
                                   : ""
                               }
-                              
                               bg-[#FDFDFD] cursor-not-allowed border-transparent`
                               : "text-[#FDFDFD]"
                           }`}
@@ -720,7 +720,7 @@ const ProductDetailsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* --------------------------------------------------------------------------- only for mobile --------------------------------------------------------------------------- */}
+      {/* --------------------- only for mobile ---------------- */}
 
       <div className='md:hidden'>
         <div className='w-full h-[426px]'>
@@ -746,8 +746,8 @@ const ProductDetailsPage: React.FC = () => {
           } -mt-1`}
         >
           {/* product into */}
-          <div className='pt-8 mx-5'>
-            <div className='pt-10 pb-3 border-b-2'>
+          <div className='pt-6 mx-5'>
+            <div className='pb-2.5 border-b-2'>
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-3'>
                   <h3 className='text-lg text-[#FDFDFD]'>Review</h3>
@@ -755,7 +755,7 @@ const ProductDetailsPage: React.FC = () => {
                   <div className='flex items-center'>
                     <p className='flex items-center gap-1'>
                       {[...Array(Math.round(product?.product?.ratings))].map(
-                        (i) => (
+                        () => (
                           <svg
                             width='20'
                             height='21'
@@ -800,88 +800,21 @@ const ProductDetailsPage: React.FC = () => {
                     </p>
                   </div>
                 </div>
-
-                <div>
-                  <button
-                    onClick={handleAddToCart}
-                    className='bg-[#FDFDFD] flex items-center gap-1 h-10 px-5 rounded-lg'
-                  >
-                    <span>Add</span>
-                    <svg
-                      width='24'
-                      height='24'
-                      viewBox='0 0 19 18'
-                      fill='none'
-                      xmlns='http://www.w3.org/2000/svg'
-                    >
-                      <path
-                        d='M5.5 14.5508C5.77614 14.5508 6 14.3269 6 14.0508C6 13.7746 5.77614 13.5508 5.5 13.5508C5.22386 13.5508 5 13.7746 5 14.0508C5 14.3269 5.22386 14.5508 5.5 14.5508Z'
-                        stroke='#404040'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      />
-                      <path
-                        d='M12.5 14.5508C12.7761 14.5508 13 14.3269 13 14.0508C13 13.7746 12.7761 13.5508 12.5 13.5508C12.2239 13.5508 12 13.7746 12 14.0508C12 14.3269 12.2239 14.5508 12.5 14.5508Z'
-                        stroke='#404040'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      />
-                      <path
-                        d='M1.5 3.55078H3.5L5 12.0508H13'
-                        stroke='#404040'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      />
-                      <path
-                        d='M5 10.0508H12.795C12.8528 10.0508 12.9089 10.0308 12.9536 9.99418C12.9983 9.95755 13.029 9.90654 13.0403 9.84984L13.9403 5.34984C13.9476 5.31356 13.9467 5.27611 13.9377 5.24021C13.9288 5.20431 13.9119 5.17084 13.8885 5.14223C13.865 5.11362 13.8355 5.09057 13.802 5.07476C13.7686 5.05895 13.732 5.05076 13.695 5.05078H4'
-                        stroke='#404040'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      />
-                      <rect
-                        x='10'
-                        y='1.05078'
-                        width='8'
-                        height='8'
-                        rx='4'
-                        fill='#FDFDFD'
-                      />
-                      <path
-                        d='M14 9.05078C16.2 9.05078 18 7.25078 18 5.05078C18 2.85078 16.2 1.05078 14 1.05078C11.8 1.05078 10 2.85078 10 5.05078C10 7.25078 11.8 9.05078 14 9.05078Z'
-                        stroke='#FD9A34'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      />
-                      <path
-                        d='M12.667 5.05078H15.3337'
-                        stroke='#FD9A34'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      />
-                      <path
-                        d='M14 6.38444V3.71777'
-                        stroke='#FD9A34'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                      />
-                    </svg>
-                  </button>
-                </div>
               </div>
             </div>
 
-            <div className='pt-10 pb-3 border-b-2'>
-              <div className='flex items-center justify-between'>
+            <div className='pt-5 pb-2 border-b-2'>
+              <div className='flex items-center justify-between gap-2'>
                 <div className='flex flex-col gap-3'>
                   <h2 className='text-2xl font-semibold text-[#FDFDFD]'>
                     {product?.product?.name}
                   </h2>
-                  <h3 className='text-lg text-[#FDFDFD]'>
+                  <h3 className='text-base text-[#FDFDFD]'>
                     {selectedModel} | {selectedMemory} | {selectedCondition}
                   </h3>
                 </div>
 
-                <h2 className='text-[40px] font-semibold text-[#FDFDFD]'>
+                <h2 className='text-[36px] font-semibold text-[#FDFDFD]'>
                   ${product?.product?.offer_price}
                 </h2>
               </div>
@@ -894,7 +827,7 @@ const ProductDetailsPage: React.FC = () => {
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
               <h2
                 className={
-                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-xl font-semibold text-center whitespace-nowrap"
+                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-base font-semibold text-center whitespace-nowrap"
                 }
               >
                 {t("consoleHeaderTitle")}
@@ -903,6 +836,7 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             {/* Select the Xbox One model */}
+            {/* ${model === selectedModel? "bg-[#FDFDFD] text-[#3BAE3B]": "bg-transparent"} */}
 
             <div className='flex flex-col gap-4 px-5 py-5'>
               {product?.meta?.models?.map(
@@ -910,11 +844,17 @@ const ProductDetailsPage: React.FC = () => {
                   <div
                     key={model}
                     onClick={() => setSelectedModel(model)}
-                    className={` ${
-                      model === selectedModel
-                        ? "bg-[#FDFDFD] text-[#3BAE3B]"
-                        : "bg-transparent text-[#FDFDFD]"
-                    } text-xl border-4 border-[#FDFDFD] font-semibold min-w-[106px] h-[106px] text-center flex items-center justify-center rounded-md p-1`}
+                    className={`
+                    ${
+                      selectedModel === model
+                        ? `${productType === "xbox" ? "text-[#3BAE3B]" : ""}
+                        ${productType === "playstation" ? "text-[#1861C0]" : ""}
+                        ${productType === "nintendo" ? "text-[#D61D1E]" : ""}
+                        
+                        bg-[#FDFDFD] cursor-not-allowed border-transparent`
+                        : "text-[#FDFDFD]"
+                    }
+                    text-xl border-4 border-[#FDFDFD] font-semibold min-w-[80px] h-[80px] text-center flex items-center justify-center rounded-md p-1`}
                   >
                     {model} <br /> {price}
                   </div>
@@ -924,20 +864,20 @@ const ProductDetailsPage: React.FC = () => {
           </div>
 
           {/* Model */}
-          <div className='p-5'>
+          <div className='px-5'>
             <p className='text-[#FDFDFD]'>
-              <span className='font-medium'>MODEL:</span>{" "}
+              <span className='font-medium'>MODEL: </span>{" "}
               {singleProduct?.data?.product?.modelDes}
             </p>
           </div>
 
           {/* What is the storage capacity? (Not applicable for Xbox One X) */}
           <div>
-            <div className='flex items-center justify-center pt-14 space-x-2.5'>
+            <div className='flex items-center justify-center pt-6 space-x-2.5'>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
               <h2
                 className={
-                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
+                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
                 }
               >
                 {t("storageCapacity")}
@@ -945,17 +885,25 @@ const ProductDetailsPage: React.FC = () => {
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
             </div>
 
+            {/* ${memory === selectedMemory? "bg-[#FDFDFD] text-[#3BAE3B]": "bg-transparent text-[#FDFDFD]" } */}
+
             <div className='p-5 flex items-center gap-4'>
               {product?.meta?.memorys?.map(
                 ({ memory, price }: Record<string, any>) => (
                   <div
                     key={memory}
                     onClick={() => setSelectedMemory(memory)}
-                    className={`${
-                      memory === selectedMemory
-                        ? "bg-[#FDFDFD] text-[#3BAE3B]"
-                        : "bg-transparent text-[#FDFDFD]"
-                    } text-xl border-4 border-[#FDFDFD] font-semibold min-w-[106px] h-[106px] text-center flex items-center justify-center rounded-md p-1`}
+                    className={`
+                    ${
+                      selectedMemory === memory
+                        ? `${productType === "xbox" ? "text-[#3BAE3B]" : ""}
+                        ${productType === "playstation" ? "text-[#1861C0]" : ""}
+                        ${productType === "nintendo" ? "text-[#D61D1E]" : ""}
+                        
+                        bg-[#FDFDFD] cursor-not-allowed border-transparent`
+                        : "text-[#FDFDFD]"
+                    }
+                    text-xl border-4 border-[#FDFDFD] font-semibold min-w-[80px] h-[80px] text-center flex items-center justify-center rounded-md p-1`}
                   >
                     {memory} <br /> {price}
                   </div>
@@ -965,7 +913,7 @@ const ProductDetailsPage: React.FC = () => {
           </div>
 
           {/* Memory */}
-          <div className='p-5'>
+          <div className='px-5'>
             <p className='text-[#FDFDFD]'>
               <span className='font-medium'>MEMORY:</span>{" "}
               {singleProduct?.data?.product?.memoryDes}
@@ -974,11 +922,11 @@ const ProductDetailsPage: React.FC = () => {
 
           {/* What is the condition of your console? */}
           <div>
-            <div className='flex items-center justify-center pt-14 space-x-2.5'>
+            <div className='flex items-center justify-center pt-6 space-x-2.5'>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
               <h2
                 className={
-                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
+                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
                 }
               >
                 {t("consoleCondition")}
@@ -992,11 +940,16 @@ const ProductDetailsPage: React.FC = () => {
                   <div
                     key={condition}
                     onClick={() => setSelectedCondition(condition)}
-                    className={`${
-                      condition === selectedCondition
-                        ? "bg-[#FDFDFD] text-[#3BAE3B]"
-                        : "bg-transparent text-[#FDFDFD]"
-                    } text-xl capitalize border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
+                    className={`
+                    ${
+                      selectedCondition === condition
+                        ? `${productType === "xbox" ? "text-[#3BAE3B]" : ""}
+                        ${productType === "playstation" ? "text-[#1861C0]" : ""}
+                        ${productType === "nintendo" ? "text-[#D61D1E]" : ""}
+                        bg-[#FDFDFD] cursor-not-allowed border-transparent`
+                        : "text-[#FDFDFD]"
+                    }
+                    text-xl capitalize border-4 border-[#FDFDFD] font-semibold min-w-[80px] h-[80px] text-center flex items-center justify-center rounded-md p-4`}
                   >
                     {condition} <br /> {price}
                   </div>
@@ -1005,7 +958,7 @@ const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
           {/* Condition */}
-          <div className='p-5'>
+          <div className='px-5'>
             <p className='text-[#FDFDFD]'>
               <span className='font-medium'>CONDITION:</span>{" "}
               {singleProduct?.data?.product?.conditionDes}
@@ -1013,11 +966,11 @@ const ProductDetailsPage: React.FC = () => {
           </div>
 
           <div>
-            <div className='flex items-center justify-center pt-14 space-x-2.5'>
+            <div className='flex items-center justify-center pt-6 space-x-2.5'>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
               <h2
                 className={
-                  "bg-[#FDFDFD] py-4 px-[14px] rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
+                  "bg-[#FDFDFD] py-4 px-[14px] rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
                 }
               >
                 {t("consoleControllers")}
@@ -1031,11 +984,17 @@ const ProductDetailsPage: React.FC = () => {
                   <div
                     key={controller}
                     onClick={() => setSelectedController(controller)}
-                    className={`${
-                      controller === selectedController
-                        ? "bg-[#FDFDFD] text-[#3BAE3B]"
-                        : "bg-transparent text-[#FDFDFD]"
-                    } text-xl border-4 border-[#FDFDFD] font-semibold w-[198px] h-[106px] text-center flex items-center justify-center rounded-md p-4`}
+                    className={`
+                    ${
+                      selectedController === controller
+                        ? `${productType === "xbox" ? "text-[#3BAE3B]" : ""}
+                        ${productType === "playstation" ? "text-[#1861C0]" : ""}
+                        ${productType === "nintendo" ? "text-[#D61D1E]" : ""}
+                        
+                        bg-[#FDFDFD] cursor-not-allowed border-transparent`
+                        : "text-[#FDFDFD]"
+                    }
+                    text-xl border-4 border-[#FDFDFD] font-semibold min-w-[80px] h-[80px] text-center flex items-center justify-center rounded-md p-4`}
                   >
                     {controller} <br /> {price}
                   </div>
@@ -1045,36 +1004,11 @@ const ProductDetailsPage: React.FC = () => {
           </div>
 
           {/* Controller */}
-          <div className='p-5'>
+          <div className='px-5 pb-6'>
             <p className='text-[#FDFDFD]'>
               <span className='font-medium'>CONTROLLER:</span>{" "}
               {singleProduct?.data?.product?.controllerDes}
             </p>
-          </div>
-
-          {/* How many controllers will you send us? */}
-          <div>
-            {/* <div className='flex items-center justify-center pt-14 space-x-2.5 pb-6'>
-              <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
-              <h2
-                className={
-                  "bg-[#FDFDFD] py-4 px-[14px] rounded-lg shadow-md text-[#101010] text-lg font-medium text-center whitespace-wrap"
-                }
-              >
-                {t("leaveUsANote")}
-              </h2>
-              <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
-            </div> */}
-
-            {/* <div className='p-5'>
-              <p className='text-[#FDFDFD]'>
-                <span className='font-medium'>BRAND NEW:</span> The device is in
-                perfect condition and has no signs of wear or scratches. Its
-                functionality is equivalent to a factory- fresh item,
-                responsiveness to commands is instantaneous, and it does not
-                have any overheating issues.
-              </p>
-            </div> */}
           </div>
         </div>
 
