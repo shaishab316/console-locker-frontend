@@ -827,7 +827,7 @@ const ProductDetailsPage: React.FC = () => {
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
               <h2
                 className={
-                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-base font-semibold text-center whitespace-nowrap"
+                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-nowrap"
                 }
               >
                 {t("consoleHeaderTitle")}
@@ -836,7 +836,6 @@ const ProductDetailsPage: React.FC = () => {
             </div>
 
             {/* Select the Xbox One model */}
-            {/* ${model === selectedModel? "bg-[#FDFDFD] text-[#3BAE3B]": "bg-transparent"} */}
 
             <div className='flex flex-col gap-4 px-5 py-5'>
               {product?.meta?.models?.map(
@@ -884,8 +883,6 @@ const ProductDetailsPage: React.FC = () => {
               </h2>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
             </div>
-
-            {/* ${memory === selectedMemory? "bg-[#FDFDFD] text-[#3BAE3B]": "bg-transparent text-[#FDFDFD]" } */}
 
             <div className='p-5 flex items-center gap-4'>
               {product?.meta?.memorys?.map(
