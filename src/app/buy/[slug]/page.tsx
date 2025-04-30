@@ -160,7 +160,7 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  // console.log("product -------> ", singleProduct?.data?.product);
+  // console.log("product -------> ", singleProduct);
 
   return (
     <div>
@@ -823,11 +823,11 @@ const ProductDetailsPage: React.FC = () => {
 
           {/* Select the Xbox One model */}
           <div>
-            <div className='flex items-center justify-center pt-14 space-x-2.5'>
+            <div className='flex items-center justify-center pt-8 space-x-2.5'>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
               <h2
                 className={
-                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-nowrap"
+                  "bg-[#FDFDFD] py-2 px-6 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-nowrap"
                 }
               >
                 {t("consoleHeaderTitle")}
@@ -837,7 +837,7 @@ const ProductDetailsPage: React.FC = () => {
 
             {/* Select the Xbox One model */}
 
-            <div className='flex flex-col gap-4 px-5 py-5'>
+            <div className='flex flex-col gap-4 px-4 py-4'>
               {product?.meta?.models?.map(
                 ({ model, price }: Record<string, any>) => (
                   <div
@@ -853,7 +853,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-xl border-4 border-[#FDFDFD] font-semibold min-w-[80px] h-[80px] text-center flex items-center justify-center rounded-md p-1`}
+                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] h-[75px] text-center flex items-center justify-center rounded-md p-1`}
                   >
                     {model} <br /> {price}
                   </div>
@@ -872,11 +872,11 @@ const ProductDetailsPage: React.FC = () => {
 
           {/* What is the storage capacity? (Not applicable for Xbox One X) */}
           <div>
-            <div className='flex items-center justify-center pt-6 space-x-2.5'>
+            <div className='flex items-center justify-center pt-4 space-x-2.5'>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
               <h2
                 className={
-                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
+                  "bg-[#FDFDFD] py-2 px-6 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
                 }
               >
                 {t("storageCapacity")}
@@ -900,7 +900,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-xl border-4 border-[#FDFDFD] font-semibold min-w-[80px] h-[80px] text-center flex items-center justify-center rounded-md p-1`}
+                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] h-[75px] text-center flex items-center justify-center rounded-md p-1`}
                   >
                     {memory} <br /> {price}
                   </div>
@@ -919,11 +919,11 @@ const ProductDetailsPage: React.FC = () => {
 
           {/* What is the condition of your console? */}
           <div>
-            <div className='flex items-center justify-center pt-6 space-x-2.5'>
+            <div className='flex items-center justify-center pt-4 space-x-2.5'>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
               <h2
                 className={
-                  "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
+                  "bg-[#FDFDFD] py-2 px-6 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
                 }
               >
                 {t("consoleCondition")}
@@ -946,7 +946,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-xl capitalize border-4 border-[#FDFDFD] font-semibold min-w-[80px] h-[80px] text-center flex items-center justify-center rounded-md p-4`}
+                    text-base capitalize border-4 border-[#FDFDFD] font-semibold min-w-[75px] h-[75px] text-center flex items-center justify-center rounded-md p-4`}
                   >
                     {condition} <br /> {price}
                   </div>
@@ -963,11 +963,11 @@ const ProductDetailsPage: React.FC = () => {
           </div>
 
           <div>
-            <div className='flex items-center justify-center pt-6 space-x-2.5'>
+            <div className='flex items-center justify-center pt-3 space-x-2.5'>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
               <h2
                 className={
-                  "bg-[#FDFDFD] py-4 px-[14px] rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
+                  "bg-[#FDFDFD] py-2 px-6 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
                 }
               >
                 {t("consoleControllers")}
@@ -991,7 +991,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-xl border-4 border-[#FDFDFD] font-semibold min-w-[80px] h-[80px] text-center flex items-center justify-center rounded-md p-4`}
+                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] h-[75px] text-center flex items-center justify-center rounded-md p-4`}
                   >
                     {controller} <br /> {price}
                   </div>
@@ -1010,8 +1010,7 @@ const ProductDetailsPage: React.FC = () => {
         </div>
 
         {/* submit button */}
-
-        <div className='p-5 bg-[#FDFDFD] fixed bottom-0 left-0 right-0 z-10'>
+        <div className='p-5 bg-[#FDFDFD] sticky bottom-0 left-0 right-0 z-10'>
           <button
             onClick={handleAddToCart}
             className={`${
