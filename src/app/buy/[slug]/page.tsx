@@ -160,7 +160,7 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  // console.log("product -------> ", singleProduct);
+  console.log("product -------> ", singleProduct?.data?.product);
 
   return (
     <div>
@@ -240,7 +240,7 @@ const ProductDetailsPage: React.FC = () => {
                 {/* Model */}
                 <div className='mb-6'>
                   <h4 className='text-2xl font-semibold text-[#FDFDFD] mb-2'>
-                    {t("model")}:
+                    {singleProduct?.data?.product?.modelLabel}
                   </h4>
                   <div className='flex flex-wrap gap-4'>
                     {product?.meta?.models?.map(
@@ -300,7 +300,7 @@ const ProductDetailsPage: React.FC = () => {
                 {/* Controller */}
                 <div className='mb-6 mt-3'>
                   <h4 className='text-2xl font-semibold text-[#FDFDFD] mb-2'>
-                    {t("controller")}:
+                    {singleProduct?.data?.product?.controllerLabel}
                   </h4>
                   <div className='flex flex-wrap gap-4'>
                     {product?.meta?.controllers?.map(
@@ -357,7 +357,7 @@ const ProductDetailsPage: React.FC = () => {
                 {/* Memory */}
                 <div className='mb-6'>
                   <h4 className='text-2xl font-semibold text-[#FDFDFD] mb-2'>
-                    {t("memory")}:
+                    {singleProduct?.data?.product?.memoryLabel}
                   </h4>
                   <div className='flex flex-wrap gap-4'>
                     {product?.meta?.memorys?.map(
@@ -414,7 +414,7 @@ const ProductDetailsPage: React.FC = () => {
                 {/* Conditions */}
                 <div className='mb-6'>
                   <h4 className='text-2xl font-semibold text-[#FDFDFD] mb-2'>
-                    {t("conditions")}:
+                    {singleProduct?.data?.product?.conditionLabel}
                   </h4>
                   <div className='flex flex-wrap gap-4'>
                     {product?.meta?.conditions?.map(
@@ -830,7 +830,7 @@ const ProductDetailsPage: React.FC = () => {
                   "bg-[#FDFDFD] py-2 px-6 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-nowrap"
                 }
               >
-                {t("consoleHeaderTitle")}
+                {singleProduct?.data?.product?.modelLabel}
               </h2>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
             </div>
@@ -865,7 +865,7 @@ const ProductDetailsPage: React.FC = () => {
           {/* Model */}
           <div className='px-5'>
             <p className='text-[#FDFDFD]'>
-              <span className='font-medium'>MODEL: </span>{" "}
+              <span className='font-medium h-fit'>MODEL: </span>{" "}
               {singleProduct?.data?.product?.modelDes}
             </p>
           </div>
@@ -879,7 +879,7 @@ const ProductDetailsPage: React.FC = () => {
                   "bg-[#FDFDFD] py-2 px-6 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
                 }
               >
-                {t("storageCapacity")}
+                {singleProduct?.data?.product?.memoryLabel}
               </h2>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
             </div>
@@ -912,7 +912,7 @@ const ProductDetailsPage: React.FC = () => {
           {/* Memory */}
           <div className='px-5'>
             <p className='text-[#FDFDFD]'>
-              <span className='font-medium'>MEMORY:</span>{" "}
+              <span className='font-medium h-fit'>MEMORY:</span>{" "}
               {singleProduct?.data?.product?.memoryDes}
             </p>
           </div>
@@ -926,7 +926,7 @@ const ProductDetailsPage: React.FC = () => {
                   "bg-[#FDFDFD] py-2 px-6 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
                 }
               >
-                {t("consoleCondition")}
+                {singleProduct?.data?.product?.conditionLabel}
               </h2>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
             </div>
@@ -957,7 +957,7 @@ const ProductDetailsPage: React.FC = () => {
           {/* Condition */}
           <div className='px-5'>
             <p className='text-[#FDFDFD]'>
-              <span className='font-medium'>CONDITION:</span>{" "}
+              <span className='font-medium h-fit'>CONDITION:</span>{" "}
               {singleProduct?.data?.product?.conditionDes}
             </p>
           </div>
@@ -970,7 +970,7 @@ const ProductDetailsPage: React.FC = () => {
                   "bg-[#FDFDFD] py-2 px-6 rounded-lg shadow-md text-[#101010] text-base font-medium text-center whitespace-wrap"
                 }
               >
-                {t("consoleControllers")}
+                {singleProduct?.data?.product?.controllerLabel}
               </h2>
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
             </div>
@@ -1003,7 +1003,7 @@ const ProductDetailsPage: React.FC = () => {
           {/* Controller */}
           <div className='px-5 pb-6'>
             <p className='text-[#FDFDFD]'>
-              <span className='font-medium'>CONTROLLER:</span>{" "}
+              <span className='font-medium h-fit'>CONTROLLER:</span>{" "}
               {singleProduct?.data?.product?.controllerDes}
             </p>
           </div>
