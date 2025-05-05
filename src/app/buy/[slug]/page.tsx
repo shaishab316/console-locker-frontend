@@ -53,8 +53,6 @@ const ProductDetailsPage: React.FC = () => {
     (state: RootState) => state?.showTradeInData?.isOpenTradeIn
   );
 
-  const productAttr = useGetProductAttr();
-
   const modalTradeInData: ModalTradeInData | null = useSelector(
     (state: RootState) =>
       state?.modalTradeInDataSlice?.modalTradeInData as ModalTradeInData | null
