@@ -853,7 +853,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] h-[75px] text-center flex items-center justify-center rounded-md p-1`}
+                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex items-center justify-center rounded-md p-1`}
                   >
                     {model} <br /> {price}
                   </div>
@@ -900,7 +900,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] h-[75px] text-center flex items-center justify-center rounded-md p-1`}
+                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex items-center justify-center rounded-md p-1`}
                   >
                     {memory} <br /> {price}
                   </div>
@@ -946,7 +946,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base capitalize border-4 border-[#FDFDFD] font-semibold min-w-[75px] h-[75px] text-center flex items-center justify-center rounded-md p-4`}
+                    text-base capitalize border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex items-center justify-center rounded-md p-4`}
                   >
                     {condition} <br /> {price}
                   </div>
@@ -991,7 +991,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] h-[75px] text-center flex items-center justify-center rounded-md p-4`}
+                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex items-center justify-center rounded-md p-4`}
                   >
                     {controller} <br /> {price}
                   </div>
@@ -1010,7 +1010,7 @@ const ProductDetailsPage: React.FC = () => {
         </div>
 
         {/* submit button */}
-        <div className='p-5 bg-[#FDFDFD] sticky bottom-0 left-0 right-0 z-10'>
+        <div className='p-2.5 bg-[#FDFDFD] sticky bottom-0 left-0 right-0 z-10'>
           <button
             onClick={handleAddToCart}
             className={`${
@@ -1022,7 +1022,7 @@ const ProductDetailsPage: React.FC = () => {
             } ${
               singleProduct?.data?.product?.product_type === "nintendo" &&
               "bg-[#D61D1E]"
-            } w-full text-[#FDFDFD] font-semibold h-14 rounded-lg`}
+            } w-full text-[#FDFDFD] font-semibold h-12 rounded-lg`}
           >
             ADD TO CART
           </button>
