@@ -24,7 +24,6 @@ import Loading from "@/app/loading";
 import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { modifiedCart } from "@/redux/features/cart/TrackCartItem";
-import useGetProductAttr from "@/hooks/getProductAttr";
 
 interface RelatedProduct {
   _id: string;
@@ -59,7 +58,8 @@ const ProductDetailsPage: React.FC = () => {
   );
 
   const { t } = useTranslation();
-  const { slug } = useParams();
+  const params = useParams();
+  const [slug, setSlug] = useState(params.slug);
   const router = useRouter();
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -82,8 +82,10 @@ const ProductDetailsPage: React.FC = () => {
   useEffect(() => {
     if (!singleProduct?.data?.product?.slug || !slugRes?.data?.slug) return;
 
-    if (singleProduct?.data?.product?.slug !== slugRes?.data?.slug)
-      router.replace(`/buy/${slugRes?.data?.slug}`);
+    if (singleProduct?.data?.product?.slug !== slugRes?.data?.slug) {
+      setSlug(slugRes?.data?.slug);
+      window.history.pushState(null, "", slugRes?.data?.slug);
+    }
   }, [slugRes]);
 
   useEffect(() => {
@@ -158,7 +160,7 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log("product -------> ", singleProduct?.data?.product);
+  // console.log("product -------> ", singleProduct?.data?.product);
 
   return (
     <div>
