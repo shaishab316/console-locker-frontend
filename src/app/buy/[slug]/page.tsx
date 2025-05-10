@@ -188,14 +188,13 @@ const ProductDetailsPage: React.FC = () => {
                   {" "}
                 </div>
                 <Image
-                  src='/xone.png'
+                  src={`${API_URL}${product?.product?.images[0]}`}
                   alt='Console Locker'
                   width={1400}
                   height={900}
                   className='rounded-lg w-full zoom-in-100'
                 />
               </div>
-              {/* src={`${API_URL}${product?.product?.images[0]}`} */}
 
               <div className='xl:w-1/2'>
                 <div className='flex justify-between items-center mb-2.5'>
