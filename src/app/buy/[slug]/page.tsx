@@ -177,9 +177,10 @@ const ProductDetailsPage: React.FC = () => {
             <div className='flex flex-col lg:flex-row gap-8'>
               <div className='xl:w-1/2 relative' style={{ overflow: "hidden" }}>
                 <div
-                  className='absolute inset-0 bg-cover bg-center'
+                  className='absolute inset-0 bg-cover bg-center max-h-max'
                   style={{
                     backgroundImage: "url(/buy-bg.png)",
+                    backgroundRepeat: "no-repeat",
                     transform: "scale(1.5) rotate(6deg)",
                     transformOrigin: "center",
                     zIndex: 1,
