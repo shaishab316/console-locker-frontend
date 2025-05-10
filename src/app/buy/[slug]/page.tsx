@@ -175,13 +175,34 @@ const ProductDetailsPage: React.FC = () => {
         <Container>
           <div className='hidden md:block'>
             <div className='flex flex-col lg:flex-row gap-8'>
+              {/* <div className='xl:w-1/2 max-h-fit relative overflow-hidden'>
+                <div
+                  className='absolute inset-0 bg-cover bg-center'
+                  style={{
+                    backgroundImage: "url(/buy-bg.png)",
+                    backgroundRepeat: "no-repeat",
+                    transformOrigin: "center",
+                    zIndex: 0,
+                    zoom: 8,
+                    pointerEvents: "none",
+                  }}
+                />
+
+                <Image
+                  src={`${API_URL}${product?.product?.images[0]}`}
+                  alt='Console Locker'
+                  width={1400}
+                  height={900}
+                  className='rounded-lg w-full relative z-10'
+                />
+              </div> */}
+
               <div className='xl:w-1/2 relative' style={{ overflow: "hidden" }}>
                 <div
                   className='absolute inset-0 bg-cover bg-center max-h-max'
                   style={{
                     backgroundImage: "url(/buy-bg.png)",
                     backgroundRepeat: "no-repeat",
-                    transform: "scale(1.5) rotate(6deg)",
                     transformOrigin: "center",
                     zIndex: 1,
                   }}
