@@ -870,7 +870,7 @@ const ProductDetailsPage: React.FC = () => {
 
             {/* Select the Xbox One model */}
 
-            <div className='flex flex-col gap-4 px-4 py-4'>
+            <div className='flex flex-wrap gap-4 px-4 py-4'>
               {product?.meta?.models?.map(
                 ({ model, price }: Record<string, any>) => (
                   <div
