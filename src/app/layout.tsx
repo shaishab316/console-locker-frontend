@@ -4,7 +4,6 @@ import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConsoleFooter } from "@/components/footer/Footer";
 import { Header } from "@/components/home/header/Header";
-import StoreProvider from "./StoreProvider";
 import { Toaster } from "react-hot-toast";
 import "../i18n";
 import Providers from "@/redux/Provider";

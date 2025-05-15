@@ -85,15 +85,6 @@ export function Header() {
        h-14 lg:h-[96px] container mx-auto flex items-center justify-between px-4'
       >
         <div className='flex items-center'>
-          {/* <Button
-            variant='ghost'
-            size='icon'
-            className='mr-2 lg:hidden absolute left-2.5'
-            onClick={() => setIsMobileMenuOpen(true)}
-          >
-            <Menu className='h-30 w-30 text-2xl' />
-            <span className='sr-only'>Toggle menu</span>
-          </Button> */}
           <Button
             variant='ghost'
             size='icon'
@@ -118,7 +109,7 @@ export function Header() {
               />
             </div>
           </Link>
-          <Link href='/cart' className='absolute md:static right-5'>
+          <Link href='/cart' className='md:hidden absolute md:static right-5'>
             <div className='relative'>
               <ShoppingCart className='h-6 w-6' />
               <span className='absolute px-2 py-[2px] bg-green-500 text-black rounded-full text-xs -top-3 -right-2.5'>

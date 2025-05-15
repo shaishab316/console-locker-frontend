@@ -886,9 +886,10 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex items-center justify-center rounded-md p-1`}
+                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex flex-col items-center justify-center rounded-md p-1`}
                   >
-                    {model} <br /> {price}
+                    <span>{model}</span>
+                    <span className='font-light'>{price}</span>
                   </div>
                 )
               )}
@@ -933,9 +934,10 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex items-center justify-center rounded-md p-1`}
+                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex flex-col items-center justify-center rounded-md p-1`}
                   >
-                    {memory} <br /> {price}
+                    <span>{memory}</span>
+                    <span className='font-light'>{price}</span>
                   </div>
                 )
               )}
@@ -979,9 +981,10 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base capitalize border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex items-center justify-center rounded-md p-4`}
+                    text-base capitalize border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex flex-col items-center justify-center rounded-md p-4`}
                   >
-                    {condition} <br /> {price}
+                    <span>{condition}</span>
+                    <span className='font-light'>{price}</span>
                   </div>
                 )
               )}
@@ -1024,9 +1027,10 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex items-center justify-center rounded-md p-4`}
+                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex flex-col items-center justify-center rounded-md p-4`}
                   >
-                    {controller} <br /> {price}
+                    <span>{controller}</span>
+                    <span className='font-light'>{price}</span>
                   </div>
                 )
               )}
