@@ -105,15 +105,6 @@ export default function CheckoutForm() {
       phone: formData.phone,
     };
 
-    const data = {
-      customer: customerIdOnlocalStorage,
-      product: productId,
-      questions: transformedData,
-      payment: {
-        paypal: formData.paypalEmail,
-      },
-    };
-
     // if has nota customer, create a new customer first
     if (!customerIdOnlocalStorage || !productId) {
       const response = await createCustomer(newUser).unwrap();
@@ -123,6 +114,14 @@ export default function CheckoutForm() {
         setCustomerIdOnlocalStorage(response?.data?._id);
 
         if (formData.paypalEmail || formData.iban) {
+          const data = {
+            customer: customerIdOnlocalStorage,
+            product: productId,
+            questions: transformedData,
+            payment: {
+              paypal: formData.paypalEmail,
+            },
+          };
           const res = await sellProduct(data).unwrap();
 
           if (res?.success) {
@@ -138,6 +137,15 @@ export default function CheckoutForm() {
       (customerEmailOnlocalStorage && formData.paypalEmail) ||
       formData.iban
     ) {
+      const data = {
+        customer: customerIdOnlocalStorage,
+        product: productId,
+        questions: transformedData,
+        payment: {
+          paypal: formData.paypalEmail,
+        },
+      };
+
       const res = await sellProduct(data).unwrap();
 
       if (res?.success) {
