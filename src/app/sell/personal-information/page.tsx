@@ -115,7 +115,7 @@ export default function CheckoutForm() {
 
         if (formData.paypalEmail || formData.iban) {
           const data = {
-            customer: customerIdOnlocalStorage,
+            customer: response?.data?._id,
             product: productId,
             questions: transformedData,
             payment: {
