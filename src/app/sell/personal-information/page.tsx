@@ -105,16 +105,6 @@ export default function CheckoutForm() {
       phone: formData.phone,
     };
 
-    // if has nota customer, create a new customer first
-    if (!customerIdOnlocalStorage || !productId) {
-      const response = await createCustomer(newUser).unwrap();
-
-      if (response?.success) {
-        localStorage?.setItem("customer", JSON.stringify(response?.data));
-        setCustomerIdOnlocalStorage(response?.data?._id);
-      }
-    }
-
     const data = {
       customer: customerIdOnlocalStorage,
       product: productId,
@@ -123,6 +113,26 @@ export default function CheckoutForm() {
         paypal: formData.paypalEmail,
       },
     };
+
+    // if has nota customer, create a new customer first
+    if (!customerIdOnlocalStorage || !productId) {
+      const response = await createCustomer(newUser).unwrap();
+
+      if (response?.success) {
+        localStorage?.setItem("customer", JSON.stringify(response?.data));
+        setCustomerIdOnlocalStorage(response?.data?._id);
+
+        if (formData.paypalEmail || formData.iban) {
+          const res = await sellProduct(data).unwrap();
+
+          if (res?.success) {
+            toast.success(res?.message);
+          } else {
+            toast.error(res?.message);
+          }
+        }
+      }
+    }
 
     if (
       (customerEmailOnlocalStorage && formData.paypalEmail) ||
