@@ -150,8 +150,6 @@ export default function ScreenCondition() {
     setSelectedCondition(option._id);
     setSelectedOptionId(option._id);
 
-    console.log("handleChange", option);
-
     setAnswer({
       questionTitle: question?.data?.questions[questionIndex]?.name,
       questionAnswer: option?.option,
@@ -166,23 +164,21 @@ export default function ScreenCondition() {
     router.push("/sell/estimate-product");
   };
 
-  console.log(question?.data?.product_type);
-
   return (
     <div>
       {/* only for desktop view */}
-      <div className="hidden md:block min-h-screen bg-[#F2F5F7] pb-20">
+      <div className='hidden md:block min-h-screen bg-[#F2F5F7] pb-20'>
         {/* Screen Condition Section */}
-        <div className="max-w-[798px] mx-auto py-10">
-          <h1 className="text-[#101010] text-xl font-medium capitalize mb-2">
+        <div className='max-w-[798px] mx-auto py-10'>
+          <h1 className='text-[#101010] text-xl font-medium capitalize mb-2'>
             {question?.data?.questions[questionIndex]?.name}
           </h1>
-          <h2 className="text-2xl text-[#101010] font-semibold mb-4">
+          <h2 className='text-2xl text-[#101010] font-semibold mb-4'>
             {/* {t("quizTitle")} */}
             {question?.data?.questions[questionIndex]?.description}
           </h2>
 
-          <form className="space-y-4 mb-6">
+          <form className='space-y-4 mb-6'>
             {question?.data?.questions[questionIndex]?.options?.map(
               (opt: IQuestion) => (
                 <label
@@ -193,23 +189,23 @@ export default function ScreenCondition() {
                       : "bg-[#FDFDFD] hover:border-gray-300"
                   }`}
                 >
-                  <div className="flex items-start gap-3">
-                    <div className="flex items-center h-5 mt-1">
+                  <div className='flex items-start gap-3'>
+                    <div className='flex items-center h-5 mt-1'>
                       <input
-                        type="radio"
-                        name="condition"
+                        type='radio'
+                        name='condition'
                         value={opt?._id}
                         checked={selectedCondition === opt?._id}
                         onChange={() => handleChange(opt)}
-                        className="h-6 w-6 border-gray-300 text-blue-600 focus:ring-blue-500"
+                        className='h-6 w-6 border-gray-300 text-blue-600 focus:ring-blue-500'
                       />
                     </div>
                     {/* <b>{opt?._id}</b> */}
                     <div>
-                      <p className="text-xl font-semibold text-[#101010]">
+                      <p className='text-xl font-semibold text-[#101010]'>
                         {selectedLang === "en" ? opt?.option : opt?.option}
                       </p>
-                      <p className="text-[#6B6B6B] text-lg mt-1">
+                      <p className='text-[#6B6B6B] text-lg mt-1'>
                         {selectedLang === "en"
                           ? opt?.description
                           : opt?.description}
@@ -219,9 +215,9 @@ export default function ScreenCondition() {
                 </label>
               )
             )}
-            <div className="flex justify-end">
+            <div className='flex justify-end'>
               <button
-                type="submit"
+                type='submit'
                 disabled={!selectedCondition}
                 onClick={handleContinue}
                 className={`px-6 py-2 border rounded-md text-base font-medium transition-colors
@@ -242,15 +238,15 @@ export default function ScreenCondition() {
       </div>
 
       {/* only for mobile */}
-      <div className="block md:hidden">
+      <div className='block md:hidden bg-[#F2F5F7]'>
         <div>
-          <div className="w-full">
+          <div className='w-full'>
             <Image
               src={`${API_URL}${question?.data?.image}`}
-              className="w-full"
+              className='w-full'
               width={700}
               height={800}
-              alt="xbox"
+              alt='xbox'
             />
           </div>
 
@@ -259,18 +255,18 @@ export default function ScreenCondition() {
           <div>
             {question?.data?.questions.map((ques: any) => (
               <div key={ques._id}>
-                <div className="flex items-center justify-center pt-14 space-x-2.5">
-                  <hr className="flex-1 border-b-2 border-gray-300" />
+                <div className='flex items-center justify-center pt-14 space-x-2.5'>
+                  <hr className='flex-1 border-b-2 border-gray-300' />
                   <h2
                     className={
-                      "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-xl font-semibold text-center whitespace-nowrap"
+                      "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md text-[#101010] text-xl font-semibold text-center"
                     }
                   >
                     {ques.description}
                   </h2>
-                  <hr className="flex-1 border-b-2 border-gray-300" />
+                  <hr className='flex-1 border-b-2 border-gray-300' />
                 </div>
-                <div className="flex flex-col gap-4 px-5 py-5">
+                <div className='flex flex-col gap-4 px-5 py-5'>
                   {ques?.options.map(
                     (option: {
                       _id: string;
@@ -314,7 +310,7 @@ export default function ScreenCondition() {
 
                           setUpdated(!update);
                         }}
-                        className="h-16 text-white rounded-md flex items-center justify-center border border-[#919191] text-center text-2xl font-semibold leading-[36px]"
+                        className='h-16 text-white rounded-md flex items-center justify-center border border-[#919191] text-center text-2xl font-semibold leading-[36px]'
                         style={{
                           backgroundColor:
                             temOption[ques.name] === option._id
@@ -332,7 +328,7 @@ export default function ScreenCondition() {
           </div>
 
           {/* submit button */}
-          <div className="p-5 bg-[#FDFDFD]">
+          <div className='p-5 bg-[#FDFDFD]'>
             {/* <Link href={"/sell/summary"}> */}
             <button
               onClick={submitMobileForm}

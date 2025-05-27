@@ -157,3 +157,7 @@ body {
   background: rgb(243, 64, 64);
   background: radial-gradient(circle, rgba(243, 64, 64, 1) 35%, rgba(246, 117, 117, 0.7455357142857143) 100%);
 }
+
+:where(.css-dev-only-do-not-override-1htoz2s).ant-tabs >.ant-tabs-nav .ant-tabs-nav-list {
+  gap: 33px !important;
+}

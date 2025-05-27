@@ -1,12 +1,7 @@
 "use client";
 
-import { Carousel, Button } from "antd";
-import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  LeftOutlined,
-  RightOutlined,
-} from "@ant-design/icons";
+import { Carousel } from "antd";
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { useRef, useState } from "react";
 import { BlogCard } from "./BlogCard";
 import Container from "@/components/common/Container";
@@ -14,41 +9,6 @@ import { useTranslation } from "react-i18next";
 import { useGetBlogsQuery } from "@/redux/features/blogs/BlogAPI";
 import Loading from "@/app/loading";
 import { usePathname } from "next/navigation";
-
-const blogs = [
-  {
-    image: "/blogs/blog1.png",
-    title: "Why It's Smarter To Buy A Refurbished iPhone Rather",
-    excerpt:
-      "I type and scrambled it to make a type specimen book. It has survived...",
-    author: "Admin",
-    date: "19Jun2024",
-  },
-  {
-    image: "/blogs/blog2.png",
-    title: "Why It's Smarter To Buy A Refurbished iPhone Rather",
-    excerpt:
-      "I type and scrambled it to make a type specimen book. It has survived...",
-    author: "Admin",
-    date: "19Jun2024",
-  },
-  {
-    image: "/blogs/blog3.png",
-    title: "Why It's Smarter To Buy A Refurbished iPhone Rather",
-    excerpt:
-      "I type and scrambled it to make a type specimen book. It has survived...",
-    author: "Admin",
-    date: "19Jun2024",
-  },
-  {
-    image: "/blogs/blog4.png",
-    title: "Why It's Smrter To Buy A Refurbished iPhone Rather",
-    excerpt:
-      "I type and scrambled it to make a type specimen book. It has survived...",
-    author: "Admin",
-    date: "19Jun2024",
-  },
-];
 
 interface IBlog {
   _id: string;
@@ -62,13 +22,12 @@ interface IBlog {
 export function BlogCarousel() {
   const carouselRef = useRef<any>(null);
   const { t } = useTranslation();
+  const pathname = usePathname();
 
   const [page, setPage] = useState<number>(1);
 
   const next = () => carouselRef.current?.next();
   const previous = () => carouselRef.current?.prev();
-
-  const pathname = usePathname();
 
   const {
     data: blogs,
@@ -90,30 +49,38 @@ export function BlogCarousel() {
     
     pt-8 pb-20 md:pb-28`}
     >
+      <div className='flex items-center justify-center py-8 space-x-4'>
+        <hr className='flex-1 border-b border-gray-300' />
+        <h2 className='w-max mx-auto text-[#101010] text-2xl md:text-5xl font-semibold text-center'>
+          {t("ourRecentBlogs")}
+        </h2>
+        <hr className='flex-1 border-b border-gray-300' />
+      </div>
+
       <Container>
-        <div className="flex justify-between items-center mb-8">
-          <h2
+        <div className='flex justify-between items-center mb-8'>
+          {/* <h2
             className={`text-xl sm:text-2xl md:text-3xl font-bold ${
               pathname.startsWith("/buy") ? "text-[#FDFDFD]" : "text-[#101010]"
             }`}
           >
             {t("ourRecentBlogs")}
-          </h2>
+          </h2> */}
 
-          <div className="hidden md:flex gap-4">
+          <div className='hidden md:flex gap-4'>
             <button
               onClick={previous}
-              className="w-12 h-12 flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
-              aria-label="Previous review"
+              className='w-12 h-12 flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors'
+              aria-label='Previous review'
             >
-              <ArrowLeftOutlined className="text-sm" />
+              <ArrowLeftOutlined className='text-sm' />
             </button>
             <button
               onClick={next}
-              className="w-12 h-12 flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
-              aria-label="Next review"
+              className='w-12 h-12 flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors'
+              aria-label='Next review'
             >
-              <ArrowRightOutlined className="text-sm" />
+              <ArrowRightOutlined className='text-sm' />
             </button>
           </div>
         </div>
@@ -125,7 +92,7 @@ export function BlogCarousel() {
           }}
           slidesToShow={3}
           slidesToScroll={1}
-          className="space-x-4"
+          className='space-x-4'
           infinite
           responsive={[
             {
@@ -145,7 +112,7 @@ export function BlogCarousel() {
           {[...(blogs?.data?.blogs || []), ...Array(3)]
             .slice(0, 3)
             .map((blog: IBlog | null, index) => (
-              <div key={blog?._id || index} className="px-2">
+              <div key={blog?._id || index} className='px-2'>
                 <BlogCard {...blog} />
               </div>
             ))}

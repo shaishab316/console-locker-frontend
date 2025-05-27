@@ -20,7 +20,7 @@ const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
           alt="Product"
           width={400}
           height={400}
-          className="object-contain w-full h-[300px]"
+          className="object-contain w-full h-[300px] aspect-square"
         />
       </div>
       <div className="flex justify-between items-center gap-2 p-5">

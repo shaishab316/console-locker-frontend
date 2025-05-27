@@ -163,7 +163,7 @@ const ProductDetailsPage: React.FC = () => {
   // console.log("product -------> ", singleProduct?.data?.product);
 
   return (
-    <div>
+    <div className='min-h-screen'>
       {/* only for desktop */}
       <div
         className={`hidden md:block py-16 
@@ -175,28 +175,6 @@ const ProductDetailsPage: React.FC = () => {
         <Container>
           <div className='hidden md:block'>
             <div className='flex flex-col lg:flex-row gap-8'>
-              {/* <div className='xl:w-1/2 max-h-fit relative overflow-hidden'>
-                <div
-                  className='absolute inset-0 bg-cover bg-center'
-                  style={{
-                    backgroundImage: "url(/buy-bg.png)",
-                    backgroundRepeat: "no-repeat",
-                    transformOrigin: "center",
-                    zIndex: 0,
-                    zoom: 8,
-                    pointerEvents: "none",
-                  }}
-                />
-
-                <Image
-                  src={`${API_URL}${product?.product?.images[0]}`}
-                  alt='Console Locker'
-                  width={1400}
-                  height={900}
-                  className='rounded-lg w-full relative z-10'
-                />
-              </div> */}
-
               <div className='xl:w-1/2 relative' style={{ overflow: "hidden" }}>
                 <div
                   className='absolute inset-0 bg-cover bg-center max-h-max'
@@ -759,8 +737,8 @@ const ProductDetailsPage: React.FC = () => {
         <div className='w-full h-[426px]'>
           <Image
             src={`${API_URL}${product?.product?.images[0]}`}
-            className='w-full h-[426px]'
-            width={700}
+            className='w-full h-[426px] aspect-square'
+            width={800}
             height={800}
             alt='xbox'
           />
@@ -870,7 +848,7 @@ const ProductDetailsPage: React.FC = () => {
 
             {/* Select the Xbox One model */}
 
-            <div className='flex flex-wrap gap-4 px-4 py-4'>
+            <div className='grid grid-cols-3 gap-5 px-4 py-4'>
               {product?.meta?.models?.map(
                 ({ model, price }: Record<string, any>) => (
                   <div
@@ -886,9 +864,9 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex flex-col items-center justify-center rounded-md p-1`}
+                    text-base border-4 border-[#FDFDFD] font-semibold py-2.5 text-center flex flex-col items-center justify-center rounded-md p-1`}
                   >
-                    <span>{model}</span>
+                    <span className='overflow-hidden'>{model}</span>
                     <span className='font-light'>{price}</span>
                   </div>
                 )
@@ -918,7 +896,7 @@ const ProductDetailsPage: React.FC = () => {
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
             </div>
 
-            <div className='p-5 flex items-center gap-4'>
+            <div className='grid grid-cols-3 gap-5 px-4 py-4'>
               {product?.meta?.memorys?.map(
                 ({ memory, price }: Record<string, any>) => (
                   <div
@@ -934,7 +912,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex flex-col items-center justify-center rounded-md p-1`}
+                    text-base border-4 border-[#FDFDFD] font-semibold py-2.5 text-center flex flex-col items-center justify-center rounded-md p-1`}
                   >
                     <span>{memory}</span>
                     <span className='font-light'>{price}</span>
@@ -966,7 +944,7 @@ const ProductDetailsPage: React.FC = () => {
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
             </div>
 
-            <div className='p-5 flex items-center gap-4'>
+            <div className='grid grid-cols-3 gap-5 px-4 py-4'>
               {product?.meta?.conditions?.map(
                 ({ condition, price }: Record<string, any>) => (
                   <div
@@ -981,7 +959,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base capitalize border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex flex-col items-center justify-center rounded-md p-4`}
+                    text-base capitalize border-4 border-[#FDFDFD] font-semibold py-2.5 text-center flex flex-col items-center justify-center rounded-md p-4`}
                   >
                     <span>{condition}</span>
                     <span className='font-light'>{price}</span>
@@ -1011,7 +989,7 @@ const ProductDetailsPage: React.FC = () => {
               <hr className='flex-1 border-b-2 border-[#B5B5B5]' />
             </div>
 
-            <div className='p-5 flex items-center gap-4'>
+            <div className='grid grid-cols-3 gap-5 px-4 py-4'>
               {product?.meta?.controllers?.map(
                 ({ controller, price }: Record<string, any>) => (
                   <div
@@ -1027,7 +1005,7 @@ const ProductDetailsPage: React.FC = () => {
                         bg-[#FDFDFD] cursor-not-allowed border-transparent`
                         : "text-[#FDFDFD]"
                     }
-                    text-base border-4 border-[#FDFDFD] font-semibold min-w-[75px] max-w-fit py-2 text-center flex flex-col items-center justify-center rounded-md p-4`}
+                    text-base border-4 border-[#FDFDFD] font-semibold py-2.5 text-center flex flex-col items-center justify-center rounded-md p-4`}
                   >
                     <span>{controller}</span>
                     <span className='font-light'>{price}</span>

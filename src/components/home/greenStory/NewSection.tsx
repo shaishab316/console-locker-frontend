@@ -6,10 +6,6 @@ import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";
 
 export default function GreenStory() {
-  const ecologicalPoints = Array(4).fill(
-    "Acquistare o vendere una console usata non è solo conveniente, ma è anche una scelta ecologica."
-  );
-
   const [selectedLang, setSelectedLang] = useState("");
   const { t } = useTranslation();
 
@@ -18,75 +14,49 @@ export default function GreenStory() {
     setSelectedLang(lang || "");
   }, []);
 
-  console.log(selectedLang);
-
   return (
-    <div className="md:h-[864px] bg-[#F2F5F7] flex flex-col md:flex-row md:mb-10">
+    <div className='md:h-[864px] bg-[#F2F5F7] flex flex-col md:flex-row md:mb-10'>
       {/* Image Section */}
 
-      {/* <div
-        className="md:hidden relative h-screen flex  bg-cover bg-center"
-        style={{ backgroundImage: "url('/home/eco1.png')" }}
-      >
-        <div className="absolute inset-0 bg-black/50"></div>
-
-        <div className="relative p-4">
-          <h1 className="text-2xl font-medium text-[#FFFFFF] pb-3">
-            LA STORIA VERDE DI <br /> CONSOLE LOCKER.
-          </h1>
-          <div className="border h-[2px] min-w-full"></div>
-        </div>
-      </div> */}
-
       {/* for mobile */}
-      <div className="md:hidden relative w-full md:w-1/2 h-full -mb-1">
+      <div className='md:hidden relative w-full md:w-1/2 h-full -mb-1'>
+        <div className='absolute top-0 left-0 w-full h-full bg-[#0d0e0d4f] z-10'></div>
+
+        <div className='absolute top-6 left-6 z-20 text-white border-b-2 border-white pb-4'>
+          <h2 className="text-3xl">LA STORIA VERDE DI</h2>
+          <h2 className="text-3xl">CONSOLE LOCKER</h2>
+        </div>
         <Image
-          src="/home/eco2.png"
-          alt="PlayStation 5 on green moss"
+          src='/home/eco1.png'
+          alt='PlayStation 5 on green moss'
           width={900}
           height={900}
-          className="object-contain w-full h-full"
+          className='object-contain w-full h-full'
           priority
         />
       </div>
 
       {/* for desktop */}
-      <div className="hidden md:block relative w-full md:w-1/2 h-full">
+      <div className='hidden md:block relative w-full md:w-1/2 h-full'>
         <Image
-          src="/home/eco1.png"
-          alt="PlayStation 5 on green moss"
+          src='/home/eco1.png'
+          alt='PlayStation 5 on green moss'
           width={700}
           height={700}
-          className="object-cover w-full h-full"
+          className='object-cover w-full h-full'
           priority
         />
       </div>
 
       {/* Content Section */}
-      <div className="flex flex-col justify-center w-full md:w-1/2 bg-[#63B95E] p-4 md:p-12 h-full">
+      <div className='flex flex-col justify-center w-full md:w-1/2 bg-[#63B95E] p-4 md:p-12 h-full'>
         <div>
           {/* Heading */}
-          <h1 className="hidden md:block uppercase text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            <Trans i18nKey="greenHistroy" components={{ br: <br /> }} />
+          <h1 className='hidden md:block uppercase text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4'>
+            <Trans i18nKey='greenHistroy' components={{ br: <br /> }} />
           </h1>
 
-          <div className="hidden md:block w-full h-2 border-b-2 border-white mb-10"></div>
-
-          {/* Cards */}
-          {/* <div className="max-w-[760px] space-y-5">
-            {ecologicalPoints.map((text, index) => (
-              <div
-                key={index}
-                className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
-              transform transition-all duration-300 hover:translate-x-2
-              cursor-pointer"
-              >
-                <p className="max-w-[440px] mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6">
-                  {text}
-                </p>
-              </div>
-            ))}
-          </div> */}
+          <div className='hidden md:block w-full h-2 border-b-2 border-white mb-10'></div>
 
           <div
             className={`${
@@ -96,9 +66,9 @@ export default function GreenStory() {
             }`}
           >
             <div
-              className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
+              className='bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
               transform transition-all duration-300 hover:translate-x-2
-              cursor-pointer"
+              cursor-pointer'
             >
               <p
                 className={`${
@@ -109,9 +79,9 @@ export default function GreenStory() {
               </p>
             </div>
             <div
-              className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
+              className='bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
               transform transition-all duration-300 hover:translate-x-2
-              cursor-pointer"
+              cursor-pointer'
             >
               <p
                 className={`${
@@ -122,9 +92,9 @@ export default function GreenStory() {
               </p>
             </div>
             <div
-              className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
+              className='bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
               transform transition-all duration-300 hover:translate-x-2
-              cursor-pointer"
+              cursor-pointer'
             >
               <p
                 className={`${
@@ -135,9 +105,9 @@ export default function GreenStory() {
               </p>
             </div>
             <div
-              className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
+              className='bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
               transform transition-all duration-300 hover:translate-x-2
-              cursor-pointer"
+              cursor-pointer'
             >
               <p
                 className={`${
@@ -148,9 +118,9 @@ export default function GreenStory() {
               </p>
             </div>
             <div
-              className="bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
+              className='bg-[#209C54] backdrop-blur-sm p-6 rounded-lg 
               transform transition-all duration-300 hover:translate-x-2
-              cursor-pointer"
+              cursor-pointer'
             >
               <p
                 className={`${
