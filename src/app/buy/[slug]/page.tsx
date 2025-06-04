@@ -163,7 +163,7 @@ const ProductDetailsPage: React.FC = () => {
   // console.log("product -------> ", singleProduct?.data?.product);
 
   return (
-    <div className='min-h-screen'>
+    <div>
       {/* only for desktop */}
       <div
         className={`hidden md:block py-16 
@@ -733,7 +733,19 @@ const ProductDetailsPage: React.FC = () => {
 
       {/* --------------------- only for mobile ---------------- */}
 
-      <div className='md:hidden'>
+      <div
+        // className='md:hidden'
+        className={`md:hidden ${
+          singleProduct?.data?.product?.product_type === "xbox" &&
+          "bg-[url(/sell/xbox.jpeg)]"
+        } ${
+          singleProduct?.data?.product?.product_type === "playstation" &&
+          "bg-[url(/sell/playstation.jpeg)]"
+        } ${
+          singleProduct?.data?.product?.product_type === "nintendo" &&
+          "bg-[url(/sell/nintendo.jpeg)]"
+        } bg-cover bg-no-repeat`}
+      >
         <div className='w-full h-[426px]'>
           <Image
             src={`${API_URL}${product?.product?.images[0]}`}
@@ -744,18 +756,7 @@ const ProductDetailsPage: React.FC = () => {
           />
         </div>
 
-        <div
-          className={`${
-            singleProduct?.data?.product?.product_type === "xbox" &&
-            "bg-[#3BAE3B]"
-          } ${
-            singleProduct?.data?.product?.product_type === "playstation" &&
-            "bg-[#0250B7]"
-          } ${
-            singleProduct?.data?.product?.product_type === "nintendo" &&
-            "bg-[#D61D1E]"
-          } -mt-1`}
-        >
+        <div>
           {/* product into */}
           <div className='pt-6 mx-5'>
             <div className='pb-2.5 border-b-2'>

@@ -253,7 +253,7 @@ export default function ScreenCondition() {
           question?.data?.product_type === "nintendo"
             ? "bg-[url(/sell/nintendo.jpeg)]"
             : ""
-        } bg-cover bg-no-repeat`}
+        } bg-cover bg-no-repeat`} 
       >
         <div>
           <div className='w-full'>
