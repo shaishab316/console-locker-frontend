@@ -164,6 +164,8 @@ export default function ScreenCondition() {
     router.push("/sell/estimate-product");
   };
 
+  console.log(question?.data?.product_type, "product type");
+
   return (
     <div>
       {/* only for desktop view */}
@@ -238,7 +240,21 @@ export default function ScreenCondition() {
       </div>
 
       {/* only for mobile */}
-      <div className='block md:hidden bg-[#F2F5F7]'>
+      <div
+        className={`block md:hidden ${
+          question?.data?.product_type === "xbox"
+            ? "bg-[url(/sell/xbox.jpeg)]"
+            : ""
+        } ${
+          question?.data?.product_type === "playstation"
+            ? "bg-[url(/sell/playstation.jpeg)]"
+            : ""
+        } ${
+          question?.data?.product_type === "nintendo"
+            ? "bg-[url(/sell/nintendo.jpeg)]"
+            : ""
+        } bg-cover bg-no-repeat`}
+      >
         <div>
           <div className='w-full'>
             <Image

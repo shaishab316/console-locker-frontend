@@ -209,7 +209,7 @@ const ProductDetailsPage: React.FC = () => {
                   </div>
                   <div className='flex flex-col gap-3 items-end'>
                     <h2 className='text-2xl lg:text-5xl font-semibold text-[#FDFDFD]'>
-                      $
+                      €
                       {product?.product?.offer_price ?? product?.product?.price}
                     </h2>
                     <p className='text-lg text-[#FDFDFD]'>incl. tax</p>
@@ -563,7 +563,7 @@ const ProductDetailsPage: React.FC = () => {
                             </svg>
                           </button>
                           <p className='text-center text-gray-600'>
-                            yOUR {modalTradeInData?.productName} IS VALUED AT $
+                            yOUR {modalTradeInData?.productName} IS VALUED AT €
                             {modalTradeInData?.productPrice ?? 0}
                           </p>
                         </div>

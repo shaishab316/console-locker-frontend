@@ -71,6 +71,8 @@ const ProductPage: React.FC = () => {
     page: currentPage,
   } as any);
 
+  const totalPages = Number(products?.data?.meta?.pagination?.total_pages);
+
   const URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
@@ -649,24 +651,26 @@ const ProductPage: React.FC = () => {
             ) : null}
 
             {/* Pagination */}
-            {products?.data?.products.length >= 9 && (
+            {
               <div className='flex justify-center items-center gap-3 my-12'>
                 <button
-                  onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+                  onClick={() => {
+                    setCurrentPage((prev) => Math.max(prev - 1, 1));
+                  }}
                   className='w-10 h-10 flex items-center justify-center bg-transparent mr-2'
                 >
                   <ChevronLeft />
                 </button>
 
                 {Array.from(
-                  { length: products?.data?.meta?.pagination?.total_pages },
+                  { length: totalPages },
                   (_, index) => index + 1
                 ).map((pageNumber) => (
                   <button
                     key={pageNumber}
                     onClick={() => setCurrentPage(pageNumber)}
                     className={`w-10 h-10 flex items-center justify-center rounded-md ${
-                      page === pageNumber
+                      currentPage === pageNumber
                         ? "bg-black text-white"
                         : "bg-transparent border-2 border-[#101010]"
                     }`}
@@ -677,19 +681,14 @@ const ProductPage: React.FC = () => {
 
                 <button
                   onClick={() =>
-                    setPage((prev) =>
-                      Math.min(
-                        prev + 1,
-                        Math.ceil(products.length / itemsPerPage)
-                      )
-                    )
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
                   }
                   className='w-10 h-10 flex items-center justify-center bg-transparent ml-2'
                 >
                   <ChevronRight />
                 </button>
               </div>
-            )}
+            }
           </div>
         </div>
       </Container>
