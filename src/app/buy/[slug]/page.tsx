@@ -160,7 +160,7 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  // console.log("product -------> ", singleProduct?.data?.product);
+  console.log("product -------> ", singleProduct?.data?.product);
 
   return (
     <div>
@@ -868,7 +868,8 @@ const ProductDetailsPage: React.FC = () => {
                     text-base border-4 border-[#FDFDFD] font-semibold py-2.5 text-center flex flex-col items-center justify-center rounded-md p-1`}
                   >
                     <span className='overflow-hidden'>{model}</span>
-                    <span className='font-light'>{price}</span>
+                    {selectedModel === model ? <Check /> : <span>{price}</span>}
+                    {/* <span className='font-light'>{price}</span> */}
                   </div>
                 )
               )}
@@ -916,19 +917,23 @@ const ProductDetailsPage: React.FC = () => {
                     text-base border-4 border-[#FDFDFD] font-semibold py-2.5 text-center flex flex-col items-center justify-center rounded-md p-1`}
                   >
                     <span>{memory}</span>
-                    <span className='font-light'>{price}</span>
+                    {selectedMemory === memory ? (
+                      <Check />
+                    ) : (
+                      <span>{price}</span>
+                    )}
+                    {/* <span className='font-light'>{price}</span> */}
                   </div>
                 )
               )}
             </div>
-          </div>
-
-          {/* Memory */}
-          <div className='px-5'>
-            <p className='text-[#FDFDFD]'>
-              <span className='font-medium h-fit'>MEMORY:</span>{" "}
-              {singleProduct?.data?.product?.memoryDes}
-            </p>
+            {/* Memory */}
+            <div className='px-5'>
+              <p className='text-[#FDFDFD]'>
+                <span className='font-medium h-fit'>MEMORY:</span>{" "}
+                {singleProduct?.data?.product?.memoryDes}
+              </p>
+            </div>
           </div>
 
           {/* What is the condition of your console? */}
@@ -963,7 +968,12 @@ const ProductDetailsPage: React.FC = () => {
                     text-base capitalize border-4 border-[#FDFDFD] font-semibold py-2.5 text-center flex flex-col items-center justify-center rounded-md p-4`}
                   >
                     <span>{condition}</span>
-                    <span className='font-light'>{price}</span>
+                    {selectedCondition === condition ? (
+                      <Check />
+                    ) : (
+                      <span>{price}</span>
+                    )}
+                    {/* <span className='font-light'>{price}</span> */}
                   </div>
                 )
               )}
@@ -1009,7 +1019,12 @@ const ProductDetailsPage: React.FC = () => {
                     text-base border-4 border-[#FDFDFD] font-semibold py-2.5 text-center flex flex-col items-center justify-center rounded-md p-4`}
                   >
                     <span>{controller}</span>
-                    <span className='font-light'>{price}</span>
+                    {selectedController === controller ? (
+                      <Check />
+                    ) : (
+                      <span>{price}</span>
+                    )}
+                    {/* <span className='font-light'>{price}</span> */}
                   </div>
                 )
               )}
