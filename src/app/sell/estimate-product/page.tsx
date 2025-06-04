@@ -268,7 +268,7 @@ export default function PlayStationOffer() {
 
               {isOpen && (
                 <div className="">
-                  <div className="flex flex-wrap gap-x-2 gap-y-6 mb-6">
+                  <div className="grid grid-cols-3 gap-6 mb-6">
                     {userSelectedOptions?.map((option, index) => (
                       <div
                         key={index}
