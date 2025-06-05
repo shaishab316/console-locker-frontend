@@ -149,9 +149,9 @@ export function Header() {
           <Link href='/sell' className='text-sm font-medium'>
             {t("sell")}
           </Link>
-          <Link href='#' className='text-sm font-medium'>
+          {/* <Link href='#' className='text-sm font-medium'>
             {t("repair")}
-          </Link>
+          </Link> */}
           <Link href='/about' className='text-sm font-medium'>
             {t("about")}
           </Link>

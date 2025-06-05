@@ -11,22 +11,22 @@ export function ConsoleFooter() {
 
   return (
     // <Footer style={{ background: "#000000", padding: "60px 0 20px" }}>
-    <footer className="bg-[#101010]">
+    <footer className='bg-[#101010]'>
       <Container>
         {/* Newsletter Section */}
-        <div className="flex flex-col md:flex-row gap-8 justify-between items-center mb-20 pt-12">
-          <div className="w-full flex items-center">
-            <div className="relative flex items-center md:gap-4">
+        <div className='flex flex-col md:flex-row gap-8 justify-between items-center mb-20 pt-12'>
+          <div className='w-full flex items-center'>
+            <div className='relative flex items-center md:gap-4'>
               <Image
-                src="/footer-img.png"
-                alt="Xbox Series X"
+                src='/footer-img.png'
+                alt='Xbox Series X'
                 width={150}
                 height={150}
                 style={{ objectFit: "contain" }}
-                className="hidden lg:inline-block absolute -top-28 left-0"
+                className='hidden lg:inline-block absolute -top-28 left-0'
               />
-              <div className="ml-0 lg:ml-52">
-                <h2 className="text-left text-[#FDFDFD] text-2xl md:text-[40px] font-semibold">
+              <div className='ml-0 lg:ml-52'>
+                <h2 className='text-left text-[#FDFDFD] text-2xl md:text-[40px] font-semibold'>
                   {t("signUpNewsLetter")}
                 </h2>
               </div>
@@ -34,62 +34,62 @@ export function ConsoleFooter() {
           </div>
 
           {/* for mobile */}
-          <div className="w-full lg:hidden flex items-center justify-between border border-gray-800 rounded-md">
+          <div className='w-full lg:hidden flex items-center justify-between border border-gray-800 rounded-md'>
             <input
-              className="w-[60%] text-sm border-none outline-none bg-transparent text-[#FDFDFD] px-2.5 py-3"
-              type="text"
-              placeholder="Enter your email"
+              className='w-[60%] text-sm border-none outline-none bg-transparent text-[#FDFDFD] px-2.5 py-3'
+              type='text'
+              placeholder='Enter your email'
             />
-            <button className="w-[40%] place-items-end bg-[#FDFDFD] text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
+            <button className='w-[40%] place-items-end bg-[#FDFDFD] text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8'>
               {t("subscribe")}
             </button>
           </div>
 
           {/* for desktop */}
-          <div className="w-full lg:w-[50%] hidden lg:flex items-center justify-between border border-gray-800 rounded-md">
+          <div className='w-full lg:w-[50%] hidden lg:flex items-center justify-between border border-gray-800 rounded-md'>
             <input
-              className="border-none text-sm outline-none bg-transparent text-[#FDFDFD] px-2.5 py-3"
-              type="text"
-              placeholder="Enter your email"
+              className='border-none text-sm outline-none bg-transparent text-[#FDFDFD] px-2.5 py-3'
+              type='text'
+              placeholder='Enter your email'
             />
-            <button className="place-items-end bg-[#FDFDFD] text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8">
+            <button className='place-items-end bg-[#FDFDFD] text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8'>
               {t("subscribe")}
             </button>
           </div>
         </div>
         {/* Main Footer Content */}
-        <div className="lg:flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between gap-8 md:mb-16 px-3 lg:p-0 pb-6">
+        <div className='lg:flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between gap-8 md:mb-16 px-3 lg:p-0 pb-6'>
           {/* Payment Methods */}
           <div>
-            <h4 className="text-[#FDFDFD] text-[32px] font-semibold mb-6">
+            <h4 className='text-[#FDFDFD] text-[32px] font-semibold mb-6'>
               {t("paymentMethods")}
             </h4>
-            <div className="flex items-center flex-wrap gap-2 mb-12">
+            <div className='flex items-center flex-wrap gap-2 mb-12'>
               <Image
-                src="/payments/paypal.png"
-                className="cursor-pointer"
-                alt="PayPal"
+                src='/payments/paypal.png'
+                className='cursor-pointer'
+                alt='PayPal'
                 width={50}
                 height={48}
               />
               <Image
-                src="/payments/visa.svg"
-                className="cursor-pointer"
-                alt="Visa"
+                src='/payments/visa.svg'
+                className='cursor-pointer'
+                alt='Visa'
                 width={50}
                 height={70}
               />
               <Image
-                src="/payments/mastercard.png"
-                className="cursor-pointer"
-                alt="Mastercard"
+                src='/payments/mastercard.png'
+                className='cursor-pointer'
+                alt='Mastercard'
                 width={50}
                 height={48}
               />
               <Image
-                src="/payments/g-pay.png"
-                className="cursor-pointer"
-                alt="Google Pay"
+                src='/payments/g-pay.png'
+                className='cursor-pointer'
+                alt='Google Pay'
                 width={50}
                 height={48}
               />
@@ -97,52 +97,52 @@ export function ConsoleFooter() {
 
             {/* Social Links */}
             <div>
-              <h4 className="text-white text-2xl font-semibold mt-6 mb-6">
+              <h4 className='text-white text-2xl font-semibold mt-6 mb-6'>
                 {t("socialLinks")}
               </h4>
-              <div className="flex gap-4">
+              <div className='flex gap-4'>
                 <Link
-                  href="https://linkedin.com"
-                  className="text-white hover:text-gray-300"
+                  href='https://linkedin.com'
+                  className='text-white hover:text-gray-300'
                 >
                   <Image
                     src={"/social/f-linkedin.png"}
                     width={40}
                     height={40}
-                    alt="linkedin"
+                    alt='linkedin'
                   />
                 </Link>
                 <Link
-                  href="https://linkedin.com"
-                  className="text-white hover:text-gray-300"
+                  href='https://linkedin.com'
+                  className='text-white hover:text-gray-300'
                 >
                   <Image
                     src={"/social/f-facebook.png"}
                     width={40}
                     height={40}
-                    alt="linkedin"
+                    alt='linkedin'
                   />{" "}
                 </Link>
                 <Link
-                  href="https://linkedin.com"
-                  className="text-white hover:text-gray-300"
+                  href='https://linkedin.com'
+                  className='text-white hover:text-gray-300'
                 >
                   <Image
                     src={"/social/f-instragram.png"}
                     width={40}
                     height={40}
-                    alt="linkedin"
+                    alt='linkedin'
                   />{" "}
                 </Link>
                 <Link
-                  href="https://linkedin.com"
-                  className="text-white hover:text-gray-300"
+                  href='https://linkedin.com'
+                  className='text-white hover:text-gray-300'
                 >
                   <Image
                     src={"/social/f-x.png"}
                     width={40}
                     height={40}
-                    alt="linkedin"
+                    alt='linkedin'
                   />{" "}
                 </Link>
               </div>
@@ -151,32 +151,32 @@ export function ConsoleFooter() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-6">
+            <h4 className='text-white text-lg font-semibold mb-6'>
               {t("quickLinks")}
             </h4>
-            <ul className="space-y-6">
+            <ul className='space-y-6'>
               <li>
-                <Link href="#" className="text-[#FDFDFD] text-lg">
+                <Link href='/' className='text-[#FDFDFD] text-lg'>
                   {t("home")}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#FDFDFD] text-lg">
+                <Link href='/buy' className='text-[#FDFDFD] text-lg'>
                   {t("buy")}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#FDFDFD] text-lg">
+                <Link href='/sell' className='text-[#FDFDFD] text-lg'>
                   {t("sell")}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#FDFDFD] text-lg">
+                <Link href='/about' className='text-[#FDFDFD] text-lg'>
                   {t("aboutUs")}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#FDFDFD] text-lg">
+                <Link href='reviews' className='text-[#FDFDFD] text-lg'>
                   {t("reviews")}
                 </Link>
               </li>
@@ -185,54 +185,54 @@ export function ConsoleFooter() {
 
           {/* Contact Us */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-6">
+            <h4 className='text-white text-lg font-semibold mb-6'>
               {t("contactUs")}
             </h4>
-            <div className="space-y-6">
+            <div className='space-y-6'>
               <div>
-                <strong className="text-[#FDFDFD] text-lg block">
+                <strong className='text-[#FDFDFD] text-lg block'>
                   {t("email")}
                 </strong>
-                <p className="text-[#FDFDFD]">info@consolelocker.it</p>
+                <p className='text-[#FDFDFD]'>info@consolelocker.it</p>
               </div>
               <div>
-                <strong className="text-[#FDFDFD] text-lg block">
+                <strong className='text-[#FDFDFD] text-lg block'>
                   {t("phone")}
                 </strong>
-                <p className="text-[#FDFDFD] text-base">+1 234 567 890</p>
+                <p className='text-[#FDFDFD] text-base'>+1 234 567 890</p>
               </div>
             </div>
           </div>
 
           {/* Privacy & Policy */}
           <div>
-            <h4 className="text-[#FDFDFD] text-[32px] font-semibold mb-6">
+            <h4 className='text-[#FDFDFD] text-[32px] font-semibold mb-6'>
               {t("privacyPolicyTitle")}
             </h4>
-            <ul className="space-y-6">
+            <ul className='space-y-6'>
               <li>
                 <Link
-                  href="/returns-and-refunds"
-                  className="text-lg text-[#FDFDFD]"
+                  href='/returns-and-refunds'
+                  className='text-lg text-[#FDFDFD]'
                 >
                   {t("returnAndRefund")}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/terms-of-services"
-                  className="text-lg text-[#FDFDFD]"
+                  href='/terms-of-services'
+                  className='text-lg text-[#FDFDFD]'
                 >
                   {t("termsOfService")}
                 </Link>
               </li>
               <li>
-                <Link href="/cookie-policy" className="text-lg text-[#FDFDFD]">
+                <Link href='/cookie-policy' className='text-lg text-[#FDFDFD]'>
                   {t("cookiePolicy")}
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-policy" className="text-lg text-[#FDFDFD]">
+                <Link href='/privacy-policy' className='text-lg text-[#FDFDFD]'>
                   {t("privacyPolicy")}
                 </Link>
               </li>
@@ -243,8 +243,8 @@ export function ConsoleFooter() {
       </Container>
 
       {/* Copyright */}
-      <div className="h-[80px] flex items-center justify-center text-center bg-[#FDFDFD] border-t border-gray-800">
-        <p className="text-[#101010] px-2 text-sm lg:text-lg">
+      <div className='h-[80px] flex items-center justify-center text-center bg-[#FDFDFD] border-t border-gray-800'>
+        <p className='text-[#101010] px-2 text-sm lg:text-lg'>
           {t("copyRight")}
         </p>
       </div>

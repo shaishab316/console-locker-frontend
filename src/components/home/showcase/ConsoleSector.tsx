@@ -197,13 +197,14 @@ export default function ConsoleSelector() {
                           key={console._id}
                           className='bg-white rounded-lg overflow-hidden shadow-sm'
                         >
-                          <div className='relative w-full h-[153px] lg:h-[387px] p-1.5 md:p-0'>
+                          {/* <div className='relative w-full h-[153px] lg:h-[387px] p-1.5 md:p-0'> */}
+                          <div className='relative w-full h lg:h-[387px] p-1.5 md:p-0'>
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
                               width={700}
-                              height={500}
-                              className='w-full h-full'
+                              height={700}
+                              className='min-w-full max-w-full h-full aspect-square'
                             />
                           </div>
                           <div className='p-1 md:p-4'>
@@ -283,13 +284,14 @@ export default function ConsoleSelector() {
                           key={console._id}
                           className='bg-white rounded-lg overflow-hidden shadow-sm'
                         >
-                          <div className='relative w-full h-[153px] lg:h-[387px] p-1.5 md:p-0'>
+                          {/* <div className='relative w-full h-[153px] lg:h-[387px] p-1.5 md:p-0'> */}
+                          <div className='relative w-full h lg:h-[387px] p-1.5 md:p-0'>
                             <Image
                               src={`${API_URL}${console.images[0]}`}
                               alt={`${console.name} ${console.model}`}
                               width={700}
-                              height={500}
-                              className='w-full h-full'
+                              height={700}
+                              className='min-w-full max-w-full h-full aspect-square'
                             />
                           </div>
                           <div className='p-1 md:p-4'>

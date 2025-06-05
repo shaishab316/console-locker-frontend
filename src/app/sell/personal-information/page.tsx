@@ -148,6 +148,8 @@ export default function CheckoutForm() {
 
       const res = await sellProduct(data).unwrap();
 
+      console.log(res);
+
       if (res?.success) {
         toast.success(res?.message);
       } else {
@@ -179,49 +181,6 @@ export default function CheckoutForm() {
       router.push("/sell");
     }, 400);
   };
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   toast.success("Submitted successfully!");
-
-  //   const data = {
-  //     customer: customerIdOnlocalStorage?,
-  //     product: productId,
-  //     questions: transformedData,
-  //     payment: {
-  //       paypal: "payol37324828@example.com",
-  //     },
-  //   };
-
-  //   const stringifiedData = JSON.stringify(data);
-
-  //   console.log({ stringifiedData });
-
-  //   // if (customerEmailOnlocalStorage?) {
-  //   //   const res = sellProduct(stringifiedData);
-  //   //   console.log({ res });
-
-  //   //   return;
-  //   // }
-
-  //   // setFormData({
-  //   //   firstName: "",
-  //   //   lastName: "",
-  //   //   email: "",
-  //   //   phone: "",
-  //   //   zipCode: "",
-  //   //   city: "",
-  //   //   address: "",
-  //   //   apartment: "",
-  //   //   country: "",
-  //   //   paymentMethod: "bank",
-  //   //   iban: "",
-  //   //   acceptTerms: false,
-  //   // });
-
-  //   // console.log("formData in submit", formData);
-  // };
 
   // get customer data from localStorage?
   useEffect(() => {
@@ -299,6 +258,7 @@ export default function CheckoutForm() {
 
   return (
     <>
+      {/* Desktop */}
       <div className='hidden md:block min-h-screen bg-[#F2F5F7] py-8'>
         <Container>
           <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 py-12'>
@@ -731,7 +691,7 @@ export default function CheckoutForm() {
                       onChange={(e) =>
                         setFormData({ ...formData, lastName: e.target.value })
                       }
-                      value={formData.lastName} // Bind value to state
+                      value={formData.lastName}
                       id='lastName'
                       className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
                       placeholder='Last Name'
@@ -749,7 +709,7 @@ export default function CheckoutForm() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    value={formData.email} // Bind value to state
+                    value={formData.email}
                     id='email'
                     className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
                     placeholder='Enter email'
@@ -766,7 +726,7 @@ export default function CheckoutForm() {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    value={formData.phone} // Bind value to state
+                    value={formData.phone}
                     id='phone'
                     className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
                     placeholder='Phone Number'
@@ -791,7 +751,7 @@ export default function CheckoutForm() {
                       onChange={(e) =>
                         setFormData({ ...formData, city: e.target.value })
                       }
-                      value={formData.city} // Bind value to state
+                      value={formData.city}
                       id='city'
                       className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
                       placeholder='City'
@@ -828,19 +788,16 @@ export default function CheckoutForm() {
                     <span className='text-red-500'>*</span>{" "}
                   </label>
 
-                  {/* <input
-                    type="text"
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        shippingAddress: e.target.value,
-                      })
-                    }
-                    value={formData?.shippingAddress} // Bind value to state
-                    id="shippingAddress"
-                    className="px-2 py-2 border-2 rounded-md placeholder:text-sm"
-                    placeholder="Shipping Address"
-                  /> */}
+                  <input
+                    type='text'
+                    id='address'
+                    name='address'
+                    required
+                    onChange={handleInputChange}
+                    value={formData.address}
+                    className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
+                    placeholder='Shipping Address'
+                  />
                 </div>
 
                 <div className='flex flex-col gap-1 w-full'>
@@ -851,16 +808,44 @@ export default function CheckoutForm() {
                     {t("apartmentStaircase")}
                   </label>
 
-                  {/* <input
-                    type="text"
+                  <input
+                    type='text'
+                    id='apartment'
+                    name='apartment'
+                    className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
+                    placeholder='Apartment, Staircase, etc.'
+                    value={formData.apartment}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor='country'
+                    className='block text-sm font- text-[#101010] mb-1'
+                  >
+                    Country{" "}
+                    <span className='text-red-500 font-semibold'>*</span>
+                  </label>
+                  <select
+                    id='country'
+                    name='country'
+                    required
+                    className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500'
+                    value={formData.country}
                     onChange={(e) =>
-                      setFormData({ ...formData, appointments: e.target.value })
+                      setFormData((prev) => ({
+                        ...prev,
+                        country: e.target.value,
+                      }))
                     }
-                    value={formData.appointments} // Bind value to state
-                    id="appointments"
-                    className="px-2 py-2 border-2 rounded-md placeholder:text-sm"
-                    placeholder="Apartment, Staircase, etc."
-                  /> */}
+                  >
+                    <option value=''>Select a country</option>
+                    <option value='Italy'>Italy</option>
+                    <option value='Germany'>Germany</option>
+                    <option value='France'>France</option>
+                    <option value='United Kingdom'>United Kingdom</option>
+                  </select>
                 </div>
               </div>
 
