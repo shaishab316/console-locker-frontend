@@ -48,7 +48,7 @@ export default function ReviewCarousel({
 			</div>
 			<Container>
 				<div className="flex justify-between items-center mb-8">
-					<div className="hidden md:flex gap-4">
+					<div className="hidden md:flex gap-4 items-center">
 						<button
 							onClick={() =>
 								setPage((prev) => (prev > 1 ? prev - 1 : meta?.totalPage))
@@ -58,6 +58,7 @@ export default function ReviewCarousel({
 						>
 							<ArrowLeftOutlined className="text-sm" />
 						</button>
+						{page} / {meta?.totalPage}
 						<button
 							onClick={() =>
 								setPage((prev) => (prev < meta?.totalPage ? prev + 1 : 1))
