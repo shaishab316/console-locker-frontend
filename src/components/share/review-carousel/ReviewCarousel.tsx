@@ -70,12 +70,12 @@ export default function ReviewCarousel({
 				</div>
 
 				{isError && (
-					<p className="text-red-500 text-2xl">
+					<p className="text-red-500 text-2xl relative w-fit group">
 						Failed to load reviews.{" "}
-						<div className="inline-flex">
+						<div className="inline-flex ml-2">
 							<button
 								onClick={refetch}
-								className="underline cursor-pointer click font-bold text-black hover:scale-90 transition"
+								className="underline cursor-pointer font-bold text-black group-hover:scale-110 transition"
 							>
 								Retry
 							</button>
@@ -84,6 +84,11 @@ export default function ReviewCarousel({
 								<span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
 							</span>
 						</div>
+						<img
+							src="/397056891_11541951.png"
+							alt="mark arrow"
+							className="absolute -top-16 right-10 w-20 rotate-[-80deg] select-none"
+						/>
 					</p>
 				)}
 
