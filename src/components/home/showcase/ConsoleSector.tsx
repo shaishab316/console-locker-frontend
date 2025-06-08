@@ -38,7 +38,7 @@ export default function ConsoleSelector() {
 
 	const { data: products } = useGetAllProductsQuery({
 		product_type: activeTab,
-		limit: 6,
+		limit: 4,
 	} as any);
 
 	return (
@@ -91,7 +91,7 @@ export default function ConsoleSelector() {
 										activeTab === "xbox" ? "bg-[#63b95d]" : ""
 									}`}
 								>
-									<Container className="w-full mx-auto">
+									<Container className="w-[98%] mx-auto">
 										<div className="flex items-center py-3 space-x-4 lg:space-x-7">
 											<h2 className="text-2xl lg:text-5xl font-bold text-[#FDFDFD] pt-4 mb-8">
 												Xbox
@@ -106,9 +106,9 @@ export default function ConsoleSelector() {
 												<Link
 													href={`/buy/${console?.slug}`}
 													key={console._id}
-													className="bg-white rounded-lg overflow-hidden shadow-sm"
+													className="bg-white hover:bg-gray-200 rounded-lg overflow-hidden shadow-sm"
 												>
-													<div className="relative w-full h lg:h-[387px] p-1.5 md:p-0">
+													<div className="relative w-full aspect-square p-1.5 md:p-0">
 														<img
 															src={`${API_URL}${console.images[0]}`}
 															alt={console?.name}
@@ -118,27 +118,19 @@ export default function ConsoleSelector() {
 															}}
 														/>
 													</div>
-													<div className="p-2.5 md:p-4">
-														<div className="flex justify-between items-start mb-2">
+													<div className="p-2 pt-0 md:p-4">
+														<div className="flex justify-between items-start">
 															<div>
-																<h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-0 lg:mb-2.5">
+																<h3 className="font-semibold text-[#101010] text-base mb-0 lg:mb-2.5">
 																	{console?.name} {console?.model}
 																</h3>
-
-																<p className="text-[#2B2B2B] text-xs md:text-base space-x-1 md:mb-2">
+																<p className="text-[#2B2B2B] text-xs md:text-base space-x-1">
 																	Price:
-																	<span className="text-[#00B67A] text-xs md:text-lg font-medium leading-7">
+																	<span className="text-[#00B67A] text-xs md:text-lg font-medium leading-">
 																		{" "}
 																		${console?.offer_price}
 																	</span>
-																	<span className="text-[10px] sm:text-sm md:text-sm text-[#919191] line-through">
-																		New : {console?.price}
-																	</span>
 																</p>
-
-																{/* <p className="text-xs sm:text-sm md:text-sm text-green-500">
-                                  In Stoack: {console?.quantity}
-                                </p> */}
 															</div>
 														</div>
 													</div>
@@ -189,7 +181,7 @@ export default function ConsoleSelector() {
 												<Link
 													href={`/buy/${console?.slug}`}
 													key={console._id}
-													className="bg-white rounded-lg overflow-hidden shadow-sm"
+													className="bg-white hover:bg-gray-200 rounded-lg overflow-hidden shadow-sm"
 												>
 													{/* <div className='relative w-full h-[153px] lg:h-[387px] p-1.5 md:p-0'> */}
 													<div className="relative w-full h lg:h-[387px] p-1.5 md:p-0">
@@ -202,33 +194,19 @@ export default function ConsoleSelector() {
 															}}
 														/>
 													</div>
-													<div className="p-1 md:p-4">
-														<div className="flex justify-between items-start mb-2">
+													<div className="p-2 pt-0 md:p-4">
+														<div className="flex justify-between items-start">
 															<div>
-																<h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-2.5">
-																	{console.name}
+																<h3 className="font-semibold text-[#101010] text-base">
+																	{console.name} {console.model}
 																</h3>
-																<p className="text-sm md:text-base text-[#2B2B2B] -mb-1 md:mb-1.5">
-																	{/* {console.model} */}
-																	Condition:{" "}
-																	<span className="text-base text-[#2B2B2B] font-medium">
-																		Good
-																	</span>
-																</p>
-
 																<p className="text-[#2B2B2B] text-xs md:text-base space-x-1 md:mb-2">
 																	Price:
-																	<span className="text-[#00B67A] text-xs md:text-lg font-medium leading-7">
+																	<span className="text-[#00B67A] text-xs md:text-lg font-medium">
 																		{" "}
 																		$299
 																	</span>
-																	<span className="text-[10px] sm:text-sm md:text-sm text-[#919191] line-through">
-																		New : 350
-																	</span>
 																</p>
-																{/* <p className='text-xs sm:text-sm md:text-sm text-green-500'>
-                                  In Stoack: 24
-                                </p> */}
 															</div>
 														</div>
 													</div>
@@ -290,34 +268,19 @@ export default function ConsoleSelector() {
 															}}
 														/>
 													</div>
-													<div className="p-1 md:p-4">
+													<div className="p-2 pt-0 md:p-4">
 														<div className="flex justify-between items-start mb-2">
 															<div>
-																<h3 className="font-semibold text-[#101010] text-base leading-[24px] mb-1.5">
-																	{console.name}
+																<h3 className="font-semibold text-[#101010] text-base">
+																	{console.name} {console.model}
 																</h3>
-																<p className="text-sm md:text-base text-[#2B2B2B] -mb-1 md:mb-1.5">
-																	{/* {console.model} */}
-																	Condition:{" "}
-																	<span className="text-base text-[#2B2B2B] font-medium">
-																		Good
-																	</span>
-																</p>
-
 																<p className="text-[#2B2B2B] text-xs md:text-base space-x-1 md:mb-2">
 																	Price:
-																	<span className="text-[#00B67A] text-xs md:text-lg font-medium leading-7">
+																	<span className="text-[#00B67A] text-xs md:text-lg font-medium">
 																		{" "}
 																		$299
 																	</span>
-																	<span className="text-[10px] sm:text-sm md:text-sm text-[#919191] line-through">
-																		New : 350
-																	</span>
 																</p>
-
-																{/* <p className='text-xs sm:text-sm md:text-sm text-green-500'>
-                                  In Stoack: 24
-                                </p> */}
 															</div>
 														</div>
 													</div>
