@@ -32,7 +32,7 @@ export function BlogCarousel() {
 	const totalPages = blogs?.data?.meta?.totalPages ?? 1;
 
 	return (
-		<section className={`bg-transparent pt-8 pb-20 md:pb-28`}>
+		<section className={`bg-transparent pt-8 pb-10 md:pb-28`}>
 			<div className="flex items-center justify-center py-8 space-x-4">
 				<hr className="flex-1 border-b border-gray-300" />
 				<h2 className="w-max mx-auto text-[#101010] text-2xl md:text-5xl font-semibold text-center">

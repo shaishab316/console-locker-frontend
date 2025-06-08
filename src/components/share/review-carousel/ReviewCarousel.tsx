@@ -36,7 +36,7 @@ export default function ReviewCarousel({
 	const totalPage = reviews?.data?.meta?.totalPage ?? 1;
 
 	return (
-		<div className={`py-24 bg-transparent`}>
+		<div className={`mb-10 lg:py-24 bg-transparent`}>
 			<div className="flex items-center justify-center py-8 space-x-4">
 				<hr className="flex-1 border-b border-gray-300" />
 				<h2 className="w-max mx-auto text-[#101010] text-2xl md:text-5xl font-semibold text-center">
