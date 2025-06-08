@@ -5,8 +5,8 @@ import { useState } from "react";
 import ReviewCard from "./ReviewCard";
 import Container from "@/components/common/Container";
 import { useTranslation } from "react-i18next";
-import Loading from "@/app/loading";
 import { useGetReviewsQuery } from "@/redux/features/review/ReviewAPI";
+import { Spin } from "antd";
 
 interface IReview {
 	comment: string;
@@ -28,14 +28,12 @@ export default function ReviewCarousel({
 
 	const {
 		data: reviews,
-		isLoading,
+		isFetching,
+		refetch,
 		isError,
 	} = useGetReviewsQuery({ productName, page, limit: 3 });
 
-	const meta = reviews?.data?.meta ?? {};
-
-	if (isLoading) return <Loading />;
-	if (isError) return <p className="text-red-500">Failed to load reviews.</p>;
+	const totalPage = reviews?.data?.meta?.totalPage ?? 1;
 
 	return (
 		<div className={`py-24 bg-transparent`}>
@@ -51,17 +49,17 @@ export default function ReviewCarousel({
 					<div className="hidden md:flex gap-4 items-center">
 						<button
 							onClick={() =>
-								setPage((prev) => (prev > 1 ? prev - 1 : meta?.totalPage))
+								setPage((prev) => (prev > 1 ? prev - 1 : totalPage))
 							}
 							className="w-12 h-12 flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
 							aria-label="Previous review"
 						>
 							<ArrowLeftOutlined className="text-sm" />
 						</button>
-						{page} / {meta?.totalPage}
+						{page} / {isFetching ? <Spin size="small" /> : totalPage}
 						<button
 							onClick={() =>
-								setPage((prev) => (prev < meta?.totalPage ? prev + 1 : 1))
+								setPage((prev) => (prev < totalPage ? prev + 1 : 1))
 							}
 							className="w-12 h-12 flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-[#FDFDFD] transition-colors"
 							aria-label="Next review"
@@ -71,13 +69,35 @@ export default function ReviewCarousel({
 					</div>
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-					{reviews?.data?.reviews?.map((review: IReview) => (
-						<div key={review._id} className="px-2 h-60">
-							<ReviewCard {...review} />
+				{isError && (
+					<p className="text-red-500 text-2xl">
+						Failed to load reviews.{" "}
+						<div className="inline-flex">
+							<button
+								onClick={refetch}
+								className="underline cursor-pointer click font-bold text-black hover:scale-90 transition"
+							>
+								Retry
+							</button>
+							<span className="relative flex size-3">
+								<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+								<span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
+							</span>
 						</div>
-					))}
-				</div>
+					</p>
+				)}
+
+				{isFetching ? (
+					<Spin size="large" />
+				) : (
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+						{reviews?.data?.reviews?.map((review: IReview) => (
+							<div key={review._id} className="px-2 h-60">
+								<ReviewCard {...review} />
+							</div>
+						))}
+					</div>
+				)}
 			</Container>
 		</div>
 	);
