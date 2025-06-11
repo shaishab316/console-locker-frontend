@@ -62,16 +62,12 @@ export default function CheckoutForm() {
     city: "",
     address: "",
     apartment: "",
-    country: "Italy",
+    country: "",
     paymentMethod: "paypal",
     paypalEmail: "",
     iban: "",
     acceptTerms: false,
   });
-
-  // const userSelectedOptions = useSelector(
-  //   (state: RootState) => state?.questionSlice?.questions
-  // );
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -122,6 +118,7 @@ export default function CheckoutForm() {
               paypal: formData.paypalEmail,
             },
           };
+
           const res = await sellProduct(data).unwrap();
 
           if (res?.success) {
@@ -147,6 +144,8 @@ export default function CheckoutForm() {
       };
 
       const res = await sellProduct(data).unwrap();
+
+      console.log("sell res", res);
 
       if (res?.success) {
         toast.success(res?.message);
@@ -194,7 +193,7 @@ export default function CheckoutForm() {
         address: customerData.address.address,
         zipCode: customerData.address.zip_code,
         city: customerData.address.city,
-        country: customerData.address.country,
+        country: customerData.address.country || "",
         email: customerData.email,
         phone: customerData.phone,
       }));
@@ -645,7 +644,6 @@ export default function CheckoutForm() {
         <div className="z-20 min-h-screen relative bg-[url('/sell/back_sell.png')] bg-cover bg-center overflow-hidden">
           <form onSubmit={handleSubmit}>
             {/* Personal Information */}
-
             <div className='p-5'>
               <h2 className='text-lg font-semibold text-[#FFFFFF]'>
                 {t("personalInformation")}
@@ -660,14 +658,12 @@ export default function CheckoutForm() {
                       htmlFor='firstName'
                       className='text-sm leading-[21px]'
                     >
-                      {t("firstName")} <span className='text-red-500'>*</span>{" "}
+                      {t("firstName")} <span className='text-red-500'>*</span>
                     </label>
-
                     <input
                       type='text'
-                      onChange={(e) =>
-                        setFormData({ ...formData, firstName: e.target.value })
-                      }
+                      name='firstName'
+                      onChange={handleInputChange}
                       value={formData.firstName}
                       id='firstName'
                       className='px-2 py-2 h-10 border-2 rounded-md placeholder:text-sm'
@@ -681,53 +677,50 @@ export default function CheckoutForm() {
                       htmlFor='lastName'
                       className='text-sm leading-[21px]'
                     >
-                      {t("lastName")} <span className='text-red-500'>*</span>{" "}
+                      {t("lastName")} <span className='text-red-500'>*</span>
                     </label>
-
                     <input
                       type='text'
-                      onChange={(e) =>
-                        setFormData({ ...formData, lastName: e.target.value })
-                      }
+                      name='lastName'
+                      onChange={handleInputChange}
                       value={formData.lastName}
                       id='lastName'
                       className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
                       placeholder='Last Name'
+                      required
                     />
                   </div>
                 </div>
 
                 <div className='flex flex-col gap-1 w-full'>
                   <label htmlFor='email' className='text-sm leading-[21px]'>
-                    {t("email")} <span className='text-red-500'>*</span>{" "}
+                    {t("email")} <span className='text-red-500'>*</span>
                   </label>
-
                   <input
                     type='email'
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
+                    name='email'
+                    onChange={handleInputChange}
                     value={formData.email}
                     id='email'
                     className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
                     placeholder='Enter email'
+                    required
                   />
                 </div>
 
                 <div className='flex flex-col gap-1 w-full'>
                   <label htmlFor='phone' className='text-sm leading-[21px]'>
-                    {t("phoneNumber")} <span className='text-red-500'>*</span>{" "}
+                    {t("phoneNumber")} <span className='text-red-500'>*</span>
                   </label>
-
                   <input
                     type='tel'
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
+                    name='phone'
+                    onChange={handleInputChange}
                     value={formData.phone}
                     id='phone'
                     className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
                     placeholder='Phone Number'
+                    required
                   />
                 </div>
               </div>
@@ -736,56 +729,48 @@ export default function CheckoutForm() {
               <h2 className='text-lg font-semibold text-[#FFFFFF]'>
                 {t("address")}
               </h2>
+
               <div className='w-full mx-auto h-1 border-b-2 border-b-[#FDFDFD] mb-5' />
               <div className='bg-[#FDFDFD] p-3 rounded-lg space-y-3 mb-5'>
                 <div className='flex items-center gap-6'>
                   <div className='flex-1 flex flex-col gap-1 w-[45%] max-w-[50%]'>
                     <label htmlFor='city' className='text-sm leading-[21px]'>
-                      {t("city")} <span className='text-red-500'>*</span>{" "}
+                      {t("city")} <span className='text-red-500'>*</span>
                     </label>
-
                     <input
                       type='text'
-                      onChange={(e) =>
-                        setFormData({ ...formData, city: e.target.value })
-                      }
+                      name='city'
+                      onChange={handleInputChange}
                       value={formData.city}
                       id='city'
                       className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
                       placeholder='City'
+                      required
                     />
                   </div>
 
                   <div className='flex-1 flex flex-col gap-1 w-[45%] max-w-[50%]'>
-                    <label
-                      htmlFor='postalCode'
-                      className='text-sm leading-[21px]'
-                    >
-                      {t("postalCode")} <span className='text-red-500'>*</span>{" "}
+                    <label htmlFor='zipCode' className='text-sm leading-[21px]'>
+                      {t("postalCode")} <span className='text-red-500'>*</span>
                     </label>
-
                     <input
                       type='text'
-                      onChange={(e) =>
-                        setFormData({ ...formData, zipCode: e.target.value })
-                      }
+                      name='zipCode'
+                      onChange={handleInputChange}
                       value={formData.zipCode}
-                      id='postalCode'
+                      id='zipCode'
                       className='px-2 py-2 border-2 rounded-md placeholder:text-sm'
                       placeholder='Postal Code'
+                      required
                     />
                   </div>
                 </div>
 
                 <div className='flex flex-col gap-1 w-full'>
-                  <label
-                    htmlFor='shippingAddress'
-                    className='text-sm leading-[21px]'
-                  >
+                  <label htmlFor='address' className='text-sm leading-[21px]'>
                     {t("shippingAddress")}{" "}
-                    <span className='text-red-500'>*</span>{" "}
+                    <span className='text-red-500'>*</span>
                   </label>
-
                   <input
                     type='text'
                     id='address'
@@ -799,13 +784,9 @@ export default function CheckoutForm() {
                 </div>
 
                 <div className='flex flex-col gap-1 w-full'>
-                  <label
-                    htmlFor='appointments'
-                    className='text-sm leading-[21px]'
-                  >
+                  <label htmlFor='apartment' className='text-sm leading-[21px]'>
                     {t("apartmentStaircase")}
                   </label>
-
                   <input
                     type='text'
                     id='apartment'
@@ -820,7 +801,7 @@ export default function CheckoutForm() {
                 <div>
                   <label
                     htmlFor='country'
-                    className='block text-sm font- text-[#101010] mb-1'
+                    className='block text-sm font-medium text-[#101010] mb-1'
                   >
                     Country{" "}
                     <span className='text-red-500 font-semibold'>*</span>
@@ -829,6 +810,7 @@ export default function CheckoutForm() {
                     id='country'
                     name='country'
                     required
+                    aria-required='true'
                     className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500'
                     value={formData.country}
                     onChange={(e) =>
@@ -838,7 +820,11 @@ export default function CheckoutForm() {
                       }))
                     }
                   >
-                    <option value=''>Select a country</option>
+                    {!formData.country && (
+                      <option value='' disabled>
+                        Select a country
+                      </option>
+                    )}
                     <option value='Italy'>Italy</option>
                     <option value='Germany'>Germany</option>
                     <option value='France'>France</option>
@@ -855,18 +841,25 @@ export default function CheckoutForm() {
 
               <div className='bg-[#FDFDFD] p-5 rounded-lg space-y-3 mb-5'>
                 <div
-                  onClick={() => setPaymentMethod("bankTransfer")}
+                  onClick={() => {
+                    setPaymentMethod("bank");
+                    setFormData((prev) => ({ ...prev, paymentMethod: "bank" }));
+                  }}
                   className={`h-14 ${
-                    paymentMethod === "bankTransfer"
-                      ? "border-2 border-[#FF9934]"
-                      : ""
+                    paymentMethod === "bank" ? "border-2 border-[#FF9934]" : ""
                   } flex items-center justify-between gap-3 rounded-lg p-4`}
                 >
                   <div className='flex items-center gap-3'>
                     <input
                       type='radio'
-                      checked={paymentMethod === "bankTransfer"} // Bind checked to state
-                      onChange={() => setPaymentMethod("bankTransfer")}
+                      checked={paymentMethod === "bank"}
+                      onChange={() => {
+                        setPaymentMethod("bank");
+                        setFormData((prev) => ({
+                          ...prev,
+                          paymentMethod: "bank",
+                        }));
+                      }}
                       className='w-6 h-6'
                     />
                     <h2 className='text-xs font-medium text-[#101010]'>
@@ -877,10 +870,38 @@ export default function CheckoutForm() {
                     ${priceEstimate}
                   </h3>
                 </div>
+
+                {paymentMethod === "bank" && (
+                  <div className='pl-6'>
+                    <label
+                      htmlFor='iban'
+                      className='block text-sm font-medium text-[#101010] mb-1'
+                    >
+                      IBAN <span className='text-red-500 font-semibold'>*</span>
+                    </label>
+                    <input
+                      type='text'
+                      id='iban'
+                      name='iban'
+                      required={paymentMethod === "bank"}
+                      className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500'
+                      placeholder='Example: FI14 1009 3000 1234 58'
+                      value={formData.iban}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                )}
+
                 <div
-                  onClick={() => setPaymentMethod("payPalFees")}
+                  onClick={() => {
+                    setPaymentMethod("paypal");
+                    setFormData((prev) => ({
+                      ...prev,
+                      paymentMethod: "paypal",
+                    }));
+                  }}
                   className={`h-14 ${
-                    paymentMethod === "payPalFees"
+                    paymentMethod === "paypal"
                       ? "border-2 border-[#FF9934]"
                       : ""
                   } flex items-center justify-between gap-3 rounded-lg p-4`}
@@ -888,8 +909,14 @@ export default function CheckoutForm() {
                   <div className='flex items-center gap-3'>
                     <input
                       type='radio'
-                      checked={paymentMethod === "payPalFees"} // Bind checked to state
-                      onChange={() => setPaymentMethod("payPalFees")}
+                      checked={paymentMethod === "paypal"}
+                      onChange={() => {
+                        setPaymentMethod("paypal");
+                        setFormData((prev) => ({
+                          ...prev,
+                          paymentMethod: "paypal",
+                        }));
+                      }}
                       className='w-6 h-6'
                     />
                     <h2 className='text-xs font-medium text-[#101010]'>
@@ -897,16 +924,40 @@ export default function CheckoutForm() {
                     </h2>
                   </div>
                   <h3 className='text-sm font-medium text-[#101010]'>
-                    {" "}
                     ${priceEstimate}
                   </h3>
                 </div>
+
+                {paymentMethod === "paypal" && (
+                  <div className='pl-6'>
+                    <label
+                      htmlFor='paypalEmail'
+                      className='block text-sm font-medium text-[#101010] mb-1'
+                    >
+                      PayPal Email{" "}
+                      <span className='text-red-500 font-semibold'>*</span>
+                    </label>
+                    <input
+                      type='email'
+                      id='paypalEmail'
+                      name='paypalEmail'
+                      required={paymentMethod === "paypal"}
+                      className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500'
+                      placeholder='Enter your PayPal email'
+                      value={formData.paypalEmail}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                )}
               </div>
             </div>
 
             {/* Continue Button */}
             <div className='bg-[#FDFDFD] p-6'>
-              <button className='w-full h-14 bg-[#FF9934] rounded-lg text-[#FDFDFD] text-base font-semibold'>
+              <button
+                type='submit'
+                className='w-full h-14 bg-[#FF9934] rounded-lg text-[#FDFDFD] text-base font-semibold'
+              >
                 {t("continue")}
               </button>
             </div>
