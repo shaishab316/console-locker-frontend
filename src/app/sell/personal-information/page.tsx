@@ -145,8 +145,6 @@ export default function CheckoutForm() {
 
       const res = await sellProduct(data).unwrap();
 
-      console.log("sell res", res);
-
       if (res?.success) {
         toast.success(res?.message);
       } else {
