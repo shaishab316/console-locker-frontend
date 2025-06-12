@@ -33,7 +33,7 @@ export default function ReviewCarousel({
 		isError,
 	} = useGetReviewsQuery({ productName, page, limit: 3 });
 
-	const totalPage = reviews?.data?.meta?.totalPage ?? 1;
+	const totalPage = Math.max(reviews?.data?.meta?.totalPage, 1);
 
 	return (
 		<div className={`mb-10 lg:py-24 bg-transparent`}>
@@ -68,6 +68,10 @@ export default function ReviewCarousel({
 						</button>
 					</div>
 				</div>
+
+				{!reviews?.data?.reviews?.length && (
+					<p className="text-2xl">No reviews!</p>
+				)}
 
 				{isError && (
 					<p className="text-red-500 text-2xl relative w-fit group">
