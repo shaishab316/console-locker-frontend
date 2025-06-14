@@ -13,7 +13,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Image from "next/image";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -108,7 +107,7 @@ export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
         </div>
 
         {/* social links */}
-        <div className='absolute bottom-1'>
+        {/* <div className='absolute bottom-1'>
           <div className='flex items-center justify-between mt-auto'>
             <Image
               src='/social/linkedin.png'
@@ -155,7 +154,7 @@ export function MobileMenu({ isOpen, onOpenChange }: MobileMenuProps) {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
       </SheetContent>
     </Sheet>
   );
