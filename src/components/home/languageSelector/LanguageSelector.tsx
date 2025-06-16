@@ -1,66 +1,66 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useState, useRef } from "react";
+// import { useTranslation } from "react-i18next";
 
 const languages = [
   // { code: "en", name: "English", flag: "/flag/usa.png" },
   { code: "it", name: "Italy", flag: "/flag/italy.png" },
 ];
 
-interface LanguageType {
-  code: string;
-  name: string;
-  flag: string;
-}
+// interface LanguageType {
+//   code: string;
+//   name: string;
+//   flag: string;
+// }
 
 const LanguageSelector = () => {
-  const [selectedLang, setSelectedLang] = useState<LanguageType>(languages[0]);
+  // const [selectedLang, setSelectedLang] = useState<LanguageType>(languages[0]);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const { i18n } = useTranslation(); // Use i18n directly from useTranslation hook
-  const [selectedLanguageOnlocalStorage, setSelectedLanguageOnlocalStorage] =
-    useState<string | null>("");
+  // const { i18n } = useTranslation(); // Use i18n directly from useTranslation hook
+  // const [selectedLanguageOnlocalStorage, setSelectedLanguageOnlocalStorage] =
+  //   useState<string | null>("");
 
-  const handleSelectLanguage = (lang: LanguageType) => {
-    setSelectedLang(lang);
-    setIsOpen(false);
-    changeLanguage(lang.code); // Change language on selection
-  };
+  // const handleSelectLanguage = (lang: LanguageType) => {
+  //   setSelectedLang(lang);
+  //   setIsOpen(false);
+  //   changeLanguage(lang.code);
+  // };
 
-  const changeLanguage = async (language: string) => {
-    try {
-      if (i18n.changeLanguage) {
-        await i18n.changeLanguage(language);
-      } else {
-        console.error("i18n.changeLanguage is not available");
-      }
-    } catch (error) {
-      console.error("Error changing language:", error);
-    }
-  };
+  // const changeLanguage = async (language: string) => {
+  //   try {
+  //     if (i18n.changeLanguage) {
+  //       await i18n.changeLanguage(language);
+  //     } else {
+  //       console.error("i18n.changeLanguage is not available");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error changing language:", error);
+  //   }
+  // };
 
   // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     if (
+  //       dropdownRef.current &&
+  //       !dropdownRef.current.contains(event.target as Node)
+  //     ) {
+  //       setIsOpen(false);
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, []);
 
-  useEffect(() => {
-    const i18nextLng = localStorage?.getItem("i18nextLng");
-    setSelectedLanguageOnlocalStorage(i18nextLng);
-    console.log(typeof i18nextLng);
-  }, [selectedLang]);
+  // useEffect(() => {
+  //   const i18nextLng = localStorage?.getItem("i18nextLng");
+  //   setSelectedLanguageOnlocalStorage(i18nextLng);
+  //   console.log(typeof i18nextLng);
+  // }, [selectedLang]);
 
   return (
     <div className='relative z-50' ref={dropdownRef}>
@@ -78,7 +78,7 @@ const LanguageSelector = () => {
           }
           width={24}
           height={24}
-          alt={selectedLang.name}
+          alt={"Italy"}
         />
         <span className='text-sm'>
           {languages[0].name}
@@ -89,7 +89,7 @@ const LanguageSelector = () => {
       </button>
 
       {/* Dropdown Menu */}
-      {isOpen && (
+      {/* {isOpen && (
         <div className='absolute top-full w-28  flex flex-col items-center justify-left py-1.5 left-0 mt-2 bg-white border rounded-lg shadow-md'>
           {languages.map((lang) => (
             <button
@@ -102,7 +102,7 @@ const LanguageSelector = () => {
             </button>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 };

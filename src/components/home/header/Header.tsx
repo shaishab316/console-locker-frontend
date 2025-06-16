@@ -29,12 +29,7 @@ export function Header() {
 
   const isFirstRender = useRef(true);
 
-  const {
-    data: products,
-    isLoading,
-    isError,
-    refetch,
-  } = useGetAllProductsQuery({ limit: 10000 });
+  const { data: products } = useGetAllProductsQuery({ limit: 10000 });
 
   const isAggreed = useSelector((state: any) => state.trackCartSlice.isAggreed);
 
