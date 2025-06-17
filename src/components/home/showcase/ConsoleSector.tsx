@@ -24,7 +24,7 @@ interface IConsole {
   offer_price: number;
   price: number;
   product_type: string;
-  quantity: number;
+  quantity: number; 
   slug: string;
   _id: string;
 }

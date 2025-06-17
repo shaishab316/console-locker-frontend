@@ -116,11 +116,11 @@ export function Header() {
 
         <nav className='hidden lg:flex items-center space-x-3 lg:space-x-12'>
           <Link href='/' className='text-sm font-medium'>
-            {t("home")}
+            Home
           </Link>
           <DropdownMenu>
             <DropdownMenuTrigger className='flex items-center space-x-1.5 text-sm font-medium'>
-              <span>{t("buy")}</span>
+              <span>Acquista</span>
               <ChevronDown className='h-4 w-4' />
             </DropdownMenuTrigger>
             <DropdownMenuContent align='start'>
@@ -142,17 +142,17 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
           <Link href='/sell' className='text-sm font-medium'>
-            {t("sell")}
+            Vendi
           </Link>
 
           <Link href='/about' className='text-sm font-medium'>
-            {t("about")}
+            Chi Siamo
           </Link>
           <Link href='/reviews' className='text-sm font-medium'>
-            {t("reviews")}
+            Recensioni
           </Link>
           <Link href='/contact' className='text-sm font-medium'>
-            {t("contact")}
+            Contatto
           </Link>
         </nav>
 

@@ -26,7 +26,7 @@ const ProductAPI = baseAPI.injectEndpoints({
       }
     >({
       query: ({
-        product_type,
+        product_type, 
         brand,
         condition,
         limit,
@@ -53,7 +53,7 @@ const ProductAPI = baseAPI.injectEndpoints({
           queryParams.append("max_price", price[1].toString());
         }
 
-        return `/products?${queryParams.toString()}`;
+        return `/products/forHome?${queryParams.toString()}`;
       },
     }),
 

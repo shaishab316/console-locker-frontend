@@ -160,8 +160,6 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log(singleProduct?.data?.product);
-
   return (
     <div>
       {/* only for desktop */}

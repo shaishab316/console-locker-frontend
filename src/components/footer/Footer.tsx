@@ -27,7 +27,7 @@ export function ConsoleFooter() {
               />
               <div className='ml-0 lg:ml-52'>
                 <h2 className='text-left text-[#FDFDFD] text-2xl md:text-[40px] font-semibold'>
-                  {t("signUpNewsLetter")}
+                  Iscriviti alla nostra Newsletter
                 </h2>
               </div>
             </div>
@@ -41,7 +41,7 @@ export function ConsoleFooter() {
               placeholder='Enter your email'
             />
             <button className='w-[40%] place-items-end bg-[#FDFDFD] text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8'>
-              {t("subscribe")}
+              Iscriviti
             </button>
           </div>
 
@@ -53,7 +53,7 @@ export function ConsoleFooter() {
               placeholder='Enter your email'
             />
             <button className='place-items-end bg-[#FDFDFD] text-[#101010] text-base font-medium rounded py-2.5 px-4 md:px-8'>
-              {t("subscribe")}
+              Iscriviti
             </button>
           </div>
         </div>
@@ -62,7 +62,7 @@ export function ConsoleFooter() {
           {/* Payment Methods */}
           <div>
             <h4 className='text-[#FDFDFD] text-[32px] font-semibold mb-6'>
-              {t("paymentMethods")}
+              Metodi di pagamento:
             </h4>
             <div className='flex items-center flex-wrap gap-2 mb-12'>
               <Image
@@ -98,7 +98,7 @@ export function ConsoleFooter() {
             {/* Social Links */}
             <div>
               <h4 className='text-white text-2xl font-semibold mt-6 mb-6'>
-                {t("socialLinks")}
+                Link social
               </h4>
               <div className='flex gap-4'>
                 <Link
@@ -152,32 +152,32 @@ export function ConsoleFooter() {
           {/* Quick Links */}
           <div>
             <h4 className='text-white text-lg font-semibold mb-6'>
-              {t("quickLinks")}
+              Link rapidi
             </h4>
             <ul className='space-y-6'>
               <li>
                 <Link href='/' className='text-[#FDFDFD] text-lg'>
-                  {t("home")}
+                  Home
                 </Link>
               </li>
               <li>
                 <Link href='/buy' className='text-[#FDFDFD] text-lg'>
-                  {t("buy")}
+                  Acquista
                 </Link>
               </li>
               <li>
                 <Link href='/sell' className='text-[#FDFDFD] text-lg'>
-                  {t("sell")}
+                  Vendi
                 </Link>
               </li>
               <li>
                 <Link href='/about' className='text-[#FDFDFD] text-lg'>
-                  {t("aboutUs")}
+                  Chi Siamo
                 </Link>
               </li>
               <li>
                 <Link href='reviews' className='text-[#FDFDFD] text-lg'>
-                  {t("reviews")}
+                  Recensioni
                 </Link>
               </li>
             </ul>
@@ -185,9 +185,7 @@ export function ConsoleFooter() {
 
           {/* Contact Us */}
           <div>
-            <h4 className='text-white text-lg font-semibold mb-6'>
-              {t("contactUs")}
-            </h4>
+            <h4 className='text-white text-lg font-semibold mb-6'>Contatto</h4>
             <div className='space-y-6'>
               <div>
                 <strong className='text-[#FDFDFD] text-lg block'>
