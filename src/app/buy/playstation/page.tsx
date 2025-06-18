@@ -30,7 +30,6 @@ interface IProduct {
 
 const ProductPage: React.FC = () => {
   const [view, setView] = useState<"grid" | "list">("grid");
-  const [page, setPage] = useState<number>(1);
   const [filterView, setFilterView] = useState(false);
   const { t } = useTranslation();
 
@@ -45,7 +44,6 @@ const ProductPage: React.FC = () => {
 
   const [filterableProduct, setFilterableProduct] = useState<string[]>([]);
   const [filterableBrand, setFilterableBrand] = useState<string[]>([]);
-  const [filterablePrice, setFilterablePrice] = useState<string[]>([]);
   const [filterableCondition, setFilterableCondition] = useState<string[]>([]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,7 +52,6 @@ const ProductPage: React.FC = () => {
 
   const isFirstRender = useRef(true);
   const isMaxPriceSet = useRef(true);
-  const itemsPerPage = 9;
 
   const {
     data: products,
@@ -76,7 +73,7 @@ const ProductPage: React.FC = () => {
   const URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
-    if (isFirstRender.current && products?.data?.products.length > 0) {
+    if (isFirstRender.current && products?.data?.products?.length > 0) {
       const filterableProducts = products.data.products.map(
         (product: any) => product.product_type
       );
@@ -164,7 +161,7 @@ const ProductPage: React.FC = () => {
         <div className='flex'>
           <div className={`w-0 h-screen lg:w-1/4 bg-white rounded-md lg:mb-5`}>
             <h3 className='hidden lg:flex text-[32px] text-[#101010] px-5 pt-4 pb-3 border-b font-semibold mb-4'>
-              {t("filter")}
+              Filtro
             </h3>
 
             {/* filter for mobile */}
@@ -172,7 +169,7 @@ const ProductPage: React.FC = () => {
               <div className='lg:hidden fixed bottom-0 left-0 right-0 bg-white rounded-lg p-5'>
                 <div className='mb-4'>
                   <div className='flex items-center justify-between mb-2'>
-                    <h4 className='font-semibold mb-2'>{t("products")}</h4>
+                    <h4 className='font-semibold mb-2'>Prodotti</h4>
                     <p>
                       <X onClick={() => setFilterView(false)} />
                     </p>
@@ -183,7 +180,7 @@ const ProductPage: React.FC = () => {
                     className='w-[80%] text-[#6B6B6B] appearance-none border-none outline-none px-1.5'
                   >
                     {/* "All" option to reset search */}
-                    <option value=''>{t("all")}</option>
+                    <option value=''>Tutti</option>
 
                     {/* Dynamically rendered options */}
                     {products?.data?.meta?.product_meta?.product_types?.map(
@@ -197,14 +194,14 @@ const ProductPage: React.FC = () => {
                 </div>
                 <div className='mb-4'>
                   <h4 className='text-[#101010] text-xl font-semibold mb-2'>
-                    {t("brand")}
+                    Marca
                   </h4>
 
                   <select
                     onChange={(e) => setBrandSearch(e.target.value)}
                     className='w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5'
                   >
-                    <option value=''>{t("all")}</option>
+                    <option value=''>Tutti</option>
 
                     {products?.data?.meta?.product_meta?.brands?.map(
                       (brand: string, ind: number) => (
@@ -217,29 +214,29 @@ const ProductPage: React.FC = () => {
                 </div>
                 <div className='mb-4'>
                   <h4 className='text-[#101010] text-xl font-semibold mb-2'>
-                    {t("priceRange")}
+                    Fascia di prezzo
                   </h4>
                   <select
                     onChange={handlePriceChange}
                     className='w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5'
                   >
-                    <option value=''>{t("all")}</option>
+                    <option value=''>Tutti</option>
 
-                    <option value='below100'>{t("below100")}</option>
-                    <option value='100to300'>{t("100to300")}</option>
-                    <option value='300to500'>{t("300to500")}</option>
-                    <option value='up500'>{t("upFiveHundread")}</option>
+                    <option value='below100'>Sotto €100</option>
+                    <option value='100to300'>100€ - 300€</option>
+                    <option value='300to500'>300€ - 500€</option>
+                    <option value='up500'>500€+</option>
                   </select>
                 </div>
                 <div className='mb-4'>
                   <h4 className='text-[#101010] text-xl font-semibold mb-2'>
-                    {t("condition")}
+                    Condizione
                   </h4>
                   <select
                     onChange={(e) => setCondition(e.target.value)}
                     className='w-[80%] text-[#6B6B6B] appearance-none border-none outline-none p-1.5'
                   >
-                    <option value=''>{t("all")}</option>
+                    <option value=''>Tutti</option>
 
                     {products?.data?.meta?.product_meta?.conditions?.map(
                       (condition: string, ind: string) => (
@@ -261,7 +258,7 @@ const ProductPage: React.FC = () => {
             <div className='hidden lg:block pb-3 mx-4 pt-2'>
               <div className='relative mb-5 border-b-[.75px] border-[#969696]'>
                 <h4 className='text-[#101010] text-xl font-semibold mb-2 px-4'>
-                  {t("products")}
+                  Prodotti
                 </h4>
 
                 <select
@@ -269,7 +266,7 @@ const ProductPage: React.FC = () => {
                   className='w-full text-[#6B6B6B] appearance-none border-none outline-none p-4'
                 >
                   {/* "All" option to reset search */}
-                  <option value=''>{t("all")}</option>
+                  <option value=''>Tutti</option>
 
                   {/* Dynamically rendered options */}
                   {products?.data?.meta?.product_meta?.product_types?.map(
@@ -302,13 +299,13 @@ const ProductPage: React.FC = () => {
 
               <div className='relative mb-5 border-b-[.75px] border-[#969696]'>
                 <h4 className='text-[#101010] text-xl font-semibold mb-2 px-4'>
-                  {t("brand")}
+                  Marca
                 </h4>
                 <select
                   onChange={(e) => setBrandSearch(e.target.value)}
                   className='w-full text-[#6B6B6B] appearance-none border-none outline-none p-4'
                 >
-                  <option value=''>{t("all")}</option>
+                  <option value=''>Tutti</option>
 
                   {products?.data?.meta?.product_meta?.brands?.map(
                     (brand: string, ind: number) => (
@@ -339,18 +336,18 @@ const ProductPage: React.FC = () => {
 
               <div className='relative mb-5 border-b-[.75px] border-[#969696]'>
                 <h4 className='text-[#101010] text-xl font-semibold mb-2 px-4'>
-                  {t("priceRange")}
+                  Fascia di prezzo
                 </h4>
                 <select
                   onChange={handlePriceChange}
                   className='w-full text-[#6B6B6B] appearance-none border-none outline-none p-4'
                 >
-                  <option value=''>{t("all")}</option>
+                  <option value=''>Tutti</option>
 
-                  <option value='below100'>{t("below100")}</option>
-                  <option value='100to300'>{t("100to300")}</option>
-                  <option value='300to500'>{t("300to500")}</option>
-                  <option value='up500'>{t("upFiveHundread")}</option>
+                  <option value='below100'>Sotto €100</option>
+                  <option value='100to300'>100€ - 300€</option>
+                  <option value='300to500'>300€ - 500€</option>
+                  <option value='up500'>500€+</option>
                 </select>
 
                 <div className='absolute bottom-4 right-0 flex items-center pr-3 pointer-events-none'>
@@ -374,13 +371,13 @@ const ProductPage: React.FC = () => {
 
               <div className='relative mb-5 border-b-[.75px] border-[#969696]'>
                 <h4 className='text-[#101010] text-xl font-semibold mb-2 px-4'>
-                  {t("condition")}
+                  Condizione
                 </h4>
                 <select
                   onChange={(e) => setCondition(e.target.value)}
                   className='w-full text-[#6B6B6B] appearance-none border-none outline-none p-4'
                 >
-                  <option value=''>{t("all")}</option>
+                  <option value=''>Tutti</option>
 
                   {products?.data?.meta?.product_meta?.conditions?.map(
                     (condition: string, ind: number) => (
@@ -435,7 +432,7 @@ const ProductPage: React.FC = () => {
                 >
                   <polygon points='22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3' />
                 </svg>
-                <h3 className='text-sm font-medium'>{t("filter")}</h3>
+                <h3 className='text-sm font-medium'>Filtro</h3>
               </div>
 
               {/* view - grid / list */}
@@ -470,43 +467,6 @@ const ProductPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* sorting */}
-              {/* <div className='h-10 relative flex gap-3'>
-                <select
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className='appearance-none w-max md:w-56 px-2.5 py-2 border border-[#101010] rounded-md font-medium text-sm bg-transparent lg:bg-[#FDFDFD] text-[#101010] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer overflow-hidden'
-                >
-                  <option
-                    defaultValue={"Sort By"}
-                    value={""}
-                    className='text-[#101010]'
-                    // disabled
-                  >
-                    {t("sortBy")}
-                    <span className='text-xs'> (Default)</span>
-                  </option>
-                  <option value='max_price'>{t("highToLow")}</option>
-                  <option value='min_price'>{t("lowToHigh")}</option>
-                </select>
-
-                <div className='absolute inset-y-0 -right-2 flex items-center pr-3 pointer-events-none overflow-hidden'>
-                  <svg
-                    className='w-6 h-6 text-[#101010]'
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
-                  >
-                    <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='2'
-                      d='M19 9l-7 7-7-7'
-                    />
-                  </svg>
-                </div>
-              </div> */}
-
               <div className='h-10 relative flex gap-3'>
                 <select
                   onChange={(e) => setSortBy(e.target.value)}
@@ -518,11 +478,11 @@ const ProductPage: React.FC = () => {
                     className='text-[#101010]'
                     // disabled
                   >
-                    {t("sortBy")}
+                    Sort by
                     <span className='text-xs'> (Default)</span>
                   </option>
-                  <option value='max_price'>{t("highToLow")}</option>
-                  <option value='min_price'>{t("lowToHigh")}</option>
+                  <option value='max_price'>High to Low</option>
+                  <option value='min_price'>Low to High</option>
                 </select>
 
                 <div className='absolute inset-y-0 -right-2 flex items-center pr-3 pointer-events-none overflow-hidden'>
@@ -544,7 +504,7 @@ const ProductPage: React.FC = () => {
               </div>
             </div>
 
-            {products?.data?.products.length < 1 ? (
+            {products?.data?.products?.length < 1 ? (
               <div className='flex items-center justify-center h-[calc(100vh-200px)] text-2xl font-medium'>
                 No, Playstation found!
               </div>

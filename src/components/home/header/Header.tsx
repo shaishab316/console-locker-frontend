@@ -34,7 +34,7 @@ export function Header() {
   const isAggreed = useSelector((state: any) => state.trackCartSlice.isAggreed);
 
   useEffect(() => {
-    if (isFirstRender.current && products?.data?.products.length > 0) {
+    if (isFirstRender.current && products?.data?.products?.length > 0) {
       const filterableProducts = products.data.products.map(
         (product: any) => product.product_type
       );

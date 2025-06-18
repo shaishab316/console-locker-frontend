@@ -38,9 +38,9 @@ export default function ProductSpecification() {
   const tabs: Tab[] = ["Specification", "Description", "Warranty"];
 
   return (
-    <div className="bg-[#F2F5F7] mt-20 mb-8 rounded-lg">
+    <div className='bg-[#F2F5F7] mt-20 mb-8 rounded-lg'>
       {/* Tabs */}
-      <div className="flex flex-wrap gap-6 mb-6 py-6 pl-4">
+      <div className='flex flex-wrap gap-6 mb-6 py-6 pl-4'>
         {tabs.map((tab) => (
           <button
             key={tab}
@@ -58,34 +58,22 @@ export default function ProductSpecification() {
       </div>
 
       {/* Content */}
-      <div className="bg-[#FDFDFD] rounded-lg shadow-sm">
+      <div className='bg-[#FDFDFD] rounded-lg shadow-sm'>
         {activeTab === "Specification" && (
-          <div className="p-6">
-            <h2 className="text-xl text-[#101010] font-semibold mb-6">
+          <div className='p-6'>
+            <h2 className='text-xl text-[#101010] font-semibold mb-6'>
               Specification
             </h2>
 
-            {/* <div className="divide-y">
-              {specificationData.map((row, index) => (
-                <table
-                  key={index}
-                  className="grid grid-cols-1 md:grid-cols-[200px,1fr] py-4 gap-2"
-                >
-                  <tr className="font-medium text-gray-900">{row.label}</tr>
-                  <tr className="text-gray-600">{row.value}</tr>
-                </table>
-              ))}
-            </div> */}
-
-            <div className="overflow-x-auto rounded-[10px] border border-gray-300">
-              <table className="min-w-full border border-gray-300 border-collapse rounded-lg">
-                <tbody className="rounded-lg">
+            <div className='overflow-x-auto rounded-[10px] border border-gray-300'>
+              <table className='min-w-full border border-gray-300 border-collapse rounded-lg'>
+                <tbody className='rounded-lg'>
                   {specificationData.map((row, index) => (
-                    <tr key={index} className="">
-                      <td className="border border-gray-300 px-6 py-4 text-base font-medium text-[#000000]">
+                    <tr key={index} className=''>
+                      <td className='border border-gray-300 px-6 py-4 text-base font-medium text-[#000000]'>
                         {row.label}
                       </td>
-                      <td className="border border-gray-300 px-6 py-4 text-sm text-[#5F5F5F]">
+                      <td className='border border-gray-300 px-6 py-4 text-sm text-[#5F5F5F]'>
                         {row.value}
                       </td>
                     </tr>
@@ -97,22 +85,22 @@ export default function ProductSpecification() {
         )}
 
         {activeTab === "Description" && (
-          <div className="p-6">
-            <h2 className="text-xl text-[#101010] font-semibold mb-4">
+          <div className='p-6'>
+            <h2 className='text-xl text-[#101010] font-semibold mb-4'>
               Description
             </h2>
-            <p className="text-gray-600">
+            <p className='text-gray-600'>
               Product description content would go here.
             </p>
           </div>
         )}
 
         {activeTab === "Warranty" && (
-          <div className="p-6">
-            <h2 className="text-xl text-[#101010] font-semibold mb-4">
+          <div className='p-6'>
+            <h2 className='text-xl text-[#101010] font-semibold mb-4'>
               Warranty
             </h2>
-            <p className="text-gray-600">Warranty information would go here.</p>
+            <p className='text-gray-600'>Warranty information would go here.</p>
           </div>
         )}
       </div>

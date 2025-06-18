@@ -188,15 +188,11 @@ export function ConsoleFooter() {
             <h4 className='text-white text-lg font-semibold mb-6'>Contatto</h4>
             <div className='space-y-6'>
               <div>
-                <strong className='text-[#FDFDFD] text-lg block'>
-                  {t("email")}
-                </strong>
+                <strong className='text-[#FDFDFD] text-lg block'>Email</strong>
                 <p className='text-[#FDFDFD]'>info@consolelocker.it</p>
               </div>
               <div>
-                <strong className='text-[#FDFDFD] text-lg block'>
-                  {t("phone")}
-                </strong>
+                <strong className='text-[#FDFDFD] text-lg block'>Phone</strong>
                 <p className='text-[#FDFDFD] text-base'>+1 234 567 890</p>
               </div>
             </div>
@@ -205,7 +201,7 @@ export function ConsoleFooter() {
           {/* Privacy & Policy */}
           <div>
             <h4 className='text-[#FDFDFD] text-[32px] font-semibold mb-6'>
-              {t("privacyPolicyTitle")}
+              Privacy e Politica
             </h4>
             <ul className='space-y-6'>
               <li>
@@ -213,7 +209,7 @@ export function ConsoleFooter() {
                   href='/returns-and-refunds'
                   className='text-lg text-[#FDFDFD]'
                 >
-                  {t("returnAndRefund")}
+                  Resi e rimborsi
                 </Link>
               </li>
               <li>
@@ -221,17 +217,17 @@ export function ConsoleFooter() {
                   href='/terms-of-services'
                   className='text-lg text-[#FDFDFD]'
                 >
-                  {t("termsOfService")}
+                  Termini di servizio
                 </Link>
               </li>
               <li>
                 <Link href='/cookie-policy' className='text-lg text-[#FDFDFD]'>
-                  {t("cookiePolicy")}
+                  Politica sui cookie (UE)
                 </Link>
               </li>
               <li>
                 <Link href='/privacy-policy' className='text-lg text-[#FDFDFD]'>
-                  {t("privacyPolicy")}
+                  Informativa sulla privacy
                 </Link>
               </li>
             </ul>
@@ -243,7 +239,8 @@ export function ConsoleFooter() {
       {/* Copyright */}
       <div className='h-[80px] flex items-center justify-center text-center bg-[#FDFDFD] border-t border-gray-800'>
         <p className='text-[#101010] px-2 text-sm lg:text-lg'>
-          {t("copyRight")}
+          © Tutti i diritti riservati 2024 | Partita IVA IT17743751004 | Via
+          Ogaden 4, 00199 Roma
         </p>
       </div>
     </footer>

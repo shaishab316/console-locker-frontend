@@ -28,8 +28,6 @@ export default function ContactPage() {
       message: formData.get("message") as string,
     };
 
-    console.log(data); // Debugging
-
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
@@ -45,127 +43,96 @@ export default function ContactPage() {
     }
   }
 
-  // async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-  //   event.preventDefault();
-
-  //   const form = event.target as HTMLFormElement;
-
-  //   const formData = {
-  //     name: form.fullName.value,
-  //     email: form.email.value,
-  //     subject: form.subject.value,
-  //     message: form.message.value,
-  //   };
-
-  //   console.log(formData);
-
-  //   setIsSubmitting(true);
-  //   setSubmitStatus("idle");
-
-  //   try {
-  //     await sendContact(formData).unwrap();
-  //     setSubmitStatus("success");
-  //     form.reset();
-  //   } catch (error) {
-  //     console.error("Error submitting contact form:", error);
-  //     setSubmitStatus("error");
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // }
-
-  console.log(submitStatus);
-
   return (
-    <main className="min-h-screen bg-[#F2F5F7] py-12 sm:px-6 lg:px-8">
+    <main className='min-h-screen bg-[#F2F5F7] py-12 sm:px-6 lg:px-8'>
       <Container>
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className='grid lg:grid-cols-3 gap-8'>
           {/* Form Section */}
-          <div className="col-span-1 lg:col-span-2 bg-[#FDFDFD] p-8 rounded-lg shadow-sm">
-            <h1 className="text-3xl font-semibold text-[#101010] mb-6">
-              {t("personalInformation")}
+          <div className='col-span-1 lg:col-span-2 bg-[#FDFDFD] p-8 rounded-lg shadow-sm'>
+            <h1 className='text-3xl font-semibold text-[#101010] mb-6'>
+              Informazioni personali
             </h1>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="flex flex-col lg:flex-row items-start lg:space-x-6">
-                <div className="lg:flex-1 w-full lg:w-1/2 mb-3 lg:mb-0 space-y-3">
+            <form onSubmit={handleSubmit} className='space-y-6'>
+              <div className='flex flex-col lg:flex-row items-start lg:space-x-6'>
+                <div className='lg:flex-1 w-full lg:w-1/2 mb-3 lg:mb-0 space-y-3'>
                   <label
-                    htmlFor="fullName"
-                    className="text-lg font-medium text-[#101010]"
+                    htmlFor='fullName'
+                    className='text-lg font-medium text-[#101010]'
                   >
-                    {t("fullName")} <span className="text-red-500">*</span>
+                    Nome completo <span className='text-red-500'>*</span>
                   </label>
                   <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
+                    type='text'
+                    id='fullName'
+                    name='fullName'
                     required
-                    className="w-full h-14 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className='w-full h-14 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500'
                   />
                 </div>
 
-                <div className="lg:flex-1 w-full lg:w-1/2 space-y-3">
+                <div className='lg:flex-1 w-full lg:w-1/2 space-y-3'>
                   <label
-                    htmlFor="email"
-                    className="text-lg font-medium text-[#101010]"
+                    htmlFor='email'
+                    className='text-lg font-medium text-[#101010]'
                   >
-                    {t("email")}
-                    <span className="text-red-500">*</span>
+                    Email
+                    <span className='text-red-500'>*</span>
                   </label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
+                    type='email'
+                    id='email'
+                    name='email'
                     required
-                    className="w-full h-14 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className='w-full h-14 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500'
                   />
                 </div>
               </div>
 
-              <div className="space-y-3">
+              <div className='space-y-3'>
                 <label
-                  htmlFor="subject"
-                  className="text-lg font-medium text-[#101010]"
+                  htmlFor='subject'
+                  className='text-lg font-medium text-[#101010]'
                 >
-                  {t("yourSubject")}
+                  Il tuo oggetto
                 </label>
                 <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  className="mt-1 w-full h-14 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  type='text'
+                  id='subject'
+                  name='subject'
+                  className='mt-1 w-full h-14 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500'
                 />
               </div>
 
-              <div className="space-y-3">
+              <div className='space-y-3'>
                 <label
-                  htmlFor="message"
-                  className=" text-lg font-medium text-[#101010]"
+                  htmlFor='message'
+                  className=' text-lg font-medium text-[#101010]'
                 >
-                  {t("Messages")}
+                  Messaggi
                 </label>
                 <textarea
-                  id="message"
-                  name="message"
+                  id='message'
+                  name='message'
                   rows={5}
-                  className="mt-1 w-full min-h-64 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className='mt-1 w-full min-h-64 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500'
                 />
               </div>
 
               <button
-                type="submit"
+                type='submit'
                 disabled={isSubmitting}
-                className="w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className='w-full bg-black text-white py-3 px-4 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
               >
                 {isSubmitting ? "Sending..." : "SEND"}
               </button>
 
               {submitStatus === "success" && (
-                <p className="text-green-600 text-sm">
+                <p className='text-green-600 text-sm'>
                   Message sent successfully!
                 </p>
               )}
               {submitStatus === "error" && (
-                <p className="text-red-600 text-sm">
+                <p className='text-red-600 text-sm'>
                   Failed to send message. Please try again.
                 </p>
               )}
@@ -173,64 +140,65 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Information Section */}
-          <div className="bg-[#FDFDFD] p-8 rounded-lg shadow-sm">
-            <h2 className="text-3xl text-[#101010] font-semibold mb-6">
-              {t("contactInformation")}
+          <div className='bg-[#FDFDFD] p-8 rounded-lg shadow-sm'>
+            <h2 className='text-3xl text-[#101010] font-semibold mb-6'>
+              Informazioni di contatto
             </h2>
-            <p className="text-[#2B2B2B] mb-8 text-wrap">
-              {t("linkableContent")}
+            <p className='text-[#2B2B2B] mb-8 text-wrap'>
+              Creeremo contenuti linkabili di alta qualità e costruiremo almeno
+              40 link ad alta autorità.
             </p>
 
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4">
-                <div className="bg-[#DAEDF2] p-2 rounded-full">
+            <div className='space-y-6'>
+              <div className='flex items-center space-x-4'>
+                <div className='bg-[#DAEDF2] p-2 rounded-full'>
                   <Image
                     src={"/contact/phone.svg"}
                     width={24}
                     height={24}
-                    alt="Phone"
+                    alt='Phone'
                   />
                 </div>
-                <div className="space-y-1">
-                  <p className="text-[#2B2B2B] text-base md:text-lg text-wrap">
+                <div className='space-y-1'>
+                  <p className='text-[#2B2B2B] text-base md:text-lg text-wrap'>
                     +42 000 000 0000
                   </p>
-                  <p className="text-[#2B2B2B] text-base md:text-lg text-wrap">
+                  <p className='text-[#2B2B2B] text-base md:text-lg text-wrap'>
                     +42 000 000 0000
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4">
-                <div className="bg-[#DAEDF2] p-2 rounded-full">
+              <div className='flex items-center space-x-4'>
+                <div className='bg-[#DAEDF2] p-2 rounded-full'>
                   <Image
                     src={"/contact/mail.svg"}
                     width={24}
                     height={24}
-                    alt="Phone"
+                    alt='Phone'
                   />
                 </div>
-                <div className="space-y-1">
-                  <p className="text-[#2B2B2B] text-base md:text-lg text-wrap">
+                <div className='space-y-1'>
+                  <p className='text-[#2B2B2B] text-base md:text-lg text-wrap'>
                     support@console.com
                   </p>
-                  <p className="text-[#2B2B2B] text-base md:text-lg text-wrap">
+                  <p className='text-[#2B2B2B] text-base md:text-lg text-wrap'>
                     info@balzlamgames.com
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4">
-                <div className="bg-[#DAEDF2] p-2 rounded-full">
+              <div className='flex items-center space-x-4'>
+                <div className='bg-[#DAEDF2] p-2 rounded-full'>
                   <Image
                     src={"/contact/location.svg"}
-                    className="w-6 h-6"
+                    className='w-6 h-6'
                     width={24}
                     height={24}
-                    alt="Phone"
+                    alt='Phone'
                   />
                 </div>
-                <p className="text-base md:text-lg text-[#101010]">
+                <p className='text-base md:text-lg text-[#101010]'>
                   123 Gamer&apos;s Haven Street, Central District,
                   <br />
                   Balzlam, BX 56789

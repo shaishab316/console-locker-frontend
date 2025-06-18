@@ -30,7 +30,7 @@ export default async function RootLayout({
     <html lang='en'>
       <body
         className={`antialiased ${poppins.className}`}
-        upword-verified='true'
+        // upword-verified='true'
         data-new-gr-c-s-check-loaded='14.1233.0'
         data-gr-ext-installed=''
         cz-shortcut-listen='true'

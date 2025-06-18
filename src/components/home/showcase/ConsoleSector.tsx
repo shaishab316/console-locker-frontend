@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { useGetAllProductsQuery } from "@/redux/features/products/ProductAPI";
 
 interface IConsole {
@@ -24,14 +23,13 @@ interface IConsole {
   offer_price: number;
   price: number;
   product_type: string;
-  quantity: number; 
+  quantity: number;
   slug: string;
   _id: string;
 }
 
 export default function ConsoleSelector() {
   const [activeTab, setActiveTab] = useState("xbox");
-  const { t } = useTranslation();
   const pathname = usePathname();
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -52,7 +50,7 @@ export default function ConsoleSelector() {
               : "bg-[#FDFDFD] py-4 px-8 rounded-lg shadow-md"
           } text-[#101010] text-2xl md:text-5xl font-semibold text-center whitespace-nowrap`}
         >
-          {t("consoleHeaderTitle")}
+          Scegli la tua console
         </h2>
         <hr className='flex-1 border-b-2 border-gray-300' />
       </div>

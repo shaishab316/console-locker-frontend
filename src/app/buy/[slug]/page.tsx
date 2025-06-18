@@ -154,7 +154,7 @@ const ProductDetailsPage: React.FC = () => {
     if (!isDuplicate) {
       toast.success("Product added to cart successfully!");
       existingCart.push(newProduct); // Add new product
-      localStorage?.setItem("cart", JSON.stringify(existingCart)); // Save updated cart
+      localStorage?.setItem("cart", JSON.stringify(existingCart));
     }
 
     router.push("/cart");
@@ -192,7 +192,7 @@ const ProductDetailsPage: React.FC = () => {
                     </h1>
                     <p className='text-[#FDFDFD] text-lg mb-2 flex items-center justify-between'>
                       {" "}
-                      {selectedModel} | {selectedMemory} | Black{" "}
+                      {selectedModel} | {selectedMemory} | {selectedCondition}
                     </p>
                   </div>
                   <div className='flex flex-col gap-3 items-end'>
@@ -231,7 +231,7 @@ const ProductDetailsPage: React.FC = () => {
                   </h2>
                   <Link href={`/reviews?productName=${product?.product?.name}`}>
                     <p className='underline text-[#FDFDFD]'>
-                      ({product?.product?.reviewCount} reviews)
+                      ({product?.product?.reviewCount} recensioni)
                     </p>
                   </Link>
                 </div>
@@ -286,14 +286,11 @@ const ProductDetailsPage: React.FC = () => {
                   <div className='flex flex-wrap gap-2 mb-2'>
                     <p className='text-[#6B6B6B]'>
                       <span className='text-base text-[#101010] font-normal'>
-                        {t("model")}:{" "}
+                        Modello:{" "}
                       </span>
                       {singleProduct?.data?.product?.modelDes}
                     </p>
                   </div>
-                  {/* <p className="text-[#2E7EF6] text-base font-medium underline cursor-pointer">
-                    Learn more
-                  </p> */}
                 </div>
 
                 {/* Controller */}
@@ -346,7 +343,7 @@ const ProductDetailsPage: React.FC = () => {
                   <div className='flex flex-wrap gap-2 mb-2'>
                     <p className='text-[#6B6B6B]'>
                       <span className='text-base text-[#101010] font-normal'>
-                        {t("controller")}:{" "}
+                        Controller:{" "}
                       </span>
                       {singleProduct?.data?.product?.controllerDes}
                     </p>
@@ -403,7 +400,7 @@ const ProductDetailsPage: React.FC = () => {
                   <div className='flex flex-wrap gap-2 mb-2'>
                     <p className='text-[#6B6B6B]'>
                       <span className='text-base text-[#101010] font-normal'>
-                        {t("memory")}:{" "}
+                        Memoria:{" "}
                       </span>
                       {singleProduct?.data?.product?.memoryDes}
                     </p>
@@ -459,7 +456,7 @@ const ProductDetailsPage: React.FC = () => {
                   <div className='flex flex-wrap gap-2 mb-2'>
                     <p className='text-[#6B6B6B]'>
                       <span className='text-base text-[#101010] font-normal'>
-                        {t("condition")}:{" "}
+                        Condizione:{" "}
                       </span>
                       {singleProduct?.data?.product?.conditionDes}
                     </p>
@@ -483,30 +480,15 @@ const ProductDetailsPage: React.FC = () => {
                           handleTrade();
                         }}
                       >
-                        {modalState ? "No" : "Yes"}
+                        {modalState ? "No" : "Sì"}
                       </button>
                     </>
                   ) : (
                     <div>
-                      {/* Conditions Box */}
-                      <div className='bg-[#f0f7ff] p-4 rounded-lg mb-6'>
-                        <p className='text-gray-600 mb-2'>
-                          <span className='font-medium text-gray-900'>
-                            Conditions:
-                          </span>{" "}
-                          The phone will have heavy signs of wear, such as
-                          deeper scratches, dents and other marks. The phone is
-                          unlocked, fully tested and works like new.
-                        </p>
-                        <button className='text-blue-600 hover:underline text-sm'>
-                          Learn More
-                        </button>
-                      </div>
-
                       {/* Trade-in Header */}
                       <div className='flex items-center justify-between mb-4'>
                         <h2 className='text-xl font-semibold text-[#FDFDFD]'>
-                          Trade-in
+                          Permuta
                         </h2>
 
                         <button
@@ -527,7 +509,7 @@ const ProductDetailsPage: React.FC = () => {
                               d='M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99'
                             />
                           </svg>
-                          {t("startOver")}
+                          Inizia da capo
                         </button>
                       </div>
 
@@ -560,10 +542,10 @@ const ProductDetailsPage: React.FC = () => {
                       {/* Additional Information */}
                       <div className='text-gray-200 border-l-4 border-black rounded-s-lg'>
                         <p className='p-3'>
-                          After trade-in price estimate. We will ship the free
-                          trade-in kit to your home address and refund the
-                          trade-in value within 2-3 business days from receiving
-                          the phone.
+                          Dopo la stima del valore di permuta, ti invieremo
+                          gratuitamente il kit di permuta all’indirizzo di casa
+                          e rimborseremo il valore della permuta entro 2-3
+                          giorni lavorativi dalla ricezione del telefono.
                         </p>
                       </div>
 
@@ -574,19 +556,20 @@ const ProductDetailsPage: React.FC = () => {
 
                 <div className='flex justify-between items-center mb-6'>
                   <p className='text-[#FDFDFD] text-[18px] font-medium flex items-center justify-between'>
-                    {selectedModel} | {selectedMemory} | Black
+                    {selectedModel} | {selectedMemory}
                   </p>
                   <div>
                     <h2 className='text-2xl font-semibold text-[#FDFDFD]'>
                       {product?.product?.offer_price ?? product?.product?.price}
                     </h2>
-                    <span className='text-sm text-[#FDFDFD]'>incl. tax</span>
+                    <span className='text-sm text-[#FDFDFD]'>incl. tasse</span>
                   </div>
                 </div>
 
                 <div className='mb-6'>
                   <h4 className='font-normal mb-2 text-[#FDFDFD]'>
-                    {t("pleaseSelectYourConsole")}
+                    Seleziona la tua console per aggiungere il prodotto al
+                    carrello
                   </h4>
 
                   <div className='relative w-full'>
@@ -597,7 +580,7 @@ const ProductDetailsPage: React.FC = () => {
                       className='px-4 py-3 border rounded-3xl  bg-white text-sm sm:text-base appearance-none w-full'
                     >
                       <option value='' defaultValue={"Choose a console"}>
-                        {t("chooseAConsole")}
+                        Scegli una console
                       </option>
                       {/* {consoleLists?.data?.products?.map((console: any) => (
                     
@@ -636,14 +619,14 @@ const ProductDetailsPage: React.FC = () => {
                       />
                     </div>
                     <h2 className='text-base font-medium text-[#FDFDFD]'>
-                      Ready to be shipped.
+                      Pronto per la spedizione.
                     </h2>
                   </div>
                   <button
                     onClick={handleAddToCart}
                     className={`h-14 flex items-center justify-center bg-black text-white text-center px-6 py-3 rounded-md`}
                   >
-                    {t("addToCart")}
+                    Aggiungi al carrello
                   </button>
                 </div>
               </div>
@@ -652,7 +635,7 @@ const ProductDetailsPage: React.FC = () => {
             {/* related products */}
             <div className='mt-16'>
               <h3 className='text-[32px] font-semibold mb-10 text-[#FDFDFD]'>
-                You may also like
+                Ti potrebbe interessare anche
               </h3>
               <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
                 {singleProduct?.data?.relatedProducts
@@ -740,7 +723,7 @@ const ProductDetailsPage: React.FC = () => {
             <div className='pt-6 mx-5 pb-2.5 border-b-2'>
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-3'>
-                  <h3 className='text-lg text-[#FDFDFD]'>Review</h3>
+                  <h3 className='text-lg text-[#FDFDFD]'>Recensioni</h3>
 
                   <div className='flex items-center'>
                     <p className='flex items-center gap-1'>
@@ -858,7 +841,6 @@ const ProductDetailsPage: React.FC = () => {
                   >
                     <span className='overflow-hidden'>{model}</span>
                     {selectedModel === model ? <Check /> : <span>{price}</span>}
-                    {/* <span className='font-light'>{price}</span> */}
                   </div>
                 )
               )}
@@ -868,7 +850,7 @@ const ProductDetailsPage: React.FC = () => {
           {/* Model */}
           <div className='px-5'>
             <p className='text-[#FDFDFD]'>
-              <span className='font-medium h-fit'>MODEL: </span>{" "}
+              <span className='font-medium h-fit'>Modello: </span>{" "}
               {singleProduct?.data?.product?.modelDes}
             </p>
           </div>
@@ -911,7 +893,6 @@ const ProductDetailsPage: React.FC = () => {
                     ) : (
                       <span>{price}</span>
                     )}
-                    {/* <span className='font-light'>{price}</span> */}
                   </div>
                 )
               )}
@@ -921,7 +902,7 @@ const ProductDetailsPage: React.FC = () => {
           {/* Controller */}
           <div className='px-5 pb-6'>
             <p className='text-[#FDFDFD]'>
-              <span className='font-medium h-fit'>CONTROLLER:</span>{" "}
+              <span className='font-medium h-fit'>Controller:</span>{" "}
               {singleProduct?.data?.product?.controllerDes}
             </p>
           </div>
@@ -964,7 +945,6 @@ const ProductDetailsPage: React.FC = () => {
                     ) : (
                       <span>{price}</span>
                     )}
-                    {/* <span className='font-light'>{price}</span> */}
                   </div>
                 )
               )}
@@ -972,7 +952,7 @@ const ProductDetailsPage: React.FC = () => {
             {/* Memory */}
             <div className='px-5'>
               <p className='text-[#FDFDFD]'>
-                <span className='font-medium h-fit'>MEMORY:</span>{" "}
+                <span className='font-medium h-fit'>Memoria:</span>{" "}
                 {singleProduct?.data?.product?.memoryDes}
               </p>
             </div>
@@ -1015,7 +995,6 @@ const ProductDetailsPage: React.FC = () => {
                     ) : (
                       <span>{price}</span>
                     )}
-                    {/* <span className='font-light'>{price}</span> */}
                   </div>
                 )
               )}
@@ -1025,7 +1004,7 @@ const ProductDetailsPage: React.FC = () => {
           {/* Condition */}
           <div className='px-5'>
             <p className='text-[#FDFDFD]'>
-              <span className='font-medium h-fit'>CONDITION:</span>{" "}
+              <span className='font-medium h-fit'>Condizione:</span>{" "}
               {singleProduct?.data?.product?.conditionDes}
             </p>
           </div>

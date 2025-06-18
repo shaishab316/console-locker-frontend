@@ -2,12 +2,9 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Trans } from "react-i18next";
 
 export default function GreenStory() {
-  const [selectedLang, setSelectedLang] = useState("");
-  const { t } = useTranslation();
+  const [selectedLang, setSelectedLang] = useState("it");
 
   useEffect(() => {
     const lang = localStorage?.getItem("i18nextLng");
@@ -23,8 +20,8 @@ export default function GreenStory() {
         <div className='absolute top-0 left-0 w-full h-full bg-[#0d0e0d4f] z-10'></div>
 
         <div className='absolute top-6 left-6 z-20 text-white border-b-2 border-white pb-4'>
-          <h2 className="text-3xl">LA STORIA VERDE DI</h2>
-          <h2 className="text-3xl">CONSOLE LOCKER</h2>
+          <h2 className='text-3xl'>LA STORIA VERDE DI</h2>
+          <h2 className='text-3xl'>CONSOLE LOCKER</h2>
         </div>
         <Image
           src='/home/eco1.png'
@@ -53,7 +50,8 @@ export default function GreenStory() {
         <div>
           {/* Heading */}
           <h1 className='hidden md:block uppercase text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4'>
-            <Trans i18nKey='greenHistroy' components={{ br: <br /> }} />
+            {/* <Trans i18nKey='greenHistroy' components={{ br: <br /> }} /> */}
+            La Storia Green di Console Locker.
           </h1>
 
           <div className='hidden md:block w-full h-2 border-b-2 border-white mb-10'></div>
@@ -75,7 +73,8 @@ export default function GreenStory() {
                   selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
                 } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
               >
-                {t("greenHistoryDescription")}
+                Comprare o vendere una console usata non è solo conveniente, ma
+                anche una scelta ecologica.
               </p>
             </div>
             <div
@@ -88,7 +87,8 @@ export default function GreenStory() {
                   selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
                 } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
               >
-                {t("greenHistoryDescription")}
+                Comprare o vendere una console usata non è solo conveniente, ma
+                anche una scelta ecologica.
               </p>
             </div>
             <div
@@ -101,7 +101,8 @@ export default function GreenStory() {
                   selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
                 } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
               >
-                {t("greenHistoryDescription")}
+                Comprare o vendere una console usata non è solo conveniente, ma
+                anche una scelta ecologica.
               </p>
             </div>
             <div
@@ -114,7 +115,8 @@ export default function GreenStory() {
                   selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
                 } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
               >
-                {t("greenHistoryDescription")}
+                Comprare o vendere una console usata non è solo conveniente, ma
+                anche una scelta ecologica.
               </p>
             </div>
             <div
@@ -127,7 +129,8 @@ export default function GreenStory() {
                   selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
                 } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
               >
-                {t("greenHistoryDescription")}
+                Comprare o vendere una console usata non è solo conveniente, ma
+                anche una scelta ecologica.
               </p>
             </div>
           </div>
