@@ -468,7 +468,7 @@ const ProductDetailsPage: React.FC = () => {
                   {!isOpenTradeIn ? (
                     <>
                       <h4 className='text-2xl font-semibold text-[#FDFDFD] mb-2'>
-                        {t("tradeIn")}:
+                        Permuta:
                       </h4>
                       <button
                         className={`w-[120px] text-[#FDFDFD] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border-4 rounded-md ${
@@ -1014,7 +1014,7 @@ const ProductDetailsPage: React.FC = () => {
             {!isOpenTradeIn ? (
               <>
                 <h4 className='text-2xl font-semibold text-[#FDFDFD] mb-2'>
-                  {t("tradeIn")}:
+                  Permuta:
                 </h4>
                 <button
                   className={`w-[120px] text-[#FDFDFD] md:w-[200px] 2xl:w-[256px] h-[91px] lg:h-[111px] lg:flex-none flex flex-col items-center justify-center lg:px-20 sm:px-10  py-8 border-4 rounded-md ${
@@ -1026,7 +1026,7 @@ const ProductDetailsPage: React.FC = () => {
                     handleTrade();
                   }}
                 >
-                  {modalState ? "No" : "Yes"}
+                  {modalState ? "No" : "Sì"}
                 </button>
               </>
             ) : (
@@ -1049,7 +1049,7 @@ const ProductDetailsPage: React.FC = () => {
                 {/* Trade-in Header */}
                 <div className='flex items-center justify-between mb-4'>
                   <h2 className='text-xl font-semibold text-[#FDFDFD]'>
-                    Trade-in
+                    Permuta
                   </h2>
 
                   <button
@@ -1070,7 +1070,7 @@ const ProductDetailsPage: React.FC = () => {
                         d='M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99'
                       />
                     </svg>
-                    {t("startOver")}
+                    Inizia da capo
                   </button>
                 </div>
 
@@ -1130,7 +1130,7 @@ const ProductDetailsPage: React.FC = () => {
               "bg-[#D61D1E]"
             } w-full text-[#FDFDFD] font-semibold h-12 rounded-lg`}
           >
-            ADD TO CART
+            Aggiungi al carrello
           </button>
         </div>
       </div>

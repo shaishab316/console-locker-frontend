@@ -66,14 +66,14 @@ export function BlogCarousel() {
           <div className='flex gap-4 items-center ml-2 md:ml-0'>
             <button
               onClick={handlePrevSlide}
-              className='w-12 h-12 flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-gray-100 transition-colors shadow-md'
+              className='w-12 h-12 flex items-center justify-center rounded-full bg-[#FDFDFD] hover:bg-gray-100 transition-colors shadow-md'
               aria-label='Previous blog'
             >
               <ArrowLeftOutlined className='text-sm' />
             </button>
             <button
               onClick={handleNextSlide}
-              className='w-12 h-12 flex items-center justify-center rounded bg-[#FDFDFD] hover:bg-gray-100 transition-colors shadow-md'
+              className='w-12 h-12 flex items-center justify-center rounded-full bg-[#FDFDFD] hover:bg-gray-100 transition-colors shadow-md'
               aria-label='Next blog'
             >
               <ArrowRightOutlined className='text-sm' />
