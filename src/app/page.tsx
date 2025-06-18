@@ -11,7 +11,7 @@ export default function Home() {
 			<HeroBanner />
 			<ConsoleSelector />
 			{/* <ImageSlider /> */}
-			<ReviewCarousel productName="" />
+			<ReviewCarousel productName="home" />
 			<GreenStory />
 			<BlogCarousel />
 		</div>
