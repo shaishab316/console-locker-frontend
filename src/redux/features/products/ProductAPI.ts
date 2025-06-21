@@ -13,7 +13,7 @@ interface GetEstimateProductPriceRequest {
 
 const ProductAPI = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
-    getAllProducts: builder.query<
+    getAllProductsForHome: builder.query<
       any,
       {
         product_type?: string;
@@ -26,7 +26,7 @@ const ProductAPI = baseAPI.injectEndpoints({
       }
     >({
       query: ({
-        product_type, 
+        product_type,
         brand,
         condition,
         limit,
@@ -54,6 +54,50 @@ const ProductAPI = baseAPI.injectEndpoints({
         }
 
         return `/products/forHome?${queryParams.toString()}`;
+      },
+    }),
+
+    getAllProducts: builder.query<
+      any,
+      {
+        product_type?: string;
+        brand?: string;
+        condition?: string;
+        limit?: number;
+        page?: number;
+        price?: [number, number];
+        sortBy?: string;
+      }
+    >({
+      query: ({
+        product_type,
+        brand,
+        condition,
+        limit,
+        page,
+        sortBy,
+        price,
+      }) => {
+        // console.log("price range: ", price);
+
+        let queryParams = new URLSearchParams();
+
+        if (product_type && product_type !== "all")
+          queryParams.append("product_type", product_type);
+        if (brand && brand !== "all") queryParams.append("brand", brand);
+        if (condition && condition !== "all")
+          queryParams.append("condition", condition);
+        if (limit) queryParams.append("limit", limit.toString());
+        if (page) queryParams.append("page", page.toString());
+        if (sortBy) queryParams.append("sort", sortBy.toString());
+
+        // if(price && price.length === 2) {
+        if (price) {
+          queryParams.append("min_price", price[0].toString());
+          queryParams.append("max_price", price[1].toString());
+        }
+
+        return `/products?${queryParams.toString()}`;
       },
     }),
 
@@ -105,6 +149,7 @@ const ProductAPI = baseAPI.injectEndpoints({
 });
 
 export const {
+  useGetAllProductsForHomeQuery,
   useGetAllProductsQuery,
   useGetSingleProductQuery,
   useCreateProductMutation,

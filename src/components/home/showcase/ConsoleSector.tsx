@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { useGetAllProductsQuery } from "@/redux/features/products/ProductAPI";
+import { useGetAllProductsForHomeQuery } from "@/redux/features/products/ProductAPI";
 
 interface IConsole {
   admin: string;
@@ -34,7 +34,7 @@ export default function ConsoleSelector() {
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  const { data: products } = useGetAllProductsQuery({
+  const { data: products } = useGetAllProductsForHomeQuery({
     product_type: activeTab,
     limit: 4,
   } as any);
