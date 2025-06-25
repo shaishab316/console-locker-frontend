@@ -775,13 +775,13 @@ const ProductDetailsPage: React.FC = () => {
 
 					<div
 						className={`pt-6 px-5 sticky -top-10 left-0 right-0 z-10 
-			${singleProduct?.data?.product?.product_type === "xbox" && "bg-[#3caf4fd0]"}
-			${
-				singleProduct?.data?.product?.product_type === "playstation" &&
-				"bg-[#004cafda]"
-			}
-			${singleProduct?.data?.product?.product_type === "nintendo" && "bg-[#f34040ce]"}
-	  `}
+							${singleProduct?.data?.product?.product_type === "xbox" && "bg-[#3caf4fd0]"}
+							${
+								singleProduct?.data?.product?.product_type === "playstation" &&
+								"bg-[#004cafda]"
+							}
+							${singleProduct?.data?.product?.product_type === "nintendo" && "bg-[#f34040ce]"}
+	  				`}
 					>
 						<div className="pt-5 pb-2 border-b-2">
 							<div className="flex items-center justify-between gap-2">
@@ -795,7 +795,8 @@ const ProductDetailsPage: React.FC = () => {
 								</div>
 
 								<h2 className="text-[36px] font-semibold text-[#FDFDFD]">
-									${product?.product?.offer_price}
+									&euro;
+									{product?.product?.offer_price}
 								</h2>
 							</div>
 						</div>
