@@ -73,8 +73,8 @@ export default function GreenStory() {
                   selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
                 } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
               >
-                Comprare o vendere una console usata non è solo conveniente, ma
-                anche una scelta ecologica.
+                Acquistare o vendere una console usata aiuta a ridurre i rifiuti
+                elettronici.
               </p>
             </div>
             <div
@@ -87,8 +87,8 @@ export default function GreenStory() {
                   selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
                 } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
               >
-                Comprare o vendere una console usata non è solo conveniente, ma
-                anche una scelta ecologica.
+                Dare nuova vita a una console è una scelta intelligente ed
+                ecologica.
               </p>
             </div>
             <div
@@ -101,8 +101,8 @@ export default function GreenStory() {
                   selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
                 } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
               >
-                Comprare o vendere una console usata non è solo conveniente, ma
-                anche una scelta ecologica.
+                Scegliere l’usato significa risparmiare e salvaguardare
+                l’ambiente.
               </p>
             </div>
             <div
@@ -115,8 +115,8 @@ export default function GreenStory() {
                   selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
                 } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
               >
-                Comprare o vendere una console usata non è solo conveniente, ma
-                anche una scelta ecologica.
+                Una console usata ha ancora tanto da offrire: risparmia e
+                rispetta il pianeta.
               </p>
             </div>
             <div
@@ -129,8 +129,7 @@ export default function GreenStory() {
                   selectedLang === "en" ? "max-w-[440px]" : "max-w-[690px]"
                 } mx-auto text-center text-[#FFFFFF] text-xs sm:text-base md:text-xl leading-6`}
               >
-                Comprare o vendere una console usata non è solo conveniente, ma
-                anche una scelta ecologica.
+                Console Locker promuove un consumo responsabile e sostenibile.
               </p>
             </div>
           </div>

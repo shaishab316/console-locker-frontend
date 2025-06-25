@@ -157,8 +157,6 @@ const ProductDetailsPage: React.FC = () => {
     router.push("/cart");
   };
 
-  console.log(singleProduct?.data);
-
   return (
     <div>
       {/* only for desktop */}
