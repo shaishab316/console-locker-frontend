@@ -22,18 +22,7 @@ import Loading from "@/app/loading";
 import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { modifiedCart } from "@/redux/features/cart/TrackCartItem";
-
-interface RelatedProduct {
-	_id: string;
-	name: string;
-	condition: string;
-	price: string;
-	images: [number];
-	brand: string;
-	slug: string;
-	product_type: string;
-	model: string;
-}
+import ProductCard from "@/components/product/ProductCard";
 
 interface ModalTradeInData {
 	productName: string;
@@ -634,41 +623,14 @@ const ProductDetailsPage: React.FC = () => {
 							<h3 className="text-[32px] font-semibold mb-10 text-[#FDFDFD]">
 								Ti potrebbe interessare anche
 							</h3>
-							<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-								{singleProduct?.data?.relatedProducts
-									?.slice(0, 4)
-									.map((product: RelatedProduct) => (
-										<Link
-											key={product._id}
-											href={`/buy/${product?.slug}`}
-											className="rounded-lg"
-											passHref
-										>
-											<div className="bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-lg pb-2">
-												<img
-													src={`${API_URL}${product.images[0]}`}
-													alt={product?.name}
-													className="w-full aspect-square rounded-t-lg bg-cover bg-center"
-													style={{
-														backgroundImage: `url('/sell/${product?.product_type}-sq.jpeg')`,
-													}}
-												/>
-												<div className="px-3">
-													<h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
-														{product?.name} {product?.model}
-													</h3>
-													<div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
-														<div className="flex items-center gap-2">
-															<p className="text-[#2B2B2B] text-base">Price:</p>
-															<span className="text-[#00B67A] text-lg font-semibold">
-																{product.price}
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</Link>
-									))}
+							<div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+								{singleProduct?.data?.relatedProducts.map((product: any) => (
+									<ProductCard
+										key={product._id}
+										product={product}
+										layout="new"
+									/>
+								))}
 							</div>
 						</div>
 
@@ -1135,41 +1097,10 @@ const ProductDetailsPage: React.FC = () => {
 					<h3 className="text-[32px] font-semibold mb-10 text-[#FDFDFD]">
 						Ti potrebbe interessare anche
 					</h3>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-						{singleProduct?.data?.relatedProducts
-							?.slice(0, 4)
-							.map((product: RelatedProduct) => (
-								<Link
-									key={product._id}
-									href={`/buy/${product?.slug}`}
-									className="rounded-lg"
-									passHref
-								>
-									<div className="bg-[#FDFDFD] hover:shadow-md border border-gray-100 rounded-lg pb-2">
-										<img
-											src={`${API_URL}${product.images[0]}`}
-											alt={product?.name}
-											className="w-full aspect-square rounded-t-lg bg-cover bg-center"
-											style={{
-												backgroundImage: `url('/sell/${product?.product_type}-sq.jpeg')`,
-											}}
-										/>
-										<div className="px-3">
-											<h3 className="text-xl text-[#101010] font-semibold mb-2 mt-5">
-												{product?.name} {product?.model}
-											</h3>
-											<div className="flex items-center gap-3 text-[#2B2B2B] mb-4">
-												<div className="flex items-center gap-2">
-													<p className="text-[#2B2B2B] text-base">Price:</p>
-													<span className="text-[#00B67A] text-lg font-semibold">
-														{product.price}
-													</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</Link>
-							))}
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-6 pb-4">
+						{singleProduct?.data?.relatedProducts.map((product: any) => (
+							<ProductCard key={product._id} product={product} layout="new" />
+						))}
 					</div>
 				</div>
 			</div>
