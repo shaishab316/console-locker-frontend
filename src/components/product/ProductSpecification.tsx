@@ -1,109 +1,98 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useState } from "react";
-
-interface SpecificationRow {
-  label: string;
-  value: string;
-}
-
-const specificationData: SpecificationRow[] = [
-  { label: "Brand", value: "Sony" },
-  { label: "Body", value: "295×55×327 mm | 3.3 kg" },
-  { label: "Model", value: "Play Station 4 Pro - PS4 Pro" },
-  {
-    label: "Interface / Port",
-    value:
-      "Super-Speed USB (USB 3.1 Gen.1) port | AUX port | HDMI out port | DIGITAL OUT (OPTICAL) port",
-  },
-  { label: "Connectivity", value: "Ethernet | IEEE 802.11 | Bluetooth® 4.0" },
-  { label: "Storage", value: "1TB" },
-  {
-    label: "Chipset",
-    value:
-      'x86-64 AMD "Jaguar", 8 cores CPU | 4.20 TFLOPS, AMD Radeon-based graphics engine GPU',
-  },
-  { label: "Memory", value: "GDDR5 8GB" },
-  {
-    label: "Other Features / Info",
-    value: "BD × 6 CAV | DVD × 8 CAV | 5 °C – 35°C (operating temperature)",
-  },
-];
+import { useEffect, useState } from "react";
 
 type Tab = "Specification" | "Description" | "Warranty";
 
-export default function ProductSpecification() {
-  const [activeTab, setActiveTab] = useState<Tab>("Specification");
+export default function ProductSpecification({ product }: any) {
+	const [activeTab, setActiveTab] = useState<Tab>("Specification");
+	const [specifications, setSpecifications] = useState<
+		{ key: string; value: string }[]
+	>([]);
 
-  const tabs: Tab[] = ["Specification", "Description", "Warranty"];
+	useEffect(() => {
+		try {
+			if (product?.specifications)
+				setSpecifications(
+					Object.entries(JSON.parse(product?.specifications)).map(
+						([key, value]) => ({ key, value })
+					) as any
+				);
+		} catch (error) {
+			console.log(error);
+		}
+	}, [product]);
 
-  return (
-    <div className='bg-[#F2F5F7] mt-20 mb-8 rounded-lg'>
-      {/* Tabs */}
-      <div className='flex flex-wrap gap-6 mb-6 py-6 pl-4'>
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`px-6 py-2 rounded-md transition-colors duration-200 text-sm md:text-base
+	const tabs: Tab[] = ["Specification", "Description", "Warranty"];
+
+	return (
+		<div className="bg-[#F2F5F7] mt-20 mb-8 rounded-lg">
+			{/* Tabs */}
+			<div className="flex flex-wrap gap-6 mb-6 py-6 pl-4">
+				{tabs.map((tab) => (
+					<button
+						key={tab}
+						onClick={() => setActiveTab(tab)}
+						className={`px-6 py-2 rounded-md transition-colors duration-200 text-sm md:text-base
               ${
-                activeTab === tab
-                  ? "bg-black text-white"
-                  : "bg-transparent border-2 border-[#101010] text-[#101010]"
-              }`}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
+								activeTab === tab
+									? "bg-black text-white"
+									: "bg-transparent border-2 border-[#101010] text-[#101010]"
+							}`}
+					>
+						{tab}
+					</button>
+				))}
+			</div>
 
-      {/* Content */}
-      <div className='bg-[#FDFDFD] rounded-lg shadow-sm'>
-        {activeTab === "Specification" && (
-          <div className='p-6'>
-            <h2 className='text-xl text-[#101010] font-semibold mb-6'>
-              Specification
-            </h2>
+			{/* Content */}
+			<div className="bg-[#FDFDFD] rounded-lg shadow-sm">
+				{activeTab === "Specification" && (
+					<div className="p-6">
+						<h2 className="text-xl text-[#101010] font-semibold mb-6">
+							Specification
+						</h2>
 
-            <div className='overflow-x-auto rounded-[10px] border border-gray-300'>
-              <table className='min-w-full border border-gray-300 border-collapse rounded-lg'>
-                <tbody className='rounded-lg'>
-                  {specificationData.map((row, index) => (
-                    <tr key={index} className=''>
-                      <td className='border border-gray-300 px-6 py-4 text-base font-medium text-[#000000]'>
-                        {row.label}
-                      </td>
-                      <td className='border border-gray-300 px-6 py-4 text-sm text-[#5F5F5F]'>
-                        {row.value}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
+						<div className="overflow-x-auto rounded-[10px] border border-gray-300">
+							<table className="min-w-full border border-gray-300 border-collapse rounded-lg">
+								<tbody className="rounded-lg">
+									{specifications.map(({ key, value }, idx) => (
+										<tr key={idx} className="">
+											<td className="border border-gray-300 px-6 py-4 text-base font-medium text-[#000000]">
+												{key}
+											</td>
+											<td className="border border-gray-300 px-6 py-4 text-sm text-[#5F5F5F]">
+												{value}
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				)}
 
-        {activeTab === "Description" && (
-          <div className='p-6'>
-            <h2 className='text-xl text-[#101010] font-semibold mb-4'>
-              Description
-            </h2>
-            <p className='text-gray-600'>
-              Product description content would go here.
-            </p>
-          </div>
-        )}
+				{activeTab === "Description" && (
+					<div className="p-6">
+						<h2 className="text-xl text-[#101010] font-semibold mb-4">
+							Description
+						</h2>
+						<p className="text-gray-600">
+							Product description content would go here.
+						</p>
+					</div>
+				)}
 
-        {activeTab === "Warranty" && (
-          <div className='p-6'>
-            <h2 className='text-xl text-[#101010] font-semibold mb-4'>
-              Warranty
-            </h2>
-            <p className='text-gray-600'>Warranty information would go here.</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+				{activeTab === "Warranty" && (
+					<div className="p-6">
+						<h2 className="text-xl text-[#101010] font-semibold mb-4">
+							Warranty
+						</h2>
+						<p className="text-gray-600">Warranty information would go here.</p>
+					</div>
+				)}
+			</div>
+		</div>
+	);
 }
