@@ -170,25 +170,25 @@ const ProductDetailsPage: React.FC = () => {
 								/>
 							</div>
 
-							<div className="xl:w-1/2">
-								<div className="flex justify-between items-center mb-2.5">
-									<div className="flex flex-col gap-3">
-										<h1 className="text-3xl lg:text-[40px] text-[#FDFDFD] font-semibold">
-											{product?.product?.name}
-										</h1>
-										<p className="text-[#FDFDFD] text-lg mb-2 flex items-center justify-between">
-											{" "}
-											{selectedModel} | {selectedMemory} | {selectedCondition}
-										</p>
-									</div>
-									<div className="flex flex-col gap-3 items-end">
-										<h2 className="text-2xl lg:text-5xl font-semibold text-[#FDFDFD]">
-											€
-											{product?.product?.offer_price ?? product?.product?.price}
-										</h2>
-										<p className="text-lg text-[#FDFDFD]">incl. tax</p>
-									</div>
-								</div>
+              <div className='xl:w-1/2'>
+                <div className='flex justify-between items-center mb-2.5'>
+                  <div className='flex flex-col gap-3'>
+                    <h1 className='text-3xl lg:text-[40px] text-[#FDFDFD] font-semibold'>
+                      {product?.product?.name}
+                    </h1>
+                    <p className='text-[#FDFDFD] text-lg mb-2 flex items-center justify-between'>
+                      {" "}
+                      {selectedModel} | {selectedController} | {selectedMemory} | {selectedCondition}
+                    </p>
+                  </div>
+                  <div className='flex flex-col gap-3 items-end'>
+                    <h2 className='text-2xl lg:text-5xl font-semibold text-[#FDFDFD]'>
+                      €
+                      {product?.product?.offer_price ?? product?.product?.price}
+                    </h2>
+                    <p className='text-lg text-[#FDFDFD]'>incl. tax</p>
+                  </div>
+                </div>
 
 								{/* reviews */}
 								<div className="flex items-center gap-2.5 mb-6">
