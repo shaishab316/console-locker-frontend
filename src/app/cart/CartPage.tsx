@@ -202,8 +202,6 @@ export default function CartPage() {
     }
   };
 
-  console.log(products?.data?.variants);
-
   return (
     <div>
       <div className='hidden md:block min-h-screen bg-[#F2F5F7] pt-16 pb-20'>
