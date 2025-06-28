@@ -189,7 +189,7 @@ const ProductDetailsPage: React.FC = () => {
                     </h1>
                     <p className='text-[#FDFDFD] text-lg mb-2 flex items-center justify-between'>
                       {" "}
-                      {selectedModel} | {selectedMemory} | {selectedCondition}
+                      {selectedModel} | {selectedController} | {selectedMemory} | {selectedCondition}
                     </p>
                   </div>
                   <div className='flex flex-col gap-3 items-end'>
