@@ -170,33 +170,34 @@ const ProductDetailsPage: React.FC = () => {
 								/>
 							</div>
 
-              <div className='xl:w-1/2'>
-                <div className='flex justify-between items-center mb-2.5'>
-                  <div className='flex flex-col gap-3'>
-                    <h1 className='text-3xl lg:text-[40px] text-[#FDFDFD] font-semibold'>
-                      {product?.product?.name}
-                    </h1>
-                    <p className='text-[#FDFDFD] text-lg mb-2 flex items-center justify-between'>
-                      {" "}
-                      {selectedModel} | {selectedController} | {selectedMemory} | {selectedCondition}
-                    </p>
-                  </div>
-                  <div className='flex flex-col gap-3 items-end'>
-                    <h2 className='text-2xl lg:text-5xl font-semibold text-[#FDFDFD]'>
-                      €
-                      {product?.product?.offer_price ?? product?.product?.price}
-                    </h2>
-                    <p className='text-lg text-[#FDFDFD]'>incl. tax</p>
-                  </div>
-                </div>
+							<div className="xl:w-1/2">
+								<div className="flex justify-between items-center mb-2.5">
+									<div className="flex flex-col gap-3">
+										<h1 className="text-3xl lg:text-[40px] text-[#FDFDFD] font-semibold">
+											{product?.product?.name}
+										</h1>
+										<p className="text-[#FDFDFD] text-lg mb-2 flex items-center justify-between">
+											{" "}
+											{selectedModel} | {selectedController} | {selectedMemory}{" "}
+											| {selectedCondition}
+										</p>
+									</div>
+									<div className="flex flex-col gap-3 items-end">
+										<h2 className="text-2xl lg:text-5xl font-semibold text-[#FDFDFD]">
+											€
+											{product?.product?.offer_price ?? product?.product?.price}
+										</h2>
+										<p className="text-lg text-[#FDFDFD]">incl. tax</p>
+									</div>
+								</div>
 
 								{/* reviews */}
 								<div className="flex items-center gap-2.5 mb-6">
 									<p className="flex items-center gap-1">
 										{[...Array(Math.round(product?.product?.ratings))].map(
-											(v) => (
+											(v, idx) => (
 												<svg
-													key={v}
+													key={idx}
 													width="24"
 													height="24"
 													viewBox="0 0 24 24"
@@ -680,56 +681,35 @@ const ProductDetailsPage: React.FC = () => {
 					<div>
 						<div className="pt-6 mx-5 pb-2.5 border-b-2">
 							<div className="flex items-center justify-between">
-								<div className="flex items-center gap-3">
-									<h3 className="text-lg text-[#FDFDFD]">Recensioni</h3>
-
-									<div className="flex items-center">
-										<p className="flex items-center gap-1">
-											{[...Array(Math.round(product?.product?.ratings))].map(
-												() => (
-													<svg
-														width="20"
-														height="21"
-														viewBox="0 0 20 21"
-														fill="none"
-														xmlns="http://www.w3.org/2000/svg"
-													>
-														<g clip-path="url(#clip0_2122_18709)">
-															<path
-																d="M11.0202 2.50976L12.5488 5.27412C12.7583 5.65357 13.2839 6.01403 13.7162 6.06276L16.2893 6.3862C17.9368 6.58972 18.3617 7.75894 17.2405 8.98361L15.3303 11.0584C15.0114 11.406 14.8458 12.0693 14.974 12.5246L15.6433 14.9672C16.1697 16.8957 15.1686 17.695 13.4093 16.7478L10.9516 15.4243C10.504 15.1823 9.79299 15.2175 9.37248 15.4892L7.03288 17.0035C5.35804 18.086 4.2923 17.3734 4.6598 15.4099L5.1304 12.925C5.21826 12.4605 5.00762 11.8124 4.65993 11.4935L2.57381 9.58021C1.35634 8.45484 1.68383 7.2554 3.30616 6.91534L5.8393 6.38621C6.26681 6.29335 6.76225 5.90146 6.93619 5.50274L8.23399 2.61726C8.94337 1.06262 10.1949 1.01363 11.0202 2.50976Z"
-																fill="#FDFDFD"
-															/>
-														</g>
-														<defs>
-															<clipPath id="clip0_2122_18709">
-																<rect
-																	width="20"
-																	height="20"
-																	fill="white"
-																	transform="translate(0 0.0507812)"
-																/>
-															</clipPath>
-														</defs>
-													</svg>
-												)
-											)}
-											<svg
-												width="20"
-												height="21"
-												viewBox="0 0 20 21"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M11.4421 2.975L12.9087 5.90833C13.1087 6.31667 13.6421 6.70833 14.0921 6.78333L16.7504 7.225C18.4504 7.50833 18.8504 8.74167 17.6254 9.95833L15.5587 12.025C15.2087 12.375 15.0171 13.05 15.1254 13.5333L15.7171 16.0917C16.1837 18.1167 15.1087 18.9 13.3171 17.8417L10.8254 16.3667C10.3754 16.1 9.63375 16.1 9.17541 16.3667L6.68375 17.8417C4.90041 18.9 3.81708 18.1083 4.28375 16.0917L4.87541 13.5333C4.98375 13.05 4.79208 12.375 4.44208 12.025L2.37541 9.95833C1.15875 8.74167 1.55041 7.50833 3.25041 7.225L5.90875 6.78333C6.35041 6.70833 6.88375 6.31667 7.08375 5.90833L8.55041 2.975C9.35041 1.38333 10.6504 1.38333 11.4421 2.975Z"
-													stroke="#FDFDFD"
-													stroke-width="1.25"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-												/>
-											</svg>
+								<div className="flex items-center gap-2.5 mb-2">
+									<p className="flex items-center gap-1">
+										{[...Array(Math.round(product?.product?.ratings))].map(
+											(v, idx) => (
+												<svg
+													key={idx}
+													width="24"
+													height="24"
+													viewBox="0 0 24 24"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<rect width="24" height="24" fill="#00B67A" />
+													<path
+														d="M11.2392 7.14165C11.4787 6.4046 12.5214 6.40461 12.7609 7.14165L13.6166 9.77509C13.7237 10.1047 14.0309 10.3279 14.3774 10.3279H17.1464C17.9214 10.3279 18.2436 11.3196 17.6166 11.7751L15.3765 13.4026C15.0961 13.6064 14.9788 13.9675 15.0859 14.2971L15.9415 16.9305C16.181 17.6676 15.3374 18.2805 14.7104 17.8249L12.4703 16.1974C12.1899 15.9937 11.8102 15.9937 11.5299 16.1974L9.28972 17.8249C8.66275 18.2805 7.81917 17.6676 8.05865 16.9305L8.9143 14.2971C9.0214 13.9675 8.90408 13.6064 8.62369 13.4026L6.38355 11.7751C5.75658 11.3196 6.0788 10.3279 6.85378 10.3279H9.62274C9.96932 10.3279 10.2765 10.1047 10.3836 9.77509L11.2392 7.14165Z"
+														fill="#FDFDFD"
+													/>
+												</svg>
+											)
+										)}
+									</p>
+									<h2 className="font-medium text-[#FDFDFD]">
+										{product?.product?.ratings}
+									</h2>
+									<Link href={`/reviews?productName=${product?.product?.name}`}>
+										<p className="underline text-[#FDFDFD]">
+											({product?.product?.reviewCount} recensioni)
 										</p>
-									</div>
+									</Link>
 								</div>
 							</div>
 						</div>
@@ -752,7 +732,8 @@ const ProductDetailsPage: React.FC = () => {
 										{product?.product?.name}
 									</h2>
 									<h3 className="text-base text-[#FDFDFD]">
-										{selectedModel} | {selectedMemory} | {selectedCondition}
+										{selectedModel} | {selectedController} | {selectedMemory} |{" "}
+										{selectedCondition}
 									</h3>
 								</div>
 
