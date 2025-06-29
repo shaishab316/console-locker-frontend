@@ -9,25 +9,6 @@ import { useGetAllProductsQuery } from "@/redux/features/products/ProductAPI";
 import Loading from "@/app/loading";
 import ProductCard from "@/components/product/ProductCard";
 
-interface IProduct {
-	_id: string;
-	admin: string;
-	images: string[];
-	name: string;
-	description: string;
-	price: number;
-	offer_price: number;
-	brand: string;
-	model: string;
-	condition: string;
-	controller: string;
-	memory: string;
-	quantity: number;
-	isVariant: false;
-	product_type: string;
-	slug: string;
-}
-
 const ProductPage: React.FC = () => {
 	const [view, setView] = useState<"grid" | "list">("grid");
 	const [filterView, setFilterView] = useState(false);
@@ -462,7 +443,7 @@ const ProductPage: React.FC = () => {
 							<div
 								className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6`}
 							>
-								{products?.data?.products?.map((product: IProduct) => (
+								{products?.data?.products?.map((product: any) => (
 									<ProductCard product={product} key={product._id} />
 								))}
 							</div>
@@ -470,7 +451,7 @@ const ProductPage: React.FC = () => {
 
 						{view === "list" ? (
 							<div className={`grid grid-cols-1 lg:grid-cols-2 gap-12`}>
-								{products?.data?.products?.map((product: IProduct) => (
+								{products?.data?.products?.map((product: any) => (
 									<ProductCard
 										product={product}
 										key={product._id}

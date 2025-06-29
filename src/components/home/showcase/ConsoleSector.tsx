@@ -9,25 +9,6 @@ import { useState } from "react";
 import { useGetAllProductsForHomeQuery } from "@/redux/features/products/ProductAPI";
 import ProductCard from "@/components/product/ProductCard";
 
-interface IConsole {
-	admin: string;
-	brand: string;
-	condition: string;
-	controller: string;
-	description: string;
-	images: string[];
-	isVariant: boolean;
-	memory: string;
-	model: string;
-	name: string;
-	offer_price: number;
-	price: number;
-	product_type: string;
-	quantity: number;
-	slug: string;
-	_id: string;
-}
-
 export default function ConsoleSelector() {
 	const [activeTab, setActiveTab] = useState("xbox");
 	const pathname = usePathname();
@@ -98,7 +79,7 @@ export default function ConsoleSelector() {
 											{products?.data?.products?.length < 1 && (
 												<p className="text-lg text-white">No Xbox found!</p>
 											)}
-											{products?.data?.products?.map((product: IConsole) => (
+											{products?.data?.products?.map((product: any) => (
 												<ProductCard
 													product={product}
 													key={product._id}
@@ -146,7 +127,7 @@ export default function ConsoleSelector() {
 													No Playstation found!
 												</p>
 											)}
-											{products?.data?.products?.map((product: IConsole) => (
+											{products?.data?.products?.map((product: any) => (
 												<ProductCard
 													product={product}
 													key={product._id}
@@ -192,7 +173,7 @@ export default function ConsoleSelector() {
 											{products?.data?.products?.length < 1 && (
 												<p className="text-lg text-white">No Nintendo found!</p>
 											)}
-											{products?.data?.products?.map((product: IConsole) => (
+											{products?.data?.products?.map((product: any) => (
 												<ProductCard
 													product={product}
 													key={product._id}
