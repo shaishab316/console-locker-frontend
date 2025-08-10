@@ -36,9 +36,7 @@ export default function ProductCard({
 			}`}
 		>
 			<div
-				className={`relative aspect-square ${
-					layout === 'new' ? 'p-1.5' : 'p-0'
-				} md:p-0`}
+				className={`aspect-square ${layout === 'new' ? 'p-1.5' : 'p-0'} md:p-0`}
 			>
 				<img
 					src={`${API_URL}${product?.images[0]}`}
