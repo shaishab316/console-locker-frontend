@@ -79,7 +79,9 @@ export default function ProductCard({
 						<div className='flex justify-between items-start'>
 							<div className='flex flex-col'>
 								<h3 className='flex-1 font-semibold text-[#101010] text-base mb-0 lg:mb-2.5 flex flex-wrap'>
-									<span className=''>{product?.name}</span>
+									<span className=''>
+										{product?.name} {product?.model}
+									</span>
 								</h3>
 								<p className='text-[#2B2B2B] text-xs md:text-base space-x-1 pb-1.5'>
 									<span>A partire da</span>
